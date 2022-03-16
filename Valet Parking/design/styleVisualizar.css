@@ -1,0 +1,172 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+p{
+    font-size: 16px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+}
+
+h1{
+    font-size: 30px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3{
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 50;
+    color: #59114D;
+}
+button{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+button:hover{
+    cursor:pointer;
+    opacity: .5;
+}
+
+input[type=text] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+  textarea{
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    font-family: 'Open Sans', sans-serif;
+    resize: none;
+  }
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+.Verde{
+    background-color: #679436;
+}
+
+.Morado{
+    background-color: #59114D;
+}
+
+.Azul{
+    background-color: #427AA1;
+}
+
+.TBlanco{
+    color: white;
+}
+/*----------*/
+.Contenedor{
+    display: flex;
+    justify-content: center;
+}
+.CentrarTexto{
+    text-align: center;
+
+}
+.TituloPrincipal{
+    font-weight: lighter;
+    align-self: center;
+    text-align: center;
+}
+
+.BtonModel{
+    border-radius: 10px;
+}
+
+/* CAJAS FORMATOS */
+
+.Formulario{
+    width: 40%;
+}
+
+.Tabla{
+    width: 60%;
+}
+
+/* FORMULARIO */
+.CampoMitad{
+    width: 46%;
+    margin-left: 2%;
+}
+
+.CampoCompleto{
+    width: 95%;
+    margin-left: 2%;
+}
+
+/* FORMULARIO */
+
+/* TABLA */
+table{
+    border-style: solid;
+    border-color: black;
+    width: 96%;
+    margin-left: 2%;
+
+    border-collapse:collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+thead{
+    color: #ECE5F0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+}
+th{
+    padding: 5px;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #427AA1;
+
+  }
+  
+  td{
+      text-align: center;
+      font-size: 22px;
+      font-family: 'Open Sans', sans-serif;
+  }
+
+  tbody tr:hover{
+      background-color: #E98A15;
+      cursor: grab;
+  }
+/* TABLA */

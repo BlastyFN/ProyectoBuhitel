@@ -1,0 +1,252 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+h1{
+    font-size: 30px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+button:hover{
+    cursor:pointer;
+}
+
+input[type="submit" i] {
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+ 
+}
+
+input[type=text i] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+input[type=time i] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+  input[type=number i] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+  .EntradaTexto{
+    color: #000000;
+    background-color: #FFFFFF;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    height: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    border-style:solid;
+    border-color: #b3b3b3;
+    margin-bottom: 20px;
+}
+
+.Disposicion{
+    
+    display: flex;
+    justify-content: space-around;
+    
+}
+.Completo{
+    width: 100%;
+}
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+.Verde{
+    background-color: #679436;
+}
+
+.Morado{
+    background-color: #59114D;
+}
+
+.Azul{
+    background-color: #427AA1;
+}
+
+.TBlanco{
+    color: white;
+}
+/*----------*/
+
+.alinearTexto{
+    text-align: center;
+}
+
+
+
+.contenedor{
+    
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-items:baseline;
+}
+
+.TiraBtns{
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 15%;
+}
+
+.ModelBtn{
+    font-size: 25px;
+    border-radius: 8px;
+}
+
+.ModelBtn:hover{
+    background-color: #e0ac6d;
+}
+
+.Mitad{
+    width: 50%;
+}
+
+.CamposCentrados{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.Total{
+    width: 100%;
+}
+.Oculto{
+    display: none;
+}
+
+.CamposExtensibles{
+    margin-left: 5%;
+}
+
+.Campo30{
+    width: 40%;
+}
+.Campo10{
+    width: 10%;
+}
+/*----------*/
+/* Tarjeta */
+.Tarjeta{
+    align-self: baseline;
+    width: 50%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    line-height: 1.5;
+    display: inline-block;
+    border-radius: 8px;
+    margin-right: 25%;
+    margin-left: 25%;
+    transition: all .5s;
+}
+
+.Tarjeta p{
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+     
+}
+.Tarjeta h1{
+    
+    display:inline-block;
+    height: 15%;
+    background-color: #59114D;
+    color:white;
+    width: 100%;
+    text-align: center;
+}
+
+.Tarjeta button{
+    width: 100%;
+    
+}
+.Info{
+    border-style: solid;
+    border-color: black;
+    border-bottom-style: none;
+}
+
+.Ult{
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+}
+
+.Entradas{
+    display: flex;
+    justify-items:baseline;
+}
+
+/* Tarjeta */
+
+/* ID's */
+#btnBuscar{
+    border-radius: 7px;
+    padding: 6px 25px;
+  
+}
+
+#tituloHab{
+    width: 49%;
+    margin: auto;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: black;
+}
+
+/* ID's */

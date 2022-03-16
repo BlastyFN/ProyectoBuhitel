@@ -1,0 +1,152 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+h1{
+    font-size: 30px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+}
+
+input[type="submit" i] {
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+}
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+
+.Verde{
+    background-color: #679436;
+}
+/*----------*/
+.Contenedor{
+    display: flex;
+    justify-content: center;
+}
+
+
+.TituloPrincipal{
+    font-weight: lighter;
+    align-self: center;
+    text-align: center;
+}
+.CentrarTexto{
+    text-align: center;
+
+}
+/*----------*/
+.AsideIzq{
+    width: 6%;
+    display: inline-block;
+}
+.CamposFijos{
+    width: 28%;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.CamposExtensibles{
+    width: 40%;
+    display: inline-block;
+    margin-left: auto;
+    
+}
+
+.CamposCuartos{
+    width: 25%;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.EntradaTexto{
+    color: #000000;
+    background-color: #FFFFFF;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    
+    padding: 5px;
+    border-style:solid;
+    border-color: #b3b3b3;
+    margin-bottom: 20px;
+}
+
+.Mitad{
+    width: 45%;
+    margin-left: 2%;
+}
+
+.Completo{
+    width: 90%;
+    margin-left: 4%;
+}
+
+.CampoCentrado{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#Reservar{
+    width: 30%;
+    margin-left: 35%;
+}
+
+.TextMen{
+    font-size: 18px;
+}
+
+.BotonSMT{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+}
+
+
+.TresCuartos{
+    width: 60%;
+    margin-left: 2%;
+}
+
+.UnCuarto{
+    width: 20%;
+    margin-left: 2%;
+}

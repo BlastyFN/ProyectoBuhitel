@@ -1,0 +1,506 @@
+/* GENERALES */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+nav{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 8vh;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ECE5F0;
+    position: fixed;
+    
+    width: 100%;
+    
+}
+img {
+
+    width: 70%;
+    
+}
+p {
+    color: #59114D;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+h1{
+    font-size: 30px;
+    color: #ECE5F0;
+    font-family: 'Open Sans', sans-serif;
+}
+h2{
+    font-size: 22px;
+    color: #ECE5F0;
+    font-family: 'Open Sans', sans-serif;
+}
+button{
+    
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+}
+button:hover{
+    cursor: grab;
+}
+
+button:disabled{
+    background-color: gray;
+}
+
+button:disabled:hover{
+    cursor: auto;
+}
+
+
+/* GENERALES */
+
+/* DISEÑOS */
+.contenedor{
+    
+    display: flex;
+    justify-content: center;
+}
+.Naranja{
+    background-color: #E98A15;
+}
+
+.Morado{
+    background-color: #59114D;
+}
+.Azul{
+    background-color: #427AA1;
+}
+
+.Verde{
+    background-color: #679436;
+}
+.Centrado{
+    text-align: center;
+}
+/* DISEÑOS */
+/*  Barra de Navegación */
+.img_logo{
+    width: 50%;
+    margin-left: 5%;
+    padding-top: 2%;
+}
+.logo{
+    width: 40%;
+}
+
+.links_nav{
+
+    display: flex;
+    
+    justify-content: space-around;
+    width: 80%;
+}
+
+.links_nav a{
+    color: #59114D;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 25px;
+
+    
+}
+
+.links_nav li{
+    list-style: none;
+    margin-right: 10px;
+
+    
+}
+
+.links_nav li:hover{
+    background-color: #59114D;
+}
+.links_nav a:hover{
+    color: #ECE5F0;
+    font-size: 27px;
+}
+
+/*  Barra de Navegación */
+
+/*  Inicio */
+
+.PrimerContenedor{
+    padding-top: 5rem;
+}
+
+
+.inicio_content{
+    width: 65%;
+    display: inline-block;
+    
+}
+
+.TituloInicio{
+    background-image: url(/../HTMLS/assets/Titular.png);
+    background-color: #59114D;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    border-radius: 8px;
+}
+
+.Texto{
+    width: 80%;
+    margin-left: 25px;
+}
+
+.Boton_Central{
+    width: 65%;
+    display: flex;
+    justify-content: center;
+}
+.inicio_foto{
+    width: 40%;
+    
+}
+
+.Transparente {
+    opacity: 100%;
+    
+    
+}
+
+/*  Inicio */
+
+/*  ACERCA */ 
+.acerca_foto{
+    width: 55%;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+#Grande{
+    font-size: 45px;
+}
+/*  ACERCA */
+
+/* FUNCIONALIDADES */
+.titulo_Funcionalidades{
+    
+    display: flex;
+    
+    justify-content: center;
+}
+
+.Funcs{
+    align-items: center;
+}
+
+.Funcs .Tarjeta{
+    width: 20%;
+    height: 350px;
+    line-height: 1.5;
+    color: #fff;
+    display: inline-block;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all .5s;
+    
+}
+
+.Tarjeta{
+
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+}
+
+.Tarjeta p{
+    font-size: 17px;
+    color: #ECE5F0;
+     
+}
+.Tarjeta h1{
+    
+    display:inline-block;
+    height: 15%;
+    background-color: #427AA1;
+    width: 100%;
+    text-align: center;
+}
+.Info {
+    background-color: rgba(0, 0, 0, .6);
+    opacity: 0;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    transition: all .5s;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    
+
+}
+
+.Info:hover{
+    opacity: 1;
+}
+
+.Tarjeta:hover {
+    transform: translateY(20px);
+
+}
+
+/* FONDO TARJETAS */
+#Gerencia{
+    background-image: url(../assets/Fotos/Funcionalidades/Gerencia.jpg);
+}
+
+#Recepcion{
+    background-image: url(../assets/Fotos/Funcionalidades/Recepción.jpg);
+}
+
+#Limpieza{
+    background-image: url(../assets/Fotos/Funcionalidades/Limpieza.jpg);
+}
+
+#Servicio{
+    background-image: url(../assets/Fotos/Funcionalidades/Servicio.jpg);
+}
+
+#Valet{
+    background-image: url(../assets/Fotos/Funcionalidades/Valet.jpg);
+}
+
+#Huesped{
+    background-image: url(../assets/Fotos/Funcionalidades/Huesped.jpg);
+}
+
+/* FONDO TARJETAS */
+/* FUNCIONALIDADES */
+
+/* FOOTER */
+footer{
+    background-color: #59114D;
+    display: flex;
+    align-items: center;
+    
+}
+
+.img_Logo_Footer{
+    width: 30%;
+    margin-left: 5%;
+    padding-top: 2%;
+}
+
+.Segmento_footer{
+    width: 70%;
+    align-items: flex-end;
+}
+
+.Correos{
+    text-align: end;
+    padding-right: 3%;
+}
+/* FOOTER */
+
+/* REGISTRO E INICIO SESION*/
+
+.Formulario{ 
+
+    background-color: yellowgreen;
+    width: 80%;
+    display: block;
+    height: 430px;
+    margin-top: 90px;
+    margin-left: auto;
+   margin-right: auto;
+   background-image: url(../assets/Fotos/Inicio_Registro.jpg);
+   background-size: cover;
+   
+    position: relative;
+}
+
+
+.Fotografia{
+    background-color: turquoise;
+    width: 1100px;
+    max-height: 600px;
+    
+}
+
+
+/* REGISTRO E INICIO SESION*/
+
+/*Formulario Registro */
+
+.FormularioRegistro{
+  
+    
+    width: 90%;
+    
+    
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 5%;
+    
+    
+    background-color: #ECE5F0; 
+}
+
+
+.TituloForm{
+    text-align: center;
+    display:block;
+    margin-bottom: 10px;
+    
+}
+/*Formulario Registro */
+
+.EntradaF{
+    color: #ECE5F0;
+    background-color: #59114D;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    
+    padding: 5px;
+    border-style: none;
+}
+
+.EntradaC{
+    color: #ECE5F0;
+    background-color: #59114D;
+    font-size: 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    border-style: none;
+    width: 40%;
+    border-style: solid;
+}
+
+.EntradaC:focus{
+    outline-style: none;
+}
+
+.Error{
+    color:red;
+    border-style: solid;
+    border-color: red;
+    margin-bottom: 0px;
+    outline: none;
+}
+
+.MensajeError{
+    color: red;
+    font-size: 12px;
+    margin-left: 20px;
+}
+.MargenesReg{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.MargenesCon{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.Bloque{
+
+    display: block;
+}
+
+.Tercio{
+    width: 30%;
+}
+
+.BtnSubmit{
+    background-color: #679436;
+    color: #ECE5F0;
+    margin-left: 85px;
+    padding: 8px;
+    border-style: none;
+    margin-bottom: 40px;
+}
+
+.BtnCon{
+    color: #ECE5F0;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 8px;
+    border-style: none;
+    margin-bottom: 20px;
+}
+/* Formulario Inicio sesión */
+
+.FormularioInicio{
+  
+    
+    width: 30%;
+    
+    
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 35%;
+    
+    
+    background-color: #ECE5F0; 
+}
+
+.MargenesIn{
+    margin-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.BotonI{
+    margin-left: 35%;
+    margin-top: 20px;
+}
+
+.Oculto{
+    display: none;
+}
+
+/* Formulario Confirmacion */
+
+
+.ContenedorCon{
+    width: 50%;
+    /* height: 40%; */
+    margin-left: 25%;
+    margin-right: 25%;
+    /* margin-top: 25%; */
+    display: block;
+    justify-content: center;
+    position:absolute;
+    top: 20%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+}
+
+.link{
+    display: block;
+    text-align: center;
+}

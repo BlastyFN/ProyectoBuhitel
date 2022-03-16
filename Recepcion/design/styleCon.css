@@ -1,0 +1,181 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+h1{
+    font-size: 30px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+input[type="submit" i] {
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+ 
+}
+button:hover{
+    background-color: #e0ac6d;
+    cursor:pointer;
+}
+
+
+input[type=text] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+.Verde{
+    background-color: #679436;
+}
+
+.Morado{
+    background-color: #59114D;
+}
+
+.Rojo{
+    background-color: #E63946;
+}
+
+.Azul{
+    background-color: #427AA1;
+}
+/*----------*/
+
+.contenedor{
+    
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-items:baseline;
+}
+
+.centrarItems{
+    align-items: center;
+}
+
+
+.Tarjeta{
+    align-self: baseline;
+    width: 20%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    line-height: 1.5;
+    display: inline-block;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all .5s;
+    
+}
+
+.Tarjeta p{
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+     
+}
+.Tarjeta h1{
+    
+    display:inline-block;
+    height: 15%;
+    background-color: #427AA1;
+    color:white;
+    width: 100%;
+    text-align: center;
+}
+
+.Tarjeta button{
+    width: 100%;
+    
+}
+
+.Ult{
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.Info{
+    border-style: solid;
+    border-color: black;
+    border-bottom-style: none;
+}
+
+.alinearTexto{
+    text-align: center;
+}
+
+.Filtro{
+    width: 5%;
+    height: 30px;
+}
+
+#BtnIzq{
+    border-right-style: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#BtnMid{
+    border-left-style: none;
+    border-right-style: none;
+}
+
+#BtnDer{
+    border-left-style: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.campoBusqueda{
+    width: 20%;
+    margin: 5px;
+}
+
+.botonBusqueda{
+    margin-top: 5px;
+    width: 15%;
+    border-radius: 8px;
+    color: white;
+}

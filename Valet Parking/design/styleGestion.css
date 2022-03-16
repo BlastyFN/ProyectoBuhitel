@@ -1,0 +1,125 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+p{
+    font-size: 16px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+}
+
+h1{
+    font-size: 30px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3{
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 50;
+}
+button{
+    color:black;
+    font-size:20px;
+    border-style:solid;
+    border-color: black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+button:hover{
+    cursor:pointer;
+    opacity: .5;
+}
+
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+.Verde{
+    background-color: #679436;
+}
+
+.Morado{
+    background-color: #59114D;
+}
+
+.Azul{
+    background-color: #427AA1;
+}
+
+.TBlanco{
+    color: white;
+}
+/*----------*/
+.Contenedor{
+    display: flex;
+    justify-content: center;
+}
+.CentrarTexto{
+    text-align: center;
+
+}
+.TituloPrincipal{
+    font-weight: lighter;
+    align-self: center;
+    text-align: center;
+}
+
+.ContenedorInfo{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Info{
+    width: 70%;
+    border-right-style: solid;
+    border-color: #59114D;
+}
+
+.Notas{
+    width: 30%;
+}
+
+.BtonModel{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.Titulos{
+    border-style: solid;
+    border-color: #59114D;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Contenido{
+    border-style: solid;
+    border-color: #59114D;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-style: none;
+}
+
+.Dato{
+    padding-left: 5px;
+}
