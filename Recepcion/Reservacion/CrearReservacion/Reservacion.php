@@ -30,9 +30,9 @@
         <div class="CamposFijos">
             <h1 class="CentrarTexto">Fecha</h1>
             <br>
-            <input type="datetime-local" placeholder="Check-In" class="EntradaTexto CampoCentrado TextMen" name="CheckIn">
+            <input type="datetime-local" placeholder="Check-In" class="EntradaTexto CampoCentrado TextMen" id="Campo_CHECKIN" name="CheckIn">
             <br>
-            <input type="datetime-local" placeholder="Check-Out" class="EntradaTexto CampoCentrado TextMen" name="CheckOut">
+            <input type="datetime-local" placeholder="Check-Out" class="EntradaTexto CampoCentrado TextMen" id="Campo_CHECKOUT" name="CheckOut">
         </div>
         <!-- Contenedor Datos Habitaciones-->
         <div class="CamposExtensibles">
@@ -42,7 +42,7 @@
             <div id="Entradas">
             </div>
             <button class="Naranja Completo" id="addImput">AÑADIR</button>
-            <h1 class="CentrarTexto">$0</h2>
+            <h1 class="CentrarTexto" id="PrecioTotal">$0</h2>
         </div>
         
     </section>

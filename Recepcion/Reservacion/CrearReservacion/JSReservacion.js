@@ -1,16 +1,15 @@
 const btnAdd = document.querySelector('#addImput'); //Obtiene el botón añadir
 const contenedor = document.querySelector('#Entradas');  //Obtiene el div en el que están las entradas
-
-var tipos; //= document.getElementsByClassName('Original'); Obtiene las opciones otorgadas por el PHP
+const PTOTAL = document.getElementById('PrecioTotal');
+const Check_In = document.getElementById('Campo_CHECKIN');
+const Check_Out = document.getElementById('Campo_CHECKOUT');
+var tipos; 
 var STipos = document.querySelectorAll('.STipo');
 var SHabitaciones = document.querySelectorAll('.SHabitacion');
 
 //Cargar documento
 window.addEventListener("load", function(e){
-    
-            // tipos = JSON.parse(this.responseText);
-            // 
-       
+
     fetch('../backend/consultaTipos.php', {
         method: 'POST'
     })
@@ -29,12 +28,8 @@ window.addEventListener("load", function(e){
     .catch(function(err) {
         console.log(err);
      });
-    
 });
 //Crear events listeners a los SELECTS de TIPOS
-
-
-
 //Contador de Habitaciones
 var contador = 0;
 //Evento de click en el botón Añadir
@@ -87,11 +82,13 @@ function crearLinea(numero) {
             STipos = document.querySelectorAll('.STipo');
             SHabitaciones = document.querySelectorAll('.SHabitacion');
             iTipo.addEventListener('change', cambiarOpciones);
+            determinarPrecio();
         }
     }
    
 }
 
+//Funcion que obtiene las habitaciones según el tipo
 function cambiarOpciones() {
     const SelectOpciones = this.nextSibling;
         for (let i = this.options.length; i >= 0; i--) {
@@ -109,7 +106,7 @@ function cambiarOpciones() {
         }
     }
 
-
+    determinarPrecio();
 }
 
 function crearOpciones(Opciones, iSelect) {
@@ -136,5 +133,33 @@ function crearOpciones(Opciones, iSelect) {
         //Añade la opción al SELECT Tipo
         iSelect.appendChild(iOpcion);   
     }
+}
+Check_In.addEventListener('change', determinarPrecio);
+Check_Out.addEventListener('change', determinarPrecio);
+
+function determinarPrecio(){
+    var FCheckIn = new Date(Check_In.value);
+    var FCheckOut = new Date(Check_Out.value);
+    FCheckIn.setHours(0,0,0,0);
+    FCheckOut.setHours(0,0,0,0);
+    if (FCheckOut>FCheckIn) {
+        const dias = Math.abs(FCheckOut-FCheckIn)/(86400000);
+        var Total=0;
+        STipos.forEach(TSelect => {
+            tipos.forEach(TJSON => {
+                if (TSelect.value==TJSON.TipoHab_ID) {
+                    Total = Total + parseInt(TJSON.TipoHab_Precio);
+                }
+            });
+        });
+
+        PTOTAL.innerText = "$"+Total*dias;
+    }else{
+        if (FCheckOut!="Invalid Date" && FCheckIn!="Invalid Date") {
+            alert("Error, el checkout debe ser mayor al checkin");
+        }
+        PTOTAL.innerText = "$0";
+    }
+    
 }
 
