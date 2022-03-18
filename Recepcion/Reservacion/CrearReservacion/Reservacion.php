@@ -14,7 +14,7 @@
     <br>
     <br>
     <!-- Contenedor Datos Huesped-->
-    <form action="Reservacion.php" >
+    <form>
     <section class="ContenedorFormulario Contenedor">
         <div class="AsideIzq"></div>
         <div class="CamposFijos">
