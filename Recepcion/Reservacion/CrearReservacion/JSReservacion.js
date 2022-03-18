@@ -7,16 +7,28 @@ var SHabitaciones = document.querySelectorAll('.SHabitacion');
 
 //Cargar documento
 window.addEventListener("load", function(e){
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'Tipos.json', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-            tipos = JSON.parse(this.responseText);
-            crearLinea(1);
-        }
-    }
     
+            // tipos = JSON.parse(this.responseText);
+            // 
+       
+    fetch('../backend/consultaTipos.php', {
+        method: 'POST'
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto){
+        tipos = JSON.parse(texto);
+        console.log(tipos);
+        crearLinea(1);
+    })
+    .catch(function(err) {
+        console.log(err);
+     });
     
 });
 //Crear events listeners a los SELECTS de TIPOS
@@ -107,15 +119,15 @@ function crearOpciones(Opciones, iSelect) {
         const iOpcion = document.createElement('option');
         //Añade el valor de la opción
         
-            iOpcion.setAttribute("value", opcionHab.tipo_ID);
+            iOpcion.setAttribute("value", opcionHab.TipoHab_ID);
         
         //Añade el texto a mostrar de la opcion
             var iOpcionTexto;
-            if (opcionHab.tipo_Nombre == undefined) {
+            if (opcionHab.TipoHab_Nombre == undefined) {
                 iOpcionTexto = document.createTextNode(opcionHab.habitacion_Nombre);
             }
             else{
-                iOpcionTexto = document.createTextNode(opcionHab.tipo_Nombre);
+                iOpcionTexto = document.createTextNode(opcionHab.TipoHab_Nombre);
             }
             
             //Añade el texto de la opcion a la opcion
