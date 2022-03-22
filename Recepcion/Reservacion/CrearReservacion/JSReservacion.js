@@ -68,45 +68,91 @@ function crearLinea(numero) {
    crearOpciones(tipos, iTipo);
    //Agregar opciones habitaciones
     var habitaciones;
-    const xhttp2 = new XMLHttpRequest();
-    xhttp2.open('GET', 'Normal.json', true);
-    xhttp2.send();
-    xhttp2.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            habitaciones = JSON.parse(this.responseText);
-            crearOpciones(habitaciones, iHabitacion);
-            //Agregar elementos
-            contenedor.appendChild(iTipo);
-            contenedor.appendChild(iHabitacion);
-            contenedor.appendChild(br);
-            STipos = document.querySelectorAll('.STipo');
-            SHabitaciones = document.querySelectorAll('.SHabitacion');
-            iTipo.addEventListener('change', cambiarOpciones);
-            determinarPrecio();
+    const infoPTipo = new FormData();
+    infoPTipo.append('Tipo', tipos[0].TipoHab_ID);
+    fetch ('../backend/consultaHabitaciones.php', {
+        method:'POST',
+        body: infoPTipo
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
         }
-    }
-   
+    })
+    .then(function(texto){
+        console.log(texto);
+        switch (texto) {
+            case "1":
+                alert("Error en la verificación del hotel");
+                break;
+            case "0":
+                alert("No hay habitaciones disponibles");
+                break;
+            default:
+                habitaciones = JSON.parse(texto);
+                crearOpciones(habitaciones, iHabitacion);
+                //Agregar elementos
+                contenedor.appendChild(iTipo);
+                contenedor.appendChild(iHabitacion);
+                contenedor.appendChild(br);
+                STipos = document.querySelectorAll('.STipo');
+                SHabitaciones = document.querySelectorAll('.SHabitacion');
+                iTipo.addEventListener('change', cambiarOpciones);
+                determinarPrecio();
+                break;
+        }
+    })
+    .catch(function(err) {
+        console.log(err);
+     }); 
+
+
 }
 
 //Funcion que obtiene las habitaciones según el tipo
 function cambiarOpciones() {
     const SelectOpciones = this.nextSibling;
+    const TipoNuevo = this.value;
+    console.log(TipoNuevo);
         for (let i = this.options.length; i >= 0; i--) {
             SelectOpciones.remove(i);
         }
     console.log(SelectOpciones);
     //AJAX
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'Otras.json', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-            const NuevasHabitaciones = JSON.parse(this.responseText);
-            crearOpciones(NuevasHabitaciones, SelectOpciones);
+    const infoNTipo = new FormData();
+    infoNTipo.append('Tipo', TipoNuevo);
+    fetch ('../backend/consultaHabitaciones.php', {
+        method:'POST',
+        body: infoNTipo
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
         }
-    }
-
-    determinarPrecio();
+    })
+    .then(function(texto){
+        console.log(texto);
+        switch (texto) {
+            case "1":
+                alert("Error en la verificación del hotel");
+                break;
+            case "0":
+                alert("No hay habitaciones disponibles");
+                break;
+            default:
+                const NuevasHabitaciones = JSON.parse(texto);
+                crearOpciones(NuevasHabitaciones, SelectOpciones);
+                determinarPrecio();
+                break;
+        }
+    })
+    .catch(function(err) {
+        console.log(err);
+     }); 
 }
 
 function crearOpciones(Opciones, iSelect) {
@@ -116,15 +162,17 @@ function crearOpciones(Opciones, iSelect) {
         const iOpcion = document.createElement('option');
         //Añade el valor de la opción
         
-            iOpcion.setAttribute("value", opcionHab.TipoHab_ID);
+            
         
         //Añade el texto a mostrar de la opcion
             var iOpcionTexto;
             if (opcionHab.TipoHab_Nombre == undefined) {
-                iOpcionTexto = document.createTextNode(opcionHab.habitacion_Nombre);
+                iOpcionTexto = document.createTextNode(opcionHab.Habitacion_Nombre);
+                iOpcion.setAttribute("value", opcionHab.Habitacion_ID);
             }
             else{
                 iOpcionTexto = document.createTextNode(opcionHab.TipoHab_Nombre);
+                iOpcion.setAttribute("value", opcionHab.TipoHab_ID);
             }
             
             //Añade el texto de la opcion a la opcion
