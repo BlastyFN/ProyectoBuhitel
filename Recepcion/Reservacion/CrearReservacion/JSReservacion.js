@@ -21,9 +21,9 @@ window.addEventListener("load", function(e){
         }
     })
     .then(function(texto){
+        console.log(texto);
         tipos = JSON.parse(texto);
         console.log(tipos);
-        crearLinea(1);
     })
     .catch(function(err) {
         console.log(err);
@@ -36,7 +36,7 @@ var contador = 0;
 btnAdd.addEventListener("click", function(e){
     e.preventDefault();
     //Verifica el límite permitido de habitaciones por reservacion (5)
-    if (contador<4) {
+    if (contador<5) {
        crearLinea(contador+2)
         //Añadir al contador
         contador = contador+1;
@@ -100,7 +100,7 @@ function crearLinea(numero) {
                 STipos = document.querySelectorAll('.STipo');
                 SHabitaciones = document.querySelectorAll('.SHabitacion');
                 iTipo.addEventListener('change', cambiarOpciones);
-                determinarPrecio();
+                validarFechas();
                 break;
         }
     })
@@ -146,7 +146,7 @@ function cambiarOpciones() {
             default:
                 const NuevasHabitaciones = JSON.parse(texto);
                 crearOpciones(NuevasHabitaciones, SelectOpciones);
-                determinarPrecio();
+                validarFechas();
                 break;
         }
     })
@@ -182,17 +182,32 @@ function crearOpciones(Opciones, iSelect) {
         iSelect.appendChild(iOpcion);   
     }
 }
-Check_In.addEventListener('change', determinarPrecio);
-Check_Out.addEventListener('change', determinarPrecio);
-
-function determinarPrecio(){
+Check_In.addEventListener('change', validarFechas);
+Check_Out.addEventListener('change', validarFechas);
+Check_Out.addEventListener('change', borrarLineas);
+Check_In.addEventListener('change', borrarLineas);
+function validarFechas(){
     var FCheckIn = new Date(Check_In.value);
     var FCheckOut = new Date(Check_Out.value);
     FCheckIn.setHours(0,0,0,0);
     FCheckOut.setHours(0,0,0,0);
     if (FCheckOut>FCheckIn) {
         const dias = Math.abs(FCheckOut-FCheckIn)/(86400000);
-        var Total=0;
+        btnAdd.disabled = false;
+        determinarPrecio(dias);
+        
+    }else{
+        if (FCheckOut!="Invalid Date" && FCheckIn!="Invalid Date") {
+            alert("Error, el checkout debe ser mayor al checkin");
+        }
+        PTOTAL.innerText = "$0";
+        btnAdd.disabled = true;
+    }
+    
+}
+
+function determinarPrecio(dias) {
+    var Total=0;
         STipos.forEach(TSelect => {
             tipos.forEach(TJSON => {
                 if (TSelect.value==TJSON.TipoHab_ID) {
@@ -202,12 +217,19 @@ function determinarPrecio(){
         });
 
         PTOTAL.innerText = "$"+Total*dias;
-    }else{
-        if (FCheckOut!="Invalid Date" && FCheckIn!="Invalid Date") {
-            alert("Error, el checkout debe ser mayor al checkin");
-        }
-        PTOTAL.innerText = "$0";
-    }
-    
 }
 
+function borrarLineas() {
+    STipos.forEach(element => {
+        element.remove();
+    });
+    SHabitaciones.forEach(element =>{
+        element.remove();
+    });
+    contador = 0;
+    var BR = contenedor.querySelectorAll('br');
+    BR.forEach(element =>{
+        element.remove();
+    });
+    PTOTAL.innerText = "$0";
+}

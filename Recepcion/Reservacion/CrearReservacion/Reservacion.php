@@ -41,7 +41,7 @@
             <!-- Campos de tipos-->
             <div id="Entradas">
             </div>
-            <button class="Naranja Completo" id="addImput">AÑADIR</button>
+            <button class="Naranja Completo" id="addImput" disabled>AÑADIR</button>
             <h1 class="CentrarTexto" id="PrecioTotal">$0</h2>
         </div>
         
