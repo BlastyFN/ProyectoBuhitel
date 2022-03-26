@@ -3,6 +3,10 @@ const contenedor = document.querySelector('#Entradas');  //Obtiene el div en el 
 const PTOTAL = document.getElementById('PrecioTotal');
 const Check_In = document.getElementById('Campo_CHECKIN');
 const Check_Out = document.getElementById('Campo_CHECKOUT');
+const CNombre = document.getElementById('CampoNombre');
+const CApellido = document.getElementById('CampoApellidos');
+const CContacto = document.getElementById('CampoContacto');
+const btnRes = document.getElementById('Reservar');
 var tipos; 
 var STipos = document.querySelectorAll('.STipo');
 var SHabitaciones = document.querySelectorAll('.SHabitacion');
@@ -70,6 +74,8 @@ function crearLinea(numero) {
     var habitaciones;
     const infoPTipo = new FormData();
     infoPTipo.append('Tipo', tipos[0].TipoHab_ID);
+    infoPTipo.append('CIN', Check_In.value);
+    infoPTipo.append('COUT', Check_Out.value);
     fetch ('../backend/consultaHabitaciones.php', {
         method:'POST',
         body: infoPTipo
@@ -91,6 +97,7 @@ function crearLinea(numero) {
                 alert("No hay habitaciones disponibles");
                 break;
             default:
+                console.log(texto);
                 habitaciones = JSON.parse(texto);
                 crearOpciones(habitaciones, iHabitacion);
                 //Agregar elementos
@@ -123,6 +130,8 @@ function cambiarOpciones() {
     //AJAX
     const infoNTipo = new FormData();
     infoNTipo.append('Tipo', TipoNuevo);
+    infoNTipo.append('CIN', Check_In.value);
+    infoNTipo.append('COUT', Check_Out.value);
     fetch ('../backend/consultaHabitaciones.php', {
         method:'POST',
         body: infoNTipo
@@ -215,7 +224,8 @@ function determinarPrecio(dias) {
                 }
             });
         });
-
+        console.log(Total);
+        console.log(dias);
         PTOTAL.innerText = "$"+Total*dias;
 }
 
@@ -232,4 +242,80 @@ function borrarLineas() {
         element.remove();
     });
     PTOTAL.innerText = "$0";
+}
+
+btnRes.addEventListener('click', function (e) {
+    e.preventDefault();
+    const infoReserva = new FormData();
+    infoReserva.append('Nombre', CNombre.value);
+    infoReserva.append('Apellidos', CApellido.value);
+    infoReserva.append('Contacto', CContacto.value);
+    infoReserva.append('CIN', Check_In.value);
+    infoReserva.append('COUT', Check_Out.value);
+
+    fetch ('../backend/reservar.php', {
+        method:'POST',
+        body: infoReserva
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto){
+        registrarHabitaciones(texto);
+    })
+    .catch(function(err) {
+        console.log(err);
+     }); 
+
+
+});
+
+function registrarHabitaciones(Reservacion) {
+    SHabitaciones.forEach(element => {
+        const infoHabitacion = new FormData();
+        infoHabitacion.append('Habitacion', element.value);
+        infoHabitacion.append('Reservacion', Reservacion);
+        fetch ('../backend/reservarHabitacion.php', {
+            method:'POST',
+            body: infoHabitacion
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto){
+            console.log(texto);
+            switch (texto) {
+                case "1":
+                    console.log(texto);
+                    reiniciarCampos();
+                    break;
+                case "0":
+                    alert("Problema de registro");
+                    break;
+                default:
+                    alert(texto);
+                    break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+         }); 
+    });
+}
+
+function reiniciarCampos() {
+    Check_In.value="";
+    Check_Out.value="";
+    CContacto.value="";
+    CApellido.value="";
+    CNombre.value="";
+    borrarLineas()
 }

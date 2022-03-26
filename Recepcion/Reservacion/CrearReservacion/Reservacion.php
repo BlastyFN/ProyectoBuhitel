@@ -20,11 +20,11 @@
         <div class="CamposFijos">
             <h1 class="CentrarTexto">Titular</h1>
             <br>
-            <input type="text" placeholder="Nombre" class="EntradaTexto CampoCentrado" name="Nombre">
+            <input type="text" placeholder="Nombre" class="EntradaTexto CampoCentrado" name="Nombre" id="CampoNombre">
             <br>
-            <input type="text" placeholder="Apellidos" class="EntradaTexto CampoCentrado" name="Apellidos">
+            <input type="text" placeholder="Apellidos" class="EntradaTexto CampoCentrado" name="Apellidos" id = "CampoApellidos">
             <br>
-            <input type="text" placeholder="Contacto" class="EntradaTexto CampoCentrado" name="Contacto">
+            <input type="text" placeholder="Contacto" class="EntradaTexto CampoCentrado" name="Contacto" id = "CampoContacto">
         </div>
         <!-- Contenedor Datos Fechas Checks-->
         <div class="CamposFijos">

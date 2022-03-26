@@ -1,24 +1,36 @@
 <?php 
     session_start();
     include "bdReservacion.php";
-    if(isset($_POST['Tipo'])){
-        $bd = new database();
-        $Hotel = $_SESSION['sesionPersonal']['Hotel'];
+    if(isset($_POST['Tipo']) && isset($_POST['CIN']) && isset($_POST['COUT'])){
+        date_default_timezone_set('America/Mexico_City');
+        $zonahoraria = date_default_timezone_get();
+        $CIN = strtotime($_POST['CIN']);
+        $COUT = strtotime($_POST['COUT']);
         $Tipo = $_POST['Tipo'];
-        $ex = $bd->consultaTiposEnHotel($Tipo, $Hotel);
-        if ($ex==true) {
-            $res = $bd->consultaHabitaciones($Tipo, 1);
-            if (isset($res[0])) {
-                $datos = json_encode($res);
-                echo $datos;
+        // echo $CIN;
+        // echo '<br>';
+        // echo $COUT;
+        $bd = new database();
+        $habitaciones =  $bd->consultaHabitaciones($Tipo, 1);
+        $Disponibles = [];
+        foreach ($habitaciones as $dato) {
+            $Habitacion = $dato['Habitacion_ID'];
+            $disponibilidad = true;
+            for ($i=$CIN; $i <= $COUT; $i+=86400) { 
+                $Fecha = date("c", $i);
+                $estatus = $bd->consultarDisponibilidad($Habitacion, $Fecha);
+
+                if ($estatus == 'false') {
+                    $disponibilidad = false;
+                }
             }
-            else {
-                echo 0;
+            if ($disponibilidad == true) {
+                array_push($Disponibles, $dato);
             }
+
         }
-        else{
-            echo 1;
-        }
+        $res = json_encode($Disponibles);
+        echo($res);
         
     }
 
