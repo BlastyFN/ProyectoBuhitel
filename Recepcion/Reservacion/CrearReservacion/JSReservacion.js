@@ -196,6 +196,7 @@ Check_Out.addEventListener('change', validarFechas);
 Check_Out.addEventListener('change', borrarLineas);
 Check_In.addEventListener('change', borrarLineas);
 function validarFechas(){
+    
     var FCheckIn = new Date(Check_In.value);
     var FCheckOut = new Date(Check_Out.value);
     FCheckIn.setHours(0,0,0,0);
@@ -204,6 +205,7 @@ function validarFechas(){
         const dias = Math.abs(FCheckOut-FCheckIn)/(86400000);
         btnAdd.disabled = false;
         determinarPrecio(dias);
+        revisarBoton();
         
     }else{
         if (FCheckOut!="Invalid Date" && FCheckIn!="Invalid Date") {
@@ -211,6 +213,7 @@ function validarFechas(){
         }
         PTOTAL.innerText = "$0";
         btnAdd.disabled = true;
+        btnRes.disabled = true;
     }
     
 }
@@ -318,4 +321,19 @@ function reiniciarCampos() {
     CApellido.value="";
     CNombre.value="";
     borrarLineas()
+}
+
+CApellido.addEventListener('keyup', revisarBoton);
+CNombre.addEventListener('keyup', revisarBoton);
+CContacto.addEventListener('keyup', revisarBoton);
+function revisarBoton(){
+    console.log(CApellido.value);
+    if (CApellido.value != "" && CNombre.value != "" && CContacto.value != "" && SHabitaciones.length>0) {
+        btnRes.disabled = false;
+        console.log("habilitar");
+    }
+    else{
+        btnRes.disabled = true;
+        console.log("Deshabilitar");
+    }
 }

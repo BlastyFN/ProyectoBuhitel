@@ -49,7 +49,7 @@
     <br>
     <br>
     
-    <input type="submit" value ="Reservar" class="Verde BotonSMT" id="Reservar"> 
+    <button class="Verde BotonSMT" id="Reservar" disabled>Reservar</button>
     </form>
 </body>
 <script src= "JSReservacion.js"></script>

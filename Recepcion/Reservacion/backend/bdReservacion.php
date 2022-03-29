@@ -83,6 +83,13 @@
             }
             return $estatus;
         }
+
+        public function consultaHabRes($Hotel){
+            $sql = $this->con->prepare("SELECT huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto, habitacionreservada.HabReservada_CodigoWhatsapp, habitacion.Habitacion_Nombre,Reservacion_ID, Reservacion_CheckIn, Reservacion_CheckOut FROM reservacion INNER JOIN huesped ON Reservacion_Huesped = huesped.Huesped_ID INNER JOIN habitacionreservada ON Reservacion_ID = habitacionreservada.HabReservada_Reservacion INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID INNER JOIN piso ON habitacion.Habitacion_Piso = piso.Piso_ID WHERE piso.Piso_Hotel =".$Hotel);
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
     }
 
 ?>
