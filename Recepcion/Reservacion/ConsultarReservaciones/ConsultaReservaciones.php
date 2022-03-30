@@ -18,9 +18,8 @@
 
         <!-- Campos de Búsqueda-->
         <div class="contenedor">
-            <input type="text" placeholder="Huésped" class="campoBusqueda">
-            <input type="text" placeholder="Habitación" class="campoBusqueda">
-            <input type="text" placeholder="Tipo" class="campoBusqueda">
+            <input type="text" placeholder="Huésped" class="campoBusqueda" id="campoHuesped">
+            <input type="text" placeholder="Habitación" class="campoBusqueda" id="campoHabitacion">
             <button class="Azul botonBusqueda" id="BtnBuscar">Buscar</button>
         </div>
         <!-- Campos de Búsqueda-->
@@ -30,6 +29,7 @@
             <button class="Verde Filtro" id="BtnIzq"></button>
             <button class="Rojo Filtro" id="BtnMid"></button>
             <button class="Morado Filtro" id="BtnDer"></button>
+            <button class="Gris Filtro" id="BtnG"></button>
         </div>  
         <!-- Botones Colores-->
 
@@ -38,221 +38,7 @@
     <!-- Barra de búsqueda-->
     <br><br>
     <section id="ContenedorM">
-        <!-- PRIMERA FILA -->
-        <section class="contenedor centrarItems">
-                <!-- PRIMERA TARJETA -->
-                <div class="Tarjeta Verde" id="Gerencia">
-                    <h1 class="Info">1</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja"> Completar</button>
-                        <button class="Naranja Ult"> Cancelar</button>
-                </div>
-                <!-- PRIMERA TARJETA -->
-                <!-- SEGUNDA TARJETA -->
-                <div class="Tarjeta Rojo" id="Recepcion">
-                    <h1 class="Info">2</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja Ult"> Completar</button>
-                        
-                </div>
-                <!-- SEGUNDA TARJETA -->
-                <!-- TERCERA TARJETA -->
-                <div class="Tarjeta Morado" id="Recepcion">
-                    <h1 class="Info">3</h1>
-                    <div class="Info">
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                    </div>
-                        <button class="Naranja Ult"> Editar</button>
-                        
-                </div>
-                <!-- TERCERA TARJETA -->
-                <!-- SEGUNDA TARJETA -->
-                <div class="Tarjeta Rojo" id="Recepcion">
-                    <h1 class="Info">4</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja Ult"> Completar</button>
-                        
-                </div>
-                <!-- SEGUNDA TARJETA -->
-            </section>
-            <!-- PRIMERA FILA -->
-        <br>
-        <br>
-        <!-- PRIMERA FILA -->
-        <section class="contenedor centrarItems">
-                <!-- PRIMERA TARJETA -->
-                <div class="Tarjeta Verde" id="Gerencia">
-                    <h1 class="Info">5</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja"> Completar</button>
-                        <button class="Naranja Ult"> Cancelar</button>
-                </div>
-                <!-- PRIMERA TARJETA -->
-                <!-- SEGUNDA TARJETA -->
-                <div class="Tarjeta Rojo" id="Recepcion">
-                    <h1 class="Info">6</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja Ult"> Completar</button>
-                        
-                </div>
-                <!-- SEGUNDA TARJETA -->
-                <!-- TERCERA TARJETA -->
-                <div class="Tarjeta Morado" id="Recepcion">
-                    <h1 class="Info">7</h1>
-                    <div class="Info">
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                    </div>
-                        <button class="Naranja Ult"> Editar</button>
-                        
-                </div>
-                <!-- TERCERA TARJETA -->
-                <!-- SEGUNDA TARJETA -->
-                <div class="Tarjeta Rojo" id="Recepcion">
-                    <h1 class="Info">8</h1>
-                    <div class="Info">
-                        
-                        <p> Ramiro</p>
-                        <p> Perez Guzman</p>
-                        <p> a18100072@ceti.com</p>
-                        <p> Check-In: 12/12/2022</p>
-                        <p> Check-Out: 15/12/2022</p>
-                        
-                    </div>
-                        <button class="Naranja"> Editar</button>
-                        <button class="Naranja Ult"> Completar</button>
-                        
-                </div>
-                <!-- SEGUNDA TARJETA -->
-            </section>
-            <!-- PRIMERA FILA -->
-        <br>
-        <br>
-        <!-- PRIMERA FILA -->
-        <section class="contenedor centrarItems">
-            <!-- PRIMERA TARJETA -->
-            <div class="Tarjeta Verde" id="Gerencia">
-                <h1 class="Info">9</h1>
-                <div class="Info">
-                    
-                    <p> Ramiro</p>
-                    <p> Perez Guzman</p>
-                    <p> a18100072@ceti.com</p>
-                    <p> Check-In: 12/12/2022</p>
-                    <p> Check-Out: 15/12/2022</p>
-                    
-                </div>
-                    <button class="Naranja"> Editar</button>
-                    <button class="Naranja"> Completar</button>
-                    <button class="Naranja Ult"> Cancelar</button>
-            </div>
-            <!-- PRIMERA TARJETA -->
-            <!-- SEGUNDA TARJETA -->
-            <div class="Tarjeta Rojo" id="Recepcion">
-                <h1 class="Info">10</h1>
-                <div class="Info">
-                    
-                    <p> Ramiro</p>
-                    <p> Perez Guzman</p>
-                    <p> a18100072@ceti.com</p>
-                    <p> Check-In: 12/12/2022</p>
-                    <p> Check-Out: 15/12/2022</p>
-                    
-                </div>
-                    <button class="Naranja"> Editar</button>
-                    <button class="Naranja Ult"> Completar</button>
-                    
-            </div>
-            <!-- SEGUNDA TARJETA -->
-            <!-- PRIMERA TARJETA -->
-            <div class="Tarjeta Verde" id="Gerencia">
-                <h1 class="Info">11</h1>
-                <div class="Info">
-                    
-                    <p> Ramiro</p>
-                    <p> Perez Guzman</p>
-                    <p> a18100072@ceti.com</p>
-                    <p> Check-In: 12/12/2022</p>
-                    <p> Check-Out: 15/12/2022</p>
-                    
-                </div>
-                    <button class="Naranja"> Editar</button>
-                    <button class="Naranja"> Completar</button>
-                    <button class="Naranja Ult"> Cancelar</button>
-            </div>
-            <!-- PRIMERA TARJETA -->
-            <!-- SEGUNDA TARJETA -->
-            <div class="Tarjeta Rojo" id="Recepcion">
-                <h1 class="Info">12</h1>
-                <div class="Info">
-                    
-                    <p> Ramiro</p>
-                    <p> Perez Guzman</p>
-                    <p> a18100072@ceti.com</p>
-                    <p> Check-In: 12/12/2022</p>
-                    <p> Check-Out: 15/12/2022</p>
-                    
-                </div>
-                    <button class="Naranja"> Editar</button>
-                    <button class="Naranja Ult"> Completar</button>
-                    
-            </div>
-            <!-- SEGUNDA TARJETA -->
-            
-        </section>
-        <!-- PRIMERA FILA -->
+        
     </section>
     
     <br><br>

@@ -2,10 +2,14 @@ const contenedorPrincipal = document.getElementById('ContenedorM');
 const btnVerde = document.getElementById('BtnIzq');
 const btnRojo = document.getElementById('BtnMid');
 const btnMorado = document.getElementById('BtnDer');
+const btnGris = document.getElementById('BtnG');
 const btnBuscar = document.getElementById('BtnBuscar');
+const campoHuesped = document.getElementById('campoHuesped');
+const campoHabitacion = document.getElementById('campoHabitacion');
+var VRMG = [true, true, true, true];
 var Reservaciones = [];
 class TarjetaReservacion{
-    constructor(CheckIn, CheckOut, Nombre, Apellidos, Habitacion, Contacto, Codigo){
+    constructor(CheckIn, CheckOut, Nombre, Apellidos, Habitacion, Contacto, Codigo, TipoHab){
         this.CheckIn = CheckIn;
         this.CheckOut = CheckOut;
         this.Nombre = Nombre;
@@ -13,12 +17,16 @@ class TarjetaReservacion{
         this.Habitacion = Habitacion;
         this.Contacto = Contacto;
         this.Codigo = Codigo;
+        this.TipoHab = TipoHab;
     }
     get HTML(){
         return this.obtenerHTML();
     }
     get Tipo(){
-        return "Morado";
+        return this.obtenerTipo();
+    }
+    get NombreCompleto(){
+        return this.obtenerNombreCompleto();
     }
     obtenerHTML(){
         var iTarjeta = document.createElement('div');
@@ -56,13 +64,49 @@ class TarjetaReservacion{
         iContInfo.appendChild(iCodigo);
         iContInfo.appendChild(iCheckIn);
         iContInfo.appendChild(iCheckOut);
-        //AÑADIR CLASES A BOTONES
+        //AÑADIR INFO A BOTON EDITAR
         iEditar.classList.add('Naranja');
-        iEditar.classList.add('Ult');
-        //AÑADIR TEXTOS A BOTONES
         iEditar.appendChild(this.crearNodoTexto("Editar"));
-        //AÑADIR BOTONES AL CONTENEDOR
-        iContBtn.appendChild(iEditar);
+        
+        switch (this.Tipo) {
+            case "Verde":
+                var iCompletar = document.createElement('button');
+                iCompletar.classList.add('Naranja');
+                iCompletar.appendChild(this.crearNodoTexto("Completar"));
+                var iCancelar = document.createElement('button');
+                iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
+                iCancelar.classList.add('Naranja');
+                iCancelar.classList.add('Ult');
+                iContBtn.appendChild(iEditar);
+                iContBtn.appendChild(iCompletar);
+                iContBtn.appendChild(iCancelar);
+                break;
+            case "Rojo":
+                var iCompletar = document.createElement('button');
+                iCompletar.classList.add('Naranja');
+                iCompletar.classList.add('Ult');
+                iCompletar.appendChild(this.crearNodoTexto("Completar"));
+                iContBtn.appendChild(iEditar);
+                iContBtn.appendChild(iCompletar);
+                break;
+            case "Morado":
+                iEditar.classList.add('Ult');
+                iContBtn.appendChild(iEditar);
+                break;
+            case "Gris":
+                var iCancelar = document.createElement('button');
+                iCancelar.classList.add('Naranja');
+                iCancelar.classList.add('Ult');
+                iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
+                iContBtn.appendChild(iEditar);
+                iContBtn.appendChild(iCancelar);
+                break;
+            default:
+                break;
+        }
+        
+
+        
         //AÑADIR TOTALES
         iTarjeta.appendChild(iHabitacion);
         iTarjeta.appendChild(iContInfo);
@@ -72,6 +116,45 @@ class TarjetaReservacion{
     crearNodoTexto(Texto){
         var Nodo = document.createTextNode(Texto);
         return Nodo;
+    }
+
+    obtenerTipo(){
+//CHECKIN HOY = CHECKIN < MAÑANA 
+        //CHECK OUT HOY = CHECK OUT < MAÑANA
+        //ESTANCIA ACTUAL = CHECK OUT > MAÑANA && CHECK IN < MAÑANA
+        var FCIN = new Date(this.CheckIn); 
+        var FCOUT = new Date(this.CheckOut); 
+        var Hoy = new Date();
+        Hoy.setHours(0,0,0,0);
+        var Mañana = new Date(Hoy.getTime()+86400000);
+        var Tipo;
+        var H = Hoy.getTime();
+        var M = Mañana.getTime();
+        var I = FCIN.getTime();
+        var O = FCOUT.getTime();
+        if (H<I && I<M) {
+            Tipo ="Verde";
+        }
+        else{
+            if (H<O &&O<M) {
+                Tipo = "Rojo";
+            }
+            else{
+                if (I<H && O>M) {
+                    Tipo = "Morado";
+                }
+                else{
+                    Tipo ="Gris";
+                }
+            }
+        }
+        
+        
+        return Tipo;
+    }
+
+    obtenerNombreCompleto(){
+        return this.Nombre + " " +this.Apellidos;
     }
 }
 
@@ -108,12 +191,16 @@ function obtenerHabRes() {
                         element.Huesped_Apellidos,
                         element.Habitacion_Nombre,
                         element.Huesped_Contacto,
-                        element.HabReservada_CodigoWhatsapp
+                        element.HabReservada_CodigoWhatsapp,
+                        element.TipoHab_Nombre
                     );
                     Reservaciones.push(TR);
                 }); 
                 console.log(Reservaciones);
-                separadora();
+                VRMG.forEach(element => {
+                    element = true;
+                });
+                separadora(VRMG);
                 break;
         }
     })
@@ -122,19 +209,84 @@ function obtenerHabRes() {
      });
 }
 
-function separadora() {
-    var desplegables = Reservaciones;
+btnVerde.addEventListener('click', function(e) {
+   e.preventDefault(); 
+   alternarColor(0, this, "Verde", "GrisV");
+
+});
+
+btnRojo.addEventListener('click', function(e) {
+    e.preventDefault(); 
+    alternarColor(1, this, "Rojo", "GrisR");
+ });
+
+ btnMorado.addEventListener('click', function(e) {
+    e.preventDefault(); 
+    alternarColor(2, this, "Morado", "GrisM");
+ });
+
+ btnGris.addEventListener('click', function (e) {
+    e.preventDefault();
+    alternarColor(3, this, "Gris", "GrisG");
+ });
+function alternarColor(Posicion, Boton, Color, Gris) {
+    if (VRMG[Posicion] == true) {
+        Boton.classList.replace(Color, Gris);
+        VRMG[Posicion] = false;
+    }
+    else{
+        Boton.classList.replace(Gris, Color);
+        VRMG[Posicion] = true;
+    }
+    console.log(Color+" = "+VRMG[Posicion]);
+    separadora(VRMG);
+}
+
+function separadora(Colores) {
+    // var desplegables = Reservaciones;
+    var Verdes=[];
+    var Rojas=[];
+    var Moradas=[];
+    var Grises=[];
+   if (Colores[0] == true) {
+        Verdes = Reservaciones.filter(function (Habitacion) {
+            return Habitacion.Tipo === "Verde";
+        });
+   }
+   else{
+
+   }
+    if (Colores[1] == true) {
+        Rojas = Reservaciones.filter(function (Habitacion) {
+            return Habitacion.Tipo === "Rojo";
+        }); 
+    }
+    if (Colores[2] == true) {
+        Moradas = Reservaciones.filter(function (Habitacion) {
+            return Habitacion.Tipo === "Morado";
+        }); 
+    }
+    if (Colores[3] == true) {
+        Grises = Reservaciones.filter(function (Habitacion) {
+            return Habitacion.Tipo === "Gris";
+        });
+    }
+    
+    
+    var desplegables = Verdes.concat(Rojas, Moradas, Grises);
+
+    console.log(Grises);
     desplegadora(desplegables);
 }
 
 function desplegadora(tarjetas) {
     contador = 4;
-
-    console.log(contador);
-    
+    while (contenedorPrincipal.firstChild) {
+        contenedorPrincipal.removeChild(contenedorPrincipal.firstChild);
+    }
     tarjetas.forEach(element => {
         if (contador==4) {
-            console.log(contador);
+
             Fila = crearFila();
             contenedorPrincipal.appendChild(Fila);
             contador = 0;
@@ -143,12 +295,10 @@ function desplegadora(tarjetas) {
             contenedorPrincipal.appendChild(BR1);
             contenedorPrincipal.appendChild(BR2);
         }
-        console.log(element.HTML);
+        // console.log(element.HTML);
         contador = contador+1;
-        console.log(contador);
         Fila.appendChild(element.HTML);
     });
-    console.log(Fila);
 }
 var contadorFilas=0;
 function crearFila() {
@@ -160,3 +310,31 @@ function crearFila() {
     
     return iFila;
 }
+
+btnBuscar.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    
+    var desplegables = [];
+    if (campoHuesped.value != "" && campoHabitacion.value!="") {
+        console.log();
+        desplegables = Reservaciones.filter(function (Reservacion) {
+           return Reservacion.Nombre === campoHuesped.value && Reservacion.Habitacion == campoHabitacion.value || Reservacion.Apellidos === campoHuesped.value && Reservacion.Habitacion == campoHabitacion.value || Reservacion.NombreCompleto === campoHuesped.value && Reservacion.Habitacion == campoHabitacion.value || Reservacion.Nombre === campoHuesped.value && Reservacion.TipoHab == campoHabitacion.value || Reservacion.Apellidos === campoHuesped.value && Reservacion.TipoHab == campoHabitacion.value || Reservacion.NombreCompleto === campoHuesped.value && Reservacion.TipoHab == campoHabitacion.value; 
+        });
+    }else{
+        if (campoHuesped.value!="") {
+            desplegables = Reservaciones.filter(function (Reservacion) {
+                return Reservacion.Nombre === campoHuesped.value || Reservacion.Apellidos === campoHuesped.value || Reservacion.NombreCompleto === campoHuesped.value;
+            })
+        } else {
+            if (campoHabitacion.value!="") {
+                desplegables = Reservaciones.filter(function (Reservacion) {
+                    return Reservacion.Habitacion === campoHabitacion.value || Reservacion.TipoHab === campoHabitacion.value;
+                })
+            }
+        }
+    }
+    
+    
+    desplegadora(desplegables);
+})

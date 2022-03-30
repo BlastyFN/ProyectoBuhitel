@@ -77,6 +77,26 @@ input[type=text] {
 .Azul{
     background-color: #427AA1;
 }
+
+.Gris{
+    background-color: gray;
+}
+
+.GrisV:hover{
+    background-color: #679436;
+}
+
+.GrisR:hover{
+    background-color: #E63946;
+}
+
+.GrisM:hover{
+    background-color: #59114D;
+}
+
+.GrisG:hover{
+    background-color: gray;
+}
 /*----------*/
 
 .contenedor{
@@ -168,6 +188,11 @@ input[type=text] {
     border-bottom-right-radius: 8px;
 }
 
+#BtnG{
+    margin-left: 5%;
+    border-style: solid;
+    border-radius: 8px;
+}
 .campoBusqueda{
     width: 20%;
     margin: 5px;
