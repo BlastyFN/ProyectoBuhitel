@@ -84,8 +84,8 @@
             return $estatus;
         }
 
-        public function consultaHabRes($Hotel){
-            $sql = $this->con->prepare("SELECT huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto, habitacionreservada.HabReservada_CodigoWhatsapp, habitacion.Habitacion_Nombre, tipohabitacion.TipoHab_Nombre,Reservacion_ID, Reservacion_CheckIn, Reservacion_CheckOut FROM reservacion INNER JOIN huesped ON Reservacion_Huesped = huesped.Huesped_ID INNER JOIN habitacionreservada ON Reservacion_ID = habitacionreservada.HabReservada_Reservacion INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID WHERE tipohabitacion.TipoHab_Hotel =".$Hotel);
+        public function consultaHabRes($Hotel, $Fecha){
+            $sql = $this->con->prepare("SELECT huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto, habitacionreservada.HabReservada_CodigoWhatsapp, habitacion.Habitacion_Nombre, tipohabitacion.TipoHab_Nombre,Reservacion_ID, Reservacion_CheckIn, Reservacion_CheckOut FROM reservacion INNER JOIN huesped ON Reservacion_Huesped = huesped.Huesped_ID INNER JOIN habitacionreservada ON Reservacion_ID = habitacionreservada.HabReservada_Reservacion INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID WHERE tipohabitacion.TipoHab_Hotel = '".$Hotel."' AND Reservacion_CheckOut > '".$Fecha."'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;

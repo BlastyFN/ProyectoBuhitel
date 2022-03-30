@@ -29,7 +29,7 @@
             <button class="Verde Filtro" id="BtnIzq"></button>
             <button class="Rojo Filtro" id="BtnMid"></button>
             <button class="Morado Filtro" id="BtnDer"></button>
-            <button class="Gris Filtro" id="BtnG"></button>
+            <button class="GrisG Filtro" id="BtnG"></button>
         </div>  
         <!-- Botones Colores-->
 

@@ -6,7 +6,7 @@ const btnGris = document.getElementById('BtnG');
 const btnBuscar = document.getElementById('BtnBuscar');
 const campoHuesped = document.getElementById('campoHuesped');
 const campoHabitacion = document.getElementById('campoHabitacion');
-var VRMG = [true, true, true, true];
+var VRMG = [true, true, true, false];
 var Reservaciones = [];
 class TarjetaReservacion{
     constructor(CheckIn, CheckOut, Nombre, Apellidos, Habitacion, Contacto, Codigo, TipoHab){
@@ -197,9 +197,12 @@ function obtenerHabRes() {
                     Reservaciones.push(TR);
                 }); 
                 console.log(Reservaciones);
-                VRMG.forEach(element => {
-                    element = true;
-                });
+                
+                for (let index = 0; index < 3; index++) {
+                    VRMG[index] = true;
+                    
+                }
+                VRMG[3] = false;
                 separadora(VRMG);
                 break;
         }
@@ -230,6 +233,8 @@ btnRojo.addEventListener('click', function(e) {
     alternarColor(3, this, "Gris", "GrisG");
  });
 function alternarColor(Posicion, Boton, Color, Gris) {
+    campoHabitacion.value="";
+    campoHuesped.value="";
     if (VRMG[Posicion] == true) {
         Boton.classList.replace(Color, Gris);
         VRMG[Posicion] = false;
