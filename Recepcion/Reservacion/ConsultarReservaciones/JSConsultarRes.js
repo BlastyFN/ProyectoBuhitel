@@ -70,24 +70,17 @@ class TarjetaReservacion{
         
         switch (this.Tipo) {
             case "Verde":
-                var iCompletar = document.createElement('button');
-                iCompletar.classList.add('Naranja');
-                iCompletar.appendChild(this.crearNodoTexto("Completar"));
+                
                 var iCancelar = document.createElement('button');
                 iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
                 iCancelar.classList.add('Naranja');
                 iCancelar.classList.add('Ult');
                 iContBtn.appendChild(iEditar);
-                iContBtn.appendChild(iCompletar);
                 iContBtn.appendChild(iCancelar);
                 break;
-            case "Rojo":
-                var iCompletar = document.createElement('button');
-                iCompletar.classList.add('Naranja');
-                iCompletar.classList.add('Ult');
-                iCompletar.appendChild(this.crearNodoTexto("Completar"));
+            case "Rojo":   
+                iEditar.classList.add('Ult');
                 iContBtn.appendChild(iEditar);
-                iContBtn.appendChild(iCompletar);
                 break;
             case "Morado":
                 iEditar.classList.add('Ult');
@@ -342,4 +335,4 @@ btnBuscar.addEventListener('click', function (e) {
     
     
     desplegadora(desplegables);
-})
+});
