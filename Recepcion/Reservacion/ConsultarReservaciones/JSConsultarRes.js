@@ -9,7 +9,8 @@ const campoHabitacion = document.getElementById('campoHabitacion');
 var VRMG = [true, true, true, false];
 var Reservaciones = [];
 class TarjetaReservacion{
-    constructor(CheckIn, CheckOut, Nombre, Apellidos, Habitacion, Contacto, Codigo, TipoHab){
+    constructor(ID, CheckIn, CheckOut, Nombre, Apellidos, Habitacion, Contacto, Codigo, TipoHab, Reservacion){
+        this.ID = ID;
         this.CheckIn = CheckIn;
         this.CheckOut = CheckOut;
         this.Nombre = Nombre;
@@ -18,6 +19,7 @@ class TarjetaReservacion{
         this.Contacto = Contacto;
         this.Codigo = Codigo;
         this.TipoHab = TipoHab;
+        this.Reservacion = Reservacion;
     }
     get HTML(){
         return this.obtenerHTML();
@@ -67,38 +69,24 @@ class TarjetaReservacion{
         //AÑADIR INFO A BOTON EDITAR
         iEditar.classList.add('Naranja');
         iEditar.appendChild(this.crearNodoTexto("Editar"));
-        
-        switch (this.Tipo) {
-            case "Verde":
-                
-                var iCancelar = document.createElement('button');
+        if (this.Tipo == "Verde" || this.Tipo == "Gris") {
+            var iCancelar = document.createElement('button');
                 iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
                 iCancelar.classList.add('Naranja');
                 iCancelar.classList.add('Ult');
+                iCancelar.setAttribute('id', this.ID);
                 iContBtn.appendChild(iEditar);
                 iContBtn.appendChild(iCancelar);
-                break;
-            case "Rojo":   
-                iEditar.classList.add('Ult');
-                iContBtn.appendChild(iEditar);
-                break;
-            case "Morado":
-                iEditar.classList.add('Ult');
-                iContBtn.appendChild(iEditar);
-                break;
-            case "Gris":
-                var iCancelar = document.createElement('button');
-                iCancelar.classList.add('Naranja');
-                iCancelar.classList.add('Ult');
-                iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
-                iContBtn.appendChild(iEditar);
-                iContBtn.appendChild(iCancelar);
-                break;
-            default:
-                break;
+                var Tarjeta = this;
+                iCancelar.addEventListener('click', callbackCanc);
         }
-        
-
+        else{
+            if (this.Tipo == "Rojo" || this.Tipo == "Morado") {
+                iEditar.classList.add('Ult');
+                iContBtn.appendChild(iEditar);
+            }
+        }
+      
         
         //AÑADIR TOTALES
         iTarjeta.appendChild(iHabitacion);
@@ -149,6 +137,8 @@ class TarjetaReservacion{
     obtenerNombreCompleto(){
         return this.Nombre + " " +this.Apellidos;
     }
+
+
 }
 
 window.addEventListener('load', obtenerHabRes);
@@ -178,6 +168,7 @@ function obtenerHabRes() {
                 console.log(habRes); 
                 habRes.forEach(element => {
                     const TR = new TarjetaReservacion(
+                        element.HabReservada_ID,
                         element.Reservacion_CheckIn,
                         element.Reservacion_CheckOut,
                         element.Huesped_Nombre,
@@ -185,7 +176,8 @@ function obtenerHabRes() {
                         element.Habitacion_Nombre,
                         element.Huesped_Contacto,
                         element.HabReservada_CodigoWhatsapp,
-                        element.TipoHab_Nombre
+                        element.TipoHab_Nombre,
+                        element.Reservacion_ID
                     );
                     Reservaciones.push(TR);
                 }); 
@@ -336,3 +328,38 @@ btnBuscar.addEventListener('click', function (e) {
     
     desplegadora(desplegables);
 });
+
+function callbackCanc() {
+    const infoReservacion = new FormData();
+        infoReservacion.append('HabRes', this.id);
+        fetch ('../backend/cancelarHabRes.php', {
+            method:'POST',
+            body: infoReservacion
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto){
+            console.log(texto);
+            switch (texto) {
+                case "1":
+                    alert("Cancleada con éxito");
+                    Reservaciones = [];
+                    obtenerHabRes();
+                    break;
+                case "0":
+                    alert("Problema de cancelacion");
+                    break;
+                default:
+                    alert(texto);
+                    break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+         }); 
+}
