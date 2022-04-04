@@ -99,6 +99,59 @@
             $sql->execute();
             return 1;
         }
+
+        public function consultarReservacion($Hotel, $Reservacion){
+            $sql = $this->con->prepare("SELECT Reservacion_Huesped, Reservacion_CheckIn, Reservacion_CheckOut, huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto
+            FROM reservacion 
+            INNER JOIN huesped ON huesped.Huesped_ID = Reservacion_Huesped 
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            WHERE Reservacion_ID = '".$Reservacion."'
+            AND BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function actualizarHuesped($Nombre, $Apellidos, $Contacto, $Huesped){
+            //
+            $sql = $this->con->prepare("UPDATE `huesped` SET 
+            Huesped_Nombre= '".$Nombre."', 
+            Huesped_Apellidos= '".$Apellidos."', 
+            Huesped_Contacto= '".$Contacto."'
+             WHERE Huesped_ID = '".$Huesped."'");
+            $sql->execute();
+            return 'Exito';
+        }
+
+        public function consultarReservadas($Hotel, $Reservacion){
+            $sql = $this->con->prepare("SELECT habitacion.Habitacion_Nombre, habitacion.Habitacion_Tipo, habitacion.Habitacion_ID, tipohabitacion.TipoHab_Nombre
+            FROM habitacionreservada
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            WHERE HabReservada_Reservacion = '".$Reservacion."' 
+            AND BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function actualizarFechas($Reservacion, $CIN, $COUT){
+            //
+            $sql = $this->con->prepare("UPDATE `reservacion` SET 
+            Reservacion_CheckIn = '".$CIN."', 
+            Reservacion_CheckOut= '".$COUT."'
+             WHERE Reservacion_ID = '".$Reservacion."'");
+            $sql->execute();
+            return 'Exito';
+        }
+
+        public function borrarHabitaciones($Reservacion){
+            $sql = $this->con->prepare("DELETE FROM `habitacionreservada` WHERE `HabReservada_Reservacion` = '".$Reservacion."'");
+            $sql->execute();
+            return 'Exito';
+        }
     }
 
 ?>

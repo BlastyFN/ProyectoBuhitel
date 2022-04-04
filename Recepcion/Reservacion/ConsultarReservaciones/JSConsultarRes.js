@@ -69,6 +69,8 @@ class TarjetaReservacion{
         //AÑADIR INFO A BOTON EDITAR
         iEditar.classList.add('Naranja');
         iEditar.appendChild(this.crearNodoTexto("Editar"));
+        iEditar.setAttribute('value', this.Reservacion);
+        iEditar.addEventListener('click', editar);
         if (this.Tipo == "Verde" || this.Tipo == "Gris") {
             var iCancelar = document.createElement('button');
                 iCancelar.appendChild(this.crearNodoTexto("Cancelar"));
@@ -77,7 +79,7 @@ class TarjetaReservacion{
                 iCancelar.setAttribute('id', this.ID);
                 iContBtn.appendChild(iEditar);
                 iContBtn.appendChild(iCancelar);
-                var Tarjeta = this;
+
                 iCancelar.addEventListener('click', callbackCanc);
         }
         else{
@@ -362,4 +364,10 @@ function callbackCanc() {
         .catch(function(err) {
             console.log(err);
          }); 
+}
+
+function editar() {
+    
+    localStorage.setItem("Editar", this.value);    
+    window.location.href="http://localhost/Buhitel/Recepcion/Reservacion/EditarReservacion/EdicionReservacion.php";
 }

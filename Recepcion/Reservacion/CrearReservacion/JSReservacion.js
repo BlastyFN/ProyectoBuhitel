@@ -169,10 +169,7 @@ function crearOpciones(Opciones, iSelect) {
         const opcionHab = Opciones[index];
         //Crea la opcion
         const iOpcion = document.createElement('option');
-        //Añade el valor de la opción
-        
-            
-        
+
         //Añade el texto a mostrar de la opcion
             var iOpcionTexto;
             if (opcionHab.TipoHab_Nombre == undefined) {
@@ -269,6 +266,7 @@ btnRes.addEventListener('click', function (e) {
     })
     .then(function(texto){
         registrarHabitaciones(texto);
+        window.location.href="http://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
     })
     .catch(function(err) {
         console.log(err);
@@ -312,6 +310,7 @@ function registrarHabitaciones(Reservacion) {
             console.log(err);
          }); 
     });
+   
 }
 
 function reiniciarCampos() {
