@@ -15,13 +15,14 @@ class TarjetaValet {
     }
     obtenerHTML(){
        //NODOS DE TEXTO
+       var NodoBoton = document.createTextNode("Completar");
        var NodoTitulo = document.createTextNode(this.habitacion);
        var NodoNombre = document.createTextNode(this.nombre);
        var NodoApellidos = document.createTextNode(this.apellidos);
        var NodoContacto = document.createTextNode(this.contacto);
        var NodoModelo = document.createTextNode(this.modelo);
        var NodoPlacas = document.createTextNode(this.placas);
-       var NodoBoton = document.createTextNode("Completar");
+       
         //Div general
         var iTarjeta = document.createElement('div');
         iTarjeta.classList.add('Tarjeta');
