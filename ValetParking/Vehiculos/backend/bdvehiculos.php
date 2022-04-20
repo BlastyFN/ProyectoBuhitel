@@ -42,6 +42,22 @@
             }
             
         }
+
+        public function consultarVehiculos($Hotel, $Hoy){
+            $sql = $this->con->prepare("SELECT Vehiculo_Placas, Vehiculo_Modelo, Vehiculo_Color, Vehiculo_LugarEstacionamiento, Vehiculo_Notas, habitacion.Habitacion_Nombre, huesped.Huesped_Nombre
+            FROM vehiculo
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Vehiculo_Habitacion
+            INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID
+            INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID
+            INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID
+            INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
+            WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+            ");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
         
     }
 

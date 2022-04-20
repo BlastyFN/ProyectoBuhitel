@@ -1,9 +1,93 @@
-const Campos = document.getElementsByTagName('input');
+const CHabitacion = document.getElementById('cmpHabitacion');
+const CHuesped = document.getElementById('cmpHuesped');
+const CModelo = document.getElementById('cmpModelo');
+const CColor = document.getElementById('cmpColor');
+const CPlacas = document.getElementById('cmpPlacas');
+const CLugar = document.getElementById('cmpLugar');
+const CNotas = document.getElementById('cmpNotas');
 const NCampos = document.querySelectorAll('input');
 const LineasVehiculo = document.querySelectorAll('tbody > tr');
 const CampoHabitacion = document.getElementById("cmpHabitacion");
 const btnConfirmar = document.getElementById('btnConfirmar');
 const infoVehiculo = document.getElementById("InfoVehiculo");
+const infoTabla = document.getElementById('CuerpoTabla');
+var Vehiculos = [];
+//LA CLASE QUE SE USARÁ PARA LAS LINEAS
+class Vehiculo { 
+    constructor(Placas, Huesped, Habitacion, Modelo, Color, Lugar, Notas){
+        this.Placas = Placas;
+        this.Huesped  = Huesped;
+        this.Habitacion = Habitacion;
+        this.Modelo = Modelo;
+        this.Color = Color;
+        this.Lugar = Lugar;
+        this.Notas = Notas;
+    }
+}
+
+
+//Cargar tabla cuando se carga la ventana
+window.addEventListener('load', cargarTabla);
+
+function cargarTabla() {
+    //Elimina los elementos de la tabla
+    while (infoTabla.firstChild) {
+        infoTabla.removeChild(infoTabla.firstChild);
+    }
+    //Elimina los elementos del arreglo
+    while (Vehiculos.length > 0){
+        Vehiculos.pop();
+    }
+    fetch('../backend/consultarVehiculos.php', {
+        method:'POST',
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        let jsonVeh;
+        jsonVeh = JSON.parse(texto);
+        console.log(jsonVeh);
+        //Crea el objeto
+        jsonVeh.forEach(element => {
+            const VH = new Vehiculo(
+                element.Vehiculo_Placas,
+                element.Huesped_Nombre,
+                element.Habitacion_Nombre,
+                element.Vehiculo_Modelo,
+                element.Vehiculo_Color,
+                element.Vehiculo_LugarEstacionamiento,
+                element.Vehiculo_Notas
+            );
+            //Añade el objeto al array de objetos
+            Vehiculos.push(VH);
+            //Crea cada línea con al información obtenida del JSON
+            var iFila = document.createElement('tr');
+            var iHabitacion = document.createElement('td');
+            var iModelo = document.createElement('td');
+            var iPlacas = document.createElement('td');
+            iHabitacion.appendChild(document.createTextNode(element.Habitacion_Nombre));
+            iModelo.appendChild(document.createTextNode(element.Vehiculo_Modelo));
+            iPlacas.appendChild(document.createTextNode(element.Vehiculo_Placas));
+            iFila.appendChild(iHabitacion);
+            iFila.appendChild(iModelo);
+            iFila.appendChild(iPlacas);
+            //Añade el evento de cada fila para seleccionar el vehículo
+           iFila.addEventListener('click', obtenerVeh);
+            infoTabla.appendChild(iFila);
+        }); 
+        console.log(Vehiculos);
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+}
+
+//Verifica los campos
 function verificarBoton() {
     contador = 0;
     NCampos.forEach(element => {
@@ -21,23 +105,29 @@ function verificarBoton() {
     }
 }
 
-
+//Añade el evento de verificar boton cada que se actualiza un campo
 NCampos.forEach(element => {
     element.addEventListener('keyup', verificarBoton);
 });
-
-LineasVehiculo.forEach(element =>{
-    element.addEventListener('click', function (e) {
-       let Habitacion = this.querySelector('td');
-       alert (Habitacion.textContent);
-    });
-});
-
+//Obtiene el vehículo seleccionado y lo imprime en el formulario
+function obtenerVeh() {
+    var Hab = this.querySelector('td').textContent;
+    console.log(Hab);
+    var Coche = Vehiculos.find(element => element.Habitacion === Hab);
+    CHabitacion.value = Coche.Habitacion;
+    CHuesped.value = Coche.Huesped;
+    CModelo.value = Coche.Modelo;
+    CColor.value = Coche.Color;
+    CPlacas.value = Coche.Placas;
+    CLugar.value = Coche.Lugar;
+    CNotas.value = Coche.Notas;
+    btnConfirmar.disabled = false;
+}
+//Añade el vehículo o lo edita según sea el caso
 btnConfirmar.addEventListener('click', function (e) {
     e.preventDefault();
     
         const infoHab = new FormData(infoVehiculo);
-        // infoHab.append('Habitacion', CampoHabitacion.value);
         fetch('../backend/consultaHuesped.php', {
             method:'POST',
             body: infoHab
@@ -51,13 +141,12 @@ btnConfirmar.addEventListener('click', function (e) {
         })
         .then(function(texto) {
             if (texto == '0') {
-                // alert("Tobien");
                 alert("La habitacion no está ocupada o no existe");
                 btnConfirmar.disabled = true;
                 
             }
             else{
-                console.log(texto);
+                cargarTabla();
             }
          })
          .catch(function(err) {

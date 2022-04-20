@@ -43,34 +43,8 @@
                         <th>Placas</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>513</td>
-                        <td>Nissan Versa</td>
-                        <td>JSA8316</td>
-                    </tr>
-
-                    <tr>
-                        <td>496</td>
-                        <td>Tesla Model S</td>
-                        <td>JPI9682</td>
-                    </tr>
-
-                    <tr>
-                        <td>496</td>
-                        <td>Tesla Model S</td>
-                        <td>JPI9682</td>
-                    </tr>
-                    <tr>
-                        <td>496</td>
-                        <td>Tesla Model S</td>
-                        <td>JPI9682</td>
-                    </tr>
-                    <tr>
-                        <td>496</td>
-                        <td>Tesla Model S</td>
-                        <td>JPI9682</td>
-                    </tr>
+                <tbody id="CuerpoTabla">
+                    
                 </tbody>
 
               
