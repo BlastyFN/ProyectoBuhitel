@@ -17,17 +17,20 @@
         
         <section class="Formulario">
             <h3 class="CentrarTexto">Añadir</h3>
-            <input type="text" name="" id="" placeholder="Habitacion" class="CampoMitad">
-            <input type="text" name="" id="" placeholder="Huésped" class="CampoMitad">
-            <br><br>
-            <input type="text" name="" id="" placeholder="Modelo" class="CampoMitad">
-            <input type="text" name="" id="" placeholder="Color" class="CampoMitad">
-            <br><br>
-            <input type="text" name="" id="" placeholder="Placas" class="CampoMitad">
-            <input type="text" name="" id="" placeholder="Lugar" class="CampoMitad">
-            <br><br>
-            <textarea placeholder="Notas" name="Text1" cols="40" rows="7" class="CampoCompleto" ></textarea>
-            <button class="Naranja BtonModel CampoCompleto">Confirmar</button>
+            <form id="InfoVehiculo">
+                <input type="text" name="Habitacion"  placeholder="Habitacion" class="CampoMitad" id ="cmpHabitacion">
+                <input type="text" name="Huesped"  placeholder="Huésped" class="CampoMitad" id ="cmpHuesped">
+                <br><br>
+                <input type="text" name="Modelo"  placeholder="Modelo" class="CampoMitad" id ="cmpModelo">
+                <input type="text" name="Color"  placeholder="Color" class="CampoMitad" id ="cmpColor">
+                <br><br>
+                <input type="text" name="Placas"  placeholder="Placas" class="CampoMitad" id ="cmpPlacas">
+                <input type="text" name="Lugar"  placeholder="Lugar" class="CampoMitad" id ="cmpLugar">
+                <br><br>
+                <textarea placeholder="Notas" name="Notas" cols="40" rows="7" class="CampoCompleto" id ="cmpNotas"></textarea>
+                <button class="Naranja BtonModel CampoCompleto" id="btnConfirmar" disabled>Confirmar</button>
+            </form>
+            
         </section>
 
         <section class="Tabla ">
@@ -74,6 +77,6 @@
             </table>
         </section>
     </section>
-    
+    <script src= "JSAgregarVehiculos.js"></script>
 </body>
 </html>

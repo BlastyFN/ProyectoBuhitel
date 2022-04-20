@@ -102,7 +102,7 @@ function redireccionar(Personal) {
             
             break;
         case "Valet":
-            
+            URL=URL+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php";
             break;
         case "Servicio":
             

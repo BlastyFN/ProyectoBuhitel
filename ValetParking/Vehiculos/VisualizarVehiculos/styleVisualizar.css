@@ -50,7 +50,13 @@ button:hover{
     cursor:pointer;
     opacity: .5;
 }
-
+button:disabled{
+    background-color: gray;
+    cursor:auto;
+}
+button:disabled{
+    opacity: 1;
+}
 input[type=text] {
     color: black;
     font-size: 22px;

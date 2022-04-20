@@ -5,10 +5,13 @@ if (isset($_SESSION['sesionPersonal'])) {
         case 'Administrador':
             header("Location: /Buhitel/Recepcion/Reservacion/CrearReservacion/Reservacion.php", TRUE, 301);
             exit();
-            break;
-        
+        break;
+        case 'Valet':
+            header("Location: /Buhitel/ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php", TRUE, 301);
+            exit();
+        break;
         default:
-            # code...
+            # ValetParking/Vehiculos/GestionarVehiculos/GestionVehiculos.php
             break;
     }
 }
