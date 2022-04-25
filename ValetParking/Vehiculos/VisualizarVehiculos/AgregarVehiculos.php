@@ -18,8 +18,7 @@
         <section class="Formulario">
             <h3 class="CentrarTexto">Añadir</h3>
             <form id="InfoVehiculo">
-                <input type="text" name="Habitacion"  placeholder="Habitacion" class="CampoMitad" id ="cmpHabitacion">
-                <input type="text" name="Huesped"  placeholder="Huésped" class="CampoMitad" id ="cmpHuesped">
+                <input type="text" name="Habitacion"  placeholder="Habitacion" class="CampoCompleto" id ="cmpHabitacion">
                 <br><br>
                 <input type="text" name="Modelo"  placeholder="Modelo" class="CampoMitad" id ="cmpModelo">
                 <input type="text" name="Color"  placeholder="Color" class="CampoMitad" id ="cmpColor">

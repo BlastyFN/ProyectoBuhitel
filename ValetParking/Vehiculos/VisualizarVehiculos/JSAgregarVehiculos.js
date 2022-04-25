@@ -1,5 +1,4 @@
 const CHabitacion = document.getElementById('cmpHabitacion');
-const CHuesped = document.getElementById('cmpHuesped');
 const CModelo = document.getElementById('cmpModelo');
 const CColor = document.getElementById('cmpColor');
 const CPlacas = document.getElementById('cmpPlacas');
@@ -14,9 +13,8 @@ const infoTabla = document.getElementById('CuerpoTabla');
 var Vehiculos = [];
 //LA CLASE QUE SE USARÁ PARA LAS LINEAS
 class Vehiculo { 
-    constructor(Placas, Huesped, Habitacion, Modelo, Color, Lugar, Notas){
+    constructor(Placas, Habitacion, Modelo, Color, Lugar, Notas){
         this.Placas = Placas;
-        this.Huesped  = Huesped;
         this.Habitacion = Habitacion;
         this.Modelo = Modelo;
         this.Color = Color;
@@ -56,7 +54,6 @@ function cargarTabla() {
         jsonVeh.forEach(element => {
             const VH = new Vehiculo(
                 element.Vehiculo_Placas,
-                element.Huesped_Nombre,
                 element.Habitacion_Nombre,
                 element.Vehiculo_Modelo,
                 element.Vehiculo_Color,
@@ -96,7 +93,7 @@ function verificarBoton() {
         }
         
     });
-    if (contador == 6) {
+    if (contador == 5) {
         
          btnConfirmar.disabled = false;
     }
@@ -115,7 +112,6 @@ function obtenerVeh() {
     console.log(Hab);
     var Coche = Vehiculos.find(element => element.Habitacion === Hab);
     CHabitacion.value = Coche.Habitacion;
-    CHuesped.value = Coche.Huesped;
     CModelo.value = Coche.Modelo;
     CColor.value = Coche.Color;
     CPlacas.value = Coche.Placas;

@@ -17,7 +17,7 @@
             <br><br><br>
             
             <form action="" method="post">
-                <input type="text" name="" id="" placeholder="Habitación" class="CamposCentrados">
+                <input type="text" name="" id="Habitacion" placeholder="Habitación" class="CamposCentrados">
                 <br><br>
                 <button type="submit" class="Naranja CamposCentrados ModelBtn" id="BtnVerificar">Verificar</button>
             </form>
@@ -28,17 +28,17 @@
             <br><br><br>
             <!-- TARJETA -->
             <div class="Tarjeta Azul" id="TarVehiculo">
-                <h1 class="Info">9</h1>
+                <h1 class="Info">Habitación</h1>
                 <div class="Info">
                     
-                    <p> Marcelo</p>
-                    <p> Ebrard Casaubón</p>
-                    <p> canciller@sre.gob.mx</p>
-                    <p> Tsuru</p>
-                    <p> JSA2592</p>
+                    <p> Nombre</p>
+                    <p> Apellidos</p>
+                    <p> Contacto</p>
+                    <p> Modelo</p>
+                    <p> Placas</p>
                     
                 </div>
-                <button class="Verde ModelBtn Ult"> Completar</button>
+                <button class="Verde ModelBtn Ult"> Pedir</button>
             </div>
         </section>
         <!-- Mitad Derecha -->

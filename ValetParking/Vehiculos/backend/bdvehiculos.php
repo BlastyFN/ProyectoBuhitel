@@ -58,6 +58,31 @@
             $res = $sql->fetchall();
             return $res;
         }
+
+        public function consultarServicios($Hotel, $Hoy){
+            $sql = $this->con->prepare("SELECT Vehiculo_Placas, Vehiculo_Modelo, Vehiculo_Color, Vehiculo_LugarEstacionamiento, Vehiculo_Notas, huesped.Huesped_Apellidos, huesped.Huesped_Nombre
+            FROM vehiculo
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Vehiculo_Habitacion
+            INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID
+            INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID
+            INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID
+            INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
+            WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+            AND BINARY Vehiculo_Estatus = '1'
+            ");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function completarServicio($Placas){
+            $sql = $this->con->prepare("UPDATE `vehiculo` SET 
+            Vehiculo_Estatus= '0'
+             WHERE Vehiculo_Placas = '".$Placas."'");
+            $sql->execute();
+            return 1;
+        }
         
     }
 

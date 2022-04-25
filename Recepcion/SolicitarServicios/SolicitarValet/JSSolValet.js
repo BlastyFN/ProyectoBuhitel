@@ -1,5 +1,7 @@
 const verificar = document.querySelector('#BtnVerificar');
 const contenedor = document.querySelector('#ContenedorInfo');
+const campoHab = document.getElementById('Habitacion');
+var vehiculo;
 class TarjetaValet {
     constructor(habitacion, color, nombre, apellidos, contacto, modelo, placas){
         this.habitacion = habitacion;
@@ -15,7 +17,7 @@ class TarjetaValet {
     }
     obtenerHTML(){
        //NODOS DE TEXTO
-       var NodoBoton = document.createTextNode("Completar");
+       var NodoBoton = document.createTextNode("Pedir");
        var NodoTitulo = document.createTextNode(this.habitacion);
        var NodoNombre = document.createTextNode(this.nombre);
        var NodoApellidos = document.createTextNode(this.apellidos);
@@ -56,30 +58,103 @@ class TarjetaValet {
         iBoton.classList.add('Verde');
         iBoton.classList.add('ModelBtn');
         iBoton.classList.add('Ult');
+        iBoton.setAttribute("id", "btnConfirmar");
         iBoton.appendChild(NodoBoton);
+        iBoton.addEventListener('click', pedirServicio);
+        iBoton.setAttribute("value", "1");
         //Integrar todo en tarjeta
         iTarjeta.appendChild(iTitulo);
         iTarjeta.appendChild(iInformacion);
         iTarjeta.appendChild(iBoton);
         return iTarjeta;
     }
+
 }
+
 
 
 verificar.addEventListener("click", function (e) {
     e.preventDefault();
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'Servicio.json', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let datos = JSON.parse(this.responseText);
-            const Tar = new TarjetaValet(datos.habitacion_Nombre, "Azul", datos.huesped_Nombre, datos.huesped_Apellidos, datos.huesped_Contacto, datos.vehiculo_Modelo, datos.vehiculo_Placas);
-            console.log(Tar.HTML);
-            var TarjetaHTML = document.getElementById("TarVehiculo");
-            contenedor.removeChild(TarjetaHTML);
-            contenedor.appendChild(Tar.HTML);
-        }
-    }
+    const infoHab = new FormData();
+    infoHab.append('Habitacion', campoHab.value);
+        fetch('../backend/consultarVehiculo.php', {
+            method:'POST',
+            body: infoHab
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto) {
+            if (texto == '0') {
+                alert("No hay vehículos registrados");
+                def();
+            }
+            else{
+                var VehiculoInfoJS = JSON.parse(texto);
+                // console.log(VehiculoInfoJS);
+                const Tar = new TarjetaValet(campoHab.value, "Azul", VehiculoInfoJS.Huesped_Nombre, VehiculoInfoJS.Huesped_Apellidos, VehiculoInfoJS.Huesped_Contacto, VehiculoInfoJS.Vehiculo_Modelo, VehiculoInfoJS.Vehiculo_Placas);
+                console.log(Tar);
+                var TarjetaHTML = document.getElementById("TarVehiculo");
+                vehiculo = Tar;
+                contenedor.removeChild(TarjetaHTML);
+                contenedor.appendChild(Tar.HTML);
+            }
+         })
+         .catch(function(err) {
+            console.log(err);
+         });
 });
 
+
+function pedirServicio() {
+    const botonFinal = document.getElementById('btnConfirmar');
+
+    const infoVeh = new FormData();
+    infoVeh.append('Placas', vehiculo.placas);
+
+    infoVeh.append('Estatus', botonFinal.value);
+        fetch('../backend/solicitudVehiculo.php', {
+            method:'POST',
+            body: infoVeh
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto) {
+            if (texto == '1') {
+                if (botonFinal.value=='0') {
+                    def();
+                }
+                else{
+                    botonFinal.classList.remove('Verde');
+                    botonFinal.classList.add('Naranja');
+                    botonFinal.textContent = "Cancelar";
+                    botonFinal.setAttribute("value", "0");
+                }
+                
+            }
+            else{
+                alert("Error en el servidor");
+            }
+         })
+         .catch(function(err) {
+            console.log(err);
+         });
+}
+
+function def() {
+    const Tar = new TarjetaValet("Habitación", "Azul", "Nombre", "Apellidos", "Contacto", "Modelo", "Placas");
+    console.log(Tar);
+    vehiculo = Tar;
+    var TarjetaHTML = document.getElementById("TarVehiculo");
+    contenedor.removeChild(TarjetaHTML);
+    contenedor.appendChild(Tar.HTML);   
+}
