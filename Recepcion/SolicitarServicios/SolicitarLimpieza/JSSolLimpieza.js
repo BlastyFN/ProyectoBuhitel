@@ -61,7 +61,7 @@ class TarjetaLimpieza {
 }
 verificar.addEventListener("click", function (e) {
     e.preventDefault();
-    const Tar = new TarjetaLimpieza("9", "Azul", "Alfonso", "Petersen Nuñez", "12:12", "13:12");
+    const Tar = new TarjetaLimpieza("8", "Azul", "Alfonso", "Petersen Nuñez", "12:12", "13:12");
     
     var TarjetaHTML = document.getElementById("TarLimpieza");
     contenedor.removeChild(TarjetaHTML);
