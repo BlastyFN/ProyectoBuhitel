@@ -1,4 +1,7 @@
 const ContenedorPrincipal = document.getElementById('ContenedorPrincipal');
+var Placas = [];
+var PV;
+const Sonido = new Audio("../../../Recursos/Campana.mp3");
 class Servicio {
     constructor(Nombre, Apellidos, Modelo, Color, Placas, Lugar, Notas){
         this.Nombre = Nombre;
@@ -24,7 +27,7 @@ class Servicio {
             //CLASES TITULOS
             ContenedorTitulos.classList.add('Titulos');
             ContenedorTitulos.classList.add('Contenedor');
-            ContenedorTitulos.classList.add('Azul');
+            ContenedorTitulos.classList.add('Morado');
             SubContenedorInfo.classList.add('Info');
             SubContenedorNotas.classList.add('Notas');
             //CONTENIDO TITULOS
@@ -116,12 +119,28 @@ class Servicio {
     }
 }
 
-window.addEventListener('load', obtenerServicios);
+window.addEventListener('load', prepInicial);
 
+function prepInicial() {
+    
+    // Comprobamos si el navegador soporta las notificaciones
+  if (!("Notification" in window)) {
+    console.log("Este navegador no es compatible con las notificaciones de escritorio");
+  }
+
+  // Si no, pedimos permiso para la notificación
+  else if (Notification.permission !== 'denied' || Notification.permission === "default") {
+    Notification.requestPermission(function (permission) {
+      // Si el usuario nos lo concede, creamos la notificación
+    });
+  }
+  obtenerServicios();
+  // Por último, si el usuario ha denegado el permiso, y quieres ser respetuoso, no hay necesidad de molestarlo.
+}
+
+var intervalo = window.setInterval(obtenerServicios, 7000);
 function obtenerServicios() {
-    while (ContenedorPrincipal.firstChild) {
-        ContenedorPrincipal.removeChild(ContenedorPrincipal.firstChild);
-    }
+    
         fetch('../backend/consultarServicios.php', {
             method:'POST',
         })
@@ -134,13 +153,47 @@ function obtenerServicios() {
         })
         .then(function(texto) {
             if (texto == '0') {
-                alert("No se encontraron servicios");
-
+                Placas = [];
+                borrarServicios();
             }
             else{
                 var infoServicios = JSON.parse(texto);
-                console.log(infoServicios);
-                desplegar(infoServicios);
+                
+                if (Placas.length == infoServicios.length) {
+                    let Placas2 = [];
+                    var contador = 0;
+                    infoServicios.forEach(element => {
+                        const Placa = element.Vehiculo_Placas;
+                        if (Placas.indexOf(Placa) != -1) {
+                            contador++;
+                        }  
+                        Placas2.push(Placa);
+                    });
+                    if (Placas.length != contador) {
+                        console.log("Mismo numero diferentes elementos");
+                        Placas = Placas2;
+                        notificar();
+                        desplegar(infoServicios);
+                    }
+                    else{
+                    }
+                } else {
+                    if(infoServicios.length>Placas.length){
+                        notificar();
+                    }
+                    Placas = [];
+                    infoServicios.forEach(element => {
+                        Placas.push(element.Vehiculo_Placas);
+                    });
+                    desplegar(infoServicios);
+                }
+
+
+
+                
+                
+                
+                
             }
          })
          .catch(function(err) {
@@ -149,9 +202,9 @@ function obtenerServicios() {
 }
 
 function desplegar(ListaServicios) {
+    borrarServicios();
     ListaServicios.forEach(element => {
         var Ser = new Servicio(element.Huesped_Nombre, element.Huesped_Apellidos, element.Vehiculo_Modelo, element.Vehiculo_Color, element.Vehiculo_Placas, element.Vehiculo_LugarEstacionamiento, element.Vehiculo_Notas);
-        console.log(Ser.HTML);
         ContenedorPrincipal.appendChild(Ser.HTML);
     });
 }
@@ -181,4 +234,31 @@ function completarServicio() {
      .catch(function(err) {
         console.log(err);
      });
+}
+
+
+// function obtenerServicios() {
+//     var datos = $.ajax({
+//         url: "../backend/consultarServicios.php",
+//         dataType: "text",
+//         async: false,
+//     }).responseText;
+//     console.log(datos);
+// }
+
+function borrarServicios() {
+    
+    while (ContenedorPrincipal.firstChild) {
+  
+        ContenedorPrincipal.removeChild(ContenedorPrincipal.firstChild);
+    }
+}
+
+function notificar() {
+    if (Notification.permission === "granted") {
+        // Si es correcto, lanzamos una notificación
+        var notification = new Notification("Servicio solicitado!");
+        
+      }
+      Sonido.play();
 }

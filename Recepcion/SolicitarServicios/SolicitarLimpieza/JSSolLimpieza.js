@@ -1,13 +1,17 @@
 const verificar = document.querySelector('#BtnVerificar');
 const contenedor = document.querySelector('#ContenedorInfo');
+const cmpHabitacion = document.getElementById('cmpHabitacion');
+const cmpfecha = document.getElementById('cmpHora');
+const formLimp = document.getElementById('FormularioLimpieza');
 class TarjetaLimpieza {
-    constructor(habitacion, color, nombre, apellidos, inicio, fin){
+    constructor(habitacion, color, nombre, apellidos, inicio, fin, id){
         this.habitacion = habitacion;
         this.color = color;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.inicio = inicio;
         this.fin = fin;
+        this.id = id;
     }
     get HTML() {
         return this.obtenerHTML();
@@ -19,7 +23,7 @@ class TarjetaLimpieza {
        var NodoApellidos = document.createTextNode(this.apellidos);
        var NodoInicio = document.createTextNode(this.inicio);
        var NodoFin = document.createTextNode(this.fin);
-       var NodoBoton = document.createTextNode("Completar");
+       var NodoBoton = document.createTextNode("Cancelar");
         //Div general
         var iTarjeta = document.createElement('div');
         iTarjeta.classList.add('Tarjeta');
@@ -48,10 +52,12 @@ class TarjetaLimpieza {
         iInformacion.appendChild(iFin);
         //BOTON 
         var iBoton = document.createElement('button');
-        iBoton.classList.add('Verde');
+        iBoton.classList.add('Naranja');
         iBoton.classList.add('ModelBtn');
         iBoton.classList.add('Ult');
         iBoton.appendChild(NodoBoton);
+        iBoton.setAttribute('value', this.id);
+        iBoton.addEventListener('click', cancelar);
         //Integrar todo en tarjeta
         iTarjeta.appendChild(iTitulo);
         iTarjeta.appendChild(iInformacion);
@@ -61,11 +67,114 @@ class TarjetaLimpieza {
 }
 verificar.addEventListener("click", function (e) {
     e.preventDefault();
-    const Tar = new TarjetaLimpieza("8", "Azul", "Alfonso", "Petersen Nuñez", "12:12", "13:12");
-    
-    var TarjetaHTML = document.getElementById("TarLimpieza");
-    contenedor.removeChild(TarjetaHTML);
-    console.log(Tar.HTML);
-    contenedor.appendChild(Tar.HTML);
+
+    solicitarLimpieza();
+
 });
 
+
+window.addEventListener('load', function () {
+    console.log(localStorage.EditarLimpieza);
+   if (localStorage.EditarLimpieza == "true") {
+       console.log("Editar");
+       cmpHabitacion.value = localStorage.LimpHabitacion;
+       cmpfecha.value = localStorage.LimpInicio;
+       localStorage.EditarLimpieza = false;
+   } 
+});
+
+function solicitarLimpieza() {
+    const infoLimpieza = new FormData(formLimp);
+    fetch('../backend/solicitudLimpieza.php', {
+        method:'POST',
+        body: infoLimpieza
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        console.log(texto);
+        while (contenedor.firstChild) {
+            contenedor.removeChild(contenedor.firstChild);
+        }
+        if (texto == "0") {
+            alert("Habitación inválida")
+        }
+        if (texto == "NP") {
+            alert("No hay persobal trabajando a esa hora");
+        }
+        else{
+            infoJSON = JSON.parse(texto);
+            
+            if (infoJSON.Habitacion != undefined) {
+                const Tar = new TarjetaLimpieza(infoJSON.Habitacion, "Azul", infoJSON.Nombre, infoJSON.Apellidos, infoJSON.Inicio, infoJSON.Final, infoJSON.ID);
+                contenedor.appendChild(Tar.HTML);
+            }
+            else{
+                console.log(infoJSON);
+                generarHorario(infoJSON);
+            }
+        }
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+}
+
+function cancelar() {
+    const infoCancelar = new FormData();
+    infoCancelar.append('Limpieza', this.value);
+    fetch('../backend/cancelarLimpieza.php', {
+        method:'POST',
+        body: infoCancelar
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        while (contenedor.firstChild) {
+            contenedor.removeChild(contenedor.firstChild);
+        }
+        alert(texto);
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+
+}
+
+function generarHorario(Horario) {
+    alert("Horario no disponible!");
+    var contenedorHorario = document.createElement('div');
+    contenedorHorario.classList.add('TextosCentrados');
+    var Titulo = document.createElement('h1');
+    Titulo.innerHTML = "Disponibilidad";
+    contenedorHorario.appendChild(Titulo);
+    var contador = 1;
+    var textoAcumulado;
+    Horario.forEach(element => {
+        var Hora = element.slice(element.indexOf(" "));
+        if (contador%2==0) {
+            
+            textoAcumulado += Hora;
+            console.log(textoAcumulado);
+            var Periodo = document.createElement('h1');
+            Periodo.innerHTML = textoAcumulado;
+            contenedorHorario.appendChild(Periodo);
+        }
+        else{
+            textoAcumulado = "De " + Hora +" A";
+        }
+        contador++;
+ 
+    });
+    contenedor.appendChild(contenedorHorario);
+}

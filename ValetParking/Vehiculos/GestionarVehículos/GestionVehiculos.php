@@ -14,14 +14,13 @@
     </div>
     <br><br>
 
-    <section id="ContenedorPrincipal">
-        
-            
+    <section id="ContenedorPrincipal">  
     </section>
 
     
 
     
     <script src= "JSGestionVehiculos.js"></script>
+    <script src= "..\..\..\Recursos\jquery-3.6.0.min.js"></script>
 </body>
 </html>

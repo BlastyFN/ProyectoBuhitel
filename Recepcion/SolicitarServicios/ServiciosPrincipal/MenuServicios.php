@@ -9,25 +9,23 @@
     <title>Servicios</title>
 </head>
 <body>
-    <h2 class="alinearTexto">Solicitud de Servicios</h2>
+    <h2 class="alinearTexto">Consulta de Servicios</h2>
     <br><br>
     <!-- Seccion buscar habitación -->
     <section class="contenedor">
-        <form action="">
-            <input type="text" placeholder="Buscar habitación" id="cmpHabitacion">
-            <button type="submit" class="Azul TBlanco" id="btnBuscar"> Buscar </button>
-        </form>
+        <input type="text" placeholder="Buscar habitación" id="cmpHabitacion">
+        <button class="Azul TBlanco" id="btnBuscar" disabled> Buscar </button>
     </section>
     <!-- Seccion buscar habitación -->
     <br><br>
-    <!-- Seccion botones de redirección -->
-    <section class="contenedor">
-        <button class="Naranja TiraBtns ModelBtn">Servicio</button>
-        <button class="Naranja TiraBtns ModelBtn">Valet</button>
-        <button class="Naranja TiraBtns ModelBtn">Limpieza</button>
-    </section>
-    <!-- Seccion botones de redirección -->
+    
     <br><br>
     <h1 class="alinearTexto Azul TBlanco" id="tituloHab">Habitación 2409</h1>
+    <br><br>
+    <section id="ContenedorL">
+        
+    </section>
 </body>
+<script src= "JSMenuServicios.js"></script>
+
 </html>

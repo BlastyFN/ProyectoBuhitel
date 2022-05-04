@@ -32,6 +32,10 @@ button{
 
 }
 
+button:disabled{
+    background-color: gray;
+}
+
 button:hover{
     cursor:pointer;
 }
@@ -59,7 +63,7 @@ input[type=text i] {
     border-color: black;
   }
 
-input[type=time i] {
+input[type=datetime-local i] {
     color: black;
     font-size: 22px;
     border-radius: 5px;
@@ -117,6 +121,9 @@ input[type=time i] {
     background-color: #427AA1;
 }
 
+.Rojo{
+    background-color: #E63946;
+}
 .TBlanco{
     color: white;
 }
@@ -127,7 +134,9 @@ input[type=time i] {
 }
 
 
-
+.centrarMitad{
+    margin: auto;
+}
 .contenedor{
     
     display: flex;
@@ -160,6 +169,12 @@ input[type=time i] {
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
+}
+.TextosCentrados{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
 }
 .Total{
     width: 100%;
@@ -195,6 +210,7 @@ input[type=time i] {
     transition: all .5s;
 }
 
+
 .Tarjeta p{
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
@@ -213,6 +229,44 @@ input[type=time i] {
 }
 
 .Tarjeta button{
+    width: 100%;
+    
+}
+
+
+.TarjetaMul{
+    align-self: baseline;
+    width: 20%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    line-height: 1.5;
+    display: inline-block;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all .5s;
+}
+
+.TarjetaMul p{
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+     
+}
+.TarjetaMul h1{
+    
+    display:inline-block;
+    height: 15%;
+    background-color: #59114D;
+    color:white;
+    width: 100%;
+    text-align: center;
+}
+
+.TarjetaMul button{
     width: 100%;
     
 }
@@ -250,3 +304,7 @@ input[type=time i] {
 }
 
 /* ID's */
+
+.centrarItems{
+    align-items: center;
+}

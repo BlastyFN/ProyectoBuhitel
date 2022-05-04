@@ -11,35 +11,26 @@
 <body>
     <h2 class="alinearTexto">Limpieza a la habitación</h2>
      <!-- Contenedor global -->
-    <section class="contenedor">
+    <section class="">
         <!-- Mitad Izquierda -->
-        <section class="Mitad">
+        <section class="Total">
             <br><br><br>
             
-        <form action="" method="post">
-            <input type="text" name="" id="" placeholder="Habitación" class="CamposCentrados">
-            <br><br>
-            <input type="time" name="" id="" class="CamposCentrados">
-            <br><br>
-            <button type="submit" class="Naranja CamposCentrados ModelBtn" id="BtnVerificar">Verificar</button>
-        </form>
+            <form action="" method="post" id="FormularioLimpieza">
+                <input type="text" name="Habitacion" id="cmpHabitacion" placeholder="Habitación" class="CamposCentrados">
+                <br><br>
+                <input type="datetime-local" name="Fecha" id="cmpHora" class="CamposCentrados">
+                <br><br>
+                <button type="submit" class="Verde CamposCentrados ModelBtn" id="BtnVerificar">Solicitar</button>
+            </form>
         </section>
         <!-- Mitad Izquierda -->
         <!-- Mitad Derecha -->
-        <section class="Mitad" id="ContenedorInfo">
         <br><br><br>
-        <div class="Tarjeta Azul" id="TarLimpieza">
-            <h1 class="Info">9</h1>
-            <div class="Info">
-                
-                <p> Enrique</p>
-                <p> Alfaro Ramirez</p>
-                <p> Inicio: 12:00</p>
-                <p> Fin: 12:35</p>
-                
-                
-            </div>
-                <button class="Verde ModelBtn Ult" > Completar </button>
+        <section class="Mitad centrarMitad" id="ContenedorInfo">
+            
+            
+
         </section>
         <!-- Mitad Derecha -->
     </section>
