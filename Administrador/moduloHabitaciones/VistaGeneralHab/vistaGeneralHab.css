@@ -1,0 +1,251 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+h1 {
+    font-size: 25px;
+    width: 50%;
+    margin: auto auto;
+    margin-top: 30px;
+}
+
+.searchElement{
+    width: 50%;
+    margin: 10px 10px;
+    padding: 0 15px;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.searchButton{
+    display: inline-block;
+    background: #59114D;
+    margin: 10px 10px;
+    padding: 0px 30px;
+    width: auto;
+    height: 34px;
+    border-radius: 50px;
+    border-style: none;
+    
+    font-size: 15px;
+    color: #fff;
+}
+
+.search form{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 10px;
+    padding-left: 15% ;
+    
+}
+
+/*  Estilos del carousel*/
+
+.vistaHabs {
+	max-width: 1200px;
+	width: 90%;
+	margin: auto 20px;
+    margin-top: 30px;
+    align-self: center;
+}
+
+.piso{
+    display: flex;
+    flex-direction: row;
+}
+
+.nombrePiso {
+    display: block;
+    position: relative;
+    width: 10%;
+    align-self: center;
+    font-size: 18px;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.carousel__contenedor {
+	position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: none;
+	top: calc(50%);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: none;
+	color: #fff;
+    background-color: #59114D;
+	opacity: 60%;
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover {
+	opacity: 100%;
+}
+
+.item:hover {
+    width: 80%;
+    line-height: 50px;
+    background-color: #59114D;
+    color: #fff;
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+.carousel__lista {
+	overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    display: inline-block;
+	text-align: center;
+    width: 80%;
+    line-height: 50px;
+    border: 1px solid #427AA1;
+    background-color: #427AA1;
+    margin: 0 10px;
+}
+
+.carousel__indicadores{
+    margin-left: calc(45%);
+}
+
+.carousel__indicadores .glider-dot {
+	display: flexbox;
+	width: 30px;
+	height: 7px;
+	background: #59114D;
+	opacity: .5;
+	border-radius: 0;
+    border-style: none;
+    margin-right: 10px;
+    
+}
+
+.carousel__indicadores .glider-dot:hover {
+	opacity: .5;
+    cursor: pointer;
+}
+
+.carousel__indicadores .glider-dot.active {
+	opacity: 1;
+}
+
+.glider-track {
+    display: flex;
+
+}
+
+@media screen and (max-width: 800px) {
+	body {
+		padding: 40px 0;
+	}
+
+	.contenido-principal {
+		flex-direction: column;
+	}
+
+	.contenido-principal > * {
+		width: 100%;
+	}
+}
+
+.overlay{
+    background: rgba(0,0,0,.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.overlay.active{
+    visibility: visible;
+}
+
+.popup{
+    background: #59114D;
+    box-shadow: 0px 0px 5px 0px rgb(0,0,0,.3);
+    color: #FFF;
+    width: 50%;
+    height: 400px;
+    padding: 40px;
+    
+    border-radius: 30px;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.popup .cerrarPopup {
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: right;
+    color: #427AA1;
+    transition: .3s ease all;
+}
+
+.popup .cerrarPopup:hover {
+    color: #000;
+}
+
+.popup h4 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+
+}
+
+.popup .popupContent {
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    
+}
+
+.popup.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popup select{
+    width: 100%;
+    margin-top: 5px;
+    font-size: 20px;
+    padding: 5px 15px;
+    border-radius: 5px; 
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .3);
+    
+}

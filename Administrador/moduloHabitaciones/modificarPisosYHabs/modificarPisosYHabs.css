@@ -1,0 +1,92 @@
+.contenedorPisos {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    text-align: right;
+    margin: 60px auto;
+    text-align: center;
+    
+}
+
+
+.contInfoPiso {
+    background: #427AA1;
+    border-radius: 10px;
+    text-align: left;
+    padding: 20px 50px;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.campo {
+    width: 30%;
+    margin: auto 5%;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: solid ;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.eliminarPisoImg{
+    width: 7%;
+    height: 25px;
+    margin: auto 5%;  
+    background:none;
+    
+    border-radius: 10px;
+    border-style: none;
+
+    font-size: 20px;
+    color: #fff;
+
+}
+
+.modificarInfo {
+    background: #679436;
+    padding: 10px 30px;
+    margin: auto 10px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    
+}
+
+.eliminarPiso {
+    background: #59114D;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    margin: auto 10px;
+}
+
+
+.agregarPiso {
+    background: #427AA1;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    margin: auto 10px;
+}
+
+.contPiso {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.imagenEliminar {
+   height: 25px;
+}
+.imagenEliminar:hover {
+    height: 30px;
+    cursor: pointer;
+ }

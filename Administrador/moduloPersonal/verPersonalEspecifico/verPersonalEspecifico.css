@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.infoPersonal{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  
+}
+
+h1{
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.main .infoPersonal p{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.boton {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    margin: 10px 10px;
+    
+}
+
+.boton:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+.volver {
+    background: #59114D;
+    color: #fff;
+}
+
+.modificar{
+    background: #427AA1;
+    color: #fff;
+
+}
+
+.eliminar{
+    background: #E98A15;
+    color: #fff;
+
+}

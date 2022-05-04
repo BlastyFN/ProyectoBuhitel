@@ -1,0 +1,38 @@
+<?php
+include "bd.php";
+
+if(isset($_POST['pisos']) &&  isset($_POST['numHabs'])){
+	$pisos = $_POST['pisos'];
+	$numHabs = json_decode($_POST['numHabs']);
+
+	$hotel = 1;
+	$bd = new database();
+
+	for($cont = 0; $cont < $pisos; $cont++){ //Piso por iteración
+		$piso = $cont + 1;
+		$res = $bd-> registrarPiso($piso, $hotel);
+
+		$habsPorPiso = $numHabs[$cont];
+		//echo $habsPorPiso;
+		$pisoID = $bd->obtenerPisoID($piso,$hotel);
+
+		for($contHabs = 0; $contHabs < $habsPorPiso; $contHabs++){ //Definir todas las habitaciones de cada piso
+			$nombreHab = $piso * 100 + $contHabs + 1;
+			$bd->registrarHab($nombreHab,$pisoID,1);
+		}
+	
+	}
+
+	//$pisoID = $bd->obtenerPisoID($piso,$hotel);
+	//echo '{"tel":'.$pisoID.'}';
+	
+
+	// if($res == true){
+	// 	echo($res . 'con ' . $NumPisos . ' pisos');
+	// }else{
+	// 	echo("no");
+	// }
+
+
+}
+?>

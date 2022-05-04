@@ -1,0 +1,24 @@
+[
+    {  
+        "user" : "admin",
+        "menuOptions" : [
+            "Página principal",
+            "Configuración de habitaciones",
+            "Configuración de usuarios",
+            "Configuración de servicios",
+            "Reporte de usuarios",
+            "Reportes de análisis de sistema",
+            "Modificar información general",
+            "Configuración de chatbot"
+        ]
+    },
+    {
+        "user" : "recepcionista",
+        "menuOptions" : [
+            "Página principal",
+            "Reservaciones",
+            "Gestión de ocupaciones",
+            "Solicitud de servicios"
+        ]
+    }
+]

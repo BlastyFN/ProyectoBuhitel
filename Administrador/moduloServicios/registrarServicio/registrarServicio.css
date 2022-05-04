@@ -1,0 +1,51 @@
+
+
+.formNuevoServicio {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.formText{
+    width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 1% 15px;
+    border-radius: 5px;
+    border-style: solid ;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.infoTipoPrecio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.infoTipoPrecio .formText{
+    width: 42%;
+}
+
+h1 {
+    font-size: 25px;
+    width: 50%;
+    margin: auto auto;
+    margin-top: 50px;
+}
+
+.enviarInfo {
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin: 40px 0;
+    font-size: 20px;
+    color: #fff;
+    
+}
+
