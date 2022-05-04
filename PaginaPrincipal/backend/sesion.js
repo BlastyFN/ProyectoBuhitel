@@ -93,7 +93,7 @@ function redireccionar(Personal) {
     //SEGUN CADA CASO LE AÑADE LA DIRECCIÓN QUE SIGUE
     switch (Personal.Personal_Tipo) {
         case "Administrador":
-            URL=URL+"/Recepcion/Reservacion/CrearReservacion/Reservacion.php";
+            URL=URL+"/Administrador/pagina principal admin/pagPrincipalAdmin.html";
             break;
         case "Recepcion":
             URL=URL+"Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
@@ -108,7 +108,7 @@ function redireccionar(Personal) {
             
             break;    
        default:
-            URL=URL+"/PaginaPrincipal/index.html";
+            URL=URL+"/index.php";
             break;
     }
     console.log(URL);
