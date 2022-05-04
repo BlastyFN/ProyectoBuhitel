@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservaciones</title>
     <link rel="stylesheet" href="styleCon.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<section id="header-menu" class="header-menu" >
+
+</section>
 
     <h2 class="alinearTexto">Gestión de Ocupaciones</h2>
     <br><br>
@@ -44,4 +49,6 @@
     <br><br>
 </body>
 <script src= "JSConsultarRes.js"></script>
+<script src="../../../Recursos/clase-menu.js"></script>
+<script src="../../../recursos/menuTransition.js"></script>
 </html>

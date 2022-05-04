@@ -38,7 +38,7 @@
                 $this->mail->send();
                 echo 'Exito';
             } catch (Exception $e) {
-                echo "Ocurrió un error: {$mail->ErrorInfo}";
+                echo "Ocurrió un error: {$this->mail->ErrorInfo}";
             }
         }
         

@@ -1,5 +1,5 @@
-const listaOpciones = ["Configuración de habitaciones", "Configuracion de usuarios", "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas","Modificar información general","Configuracion de chatbot"];
-const listaLinks = ["item 1", "item 2", "item 3","item 1", "item 2", "item 3","item 1", "item 2", "item 3"];
+const listaOpciones = ["Pagina Principal", "Configuración de habitaciones", "Configuracion de usuarios", "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas","Modificar información general","Configuracion de chatbot"];
+const listaLinks = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.html", "item 2", "item 3","item 1", "item 2", "item 3","item 1", "item 2", "item 3"];
 var nombre = "Isaac";
 
 class MenuLateral{
@@ -29,7 +29,7 @@ class MenuLateral{
         //Crear bienvenida
         const divBievenida = document.createElement('div');
         divBievenida.setAttribute('id', 'bienvenida');
-        divBievenida.textContent = 'Hola de nuevo, ' + nombre;
+        divBievenida.textContent = 'Hola de nuevo, ' + localStorage.Nombre;
         //agregar a header
         header.appendChild(imgLogo);
         header.appendChild(divBievenida);
@@ -55,13 +55,13 @@ class MenuLateral{
         const listaMenu = document.createElement('ul');
         listaMenu.setAttribute('id','listaMenu');
         //Crear elementos de la lista
-
+        var URL = "http://localhost/Buhitel/";
         var contadorLinks = 0;
         listaOpciones.forEach((item) => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.textContent = item;
-            a.setAttribute('href', listaLinks[contadorLinks]);
+            a.setAttribute('href', URL+listaLinks[contadorLinks]);
             contadorLinks++;
             li.appendChild(a);
             listaMenu.appendChild(li);
