@@ -14,6 +14,14 @@ if (isset($_SESSION['sesionPersonal'])) {
             header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
             exit();
         break;
+        case 'Limpieza':
+            header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+            exit();
+        break;
+        case 'Servicios':
+            header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+            exit();
+        break;
         default:
             # ValetParking/Vehiculos/GestionarVehiculos/GestionVehiculos.php
             break;
@@ -22,7 +30,6 @@ if (isset($_SESSION['sesionPersonal'])) {
 else {
     # code...
 }
-
 ?>
 
 <!DOCTYPE html>
