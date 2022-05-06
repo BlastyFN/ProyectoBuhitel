@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if ($_SESSION['sesionPersonal']['Tipo']!='Valet') {
+            header("Location: /Buhitel", TRUE, 301);
+}
+else {
+    # code...
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

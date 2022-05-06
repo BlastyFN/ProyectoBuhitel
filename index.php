@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['sesionPersonal'])) {
     switch ($_SESSION['sesionPersonal']['Tipo']) {
         case 'Administrador':
-            header("Location: /Buhitel/Administrador/pagina principal admin/pagPrincipalAdmin.html", TRUE, 301);
+            header("Location: /Buhitel/Administrador/pagina principal admin/pagPrincipalAdmin.php", TRUE, 301);
             exit();
         break;
         case 'Valet':

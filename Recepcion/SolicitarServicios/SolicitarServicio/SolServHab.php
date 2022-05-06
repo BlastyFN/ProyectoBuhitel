@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if ($_SESSION['sesionPersonal']['Tipo']!='Recepcion') {
+            header("Location: /Buhitel", TRUE, 301);
+}
+else {
+    # code...
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,13 +23,13 @@
     <section class="contenedor">
         <!-- Mitad Izquierda -->
         <section class="Mitad">
-            <br><br><br>
-            
-        <form action="" method="post">
+            <br><br><br>        
             <input type="text" name="" id="" placeholder="Habitación" class="CamposCentrados">
             <br><br>
+            <button type="submit" class="Naranja CamposCentrados ModelBtn">Verificar</button>
+            <br><br>
             <!-- Contenedor Datos Extensbles-->
-        <div class="CamposExtensibles">
+        <div class="CamposExtensibles" hidden>
             <div class="Disposicion">
             <h1 class="">Categoría</h1>
             <h1>Elemento</h1>
@@ -51,8 +60,7 @@
             
         </div>
             <br><br>
-            <button type="submit" class="Naranja CamposCentrados ModelBtn">Verificar</button>
-        </form>
+        
         </section>
         <!-- Mitad Izquierda -->
         <!-- Mitad Derecha -->
