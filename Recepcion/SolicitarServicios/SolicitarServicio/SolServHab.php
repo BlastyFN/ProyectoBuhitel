@@ -24,12 +24,12 @@ else {
         <!-- Mitad Izquierda -->
         <section class="Mitad">
             <br><br><br>        
-            <input type="text" name="" id="" placeholder="Habitación" class="CamposCentrados">
+            <input type="text" name="" id="cmpVerificar" placeholder="Habitación" class="CamposCentrados">
             <br><br>
-            <button type="submit" class="Naranja CamposCentrados ModelBtn">Verificar</button>
+            <button type="submit" class="Naranja CamposCentrados ModelBtn" id="btnVerificar" disabled>Verificar</button>
             <br><br>
             <!-- Contenedor Datos Extensbles-->
-        <div class="CamposExtensibles" hidden>
+        <div class="CamposExtensibles" id="SeccionTotal" hidden>
             <div class="Disposicion">
             <h1 class="">Categoría</h1>
             <h1>Elemento</h1>
@@ -39,24 +39,10 @@ else {
             
             <br>
             <!-- Campos de tipos-->
-            <section id="ContenedorEntradas" class="">
-                <div class="Entradas">
-                    <select placeholder="Categoria" class="EntradaTexto Campo30" name="Categoria1" id="Categoria1">
-                        <option value="1" class="CatOriginal">Comida</option>
-                        <option value="2" class="CatOriginal">Desayuno</option>
-                        <option value="3" class="CatOriginal">Cena</option>
-                    </select>
-                    <select placeholder="Elemento" class="EntradaTexto Campo30" name="Elemento1" id="Elemento1">
-                        <option value="1" class="EleOriginal">Hamburguesa</option>
-                        <option value="2" class="EleOriginal">Pizza</option>
-                        <option value="3" class="EleOriginal">Pastel</option>
-                    </select>
-                    <input type="number" name="CampoCantidad1" class="EntradaTexto Campo10" value="1" min="1">
-                    <h1>$0</h1>
-                    <br>
-                </div>
+            <section id="ContenedorEntradas" >
+                
             </section>
-            <button class="Naranja Completo ModelBtn" id="addImput">AÑADIR</button>
+            <button class="Naranja Completo ModelBtn" id="addImput" >AÑADIR</button>
             
         </div>
             <br><br>
@@ -66,18 +52,18 @@ else {
         <!-- Mitad Derecha -->
         <section class="Mitad">
         <br><br><br>
-        <div class="Tarjeta Azul" id="Gerencia">
-            <h1 class="Info">9</h1>
+        <div class="Tarjeta Rojo" id="TarServ">
+            <h1 class="Info" id="textoHabitacion">Habitacion</h1>
             <div class="Info">
                 
-                <p> Marcelo</p>
-                <p> Ebrard Casaubón</p>
-                <p> 5 Elementos</p>
-                <p> Precio Total = $412</p>
+                <p id="TextoNombre">  Nombre </p>
+                <p id="TextoApellidos"> Apellidos </p>
+                <p id="TextoCantidad"> Cantidad </p>
+                <p id="TextoPrecio"> Precio Total = $0</p>
                 
                 
             </div>
-                <button class="Verde ModelBtn Ult"> Completar</button>
+                <button class="Naranja ModelBtn Ult" id="btnCompletar" disabled> Verificar</button>
         </section>
         <!-- Mitad Derecha -->
     </section>

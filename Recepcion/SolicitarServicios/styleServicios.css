@@ -39,6 +39,11 @@ button:disabled{
 button:hover{
     cursor:pointer;
 }
+button:disabled:hover{
+    background-color: gray;
+    cursor:default;
+}
+
 
 input[type="submit" i] {
     color:black;

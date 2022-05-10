@@ -166,10 +166,11 @@
         }
 
         public function consultarOcupacion($Hotel, $Habitacion, $Hoy){
-            $sql = $this->con->prepare("SELECT Reservacion_ID, habitacion.Habitacion_ID, habitacion.Habitacion_Nombre FROM `reservacion` 
+            $sql = $this->con->prepare("SELECT Reservacion_ID, habitacion.Habitacion_ID, habitacion.Habitacion_Nombre, huesped.Huesped_Nombre, huesped.Huesped_Apellidos FROM `reservacion` 
             INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID
             INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
             INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            INNER JOIN huesped ON huesped.Huesped_ID = Reservacion_Huesped
             WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
             AND BINARY habitacion.Habitacion_Nombre = '".$Habitacion."'
             AND BINARY '".$Hoy."' BETWEEN Reservacion_CheckIn AND Reservacion_CheckOut;");
@@ -191,7 +192,53 @@
             return $res;
         }
 
-        
+        public function consultarCategorias($Hotel){
+            $sql = $this->con->prepare("SELECT CatProd_ID, CatProd_Categoria FROM categoriaproductos WHERE CatProd_Hotel = '".$Hotel."';");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarProductos($Hotel, $Categoria){
+            $sql = $this->con->prepare("SELECT Producto_ID, Producto_Nombre, Producto_Precio FROM producto
+            INNER JOIN categoriaproductos ON categoriaproductos.CatProd_ID = Producto_Categoria
+            WHERE BINARY categoriaproductos.CatProd_Hotel= '".$Hotel."'
+            AND BINARY Producto_Existencia = '1'
+            AND BINARY Producto_Categoria = '".$Categoria."';");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function registrarServicio($Habitacion, $Fecha, $Precio){
+            $sql = $this->con->prepare("INSERT INTO servicio(Servicio_Habitacion, Servicio_Fecha, Servicio_PrecioTotal, Servicio_Estatus) 
+            VALUES ('".$Habitacion."','".$Fecha."','".$Precio."','1')");
+            $sql->execute();
+            $sql = $this->con->prepare("SELECT Servicio_ID FROM servicio 
+            WHERE BINARY Servicio_Habitacion = '".$Habitacion."'
+            AND BINARY Servicio_Fecha = '".$Fecha."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $ID = $res[0]['Servicio_ID'];
+            return $ID;
+        }
+
+        public function registrarCarrito($Servicio, $Producto, $Cantidad){
+            $sql = $this->con->prepare("INSERT INTO carritoproductos( CarroProd_NumServicio, CarroProd_Producto, CarroProd_NumProductos)
+            VALUES ('".$Servicio."','".$Producto."','".$Cantidad."')");
+            $sql->execute();
+            
+            return 1;
+        }
+
+        public function cancelarServicio($Hotel, $Servicio){
+            $sql = $this->con->prepare("DELETE FROM carritoproductos WHERE CarroProd_NumServicio = '".$Servicio."'");
+            $sql->execute();
+            $sql = $this->con->prepare("DELETE FROM servicio WHERE Servicio_ID = '".$Servicio."'");
+            $sql->execute();
+            
+            return "0";
+        }
     }
 
 ?>
