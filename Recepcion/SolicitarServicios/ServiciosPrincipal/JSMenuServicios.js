@@ -1,4 +1,5 @@
 const contenedorLimpiezas = document.getElementById('ContenedorL');
+const contenedorServicios = document.getElementById('ContenedorS');
 const botonBuscar = document.getElementById('btnBuscar');
 const barraHabitacion = document.getElementById('tituloHab');
 const campoHabitacion = document.getElementById('cmpHabitacion');
@@ -67,7 +68,7 @@ class TarjetaLimpieza {
         iBotonCancelar.classList.add('Ult');
         iBotonCancelar.appendChild(NodoBotonCancelar);
         iBotonCancelar.setAttribute('value', this.id);
-        iBotonCancelar.addEventListener('click', interCancelar);
+        iBotonCancelar.addEventListener('click', interCancelarS);
         //Integrar todo en tarjeta
         iTarjeta.appendChild(iTitulo);
         iTarjeta.appendChild(iInformacion);
@@ -77,6 +78,83 @@ class TarjetaLimpieza {
     }
 }
 
+class TarjetaServicios {
+    constructor(habitacion, color, nombre, apellidos, fecha, precio, estatus, id){
+        this.habitacion = habitacion;
+        this.color = color;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fecha = fecha;
+        this.precio = precio;
+        this.estatus = estatus;
+        this.id = id;
+    }
+    get HTML() {
+        return this.obtenerHTML();
+    }
+    obtenerHTML(){
+       //NODOS DE TEXTO
+       var NodoTitulo = document.createTextNode(this.habitacion);
+       var NodoNombre = document.createTextNode(this.nombre);
+       var NodoApellidos = document.createTextNode(this.apellidos);
+       var NodoFecha = document.createTextNode(this.fecha);
+       var NodoPrecio = document.createTextNode("$"+this.precio);
+       var NodoEstatus = document.createElement(this.estatus);
+       var NodoBotonCancelar = document.createTextNode("Cancelar");
+       var NodoBotonEditar = document.createTextNode("Editar");
+        //Div general
+        var iTarjeta = document.createElement('div');
+        iTarjeta.classList.add('TarjetaMul');
+        iTarjeta.classList.add(this.color);
+        iTarjeta.setAttribute("id", "TarLimpieza");
+        //Titulo Tarjeta
+        var iTitulo = document.createElement('h1');
+        iTitulo.classList.add('Info');
+        iTitulo.appendChild(NodoTitulo);
+        //Div info
+        var iInformacion = document.createElement('div');
+        iInformacion.classList.add('Info');
+        //INFORMACIÓN
+        var iNombre = document.createElement('p');
+        iNombre.appendChild(NodoNombre);
+        var iApellidos = document.createElement('p');
+        iApellidos.appendChild(NodoApellidos);
+        var iFecha = document.createElement('p');
+        iFecha.appendChild(NodoFecha);
+        var iPrecio = document.createElement('p');
+        iPrecio.appendChild(NodoPrecio);
+        var iEstatus = document.createElement('p');
+        iEstatus.appendChild(NodoEstatus);
+        
+        iInformacion.appendChild(iNombre);
+        iInformacion.appendChild(iApellidos);
+        iInformacion.appendChild(iFecha);
+        iInformacion.appendChild(iPrecio);
+        iInformacion.appendChild(iEstatus);
+        //BOTON EDITAR
+        var iBotonEditar = document.createElement('button');
+        iBotonEditar.classList.add('Naranja');
+        // iBotonEditar.classList.add('ModelBtn');
+        iBotonEditar.appendChild(NodoBotonEditar);
+        iBotonEditar.setAttribute('value', this.id);
+        iBotonEditar.setAttribute('id', this.habitacion);
+        iBotonEditar.addEventListener('click', editarServ);
+        //BOTON CANCELAR 
+        var iBotonCancelar = document.createElement('button');
+        iBotonCancelar.classList.add('Naranja');
+        iBotonCancelar.classList.add('ModelBtn');
+        iBotonCancelar.classList.add('Ult');
+        iBotonCancelar.appendChild(NodoBotonCancelar);
+        iBotonCancelar.setAttribute('value', this.id);
+        iBotonCancelar.addEventListener('click', interCancelarSer);
+        //Integrar todo en tarjeta
+        iTarjeta.appendChild(iTitulo);
+        iTarjeta.appendChild(iInformacion);
+        iTarjeta.appendChild(iBotonEditar);
+        iTarjeta.appendChild(iBotonCancelar);
+        return iTarjeta;
+    }
+}
 
 campoHabitacion.addEventListener('keyup', function() {
     if (this.value != "") {
@@ -107,10 +185,11 @@ botonBuscar.addEventListener('click', function () {
             
             var informacion = JSON.parse(texto);
             var HabID = informacion.Habitacion_ID;
+            IDHabitacion = HabID;
             console.log(informacion);
             determinarTitulo("Verde", "Habitacion "+informacion.Habitacion_Nombre);
             consultarLimpiezas(HabID);
-            IDHabitacion = HabID;
+            consultarServicios(HabID);
         }
         else{
             if (texto =="x") {
@@ -160,8 +239,9 @@ function consultarLimpiezas(Habitacion) {
                 console.log(LimpTar.HTML);
                 TarjetasLimpiezas.push(LimpTar);
             });
+            
             console.log(TarjetasLimpiezas);
-            desplegadora(contenedorLimpiezas, TarjetasLimpiezas);
+            desplegadora(contenedorLimpiezas, TarjetasLimpiezas, "Limpiezas:");
         }
         else{
             alert("No se encontraron limpiezas");
@@ -177,11 +257,18 @@ function consultarLimpiezas(Habitacion) {
 
 
 
-function desplegadora(contenedor, tarjetas) {
+function desplegadora(contenedor, tarjetas, texto) {
+    
     contador = 4;
     while (contenedor.firstChild) {
         contenedor.removeChild(contenedor.firstChild);
     }
+    var Titular = document.createElement('h1');
+    var BRS = document.createElement('br');
+    Titular.innerHTML = texto;
+    console.log(Titular);
+    contenedor.appendChild(Titular);
+    contenedor.appendChild(BRS);
     tarjetas.forEach(element => {
         if (contador==4) {
 
@@ -209,7 +296,7 @@ function crearFila() {
     return iFila;
 }
 
-function interCancelar() {
+function interCancelarS() {
     CancelarLimp(this.value);
 }
 
@@ -228,9 +315,6 @@ function CancelarLimp(Hab) {
         }
     })
     .then(function(texto) {
-        while (contenedor.firstChild) {
-            contenedor.removeChild(contenedor.firstChild);
-        }
         alert(texto);
      })
      .catch(function(err) {
@@ -248,4 +332,84 @@ function editarLimp() {
     localStorage.setItem("LimpInicio", LimpFormato);
     window.location.href="http://localhost/Buhitel/Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php";
 
+}
+
+
+function consultarServicios(Habitacion) {
+    const infoHabitacionS = new FormData();
+    infoHabitacionS.append('Habitacion', Habitacion);
+    fetch('../backend/consultarServicios.php', {
+        method:'POST',
+        body: infoHabitacionS
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        if (texto!="0" && texto!="x") {
+            var ListaServicios = JSON.parse(texto);
+            console.log(ListaServicios);
+            var TarjetasServicios = [];
+            ListaServicios.forEach(element => {
+                var LimpSer = new TarjetaServicios(element.Habitacion_Nombre, "Azul", element.Huesped_Nombre, element.Huesped_Apellidos, element.Servicio_Fecha, element.Servicio_PrecioTotal, element.EstatusServicio_Nombre, element.Servicio_ID);
+                console.log(LimpSer.HTML);
+                TarjetasServicios.push(LimpSer);
+            });
+            console.log(TarjetasServicios);
+            var Titular = document.createElement('h1');
+            var BRS = document.createElement('br');
+            Titular.innerHTML = "Servicios";
+            contenedorServicios.appendChild(Titular);
+            contenedorServicios.appendChild(BRS);
+            desplegadora(contenedorServicios, TarjetasServicios, "Servicios:");
+        }
+        else{
+            console.log(texto);
+            alert("No se encontraron Servicios");
+            while (contenedorServicios.firstChild) {
+                contenedorServicios.removeChild(contenedorServicios.firstChild);
+            }
+        }
+     })
+     .catch(function(err) {
+        console.log(err);
+     }); 
+}
+
+function interCancelarSer(){
+    CancelarSer(this.value);
+}
+
+function CancelarSer(Hab) {
+    const infoCancelar = new FormData();
+    infoCancelar.append('Servicio', Hab);
+    fetch('../backend/cancelarServicio.php', {
+        method:'POST',
+        body: infoCancelar
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        alert(texto);
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+     consultarServicios(IDHabitacion);
+}
+
+function editarServ() {
+    localStorage.setItem("EditarServicio", "true");  
+    localStorage.setItem("NombreHabEd", this.id);    
+    localStorage.setItem("IDServEd", this.value);
+    window.location.href="http://localhost/Buhitel/Recepcion/SolicitarServicios/EditarServicio/EdServHab.php";
 }

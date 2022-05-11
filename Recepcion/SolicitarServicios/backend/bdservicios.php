@@ -237,7 +237,90 @@
             $sql = $this->con->prepare("DELETE FROM servicio WHERE Servicio_ID = '".$Servicio."'");
             $sql->execute();
             
-            return "0";
+            return "Cancelado";
+        }
+
+        public function consultarServicios($Hotel, $Habitacion, $Hoy){
+            $sql = $this->con->prepare("SELECT Servicio_ID, Servicio_Fecha, Servicio_PrecioTotal, huesped.Huesped_Nombre, huesped.Huesped_Apellidos, estatusservicio.EstatusServicio_Nombre, habitacion.Habitacion_Nombre FROM servicio 
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = Servicio_Habitacion
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            INNER JOIN estatusservicio ON estatusservicio.EstatusServicio_ID = Servicio_Estatus
+            WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
+            AND BINARY Servicio_Habitacion = '".$Habitacion."'
+            AND BINARY Servicio_Fecha > '".$Hoy."'
+            AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut;");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarInfoServicio($Hotel, $Servicio){
+            $sql = $this->con->prepare("SELECT huesped.Huesped_Nombre, huesped.Huesped_Apellidos, Servicio_PrecioTotal, Servicio_Fecha FROM servicio
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = Servicio_Habitacion
+                        INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+                        INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
+                        INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
+                        INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+                        WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
+                        AND BINARY Servicio_ID = '".$Servicio."'
+                        AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut;");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarCarritos($Hotel, $Servicio){
+            $sql = $this->con->prepare("SELECT CarroProd_Producto, CarroProd_NumProductos, categoriaproductos.CatProd_ID, categoriaproductos.CatProd_Categoria, producto.Producto_Nombre, producto.Producto_Precio FROM carritoproductos
+            INNER JOIN producto ON producto.Producto_ID = CarroProd_Producto
+            INNER JOIN categoriaproductos ON categoriaproductos.CatProd_ID = producto.Producto_Categoria
+            WHERE BINARY categoriaproductos.CatProd_Hotel = '".$Hotel."'
+            AND BINARY carritoproductos.CarroProd_NumServicio = '".$Servicio."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function actualizarHabitacion($Hotel, $Habitacion, $Servicio){
+            $sql = $this->con->prepare("UPDATE servicio  
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            SET Servicio_Habitacion = '".$Habitacion."'
+            WHERE BINARY Servicio_ID = '".$Servicio."'
+            AND BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."';");
+            $sql->execute();
+            //SEGUNDA CONSULTA
+            $sql = $this->con->prepare("SELECT huesped.Huesped_Nombre, huesped.Huesped_Apellidos, habitacion.Habitacion_Nombre FROM servicio
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = Servicio_Habitacion
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
+            WHERE BINARY Servicio_Habitacion = '".$Habitacion."'
+            AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut;");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+
+        }
+
+        public function actualizarServicio($Hotel, $Servicio, $Hoy, $Precio){
+            $sql = $this->con->prepare("UPDATE servicio 
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = servicio.Servicio_Habitacion
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            SET Servicio_Fecha ='".$Hoy."', Servicio_PrecioTotal='".$Precio."' 
+            WHERE BINARY Servicio_ID = '".$Servicio."'
+            AND BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."';");
+            $sql->execute();
+            $sql = $this->con->prepare("DELETE c FROM carritoproductos c
+            INNER JOIN producto p ON p.Producto_ID =c.CarroProd_Producto
+            INNER JOIN categoriaproductos t ON t.CatProd_ID = p.Producto_Categoria
+            WHERE BINARY t.CatProd_Hotel = '".$Hotel."'
+            AND BINARY c.CarroProd_NumServicio = '".$Servicio."';");
+            $sql->execute();
+            
+            return "Completado";
         }
     }
 
