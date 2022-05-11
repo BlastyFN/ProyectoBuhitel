@@ -105,7 +105,7 @@ function redireccionar(Personal) {
             URL=URL+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php";
             break;
         case "Servicio":
-            
+            URL=URL+"Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php";
             break;    
        default:
             URL=URL+"/index.php";

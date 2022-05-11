@@ -18,8 +18,8 @@ if (isset($_SESSION['sesionPersonal'])) {
             header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
             exit();
         break;
-        case 'Servicios':
-            header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+        case 'Servicio':
+            header("Location: /Buhitel/Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", TRUE, 301);
             exit();
         break;
         default:

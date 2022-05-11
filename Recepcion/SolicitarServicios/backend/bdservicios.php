@@ -251,7 +251,8 @@
             WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
             AND BINARY Servicio_Habitacion = '".$Habitacion."'
             AND BINARY Servicio_Fecha > '".$Hoy."'
-            AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut;");
+            AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+            AND BINARY Servicio_Estatus = '1';");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
