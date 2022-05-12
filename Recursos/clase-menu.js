@@ -1,6 +1,22 @@
-const listaOpciones = ["Pagina Principal", "Configuración de habitaciones", "Configuracion de usuarios", "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas","Modificar información general","Configuracion de chatbot"];
-const listaLinks = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.html", "item 2", "item 3","item 1", "item 2", "item 3","item 1", "item 2", "item 3"];
-var nombre = "Isaac";
+const listaOpciones = [];
+const listaLinks = [];
+
+const opcionesAdministrador = ["Pagina Principal", "Configuración de habitaciones","Configuracion de usuarios", "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas","Modificar información general","Configuracion de chatbot"]
+const linksAdministrador = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.html", "item 2", "item 3","item 1", "item 2", "item 3","item 1", "item 2", "item 3"];
+
+const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
+    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking"];
+
+const linksRecepcion = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", 
+    "Recepcion/Reservacion/ConsultarReservaciones/consultaReservaciones.php", 
+    "Recepcion/Reservacion/CrearReservacion/Reservacion.php", 
+    "Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php",
+    "Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php", 
+    "Recepcion/SolicitarServicios/SolicitarServicio/SolServHab.php", 
+    "Recepcion/SolicitarServicios/SolicitarValet/SolValet.php"];
+
+const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos"];
+const linksValet = ["ValetParking/Vehiculos/GestionarVehículos"];
 
 class MenuLateral{
     constructor(opciones, links){
@@ -57,11 +73,23 @@ class MenuLateral{
         //Crear elementos de la lista
         var URL = "http://localhost/Buhitel/";
         var contadorLinks = 0;
+
+        if (localStorage.Tipo = "Administrador"){
+            listaOpciones = opcionesAdministrador;
+            listaLinks = linksAdministrador; 
+        } else if (localStorage.Tipo = "Recepcion"){
+            listaOpciones = opcionesRecepcion;
+            listaLinks = linksRecepcion;
+        } else if (localStorage.Tipo = "Valet"){
+            listaOpciones = opcionesValet;
+            listaLinks = linksValet;
+        }
+
         listaOpciones.forEach((item) => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.textContent = item;
-            a.setAttribute('href', URL+listaLinks[contadorLinks]);
+            a.setAttribute('href', URL + listaLinks[contadorLinks]);
             contadorLinks++;
             li.appendChild(a);
             listaMenu.appendChild(li);

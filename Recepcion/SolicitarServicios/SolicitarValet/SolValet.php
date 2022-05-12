@@ -14,10 +14,15 @@ else {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleServicios.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Solicitar Valet</title>
 </head>
 <body>
+    
+<section id="header-menu" class="header-menu" >
+
+</section>
     <h2 class="alinearTexto">Valet Parking</h2>
      <!-- Contenedor global -->
     <section class="contenedor">
@@ -56,4 +61,6 @@ else {
     
 </body>
 <script src= "JSSolValet.js"></script>
+<script src="../../../Recursos/clase-menu.js"></script>
+<script src="../../../recursos/menuTransition.js"></script>
 </html>

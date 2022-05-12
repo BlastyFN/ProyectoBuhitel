@@ -26,10 +26,10 @@
             
             <select name="tipoPersonal" id="tipoPersonal" class="formText">
                 <option selected="true" disabled>Tipo de personal</option>
-                <option value="recepcionista">Recepcionista</option>
-                <option value="personal de limpieza">Personal de limpieza</option>
-                <option value="valet parking">Valet parking</option>
-                <option value="servicio">Personal de servicio</option>
+                <option value="Recepcion">Recepcionista</option>
+                <option value="Limpieza">Personal de limpieza</option>
+                <option value="Valet">Valet parking</option>
+                <option value="Servicio">Personal de servicio</option>
                 
             </select>
 

@@ -15,9 +15,14 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar</title>
     <link rel="stylesheet" href="styleER.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+    <section id="header-menu" class="header-menu" >
+
+    </section>
+    
     <!-- Titulo principal-->
     <h2 class="TituloPrincipal CentrarTexto">Editar Reservación</h2>
     <br>
@@ -69,4 +74,6 @@ else {
     </form>
 </body>
 <script src= "JEdicionReservacion.js"></script>
+<script src="../../../Recursos/clase-menu.js"></script>
+<script src="../../../recursos/menuTransition.js"></script>
 </html>
