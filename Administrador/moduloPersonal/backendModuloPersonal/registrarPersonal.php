@@ -1,5 +1,6 @@
 <?php
     include "bd.php";
+    session_start();
     if(isset($_POST['nombres']) &&  isset($_POST['apellidoP']) && isset($_POST['apellidoM']) 
     && isset($_POST['tipoPersonal']) && isset($_POST['correo']) && isset($_POST['password'])
     && isset($_POST['seguroSocial'])){
@@ -12,7 +13,7 @@
         $password = $_POST['password'];
         $seguroSocial = $_POST['seguroSocial'];
         
-        $hotel = 1;
+        $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
         $res = $bd-> registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
         echo $res;

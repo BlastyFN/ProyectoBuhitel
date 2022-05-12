@@ -4,12 +4,13 @@ const tipoPersonal = document.querySelector('.tipoPersonal');
 const correoPersonal = document.querySelector('.correo');
 const passwordPersonal = document.querySelector('.password');
 const seguroSocialPersonal = document.querySelector('.seguroSocial');
-
+var obtenerUsuarioEspecífico = new FormData();
 
 
 window.addEventListener('load', e => {
+    obtenerUsuarioEspecífico.append("personalID",localStorage.getItem("personalID"));
     fetch('../backendModuloPersonal/obtenerPersonalEspecifico.php' , {
-        method:'POST'
+        method:'POST', body:obtenerUsuarioEspecífico
     }).then(function(response){
         if(response.ok){
          return response.json();

@@ -1,11 +1,11 @@
 <?php
 include "bd.php";
-
+session_start();
 if(isset($_POST['pisos']) &&  isset($_POST['numHabs'])){
 	$pisos = $_POST['pisos'];
 	$numHabs = json_decode($_POST['numHabs']);
 
-	$hotel = 1;
+	$hotel = $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
 
 	for($cont = 0; $cont < $pisos; $cont++){ //Piso por iteración

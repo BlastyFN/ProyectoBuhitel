@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
+            header("Location: /Buhitel", TRUE, 301);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -37,6 +37,12 @@ h1 {
     color: #fff;
 }
 
+.search{
+    display: flex;
+    flex-direction: row;
+    
+}
+
 .search form{
     display: flex;
     flex-direction: row;
@@ -248,4 +254,100 @@ h1 {
     border-style: solid;
     border-color: rgba(0, 0, 0, .3);
     
+}
+
+/* Menú desplegable de opciones de acciones del módulo */
+
+#divMenu, ul, li, li li {
+    margin: 0;
+    padding: 0;
+}
+#divMenu {
+    width: 30px;
+    height: 30px;
+    margin: auto auto;
+    text-align: center;
+    border: 5px solid #59114D;
+    border-radius: 10px;
+    background-color: #ECE5F0;
+    position: fixed;
+    top: 200px;
+    right: 2.6%;
+    
+    
+}
+
+#divMenu ul {
+    position: fixed;
+    visibility: hidden;
+    top: 200px;
+    right: 2.6%;
+    width: 30px;
+    height: 30px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: .3s ease all;
+}
+#divMenu:hover ul {
+    visibility: visible;
+    top: 200px;
+    width: 300px;
+    height: 100px;
+    transition: .3s ease all;
+}
+
+#divMenu ul li a{
+    color: #59114D;
+    text-decoration: none;
+    visibility: hidden;
+}
+
+#divMenu:hover ul li a{
+    visibility: visible;
+    color: #FFF;
+    text-decoration: none;
+    transition: .1s ease all .2s;
+}
+
+
+#divMenu ul li {
+    list-style: none;
+    position: relative;
+    visibility: hidden;
+}
+
+#divMenu:hover ul li{
+    visibility: visible;
+    
+}
+    
+#divMenu:hover {
+   visibility: hidden;
+
+}
+    
+#divMenu:hover ul:hover {
+    background-color: #59114D;
+
+
+    width: 300px;
+    height: 100px;
+    transition: .3s ease all;
+   
+}
+
+#divMenu span:hover {
+    color: #FFF;
+}
+
+#divMenu span{
+    color: #59114D;
+    margin: 0 auto;
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
 }

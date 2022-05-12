@@ -24,8 +24,25 @@
             <input type="text" class="searchElement" placeholder="busca habitaciones, tipos de habitaciones..." id="">
             <button type="submit" class="searchButton">Buscar</button>
         </form>
+    
+
+
+
     </section>
 
+    
+    <div id="divMenu">
+            <span>⋮</span>
+                    <ul>
+
+                        <li><a href="../NuevoTipoHab/nuevoTipoHab.php">Añadir nuevo tipo de habitacion</a></li>
+
+                        <li><a href="../ModificacionTipoHab/modificacionTipoHab.php">Modificar tipo de habitación</a></li>
+
+                        <li><a href="../modificarPisosYHabs/modificarPisosYHabs.php">Modificar pisos y habitaciones</a></li>
+                    </ul>
+
+        </div>
     <div class="vistaHabs">
            
     </div>

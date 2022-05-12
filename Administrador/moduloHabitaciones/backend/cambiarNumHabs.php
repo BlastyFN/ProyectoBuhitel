@@ -1,11 +1,12 @@
 <?php
+    session_start();
     include "bd.php";
     if(isset($_POST['antiguoNumHabs']) && isset($_POST['nuevoNumHabs']) &&  isset($_POST['pisoID'])){
         $antiguoNumHabs = $_POST['antiguoNumHabs'];
         $nuevoNumHabs = $_POST['nuevoNumHabs'];
         $pisoID = $_POST['pisoID'];
             
-        $hotel = 1;
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $bd = new database();
         $piso = $bd-> obtenerPiso($pisoID,$hotel);
         $antiguoNumHabs = $piso * 100 + $antiguoNumHabs;

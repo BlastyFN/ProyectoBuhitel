@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
+            header("Location: /Buhitel", TRUE, 301);
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,9 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pagPrincipalAdmin.css">
-    <link rel="stylesheet" href="../recursos/estilos-menu.css">
-    <link rel="stylesheet" href="../recursos/OwlCarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="../recursos//OwlCarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../Recursos/estilos-menu.css">
+
     <title>Buhitel: Administrador</title>
 </head>
 <body>
@@ -24,8 +29,8 @@
      </section>
 
     
-    <script src="../recursos/clase-menu.js"></script>
-    <script src="../recursos/menuTransition.js"></script>
+    <script src="../../Recursos/clase-menu.js"></script>
+    <script src="../../Recursos/menuTransition.js"></script>
 
     
 </body>

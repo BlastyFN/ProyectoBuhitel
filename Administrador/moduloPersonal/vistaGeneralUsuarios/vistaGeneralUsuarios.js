@@ -28,21 +28,14 @@ window.addEventListener('load', e => {
             tr.appendChild(tdTipoPersonal);
 
             const tdBoton = document.createElement('td');
-            const formID = document.createElement('form');
-            formID.setAttribute('action','../verPersonalEspecifico/verPersonalEspecifico.php');
-            formID.setAttribute('method','POST');
-            const idValue = document.createElement('input');
-            idValue.setAttribute('type','hidden');
-            idValue.setAttribute('name','id');
-            idValue.setAttribute('value',element.personal_id);
+
 
             const btnVer = document.createElement('button');
             btnVer.classList.add('ver');
-            btnVer.setAttribute('type','submit');
+            btnVer.id = element.personal_id;
+            
             btnVer.textContent = 'Ver';
-            formID.appendChild(idValue);
-            formID.appendChild(btnVer);
-            tdBoton.appendChild(formID);
+            tdBoton.appendChild(btnVer);
             tr.appendChild(tdBoton);
 
             fragment.appendChild(tr);
@@ -59,12 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(e.target.classList.contains('ver')){
             var personalID = e.target.id;
             enviarID.append('id',e.personalID);
-            $.ajax({
-                method: 'POST',
-                url: "../verPersonalEspecifico.php",
-                data: enviarID,
-                success: function(respuesta){}
-            });
+            localStorage.setItem("personalID", personalID);
+            window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/verPersonalEspecifico/verPersonalEspecifico.php";
            
         }
 })

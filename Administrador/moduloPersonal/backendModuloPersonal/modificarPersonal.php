@@ -1,4 +1,5 @@
 <?php
+session_start();
     include "bd.php";
     if(isset($_POST['nombres']) &&  isset($_POST['apellidoP']) && isset($_POST['apellidoM']) 
     && isset($_POST['tipoPersonal']) && isset($_POST['correo']) && isset($_POST['password'])
@@ -12,8 +13,8 @@
         $password = $_POST['password'];
         $seguroSocial = $_POST['seguroSocial'];
         
-        $hotel = 1;
-        $personalId = 2;
+        $hotel =  $_SESSION['sesionPersonal']['Hotel'];
+        $personalId = 35;
 	    $bd = new database();
         $res = $bd-> modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
         echo $res;

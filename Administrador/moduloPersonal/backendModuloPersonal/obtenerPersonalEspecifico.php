@@ -1,11 +1,13 @@
 <?php
     include "bd.php";
-        
-    $hotel = 1;
-    $personal_id = 2;
-	$bd = new database();
-    $res = $bd-> obtenerPersonalEspecifico($hotel,$personal_id);
-    echo json_encode($res);
+    session_start();
+    if(isset($_POST['personalID'])){
 
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
+        $personal_id = $_POST['personalID'];
+        $bd = new database();
+        $res = $bd-> obtenerPersonalEspecifico($hotel,$personal_id);
+        echo json_encode($res);
 
+    }
 ?>
