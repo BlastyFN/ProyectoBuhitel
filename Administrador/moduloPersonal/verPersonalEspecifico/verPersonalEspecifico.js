@@ -5,6 +5,7 @@ const correoPersonal = document.querySelector('.correo');
 const passwordPersonal = document.querySelector('.password');
 const seguroSocialPersonal = document.querySelector('.seguroSocial');
 const btnVolver = document.querySelector('.volver');
+const btnModificar = document.querySelector('.modificar');
 var obtenerUsuarioEspecífico = new FormData();
 
 
@@ -35,4 +36,10 @@ window.addEventListener('load', e => {
 
 btnVolver.addEventListener('click', e=>{
     window.location.href = "http://localhost/Buhitel/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+})
+
+
+
+btnModificar.addEventListener('click', e =>{
+    window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/modificarPersonal/modificarPersonal.php";
 })

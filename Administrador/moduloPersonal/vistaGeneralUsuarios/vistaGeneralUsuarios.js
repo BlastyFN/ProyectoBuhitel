@@ -1,6 +1,7 @@
 const tablaPersonal = document.querySelector('.tablaPersonal');
 console.log(tablaPersonal);
 const fragment = document.createDocumentFragment();
+const btnAñadir = document.querySelector('.añadir');
 
 var enviarID = new FormData();
 
@@ -59,5 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+})
+
+btnAñadir.addEventListener('click', e =>{
+    window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/registrarUsuario/registrarPersonal.php";
 })
 
