@@ -2,7 +2,7 @@
     class database{
         private $con;
         function __construct(){
-            $this->con = new PDO ('mysql:host = localhost;dbname=buhitel','root','');
+            $this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','root','');
         }
         //funciones
         public function consultaTipos($Hotel){
