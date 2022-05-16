@@ -42,7 +42,7 @@ class database
 		if (count($res) < 1){
 			$sql = $this->con->prepare( "INSERT INTO producto (producto_hotel, producto_nombre, producto_categoria, 
 			producto_precio, producto_descripcion) 
-	    	VALUES ('".$hotel."','".$nombre."','".$categoria."','".$precio."','".$descripcion."')" );
+	    	VALUES ('".$hotel."','".$nombre."','".$categoria."','".$precio."','".$descripcion."')");
 	    	$sql->execute();
 			return "se ha realizado con exito el registro";
     	}
@@ -52,8 +52,9 @@ class database
 	}
 
 	function obtenerServicios($hotel){
-		$sql = $this->con->prepare("SELECT producto_id, producto_nombre, categoriaproductos.catprod_categoria FROM producto 
-		INNER JOIN categoriaproductos ON producto.producto_categoria = categoriaproductos.catprod_categoria");
+		$sql = $this->con->prepare("SELECT producto.producto_id, producto.producto_nombre, 
+		categoriaproductos.catprod_categoria, producto_existencia FROM producto INNER JOIN categoriaproductos ON 
+		producto.producto_categoria = categoriaproductos.CatProd_ID WHERE producto_hotel = '".$hotel."' ");
 		$sql->execute();
 		$res = $sql->fetchall();
 		
@@ -61,8 +62,9 @@ class database
 	}
 
 	function obtenerServicioEspecifico($hotel,$servicio_id){
-		$sql = $this->con->prepare("SELECT * FROM servicio WHERE
-		servicio_hotel = '".$hotel."' AND servicio_ID =  '".$servicio_id."'");
+		$sql = $this->con->prepare("SELECT * FROM producto INNER JOIN categoriaproductos ON 
+		producto.producto_categoria = categoriaproductos.CatProd_ID  WHERE
+		producto_hotel = '".$hotel."' AND producto_ID =  '".$servicio_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
 		 

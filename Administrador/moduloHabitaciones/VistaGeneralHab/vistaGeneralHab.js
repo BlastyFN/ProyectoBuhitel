@@ -156,9 +156,9 @@ function obtenerPisosHotel(){
     }).then(function(response){
         if(response.ok){
             return response.json();
-           } else {
+            } else {
                throw "Error en la llamada Ajax"
-           }      
+            }      
     }).then(function(res){
    
         var contadorPisos  = 1;

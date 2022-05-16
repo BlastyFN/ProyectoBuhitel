@@ -1,5 +1,6 @@
 <?php
     include "bd.php";
+    session_start();
     if(isset($_POST['nombre']) &&  isset($_POST['tipo']) && isset($_POST['precio']) 
     && isset($_POST['descripcion'])){
 
@@ -9,7 +10,7 @@
         $descripcion = $_POST['descripcion'];
 
         
-        $hotel = 1;
+        $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
         $bd -> crearCategoria($categoria);
         $categoriaID = $bd -> obtenerCategoriaID($categoria);

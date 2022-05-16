@@ -10,7 +10,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../recursos/estilos-menu.css">
+    <link rel="stylesheet" href="../../../recursos/estilos-menu.css">
     <link rel="stylesheet" href="registrarServicio.css">
     <title>Registro de nuevo servicio</title>
 </head>
@@ -40,8 +40,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
         
     </section>
     <script src="registrarServicio.js"></script>
-    <script src="../../recursos/clase-menu.js"></script>
-    <script src="../../recursos/menuTransition.js"></script>
+    <script src="../../../recursos/clase-menu.js"></script>
+    <script src="../../../recursos/menuTransition.js"></script>
     
 </body>
 </html>

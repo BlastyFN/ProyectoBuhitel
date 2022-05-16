@@ -20,13 +20,13 @@
     border-color: rgba(0, 0, 0, .3);
 }
 
-.apellidos{
+.infoPrecioCat{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.apellidos .formText{
+.infoPrecioCat .formText{
     width: 42%;
 }
 

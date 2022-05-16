@@ -1,6 +1,7 @@
 const tablaPersonal = document.querySelector('.tablaPersonal');
 console.log(tablaPersonal);
 const fragment = document.createDocumentFragment();
+
 var enviarID = new FormData();
 
 
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/verPersonalEspecifico/verPersonalEspecifico.php";
            
         }
-})
+    })
 
 })
+

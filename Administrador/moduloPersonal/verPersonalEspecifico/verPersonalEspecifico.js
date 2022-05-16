@@ -4,6 +4,7 @@ const tipoPersonal = document.querySelector('.tipoPersonal');
 const correoPersonal = document.querySelector('.correo');
 const passwordPersonal = document.querySelector('.password');
 const seguroSocialPersonal = document.querySelector('.seguroSocial');
+const btnVolver = document.querySelector('.volver');
 var obtenerUsuarioEspecífico = new FormData();
 
 
@@ -31,3 +32,7 @@ window.addEventListener('load', e => {
     })
 })
 
+
+btnVolver.addEventListener('click', e=>{
+    window.location.href = "http://localhost/Buhitel/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+})

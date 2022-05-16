@@ -271,11 +271,19 @@ h1 {
     border-radius: 10px;
     background-color: #ECE5F0;
     position: fixed;
-    top: 200px;
+    top: 150px;
     right: 2.6%;
-    
     transition: .3s ease all;
     
+
+    
+}
+
+#divMenu:hover{
+    width: 300px;
+    height: 100px;
+    transition: .3s ease all;
+
 }
 
 #divMenu:hover {
@@ -288,7 +296,7 @@ h1 {
 #divMenu ul {
     position: fixed;
     visibility: hidden;
-    top: 200px;
+    top: 150px;
     right: 2.6%;
     width: 30px;
     height: 30px;
@@ -301,7 +309,7 @@ h1 {
 }
 #divMenu:hover ul {
     visibility: visible;
-    top: 200px;
+    top: 150px;
     width: 300px;
     height: 100px;
     transition: .3s ease all;

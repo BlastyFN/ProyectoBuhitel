@@ -9,8 +9,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="verPersonalEspecifico.css">
-    <link rel="stylesheet" href="../../recursos/estilos-menu.css">
+    <link rel="stylesheet" href="verServicioEspecifico.css">
+    <link rel="stylesheet" href="../../../recursos/estilos-menu.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viendo información del personal seleccionado</title>
 </head>
@@ -25,10 +25,10 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
         <section class="infoPersonal">
 
             <p class="nombre"></p>
-            <p class="tipoPersonal"></p>
-            <p class="correo"></p>
-            <p class="password"></p>
-            <p class="seguroSocial"></p>
+            <p class="tipo"></p>
+            <p class="precio"></p>
+            <p class="descripcion"></p>
+            <p class="existencia"></p>
         </section>
         <section class="botones">
             <button class="boton volver">Volver</button>
@@ -38,9 +38,9 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </div>
 
 
-    <script src="verPersonalEspecifico.js"></script>
-    <script src="../../recursos/clase-menu.js"></script>
-    <script src="../../recursos/menuTransition.js"></script>
+    <script src="verServicioEspecifico.js"></script>
+    <script src="../../../recursos/clase-menu.js"></script>
+    <script src="../../../recursos/menuTransition.js"></script>
 
 </body>
 </html>

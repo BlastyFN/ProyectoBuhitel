@@ -1,18 +1,20 @@
 const formRegistroUsuario = document.querySelector('.formNuevoUsuario');
+const obtenerInfo = new FormData();
 const enviarRegistro = new FormData();
 
-const inputNombres = document.getElementById('nombreUsr');
-const inputApellidoP = document.getElementById('apellidoP');
-const inputApellidoM = document.getElementById('apellidoM');
-const inputTipoPersonal = document.getElementById('tipoPersonal');
-const inputCorreo = document.getElementById('correoUsr');
-const inputContraseña = document.getElementById('password');
-const inputSeguroSocial = document.getElementById('seguroSocial'); 
+const nombre = document.getElementById('nombreUsr');
+const categoria = document.getElementById('categoria');
+const precio = document.getElementById('precio');
+const existencia = document.getElementById('existencia');
+const descripcion = document.getElementById('descripcion');
+const opcAgotado = document.getElementById('false');
+const opcStock = document.getElementById('true');
+
 
 window.addEventListener('load',e=>{
-
-    fetch('../backendModuloPersonal/obtenerPersonalEspecifico.php' , {
-        method:'POST'
+    obtenerInfo.append('productoID',localStorage.getItem("productoID"));
+    fetch('../backendModuloPersonal/obtenerServicioEspecifico.php' , {
+        method:'POST', body:obtenerInfo
     }).then(function(response){
         if(response.ok){
          return response.json();
@@ -22,22 +24,22 @@ window.addEventListener('load',e=>{
     }).then(function(infoPersonal){
         console.log(infoPersonal);
         for(element of infoPersonal){
-            inputNombres.value = element.Personal_Nombre;
-            inputApellidoP.value = element.Personal_APaterno 
-            inputApellidoM.value = element.Personal_AMaterno;
-            inputTipoPersonal.value = element.Personal_Tipo;
-            inputCorreo.value = element.Personal_Correo;
-            inputContraseña.value = element.Personal_Contrasena;
-            inputSeguroSocial.value = element.Personal_Seguro;
+            inputNombres.value = element.Producto_Nombre;
+            categoria.value = element.CatProd_Categoria; 
+            precio.value = element.Producto_Precio;
+            descripcion.selectedIndex = 1;
+            
+           
         }
     })
 })
 
+
 formRegistroUsuario.addEventListener('submit', function(e){
     e.preventDefault();    
 
-    enviarRegistro.append('nombres',inputNombres.value);
-    enviarRegistro.append('apellidoP',inputApellidoP.value);
+    enviarRegistro.append('nombres',nombre.value);
+    enviarRegistro.append('apellidoP',categoria.value);
     enviarRegistro.append('apellidoM',inputApellidoM.value);
     enviarRegistro.append('tipoPersonal', inputTipoPersonal.value);
     enviarRegistro.append('correo',inputCorreo.value);

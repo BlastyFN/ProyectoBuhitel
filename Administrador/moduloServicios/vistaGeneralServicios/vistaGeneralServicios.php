@@ -32,7 +32,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
 
         </table>
 
-        <button class="añadir"> Añadir </button>
+        <button class="btnAdd"> Añadir </button>
 
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -2,7 +2,8 @@ const tablaServicios = document.querySelector('.tablaServicios');
 console.log(tablaServicios);
 const fragment = document.createDocumentFragment();
 var enviarID = new FormData();
-
+const btnAdd = document.querySelector('.btnAdd');
+console.log(btnAdd);
 
 window.addEventListener('load', e => {
     fetch('../backendModuloServicios/obtenerServicios.php' , {
@@ -22,26 +23,22 @@ window.addEventListener('load', e => {
             tdNombre.textContent = element.producto_nombre;
             tr.appendChild(tdNombre);
             
-            const tdTipoProducto = document.createElement('td');
-            tdTipoProducto.textContent = element.producto_categoria;
-            tr.appendChild(tdTipoProducto);
+            const existencia = document.createElement('td');
+            if(element.producto_existencia == 1){
+                existencia.textContent = "En stock";
+            } else {
+                existencia.textContent = "Agotado";
+            }
+        
+            tr.appendChild(existencia);
 
             const tdBoton = document.createElement('td');
-            const formID = document.createElement('form');
-            formID.setAttribute('action','../verPersonalEspecifico/verServicioEspecifico.php');
-            formID.setAttribute('method','POST');
-            const idValue = document.createElement('input');
-            idValue.setAttribute('type','hidden');
-            idValue.setAttribute('name','id');
-            idValue.setAttribute('value',element.producto_id);
-
             const btnVer = document.createElement('button');
             btnVer.classList.add('ver');
-            btnVer.setAttribute('type','submit');
+            btnVer.setAttribute('id', element.producto_id);
             btnVer.textContent = 'Ver';
-            formID.appendChild(idValue);
-            formID.appendChild(btnVer);
-            tdBoton.appendChild(formID);
+    
+            tdBoton.appendChild(btnVer);
             tr.appendChild(tdBoton);
 
             fragment.appendChild(tr);
@@ -56,16 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tablaServicios.addEventListener('click', e =>{
         if(e.target.classList.contains('ver')){
-            var personalID = e.target.id;
-            enviarID.append('id',e.personalID);
-            $.ajax({
-                method: 'POST',
-                url: "../verPersonalEspecifico.php",
-                data: enviarID,
-                success: function(respuesta){}
-            });
+            var productoID = e.target.id;
+            enviarID.append('id',productoID);
+            localStorage.setItem("productoID", productoID);
+            window.location.href="http://localhost/Buhitel/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
+           
            
         }
 })
 
+})
+
+btnAdd.addEventListener('click', e =>{
+    window.location.href= "http://localhost/Buhitel/Administrador/moduloServicios/registrarServicio/registrarServicio.php";
 })

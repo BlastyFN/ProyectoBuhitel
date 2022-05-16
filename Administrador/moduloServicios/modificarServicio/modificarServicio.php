@@ -10,8 +10,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../recursos/estilos-menu.css">
-    <link rel="stylesheet" href="modificarPersonal.css">
+    <link rel="stylesheet" href="../../../recursos/estilos-menu.css">
+    <link rel="stylesheet" href="modificarServicio.css">
     <title>modficación de personal</title>
 </head>
 <body>
@@ -19,29 +19,27 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
 
     </section>
 
-    <h1>
-        Modificando información del personal
+    <h1 class="titulo">
+        Modificando el servicio
     </h1>
     <section class="contFormulario">
         <form class="formNuevoUsuario" action="" method="post">
-            <input type="text" class="formText" id="nombreUsr" placeholder="Nombres">
-            <div class="apellidos">
-                <input type="text" class="formText" id="apellidoP" placeholder="Apellido paterno">
-                <input type="text" class="formText" id="apellidoM" placeholder="Apellido materno">
+            <input type="text" class="formText" id="nombre" placeholder="Nombre">
+            <div class="infoPrecioCat">
+                <input type="text" class="formText" id="categoria" placeholder="Categoría">
+                <input type="number" class="formText" id="precio" placeholder="0">
             </div>
             
-            <select name="tipoPersonal" id="tipoPersonal" class="formText">
-                <option selected="true" disabled>Tipo de personal</option>
-                <option value="recepcionista">Recepcionista</option>
-                <option value="personal de limpieza">Personal de limpieza</option>
-                <option value="valet parking">Valet parking</option>
-                <option value="servicio">Personal de servicio</option>
+           
+
+            <input type="text" class="formText" id="descripcion" placeholder="Descripción">
+
+            <select name="existencia" id="existencia" class="formText">
+                <option id="false" value="0">Agotado</option>
+                <option id="true" value="1">En stock</option>
+
                 
             </select>
-
-            <input type="text" class="formText" id="correoUsr" placeholder="Correo">
-            <input type="text" class="formText" id="password" placeholder="Contraseña">
-            <input type="text" class="formText" id="seguroSocial" placeholder="Número de seguridad social">
             <br>
             
     
@@ -51,8 +49,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
         
     </section>
     <script src="modificarPersonal.js"></script>
-    <script src="../../recursos/clase-menu.js"></script>
-    <script src="../../recursos/menuTransition.js"></script>
+    <script src="../../../recursos/clase-menu.js"></script>
+    <script src="../../../recursos/menuTransition.js"></script>
     
 </body>
 </html>
