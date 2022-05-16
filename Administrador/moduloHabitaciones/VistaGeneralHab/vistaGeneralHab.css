@@ -273,10 +273,7 @@ h1 {
     position: fixed;
     top: 150px;
     right: 2.6%;
-    transition: .3s ease all;
-    
 
-    
 }
 
 #divMenu:hover{
@@ -286,12 +283,7 @@ h1 {
 
 }
 
-#divMenu:hover {
-    width: 300px;
-    height: 100px;
-    transition: .3s ease all;
 
-}
 
 #divMenu ul {
     position: fixed;
