@@ -3,7 +3,7 @@
         private $con;
         function __construct()
         {
-            $this->con = new PDO ('mysql:host = localhost;dbname=buhitel','root','');
+            $this->con = new PDO ('mysql:host = 162.241.60.122;dbname=corpo206_Buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
         }   
         public function registroPrincipal($HotelNombre, $Correo, $PersonalNombre, $PersonalAPaterno, $PersonalAMaterno, $PersonalTelefono, $PersonalClave){
             /* SENTENCIA DE REGESITRAR HOTEL*/
