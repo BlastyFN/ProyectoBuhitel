@@ -77,7 +77,7 @@ boton.addEventListener('click', function(e) {
                 console.log(infoPersonal);
                 //ENVÍA A REDIRECCIONAR CON EL OBJETO DE PARAMETRO
                 guardarInfo(infoPersonal);
-                redireccionar(infoPersonal);
+                
                 break;
         }
      })
@@ -122,4 +122,5 @@ function guardarInfo(Info) {
     localStorage.setItem("Nombre", Info.Personal_Nombre);
     localStorage.setItem("Tipo", Info.Personal_Tipo);
     localStorage.setItem("Correo", Correo.value);
+    redireccionar(Info);
 }

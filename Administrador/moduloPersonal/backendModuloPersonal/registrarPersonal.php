@@ -11,11 +11,12 @@
         $tipoPersonal = $_POST['tipoPersonal'];
         $correo = $_POST['correo'];
         $password = $_POST['password'];
+        $passwordS = md5($password);
         $seguroSocial = $_POST['seguroSocial'];
         
         $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
-        $res = $bd-> registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
+        $res = $bd-> registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal, $correo, $passwordS, $seguroSocial);
         echo $res;
     }
 

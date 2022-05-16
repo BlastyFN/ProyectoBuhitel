@@ -274,7 +274,15 @@ h1 {
     top: 200px;
     right: 2.6%;
     
+    transition: .3s ease all;
     
+}
+
+#divMenu:hover {
+    width: 300px;
+    height: 100px;
+    transition: .3s ease all;
+
 }
 
 #divMenu ul {

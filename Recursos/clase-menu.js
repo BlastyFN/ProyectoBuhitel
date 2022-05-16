@@ -79,13 +79,13 @@ class MenuLateral{
         var URL = "http://localhost/Buhitel/";
         var contadorLinks = 0;
 
-        if (localStorage.Tipo = "Administrador"){
+        if (localStorage.Tipo == "Administrador"){
             listaOpciones = opcionesAdministrador;
             listaLinks = linksAdministrador; 
-        } else if (localStorage.Tipo = "Recepcion"){
+        } else if (localStorage.Tipo == "Recepcion"){
             listaOpciones = opcionesRecepcion;
             listaLinks = linksRecepcion;
-        } else if (localStorage.Tipo = "Valet"){
+        } else if (localStorage.Tipo == "Valet"){
             listaOpciones = opcionesValet;
             listaLinks = linksValet;
         }

@@ -41,9 +41,7 @@ else {
                 <h1 class="TextoCompleto Verde RedMid" id="txtHora">Hora: </h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtEstatus">Estatus: </h1>
                 <section id="SeccionCarritos">
-                <h1 class="TextoCompleto Morado RedMid">#1    Pizza</h1>
-                <h1 class="TextoCompleto Morado RedMid">#2    Copas de vino</h1>
-                <h1 class="TextoCompleto Morado RedMid">#1    Caviar</h1>
+
                 </section>
                 <button class="Verde RedMid TextoCompleto" id="btnConfirmar" >Comenzar</button>
                 
