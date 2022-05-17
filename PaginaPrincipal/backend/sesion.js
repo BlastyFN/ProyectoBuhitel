@@ -88,7 +88,7 @@ boton.addEventListener('click', function(e) {
 
 function redireccionar(Personal) {
     //CREA LA URL BASE
-    var URL = "http://localhost/";
+    var URL = "http://corporativotdo.com/";
     console.log(Personal.Personal_Tipo);
     //SEGUN CADA CASO LE AÑADE LA DIRECCIÓN QUE SIGUE
     switch (Personal.Personal_Tipo) {
