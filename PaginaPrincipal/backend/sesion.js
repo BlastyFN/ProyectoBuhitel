@@ -117,10 +117,10 @@ function redireccionar(Personal) {
 }
 
 function guardarInfo(Info) {
-    localStorage.setItem("ID", Info.Personal_ID);
-    localStorage.setItem("Hotel", Info.Personal_Hotel);
-    localStorage.setItem("Nombre", Info.Personal_Nombre);
-    localStorage.setItem("Tipo", Info.Personal_Tipo);
-    localStorage.setItem("Correo", Correo.value);
+    Window.localStorage.setItem("ID", Info.Personal_ID);
+    Window.localStorage.setItem("Hotel", Info.Personal_Hotel);
+    Window.localStorage.setItem("Nombre", Info.Personal_Nombre);
+    Window.localStorage.setItem("Tipo", Info.Personal_Tipo);
+    Window.localStorage.setItem("Correo", Correo.value);
     redireccionar(Info);
 }
