@@ -23,7 +23,7 @@
                 $this->mail->SMTPAuth   = true;                                   //Advierte de la autenticación del SMTP
                 $this->mail->Username   = $this->direccion;                     //Determino el correo
                 $this->mail->Password   = $this->clave;                               //Determino la contraseña
-                $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Determina la seguridad
+                $this->mail->SMTPSecure = 'ssl';            //Determina la seguridad
                 $this->mail->Port       = 465;                                    //Determina el puerto
             
                 //COnfiguración del emisor y receptor
