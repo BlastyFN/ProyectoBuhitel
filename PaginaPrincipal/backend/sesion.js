@@ -118,6 +118,13 @@ function redireccionar(Personal) {
 
 function guardarInfo(Info) {
     miStorage = window.localStorage;
+    if (storageAvailable("miStorage")) {
+        console.log("DisponibleMS");
+    }
+    if (storageAvailable("localStorage")) {
+        console.log("DisponibleMS");
+    }
+   
     miStorage.setItem("ID", Info.Personal_ID);
     miStorage.setItem("Hotel", Info.Personal_Hotel);
     miStorage.setItem("Nombre", Info.Personal_Nombre);
