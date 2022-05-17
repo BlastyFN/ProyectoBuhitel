@@ -117,18 +117,10 @@ function redireccionar(Personal) {
 }
 
 function guardarInfo(Info) {
-    miStorage = window.localStorage;
-    if (storageAvailable("miStorage")) {
-        console.log("DisponibleMS");
-    }
-    if (storageAvailable("localStorage")) {
-        console.log("DisponibleMS");
-    }
-   
-    miStorage.setItem("ID", Info.Personal_ID);
-    miStorage.setItem("Hotel", Info.Personal_Hotel);
-    miStorage.setItem("Nombre", Info.Personal_Nombre);
-    miStorage.setItem("Tipo", Info.Personal_Tipo);
-    miStorage.setItem("Correo", Correo.value);
-    redireccionar(Info);
+    localStorage.setItem("ID", Info.Personal_ID);
+    localStorage.setItem("Hotel", Info.Personal_Hotel);
+    localStorage.setItem("Nombre", Info.Personal_Nombre);
+    localStorage.setItem("Tipo", Info.Personal_Tipo);
+    localStorage.setItem("Correo", Correo.value);
+    // redireccionar(Info);
 }
