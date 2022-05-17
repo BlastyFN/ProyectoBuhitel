@@ -1,5 +1,5 @@
 <?php 
-    class database{
+    class mailer{
         private $Origen;
         function __construct()
         {
