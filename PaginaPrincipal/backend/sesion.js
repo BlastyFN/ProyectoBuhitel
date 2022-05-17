@@ -122,5 +122,8 @@ function guardarInfo(Info) {
     localStorage.setItem("Nombre", Info.Personal_Nombre);
     localStorage.setItem("Tipo", Info.Personal_Tipo);
     localStorage.setItem("Correo", Correo.value);
-    redireccionar(Info);
+    setTimeout(function () {
+        redireccionar(Info);    
+    }, 1000);
+    
 }
