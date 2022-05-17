@@ -2,7 +2,7 @@
     class database{
         private $con;
         function __construct(){
-            $this->con = new PDO ('mysql:host = localhost;dbname=corpo206_Buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
+            $this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
         }
         //funciones
         
