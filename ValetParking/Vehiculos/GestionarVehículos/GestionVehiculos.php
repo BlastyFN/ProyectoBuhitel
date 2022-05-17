@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if ($_SESSION['sesionPersonal']['Tipo']!='Valet') {
-            header("Location: /Buhitel", TRUE, 301);
+            header("Location: /index.php", TRUE, 301);
 }
 else {
     # code...

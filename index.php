@@ -3,23 +3,23 @@ session_start();
 if (isset($_SESSION['sesionPersonal'])) {
     switch ($_SESSION['sesionPersonal']['Tipo']) {
         case 'Administrador':
-            header("Location: /Buhitel/Administrador/pagina principal admin/pagPrincipalAdmin.php", TRUE, 301);
+            header("Location: /Administrador/pagina principal admin/pagPrincipalAdmin.php", TRUE, 301);
             exit();
         break;
         case 'Valet':
-            header("Location: /Buhitel/ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php", TRUE, 301);
+            header("Location: /ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php", TRUE, 301);
             exit();
         break;
         case 'Recepcion':
-            header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+            header("Location: /Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
             exit();
         break;
         case 'Limpieza':
-            header("Location: /Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+            header("Location: /Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
             exit();
         break;
         case 'Servicio':
-            header("Location: /Buhitel/Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", TRUE, 301);
+            header("Location: /Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", TRUE, 301);
             exit();
         break;
         default:
