@@ -47,37 +47,42 @@ function cargarTabla() {
         }
     })
     .then(function(texto) {
-        let jsonVeh;
-        jsonVeh = JSON.parse(texto);
-        console.log(jsonVeh);
-        //Crea el objeto
-        jsonVeh.forEach(element => {
-            const VH = new Vehiculo(
-                element.Vehiculo_Placas,
-                element.Habitacion_Nombre,
-                element.Vehiculo_Modelo,
-                element.Vehiculo_Color,
-                element.Vehiculo_LugarEstacionamiento,
-                element.Vehiculo_Notas
-            );
-            //Añade el objeto al array de objetos
-            Vehiculos.push(VH);
-            //Crea cada línea con al información obtenida del JSON
-            var iFila = document.createElement('tr');
-            var iHabitacion = document.createElement('td');
-            var iModelo = document.createElement('td');
-            var iPlacas = document.createElement('td');
-            iHabitacion.appendChild(document.createTextNode(element.Habitacion_Nombre));
-            iModelo.appendChild(document.createTextNode(element.Vehiculo_Modelo));
-            iPlacas.appendChild(document.createTextNode(element.Vehiculo_Placas));
-            iFila.appendChild(iHabitacion);
-            iFila.appendChild(iModelo);
-            iFila.appendChild(iPlacas);
-            //Añade el evento de cada fila para seleccionar el vehículo
-           iFila.addEventListener('click', obtenerVeh);
-            infoTabla.appendChild(iFila);
-        }); 
-        console.log(Vehiculos);
+        if (texto != "0") {
+            let jsonVeh;
+            jsonVeh = JSON.parse(texto);
+            console.log(jsonVeh);
+            //Crea el objeto
+            jsonVeh.forEach(element => {
+                const VH = new Vehiculo(
+                    element.Vehiculo_Placas,
+                    element.Habitacion_Nombre,
+                    element.Vehiculo_Modelo,
+                    element.Vehiculo_Color,
+                    element.Vehiculo_LugarEstacionamiento,
+                    element.Vehiculo_Notas
+                );
+                //Añade el objeto al array de objetos
+                Vehiculos.push(VH);
+                //Crea cada línea con al información obtenida del JSON
+                var iFila = document.createElement('tr');
+                var iHabitacion = document.createElement('td');
+                var iModelo = document.createElement('td');
+                var iPlacas = document.createElement('td');
+                iHabitacion.appendChild(document.createTextNode(element.Habitacion_Nombre));
+                iModelo.appendChild(document.createTextNode(element.Vehiculo_Modelo));
+                iPlacas.appendChild(document.createTextNode(element.Vehiculo_Placas));
+                iFila.appendChild(iHabitacion);
+                iFila.appendChild(iModelo);
+                iFila.appendChild(iPlacas);
+                //Añade el evento de cada fila para seleccionar el vehículo
+                iFila.addEventListener('click', obtenerVeh);
+                infoTabla.appendChild(iFila);
+            }); 
+            console.log(Vehiculos);
+        }else{
+            alert("No hay vehículos");
+        }
+        
      })
      .catch(function(err) {
         console.log(err);

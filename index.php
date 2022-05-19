@@ -52,7 +52,7 @@ else {
         <ul class="links_nav"> 
             <li> <a href="">Inicio</a></li>
             <li> <a href="">Acerca De</a></li>
-            <li> <a href="">Funcionalidades</a></li>
+            <li> <a href="#TarsServicios">Funcionalidades</a></li>
             <li> <a href="PaginaPrincipal/Registro.php">Registrar</a></li>
             <li> <a href="PaginaPrincipal/InicioSesion.php">Ingresar</a></li>
         </ul>
@@ -68,16 +68,17 @@ else {
             
             <br>
             <div class="Texto">
-                <p>Buhitel es la opción lorem Lorem ipsum dolor sit 
-                    amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam . . .</p>
+                <p>Buhitel es la opción para gestionar los servicios 
+                    de tu hotel si tu objetivo es que la 
+                    experiencia del huésped sea lo más agradable posible, 
+                    mediante un sistema que integra todos
+                    los elementos a solicitar y poder satisfacer las 
+                    necesidades de la forma más rápida y eficiente
+                    posible.</p>
             </div>
             <br>
             <div class="Boton_Central">
-                <button class="Naranja">
-                    Acerca de
-                </button>
+                
             </div>
             
         </div>
@@ -98,12 +99,12 @@ else {
             <br>
             <br>
             <div class="Texto">
-                <p>Buhitel es la opción lorem Lorem ipsum dolor sit 
-                    amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam Lorem ipsum dolor sit amet 
-                    consectetur adipisicing elit. Pariatur harum minima 
-                    ea! . . .</p>
+                <p>Buhitel es un sistema que permite al administrador
+                    contar con información de la más alta relevancia de su 
+                    hotel, permite al personal usar una herramienta para su 
+                    trabajo del día a día y al huésped experimentar una estadía
+                    con la mejor de las atenciones.
+                </p>
             </div>
         </div>
     </section>
@@ -125,7 +126,10 @@ else {
             <h1>Gerencia</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>La gerencia podrá consultar información estadística de su hotel basado en el procesamiento de los
+                    datos generados en el sistema, así como manejar los asuntos que le competen como los servicios y la
+                    configuración del personal y el hotel.
+                </p>
             </div>
         </div>
         <!-- PRIMERA TARJETA -->
@@ -135,7 +139,10 @@ else {
             <h1>Recepción</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>El personal de recepción podrá crear, editar y consultar las reservaciones en interfaces dinámicas e 
+                    intuitivas, solicitar y manejar los servicios solicitados a las habitaciones ocupadas y editar montos
+                    y conceptos cargados a las reservaciones.
+                </p>
             </div>
         </div>
         <!-- SEGUNDA TARJETA -->
@@ -148,12 +155,15 @@ else {
     <br>
     <!-- SEGUNDA FILA -->
     <!-- TERCERA TARJETA -->
-    <section class="contenedor Funcs">
+    <section class="contenedor Funcs" id="TarsServicios">
         <div class="Tarjeta" id="Limpieza">
             <h1>Limpieza</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>Para el personal de limpieza existirá un manejo automático en la asignación de las limpiezas solicitadas, 
+                    que equilibre la carga de trabajo de manera equitativa y poder registrar su trabajo en el sistema para
+                    una mejor administración.
+                </p>
             </div>
         </div>
         <!-- TERCERA TARJETA -->
@@ -163,7 +173,10 @@ else {
             <h1>Servicio</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>Para el personal encargado del servicio a la habitación, se contará con interfaces dinámicas 
+                    que permiten una gestión de los pedidos solicitados más eficiente y un manejo de los servicios y
+                    productos que se ofrecen.
+                </p>
             </div>
         </div>
         <!-- CUARTA TARJETA -->
@@ -181,7 +194,10 @@ else {
             <h1>Valet</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>El personal de valet verá facilitado su trabajo al contar con un sistema que le permita registrar 
+                    y consultar los vehículos según lo requiera, desplegando los contextuales al momento que requiere
+                    así como los servicios solicitados.
+                </p>
             </div>
         </div>
         <!-- QUINTA TARJETA -->
@@ -191,7 +207,10 @@ else {
             <h1>Huésped</h1>
             <div class="Info">
                 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo perferendis tempora deserunt repellat neque aliquam praesentium facilis quos, cupiditate, quas culpa porro ipsum impedit fugit exercitationem voluptate fuga assumenda.</p>
+                <p>Quién se hospede en un hotel con Buhitel, contará con una experiencia de interacción única, 
+                    a través de un chatbot de WhatsApp sin necesidad de descargar ninguna aplicación para pedir
+                    los servicios que el hotel ofrezca.
+                </p>
             </div>
         </div>
         <!-- SEXTA TARJETA -->
