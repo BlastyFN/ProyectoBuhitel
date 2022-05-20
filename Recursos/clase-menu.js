@@ -102,7 +102,8 @@ class MenuLateral{
         //Crear botón cerrar sesión
         const btnSalir = document.createElement('button');
         btnSalir.classList.add('btnSalir');
-        btnSalir.setAttribute("onclick", "location.href ='http://google.com'");
+        
+        btnSalir.addEventListener("click", cerrarSesion);
         btnSalir.textContent = "Cerrar Sesión";
 
 
