@@ -16,6 +16,7 @@ else {
     <title>Vehículos</title>
     <link rel="stylesheet" href="styleVisualizar.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
 </head>
 <body>
     <div id="Encabezado">
@@ -60,5 +61,7 @@ else {
         </section>
     </section>
     <script src= "JSAgregarVehiculos.js"></script>
+    <script src="../../../Recursos/clase-menu.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
 </body>
 </html>

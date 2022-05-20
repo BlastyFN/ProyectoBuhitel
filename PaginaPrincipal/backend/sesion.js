@@ -113,7 +113,7 @@ function redireccionar(Personal) {
     }
     console.log(URL);
     //ENVÍA A LA DIRECCIÓN
-    window.location.assign(URL);
+    window.location.replace(URL);
 }
 
 function guardarInfo(Info) {

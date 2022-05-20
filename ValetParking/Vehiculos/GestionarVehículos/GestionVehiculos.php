@@ -16,6 +16,7 @@ else {
     <title>Gestion Vehículos</title>
     <link rel="stylesheet" href="styleGestion.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
 </head>
 <body>
     <div id="Encabezado">
@@ -31,5 +32,7 @@ else {
     
     <script src= "JSGestionVehiculos.js"></script>
     <script src= "..\..\..\Recursos\jquery-3.6.0.min.js"></script>
+    <script src="../../../Recursos/clase-menu.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
 </body>
 </html>
