@@ -92,7 +92,7 @@ btnEditarHuesped.addEventListener('click', function (e) {
         }
     })
     .then(function(texto) {
-        window.location.href="http://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+        window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
     })
     .catch(function(err) {
         console.log(err);
@@ -452,5 +452,5 @@ function registrarHabitaciones(Reservacion) {
             console.log(err);
          }); 
     });
-    window.location.href="http://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+    window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
 }

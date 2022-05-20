@@ -76,7 +76,7 @@ class MenuLateral{
         const listaMenu = document.createElement('ul');
         listaMenu.setAttribute('id','listaMenu');
         //Crear elementos de la lista
-        var URL = "http://corporativotdo.com/";
+        var URL = "https://corporativotdo.com/";
         var contadorLinks = 0;
 
         if (localStorage.Tipo == "Administrador"){
