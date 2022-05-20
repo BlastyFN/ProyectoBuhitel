@@ -118,5 +118,29 @@ class MenuLateral{
     }
 }
 
+function cerrarSesion() {
+    fetch('../../../Recursos/cerrarSesion.php', {
+        method:'POST'
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        alert(texto);
+        console.log(texto);
+        localStorage.clear();
+        setTimeout(function () {   
+            window.location.replace("https://corporativotdo.com/");
+        }, 1000);
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+}
+
 const menu = new MenuLateral(listaOpciones,listaLinks);
 menu.obtenerMenu();
