@@ -59,5 +59,5 @@ else {
 </body>
 <script src= "JSConsultarRes.js"></script>
 <script src="../../../Recursos/clase-menu.js"></script>
-<script src="../../../recursos/menuTransition.js"></script>
+<script src="../../../Recursos/menuTransition.js"></script>
 </html>

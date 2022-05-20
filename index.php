@@ -77,9 +77,7 @@ else {
                     posible.</p>
             </div>
             <br>
-            <div class="Boton_Central">
-                
-            </div>
+            
             
         </div>
         <aside class="inicio_foto">
