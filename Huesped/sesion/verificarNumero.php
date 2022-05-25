@@ -1,9 +1,14 @@
 <?php 
     if (isset($_POST['numero'])) {
         $Numero = $_POST['numero'];
-        echo "Hola, numero recibido ".$Numero;
+        
+        $String = "Hola, numero recibido ".$Numero;
+        $registrado = json_encode($String);
+        echo $registrado;
     }
     else{
-        echo "Hola, error numero no recibido";
+        $String =  "Hola, error numero no recibido";
+        $registrado = json_encode($String);
+        echo $registrado;
     }
 ?>
