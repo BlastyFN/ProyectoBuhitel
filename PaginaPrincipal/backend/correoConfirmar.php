@@ -6,7 +6,7 @@ if(isset($_POST['Correo'])){
 	//ASOCIACIÓN DE VARIABLES
 	$Correo = $_POST['Correo'];
     $Titulo = 'Codigo de confirmacion';
-    $Mensaje = 'Hola! Aquí está tu código para completar el registro de tu cuenta:'.'<br>';
+    $Mensaje = 'Hola! Aquí está tu código para completar el registro de tu cuenta: ';
 
     $codigo = '';
     $caracteres = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
