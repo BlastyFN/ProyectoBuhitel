@@ -3,10 +3,12 @@
         $Numero = $_POST['numero'];
         $resultado = [];
         $String = "Hola, numero recibido ".$Numero;
-        $reg['registrado'] = json_encode($String);
+        $reg['registrado'] = $String;
+
         array_push($resultado, $reg);
-        // echo $resultado['registrado'];
-        var_dump($resultado);
+        echo json_encode($resultado);
+        // echo $resultado;
+        // var_dump($resultado);
         
     }
     else{
