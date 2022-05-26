@@ -3,12 +3,13 @@
         $Numero = $_POST['numero'];
         
         $String = "Hola, numero recibido ".$Numero;
-        $registrado = json_encode($String);
-        echo $registrado;
+        $resultado['registrado'] = json_encode($String);
+        echo $resultado;
+        
     }
     else{
         $String =  "Hola, error numero no recibido";
-        $registrado = json_encode($String);
-        echo $registrado;
+        $resultado['registrado'] = json_encode($String);
+        echo $resultado;
     }
 ?>
