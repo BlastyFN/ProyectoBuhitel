@@ -6,7 +6,7 @@
         $reg['registrado'] = $String;
 
         array_push($resultado, $reg);
-        $nuevoResultado = json_encode($resultado);
+        $nuevoResultado = json_encode($resultado[0]);
         echo $nuevoResultado[0];
         // echo $resultado;
         // var_dump($resultado);
