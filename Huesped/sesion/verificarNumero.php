@@ -4,7 +4,7 @@
         
         $String = "Hola, numero recibido ".$Numero;
         $resultado['registrado'] = json_encode($String);
-        echo $resultado[0];
+        echo $resultado['registrado'];
         // var_dump($resultado);
         
     }
