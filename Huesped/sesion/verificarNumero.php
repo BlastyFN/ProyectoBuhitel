@@ -1,11 +1,12 @@
 <?php 
     if (isset($_POST['numero'])) {
         $Numero = $_POST['numero'];
-        
+        $resultado = [];
         $String = "Hola, numero recibido ".$Numero;
-        $resultado['registrado'] = json_encode($String);
+        $reg['registrado'] = json_encode($String);
+        array_push($resultado, $reg);
         // echo $resultado['registrado'];
-        var_dump($resultado['registrado']);
+        var_dump($resultado);
         
     }
     else{
