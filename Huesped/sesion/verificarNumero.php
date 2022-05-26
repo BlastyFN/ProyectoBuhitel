@@ -4,12 +4,13 @@
         
         $String = "Hola, numero recibido ".$Numero;
         $resultado['registrado'] = json_encode($String);
-        echo $resultado;
+        // echo $resultado;
+        var_dump($resultado);
         
     }
     else{
         $String =  "Hola, error numero no recibido";
-        $resultado['registrado'] = json_encode($String);
+        $resultado = json_encode($String);
         echo $resultado;
     }
 ?>
