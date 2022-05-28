@@ -25,8 +25,28 @@
             $NuevaClave = md5($PersonalClave);
             $sql = $this->con->prepare("INSERT INTO personal (Personal_Hotel, Personal_Nombre, Personal_APaterno, Personal_AMaterno, Personal_Tipo, Personal_Telefono, Personal_Correo, Personal_Contrasena) VALUES ('".$HID."','".$PersonalNombre."','".$PersonalAPaterno."','".$PersonalAMaterno."','".$Tipo."','".$PersonalTelefono."','".$Correo."','".$NuevaClave."')");
             $sql->execute();
+            $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
+            ('".$hotel."',Individual)");
+            $sql->execute();
+            $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
+            ('".$hotel."',Suite)");
+            $sql->execute();
             return 2;
         }
+
+        public function obtenerPisos($hotel){
+            $sql = $this->con->prepare("SELECT * FROM piso WHERE Piso_Hotel = '".$hotel."'");
+		    $sql->execute();
+		    $res = $sql->fetchall();
+		    if (count($res) > 0)
+	    	{
+		    	return 1;
+		    }
+            else{
+                return 0;
+            }
+        }
+
 
         public function consultarCorreo($Correo){
             $sql = $this->con->prepare("SELECT Personal_Correo FROM personal WHERE BINARY Personal_Correo = '".$Correo."'");

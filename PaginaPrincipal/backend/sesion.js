@@ -52,6 +52,7 @@ boton.addEventListener('click', function(e) {
         }
     })
     .then(function(texto) {
+        console.log(texto);
         switch (texto) {
             // 0 ES QUE NO SE ENCONTRÓ EL CORREO
             case '0':
@@ -86,34 +87,57 @@ boton.addEventListener('click', function(e) {
      });
 });
 
+
+
+
+
 function redireccionar(Personal) {
     //CREA LA URL BASE
     var URL = "https://corporativotdo.com/";
     console.log(Personal.Personal_Tipo);
     //SEGUN CADA CASO LE AÑADE LA DIRECCIÓN QUE SIGUE
-    switch (Personal.Personal_Tipo) {
-        case "Administrador":
-            URL=URL+"Administrador/pagina principal admin/pagPrincipalAdmin.php";
-            break;
-        case "Recepcion":
-            URL=URL+"Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
-            break;
-        case "Limpieza":
-            
-            break;
-        case "Valet":
-            URL=URL+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php";
-            break;
-        case "Servicio":
-            URL=URL+"Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php";
-            break;    
-       default:
-            URL=URL+"/index.php";
-            break;
-    }
-    console.log(URL);
-    //ENVÍA A LA DIRECCIÓN
-    window.location.replace(URL);
+
+    var obtenerPisos = new FormData();
+    obtenerPisos.append("hotel",Personal.Personal_Hotel);
+
+    fetch('backend/obtenerPisos.php' , {
+        method:'POST', body:obtenerPisos
+        }).then(function(response){
+            if(response.ok){
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax"
+            }
+        }).then(function(estado){
+            console.log("estado "+ estado);
+            switch (Personal.Personal_Tipo) {
+            case "Administrador":                  
+                if(estado == 1){
+                    URL=URL+"Administrador/pagina%principal%admin/pagPrincipalAdmin.php";
+                }else if(estado == 0){
+                        URL=URL+"Administrador/moduloHabitaciones/confInicialHab/conInicialHab.php";
+                }   
+                break;
+            case "Recepcion":
+                URL=URL+"Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+                break;
+            case "Limpieza":    
+                break;
+            case "Valet":
+                URL=URL+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php";
+                break;
+            case "Servicio":
+                URL=URL+"Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php";
+                break;    
+            default:
+                URL=URL+"/index.php";
+                break;
+            }
+            console.log(URL);
+        //ENVÍA A LA DIRECCIÓN
+        //window.location.replace(URL);     
+    })
+
 }
 
 function guardarInfo(Info) {

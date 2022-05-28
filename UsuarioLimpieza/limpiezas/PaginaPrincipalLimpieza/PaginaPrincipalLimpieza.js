@@ -51,3 +51,8 @@ class Tarjeta{
 */
 const tarjetas = new Tarjeta(listaOpciones,listaLinks);
 tarjetas.obtenerTarjeta();
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+
+});

@@ -1,8 +1,8 @@
 <?php 
 session_start();
-if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
-            header("Location: /index.php", TRUE, 301);
-}
+//if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
+//            header("Location: /index.php", TRUE, 301);
+//}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,6 +11,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pagPrincipalAdmin.css">
+    <link rel="stylesheet" href="PaginaPrincipalLimpieza.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
 
     <title>Buhitel: Administrador</title>
@@ -31,6 +32,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
+    <script src="PaginaPrincipalLimpieza.js"></script>
 
     
 </body>
