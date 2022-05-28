@@ -10,18 +10,24 @@
     $info = file_get_contents('php://input');
     //Hacer JSON
     $nuevoJson = json_decode($info);
-    //DETERMINAR NUMERO
-    $cuentaWPP = $nuevoJson->numero;
-    $numero = substr($cuentaWPP, 10);
+    //DETERMINAR CODIGO 
+    $codigo = $nuevoJson->codigo;
     //CONSULTAR BASE DE DATOS
-    $res = $bd->consultarSesion($numero, $hoy);
-    $status = false;
-    if (isset($res[0])) {
-        $status = true;
+    $status = "invalido";
+    if (strlen($codigo) == 6) {
+        $status = false;
+        $res = $bd->consultarCodigo($codigo);
+        if (isset($res[0])) {
+            $status = true;
+        }
     }
+    
+
     //CREAR JSON PARA POSTEAR
-    $arreglo = array('registrado' => $status);
+    $arreglo = array('verificado' => $status);
     $JSONNUMERO = json_encode($arreglo);
     print_r($JSONNUMERO);
 
+
+    
 ?>
