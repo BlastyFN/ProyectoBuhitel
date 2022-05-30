@@ -20,6 +20,18 @@ class database
 		return "se ha realizado con exito la configuración";
 	}
 
+	function obtenerTipoHabID($hotel,$nombre){
+		$sql = $this->con->prepare("SELECT * FROM tipohabitacion WHERE TipoHab_Hotel = '".$hotel."' AND TipoHab_Nombre = '".$nombre."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		if (count($res) > 0)
+		{
+			foreach ($res as $dato)
+			return $dato['TipoHab_ID'];
+		}
+		return -1;
+	}
+
 	function obtenerPisoID($piso,$hotel){
 		$sql = $this->con->prepare("SELECT * FROM piso WHERE Piso_Numero = '".$piso."' AND Piso_Hotel = '".$hotel."'");
 		$sql->execute();
