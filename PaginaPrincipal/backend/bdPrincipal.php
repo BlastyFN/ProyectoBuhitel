@@ -26,10 +26,10 @@
             $sql = $this->con->prepare("INSERT INTO personal (Personal_Hotel, Personal_Nombre, Personal_APaterno, Personal_AMaterno, Personal_Tipo, Personal_Telefono, Personal_Correo, Personal_Contrasena) VALUES ('".$HID."','".$PersonalNombre."','".$PersonalAPaterno."','".$PersonalAMaterno."','".$Tipo."','".$PersonalTelefono."','".$Correo."','".$NuevaClave."')");
             $sql->execute();
             $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
-            ('".$HID."',Individual)");
+            ('".$HID."', 'Individual')");
             $sql->execute();
             $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
-            ('".$HID."', Suite)");
+            ('".$HID."', 'Suite')");
             $sql->execute();
             return 2;
         }
