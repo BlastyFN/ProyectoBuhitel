@@ -104,6 +104,7 @@ function redireccionar(Personal) {
         method:'POST', body:obtenerPisos
         }).then(function(response){
             if(response.ok){
+
                 return response.text();
             } else {
                 throw "Error en la llamada Ajax"
@@ -135,7 +136,7 @@ function redireccionar(Personal) {
             }
             console.log(URL);
         //ENVÍA A LA DIRECCIÓN
-        //window.location.replace(URL);     
+        window.location.replace(URL);     
     })
 
 }
