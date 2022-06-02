@@ -16,11 +16,25 @@
     //CONSULTAR BASE DE DATOS
     $res = $bd->consultarSesion($numero, $hoy);
     $status = false;
+    $NHotel = null;
+    $NHuesped = null;
+    $NHabitacion = null;
+    $HabitacionID = null;
     if (isset($res[0])) {
         $status = true;
+        $NHotel = $res[0]['Hotel_Nombre'];
+        $NHuesped = $res[0]['Huesped_Nombre'];
+        $NHabitacion = $res[0]['Habitacion_Nombre'];
+        $HabitacionID = $res[0]['Habitacion_ID'];
     }
     //CREAR JSON PARA POSTEAR
-    $arreglo = array('registrado' => $status);
+    $arreglo = array(
+        'registrado' => $status,
+        'Hotel' => $NHotel,
+        'Huesped' => $NHuesped,
+        'Habitacion' => $NHabitacion,
+        'HID' => $HabitacionID
+    );
     $JSONNUMERO = json_encode($arreglo);
     print_r($JSONNUMERO);
 

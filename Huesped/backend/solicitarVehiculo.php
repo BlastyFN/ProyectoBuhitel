@@ -4,27 +4,27 @@
     //FECHAS
     date_default_timezone_set('America/Mexico_City');
     $zonahoraria = date_default_timezone_get();
-    $hoy = date('Y-m-d');
+    $Hoy = date('c');
     //INIT
     header('Content-Type: application/json;');
     $info = file_get_contents('php://input');
     //Hacer JSON
     $nuevoJson = json_decode($info);
     //DETERMINAR CODIGO 
-    $codigo = $nuevoJson->codigo;
+    $Habitacion = $nuevoJson->HID;
     //CONSULTAR BASE DE DATOS
-    $status = "invalido";
-    if (strlen($codigo) == 6) {
-        $status = "false";
-        $res = $bd->consultarCodigo($codigo);
-        if (isset($res[0])) {
-            $status = "true";
-        }
+    $status = false;
+    $res = $bd->consultarVehiculo($Hoy, $Habitacion);
+    if (isset($res[0])) {
+        $Placas = $res[0]['Vehiculo_Placas'];
+        $re2 = $bd->solicitudVehiculo($Placas, '1');
+        $status = $re2;
     }
+    
     
 
     //CREAR JSON PARA POSTEAR
-    $arreglo = array('verificado' => $status);
+    $arreglo = array('solvalet' => $status);
     $JSONNUMERO = json_encode($arreglo);
     print_r($JSONNUMERO);
 

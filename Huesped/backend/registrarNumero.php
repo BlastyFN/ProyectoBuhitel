@@ -10,24 +10,18 @@
     $info = file_get_contents('php://input');
     //Hacer JSON
     $nuevoJson = json_decode($info);
-    //DETERMINAR CODIGO 
+    //DETERMINAR NUMERO
+    $cuentaWPP = $nuevoJson->numero;
+    $numero = substr($cuentaWPP, 10);
+    //OBTENER CODIGO 
     $codigo = $nuevoJson->codigo;
     //CONSULTAR BASE DE DATOS
-    $status = "invalido";
-    if (strlen($codigo) == 6) {
-        $status = "false";
-        $res = $bd->consultarCodigo($codigo);
-        if (isset($res[0])) {
-            $status = "true";
-        }
+    $res = $bd->consultarCodigo($codigo);
+    $HID;
+    if (count($res) > 0)
+    {
+        foreach ($res as $dato)
+        $HID = $dato['HabReservada_ID'];
     }
-    
-
-    //CREAR JSON PARA POSTEAR
-    $arreglo = array('verificado' => $status);
-    $JSONNUMERO = json_encode($arreglo);
-    print_r($JSONNUMERO);
-
-
-    
+    $res2 = $bd->registrarNumero($numero, $HID);
 ?>

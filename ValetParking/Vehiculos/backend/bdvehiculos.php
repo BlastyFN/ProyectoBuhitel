@@ -6,8 +6,8 @@
         }
         //funciones
         public function consultarHuesped($Hotel, $Habitacion, $Hoy){
-            $NumManana = time($Hoy)+86400;
-            $Manana = date("c", $NumManana);
+            // $NumManana = time($Hoy)+86400;
+            // $Manana = date("c", $NumManana);
             $sql = $this->con->prepare("SELECT Reservacion_Huesped, habitacionreservada.HabReservada_ID
             FROM reservacion 
             INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID
