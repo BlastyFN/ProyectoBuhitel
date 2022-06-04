@@ -1,42 +1,64 @@
 <?php 
-    session_start();
-    include "bdservicios.php";
-    if (isset($_POST['Habitacion']) && isset($_POST['Fecha'])){
-        date_default_timezone_set('America/Mexico_City');
-        $zonahoraria = date_default_timezone_get();
-        $bd = new database();
-        $Habitacion = $_POST['Habitacion'];
-        $Fecha = $_POST['Fecha'];
-        $Hotel = $_SESSION['sesionPersonal']['Hotel'];
-        $consultaID = $bd->verificarOcupacion($Habitacion, $Fecha, $Hotel);
-        $id;
-        $tiempoLimpieza;
-        if (isset($consultaID[0])) {
-            $id = $consultaID[0][0];
-            $tiempoLimpieza = $consultaID[0][1];
-            $fechaPartes = explode("T", $Fecha);
-            $fechaDia = $fechaPartes[0];
-            $fechaInicioNum = strtotime($Fecha);
-            $fechaInicio = date("Y-m-d H:i:s", $fechaInicioNum);
-            $horaInicio = date("H:i:s", $fechaInicioNum);
-            $v_HorasPartes = explode(":", $tiempoLimpieza);
-            $minutosTotales= ($v_HorasPartes[0] * 60) + $v_HorasPartes[1];         
-            $fechaFinNum = $fechaInicioNum+($minutosTotales*60);
-            $fechaFinal = date("Y-m-d H:i:s", $fechaFinNum);
-            $horaFinal = date("H:i:s", $fechaFinNum);
-            $consultaPersonal = $bd->consultarPersonal($horaInicio, $horaFinal, $Hotel);
-            if (isset($consultaPersonal[0] )) {
+    include "bdHuesped.php";
+    $bd = new database();
+    //FECHAS
+    date_default_timezone_set('America/Mexico_City');
+    $zonahoraria = date_default_timezone_get();
+    $hoy = date('Y-m-d');
+    //INIT
+    header('Content-Type: application/json;');
+    $info = file_get_contents('php://input');
+    //Hacer JSON 
+    $nuevoJson = json_decode($info);
+    //OBTENER HID 
+    $HID = $nuevoJson->HID;
+    //DETERMINAR Hora
+    $StatusHora = false;
+    $Hora = $nuevoJson->hora;
+    if (strlen($Hora) == 5) {
+        if (strpos($Hora, ":") == 2) {
+            $PartesHora = explode(":", $Hora);
+            $Horas = $PartesHora[0];
+            $Minutos = $PartesHora[1];
+            if (is_numeric($Horas) && is_numeric($Minutos)) {
+                if ($Horas >= 0 && $Horas < 24 && $Minutos >= 0 && $Minutos < 60) {
+                    $NumFechaInicio = strtotime($hoy) + (($Horas*3600)+($Minutos*60));
+                    $StrFechaInicio = date("Y-m-d H:i", $NumFechaInicio);
+                    $StatusHora = true;
+                }
+                
+            }
+        }
+    }
+    $arreglo;
+    if ($StatusHora == true) {
+        $consultaTiempo = $bd->verificarOcupacion($HID, $StrFechaInicio);
+        //Verificar disponibilidad de habitación
+        if (isset($consultaTiempo[0])) {
+            $TiempoLimpieza = $consultaTiempo[0]['TipoHab_TiempoLimpNormal'];
+            $Hotel = $consultaTiempo[0]['TipoHab_Hotel'];
+            $PartesTiempoLimpieza = explode(":", $TiempoLimpieza);
+            $HorasTiempoLimpieza = $PartesTiempoLimpieza[0];
+            $MinutosTiempoLimpieza = $PartesTiempoLimpieza[1];
+            $MinutosTotalesLimpieza = ($HorasTiempoLimpieza * 60) + $MinutosTiempoLimpieza;
+            $StrFechaFin = date("Y-m-d H:i", $NumFechaInicio+($MinutosTotalesLimpieza*60));
+            $PartesFechaInicio = explode(" ", $StrFechaInicio);
+            $PartesFechaFin = explode(" ", $StrFechaFin);
+            $fechaDia = $PartesFechaInicio[0];
+            $HoraInicioLimpieza = $PartesFechaInicio[1];
+            $HoraFinLimpieza = $PartesFechaFin[1];
+            $consultaPersonal = $bd->consultarPersonal($HoraInicioLimpieza, $HoraFinLimpieza, $Hotel);
+            //Verificar que exista personal sin descansos ahí
+            if (isset($consultaPersonal[0])) {
                 $limpiadores = [];
                 //GENERAR LISTA DE PERSONAL
                 foreach ($consultaPersonal as $key => $value) {
                     $limpiador = [];
+                    //Consultar las limpiezas de cada personal que trabaja a esa hora
                     $consultaLimpiezas = $bd->consultarLimpiezasPersonal($value["Personal_ID"], $fechaDia, $Hotel);
                     $minutosAcumulados = 0;
                     $npersonal = $key+1;
-                    // print_r("Num de personal: ".$npersonal."\n");
-                    // print_r("Nombre: ".$value["Personal_Nombre"]."\n");
-                    // print_r("ID: ".$value["Personal_ID"]."\n");
-                    // print_r("LIMPIEZAS:\n");
+                    //Determinar los minutos que trabaja cada integrante del personal
                     foreach ($consultaLimpiezas as $num => $limpieza) {
                         $numFechaInicio = strtotime($limpieza["Limpieza_HoraInicio"]);
                         $numFechaFinal = strtotime($limpieza["Limpieza_HoraFin"]);
@@ -44,36 +66,38 @@
                         $minutosLimpieza = ($numTiempo/60);
                         $minutosAcumulados += $minutosLimpieza;
                     }
-                    // print_r("Total de: ".$minutosAcumulados." minutos acumulados \n");
+                    //Agregar al array de personal de limpieza
                     $limpiador['ID'] = $value["Personal_ID"];
                     $limpiador['Nombre'] = $value["Personal_Nombre"];
                     $limpiador['Apellidos'] = $value["Personal_APaterno"]." ".$value["Personal_AMaterno"];
                     $limpiador['Minutos'] = $minutosAcumulados;
                     array_push($limpiadores, $limpiador);
                 }
+                //Ordenar limpiadores
                 $personalOrdenado = array_sort($limpiadores, 'Minutos', SORT_ASC);
                 $ordenDisponibles= [];
                 $ordenGeneral = [];
+                //Definir disponibles de ellos
                 foreach ($personalOrdenado as $key => $usuario) {
-                    $disponibilidad = $bd->consultarDisponbilidad($usuario['ID'], $fechaInicio, $fechaFinal);
+                    $disponibilidad = $bd->consultarDisponbilidad($usuario['ID'], $StrFechaInicio, $StrFechaFin);
                     if ($disponibilidad == "Disponible") {
                         array_push($ordenDisponibles, $key);
                     }
                     array_push($ordenGeneral, $key);
                     
                 }
+                //Definir si existe al menos uno disponible
                 if (isset($ordenDisponibles[0])) {
-                    $registro = $bd->registrarLimpieza($id, $personalOrdenado[$ordenDisponibles[0]]['ID'], $fechaInicio, $fechaFinal, 'Normal');
-                    $DatosLimpieza['Habitacion'] = $Habitacion;
-                    $DatosLimpieza['Nombre'] = $personalOrdenado[$ordenDisponibles[0]]['Nombre'];
-                    $DatosLimpieza['Apellidos'] = $personalOrdenado[$ordenDisponibles[0]]['Apellidos'];
-                    $DatosLimpieza['Inicio'] = $fechaInicio;
-                    $DatosLimpieza['Final'] = $fechaFinal;
-                    $DatosLimpieza['ID'] = $registro;
-                    $JSONLIMPIEZA = json_encode($DatosLimpieza);
-                    echo($JSONLIMPIEZA);
-                    
-                    // print_r($registro);
+                    $registro = $bd->registrarLimpieza($HID, $personalOrdenado[$ordenDisponibles[0]]['ID'], $StrFechaInicio, $StrFechaFin, 'Normal');
+                    $NombrePersonal = $personalOrdenado[$ordenDisponibles[0]]['Nombre'] . " " . $personalOrdenado[$ordenDisponibles[0]]['Apellidos'];
+                    //Definir el JSON que se enviará a Twilio
+                $arreglo = array(
+                    'solimp' => $StatusHora,
+                    'fechaI' => $StrFechaInicio,
+                    'duracion' => $MinutosTotalesLimpieza,
+                    'fechaF' => $StrFechaFin,
+                    'personalN' => $NombrePersonal
+                );
                 }
                 else{
                     $PeriodosInternos = [];
@@ -143,37 +167,58 @@
                             array_push($PeriodosInternos, strtotime($limpieza["Limpieza_HoraFin"]));
 
                         }
-                        // var_dump($consultaLimpiezasPeriodo);
                     }
-                    
+                    //Generador de periodos de texto
                     sort($PeriodosInternos);
-                    $ArregloFechas = [];
+                    $StringHorario = "Horario para " .$fechaDia. ": \n";
+                    $De = true;
                     foreach ($PeriodosInternos as $num => $periodo) {
+                        $PeriodoFecha = date("H:i", $periodo);
                         
-                        $PeriodoFecha = date("Y-m-d H:i:s", $periodo);
-                        array_push($ArregloFechas, $PeriodoFecha);
+                        if ($De == true) {
+                            $StringHorario = $StringHorario. "De: ". $PeriodoFecha;
+                            $De = false;
+                        }
+                        else{
+                            $StringHorario = $StringHorario. " A ". $PeriodoFecha ."\n";
+                            $De = true;
+                        }
                     }
-                    $PeriodosJSON = json_encode($ArregloFechas);
-                    echo $PeriodosJSON;
+                    //Envío de error
+                    $StatusHora = "error";
+                    $arreglo = array(
+                    'solimp' => $StatusHora,
+                    'error' => "Parece que todo el personal de limpieza está ocupado a esa hora!
+Te recomiendo que reprograme su solicitud en algun punto del siguiente horario \n ".$StringHorario."
+Tomando a consideración que debe pedir su limpieza " . $MinutosTotalesLimpieza . " minutos antes de los límites establecidos."
+                );
                 }
                 
             }
-            else {
-                echo("NP");
+            else{
+                $StatusHora = "error";
+                $arreglo = array(
+                'solimp' => $StatusHora,
+                'error' => "Su limpieza parece diferir del horario laboral del personal de limpieza"
+            );
             }
-
-
-            // for ($i=$fechaInicioNum; $i <= $fechaFinNum; $i+=60) { 
-            //     $Fecha = date("c", $i);
-            //     print_r("minuto: ".$Fecha."\n");
-            // }
-
+            
         }
-        else{
-            echo 0;
+        else {
+            $StatusHora = "error";
+            $arreglo = array(
+                'solimp' => $StatusHora,
+                'error' => "Esa habitación no estará ocupada para entonces"
+            );
         }
+        
     }
-
+    else{
+        $arreglo = array(
+            'solimp' => $StatusHora
+        );
+    }
+    //Función que ordena arreglos
     function array_sort($array, $on, $order=SORT_ASC)
     {
         $new_array = array();
@@ -207,6 +252,14 @@
         }
         return $new_array;
     }
+    
+    //CONSULTAR BASE DE DATOS
+    // $res = $bd->consultarCodigo($codigo);
+    // $res2 = $bd->registrarNumero($numero, $HID);
+    //CREAR JSON PARA POSTEAR
+    
+    $JSONNUMERO = json_encode($arreglo);
+    print_r($JSONNUMERO);
 
-
+    
 ?>
