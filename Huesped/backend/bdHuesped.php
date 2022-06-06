@@ -181,6 +181,31 @@
             $res = $sql->fetchall();
             return $res;
         }
+
+        public function consultarHotel($HabID){
+            $sql = $this->con->prepare("SELECT tipohabitacion.TipoHab_Hotel FROM habitacion 
+            INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = Habitacion_Tipo
+            WHERE BINARY Habitacion_ID = '".$HabID."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res[0]['TipoHab_Hotel'];
+        }
+
+        public function consultarCategorias($HID){
+            $sql = $this->con->prepare("SELECT CatProd_Categoria, CatProd_ID FROM categoriaproductos
+            WHERE BINARY CatProd_Hotel = '".$HID."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarProductos($Categoria){
+            $sql = $this->con->prepare("SELECT Producto_Nombre, Producto_Precio FROM producto 
+            WHERE Producto_Categoria = '".$Categoria."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
         
     }
 
