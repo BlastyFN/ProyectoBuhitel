@@ -12,8 +12,26 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="vistaReporteUsuario.css">
+    <title>Reporte</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script>
+       
+       const firebaseConfig = {
+            apiKey: "AIzaSyBrHawuSKbh1cqGl5rAAldb6JBhnClp6z0",
+            authDomain: "chatbuhitel.firebaseapp.com",
+            projectId: "chatbuhitel",
+            storageBucket: "chatbuhitel.appspot.com",
+            messagingSenderId: "483326716419",
+            appId: "1:483326716419:web:05f9f5595cc415e3567c36"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
 
-    <title>Nuevo tipo de habitacion</title>
+
 </head>
 <body>
     
@@ -21,7 +39,7 @@ session_start();
 
     </section>
 
-    <h1>
+    <h1 class="titulo">
         Vista específica de reporte
     </h1>
     <section class="chat">
@@ -30,22 +48,30 @@ session_start();
         <div class="cuerpoChat">
             <div class="contenedorMensajes">
 
-            </div>
-            <div class="envioMensaje">
-                <input type="text" class="nuevoMensaje">
-                <button class="enviarMensaje">></button>
+                </div>
+                    <form class="envioMensaje" id="envioMensaje">
+                        <input type="text" class="nuevoMensaje" id="mensajeChat">
+                        <button class="enviarMensaje" type="submit" >></button>
+
+                    </form>
+                </div>
 
             </div>
+        </div>    
+        <div class="botones">
+            
         </div>
         
     </section>
     
 
 
+
+
     <script src="../../../Recursos/clase-menu.js"></script>
     
     <script src="../../../Recursos/menuTransition.js"></script>
-    <!-- <script src="registrarTipoHab.js"></script> -->
+    <script src="vistaReporteUsuario.js"></script>
 
 
 </body>

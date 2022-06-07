@@ -1,8 +1,8 @@
 <?php 
 session_start();
-if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
-            header("Location: /index.php", TRUE, 301);
-}
+//if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
+ //           header("Location: /index.php", TRUE, 301);
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">

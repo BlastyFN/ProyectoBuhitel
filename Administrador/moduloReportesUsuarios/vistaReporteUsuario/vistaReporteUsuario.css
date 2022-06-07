@@ -1,18 +1,20 @@
 h1{
     font-size: 25px;
     width: 50%;
-    margin: auto auto;
+    margin-left: 40%;
     margin-top: 50px;
 }
 
 .chat{
-    width: 80%;
+    width: 60%;
     margin-left: 10%;
     height: 500px;
+   
 }
 
 .contenedorMensajes{
-    height: 400px;
+    height: 70vh;
+    overflow-y: scroll;
     
     
 }
@@ -49,4 +51,37 @@ h1{
 .enviarMensaje:hover {
     opacity: .9;
     cursor: pointer;
+ }
+
+
+
+.mensajeEnviado span{
+    background: #59114D;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 5px;
+    
+     
+ }
+
+.mensajeRecibido span{
+    border: 1px solid #59114D;
+    border-radius: 10px;
+    padding: 5px;
+    
+     
+ }
+
+  .mensajeEnviado{
+     display:flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     margin: 5px 10px;
+ }
+
+   .mensajeRecibido{
+     display:flex;
+     flex-direction: row;
+    
+      margin: 5px 10px;
  }

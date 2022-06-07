@@ -30,8 +30,13 @@ formRegistroUsuario.addEventListener('submit', function(e){
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(function(texto){
-        console.log(texto);
+    }).then(function(id){
+        console.log(id);
+        console.log(inputTipoPersonal.value);
+        if(inputTipoPersonal.value == "Limpieza"){
+            localStorage.setItem("personalID", id);
+            window.location.href="http://localhost/ProyectoBuhitel/Administrador/moduloPersonal/completarRegistroUsuarioLimpieza/completarRegistroUsuarioLimpieza.php";
+        }
         alert(texto);
     })
 });

@@ -5,7 +5,7 @@ class database
 	private $con;
 
 	function __construct(){
-		$this->con = new PDO ('mysql:host localhost= localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
+		$this->con = new PDO ('mysql:host localhost= localhost;dbname=corpo206_buhitel','root','');
 	}
 
 	function registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial){
@@ -18,12 +18,41 @@ class database
 	    	VALUES ('".$hotel."','".$nombre."','".$apellidoP."','".$apellidoM."','".$tipoPersonal."','".$correo."',
 			'".$password."','".$seguroSocial."')" );
 	    	$sql->execute();
-			return "se ha realizado con exito la configuración";
+
+			$sql2 = $this->con->prepare("SELECT * FROM personal  WHERE personal_hotel = '".$hotel."'  AND personal_correo = '".$correo."'");
+			$sql2->execute();
+			$res2 = $sql2->fetchall();
+		
+			foreach ($res2 as $dato){
+				return $dato['Personal_ID'];
+			}
+			
+		
+			
     	}
 		else{
 			return "no";
 		}
 	}
+
+	function registrarInfousuarioLimpieza($personalID,$inicioJornada,$finJornada,$inicioDescanso,$finDescanso){
+		$sqltest = $this->con->prepare("SELECT * FROM infousuariolimpieza  WHERE InfoLimpieza_ID = '".$personalID."'");
+		$sqltest->execute();
+		$res = $sqltest->fetchall();
+		if (count($res) < 1){
+			$sql = $this->con->prepare( "INSERT INTO infousuariolimpieza (InfoLimpieza_Personal, 
+			InfoLimpieza_InicioJornada, InfoLimpieza_FinJornada, InfoLimpieza_InicioDescanso, 
+			InfoLimpieza_FinDescanso) 
+	    	VALUES ('".$personalID."','".$inicioJornada."','".$finJornada."','".$inicioDescanso."',
+			'".$finDescanso."')");
+	    	$sql->execute();
+			return "se ha registrado correctamente la información del usuario de limpieza";
+    	}
+		else{
+			return "no";
+		}
+	}
+
 
 	function obtenerPersonal($hotel){
 		$sql = $this->con->prepare("SELECT personal_id, personal_nombre, personal_apaterno, personal_amaterno, personal_tipo FROM personal WHERE

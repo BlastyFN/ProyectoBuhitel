@@ -1,0 +1,73 @@
+.searchElement{
+    width: 50%;
+    margin: 10px 10px;
+    padding: 0 15px;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.searchButton{
+    display: inline-block;
+    background: #59114D;
+    margin: 10px 10px;
+    padding: 0px 30px;
+    width: auto;
+    height: 34px;
+    border-radius: 50px;
+    border-style: none;
+    
+    font-size: 15px;
+    color: #fff;
+}
+
+.search form{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 10px;
+    padding-left: 15% ;
+    
+}
+
+
+
+.contenedorTablaReportes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 80%;
+    border: 1px solid #59114D;
+    border-top: 20px solid #59114D;
+ }
+
+ table td{
+    padding-left: 5%;
+ }
+
+ .nombreReporte {
+    width: 30%;
+    text-align: left;
+    vertical-align: top;
+    border-right: .1px solid #59114D;
+    border-collapse: collapse;
+    padding: 0.3em;
+    caption-side: bottom;
+ }
+
+ .ver{
+    background: #E98A15;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border-style: none; 
+    font-size: 15px;
+    color: #fff;
+ }

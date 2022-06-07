@@ -14,7 +14,7 @@
         $passwordS = md5($password);
         $seguroSocial = $_POST['seguroSocial'];
         
-        $hotel =  $_SESSION['sesionPersonal']['Hotel'];
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
         $res = $bd-> registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal, $correo, $passwordS, $seguroSocial);
         echo $res;
