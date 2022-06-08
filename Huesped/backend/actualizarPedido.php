@@ -12,16 +12,13 @@
     $nuevoJson = json_decode($info, true);
     //DETERMINAR VARIABLES 
     $Pedido = $nuevoJson['PID'];
-    $Producto = $nuevoJson['Producto'];
-    $Cantidad = $nuevoJson['Cantidad'];
     //CONSULTAR BASE DE DATOS
     $status = false;
-    $Precio = $bd->registrarCarrito($Pedido, $Producto, $Cantidad);
-    $status = $bd->actualizarPrecio($Pedido, $Precio);
+    $status = $bd->actualizarEstatus($Pedido, '1');
     
     
     $arreglo = array(
-        'carstat' => $status
+        'pedstat' => $status
     );
     //CREAR JSON PARA POSTEAR
     $JSONNUMERO = json_encode($arreglo);

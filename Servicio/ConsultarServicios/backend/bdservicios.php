@@ -14,6 +14,7 @@
             INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
             WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
             AND BINARY Servicio_Fecha > '".$Hoy."'
+            AND BINARY Servicio_Estatus != '4'
             AND BINARY Servicio_Estatus != '3';");
             $sql->execute();
             $res = $sql->fetchall();

@@ -200,11 +200,57 @@
         }
 
         public function consultarProductos($Categoria){
-            $sql = $this->con->prepare("SELECT Producto_Nombre, Producto_Precio FROM producto 
+            $sql = $this->con->prepare("SELECT Producto_Nombre, Producto_Precio, Producto_ID FROM producto 
             WHERE Producto_Categoria = '".$Categoria."'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
+        }
+
+        public function crearPedido($Habitacion, $Fecha){
+            $sql = $this->con->prepare("INSERT INTO servicio(Servicio_Habitacion, Servicio_Fecha, Servicio_Estatus) 
+            VALUES ('".$Habitacion."','".$Fecha."','4')");
+            $sql->execute();
+            $sql = $this->con->prepare("SELECT Servicio_ID FROM servicio 
+            WHERE BINARY Servicio_Habitacion = '".$Habitacion."'
+            AND BINARY Servicio_Fecha = '".$Fecha."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $ID = $res[0]['Servicio_ID'];
+            return $ID;
+        }
+
+        public function registrarCarrito($Servicio, $Producto, $Cantidad){
+            $sql = $this->con->prepare("INSERT INTO carritoproductos( CarroProd_NumServicio, CarroProd_Producto, CarroProd_NumProductos)
+            VALUES ('".$Servicio."','".$Producto."','".$Cantidad."')");
+            $sql->execute();
+            $sql = $this->con->prepare("SELECT Producto_Precio FROM producto 
+            WHERE BINARY Producto_ID = '".$Producto."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $Precio = $res[0]['Producto_Precio'];
+            $PrecioTotal = $Precio * $Cantidad;
+            return $PrecioTotal;
+        }
+
+        public function actualizarEstatus($Servicio, $Estatus){
+            $sql = $this->con->prepare("UPDATE servicio SET Servicio_Estatus ='".$Estatus."' WHERE Servicio_ID = '".$Servicio."' ");
+            $sql->execute();
+
+            return true;
+        }
+
+        public function actualizarPrecio($Servicio, $Precio){
+            $sql = $this->con->prepare("SELECT Servicio_PrecioTotal FROM servicio 
+            WHERE BINARY Servicio_ID = '".$Servicio."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $PrecioAntiguo = $res[0]['Servicio_PrecioTotal'];
+            $NuevoPrecio = $PrecioAntiguo + $Precio;
+            $sql = $this->con->prepare("UPDATE servicio SET Servicio_PrecioTotal ='".$NuevoPrecio."' WHERE Servicio_ID = '".$Servicio."' ");
+            $sql->execute();
+
+            return true;
         }
         
     }
