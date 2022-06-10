@@ -279,6 +279,36 @@
             $sql->execute();
             return true;
         }
+
+        public function consultarServicios($Hoy, $Habitacion, $Estatus){
+            $sql = $this->con->prepare("SELECT Servicio_ID, Servicio_Fecha, Servicio_PrecioTotal FROM servicio 
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = Servicio_Habitacion
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            WHERE BINARY Servicio_Habitacion = '".$Habitacion."'
+            AND BINARY Servicio_Estatus = '".$Estatus."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarProductosServicio($Servicio){
+            $sql = $this->con->prepare("SELECT producto.Producto_Nombre, CarroProd_NumProductos FROM carritoproductos 
+            INNER JOIN producto ON producto.Producto_ID = CarroProd_Producto
+            WHERE BINARY CarroProd_NumServicio = '".$Servicio."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function cancelarServicio($Servicio){
+            $sql = $this->con->prepare("DELETE FROM carritoproductos WHERE CarroProd_NumServicio = '".$Servicio."'");
+            $sql->execute();
+            $sql = $this->con->prepare("DELETE FROM servicio WHERE Servicio_ID = '".$Servicio."'");
+            $sql->execute();
+            
+            return true;
+        }
         
     }
 
