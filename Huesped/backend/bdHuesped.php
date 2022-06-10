@@ -40,7 +40,7 @@
             return $res;
         }
         public function consultarVehiculo($Hoy, $Habitacion){
-            $sql = $this->con->prepare("SELECT Vehiculo_Placas, Vehiculo_Modelo, huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto
+            $sql = $this->con->prepare("SELECT Vehiculo_Placas, Vehiculo_Modelo, Vehiculo_Estatus, huesped.Huesped_Nombre, huesped.Huesped_Apellidos, huesped.Huesped_Contacto
             FROM vehiculo
             INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Vehiculo_Habitacion
             INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID
@@ -250,6 +250,33 @@
             $sql = $this->con->prepare("UPDATE servicio SET Servicio_PrecioTotal ='".$NuevoPrecio."' WHERE Servicio_ID = '".$Servicio."' ");
             $sql->execute();
 
+            return true;
+        }
+
+        public function consultarLimpiezasPendientes($Hoy, $Habitacion){
+            $sql = $this->con->prepare("SELECT Limpieza_ID, Limpieza_Usuario, Limpieza_HoraInicio, Limpieza_HoraFin FROM limpieza 
+            WHERE BINARY Limpieza_Habitacion = '".$Habitacion."'
+            AND BINARY Limpieza_HoraInicio > '".$Hoy."'
+            AND BINARY '".$Hoy."' NOT BETWEEN Limpieza_HoraInicio AND Limpieza_HoraFin
+            AND BINARY Limpieza_Tipo = 'Normal'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarLimpiezasEnCurso($Hoy, $Habitacion){
+            $sql = $this->con->prepare("SELECT Limpieza_ID, Limpieza_Usuario, Limpieza_HoraInicio, Limpieza_HoraFin FROM limpieza 
+            WHERE BINARY Limpieza_Habitacion = '".$Habitacion."'
+            AND BINARY '".$Hoy."' BETWEEN Limpieza_HoraInicio AND Limpieza_HoraFin
+            AND BINARY Limpieza_Tipo = 'Normal'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function cancelarLimpieza($Limpieza){
+            $sql = $this->con->prepare("DELETE FROM limpieza WHERE Limpieza_ID = '".$Limpieza."'");
+            $sql->execute();
             return true;
         }
         

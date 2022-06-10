@@ -22,8 +22,16 @@
             $Minutos = $PartesHora[1];
             if (is_numeric($Horas) && is_numeric($Minutos)) {
                 if ($Horas >= 0 && $Horas < 24 && $Minutos >= 0 && $Minutos < 60) {
+                    if ($Horas) {
+                        # code...
+                    }
                     $NumFechaInicio = strtotime($hoy) + (($Horas*3600)+($Minutos*60));
-                    $StrFechaInicio = date("Y-m-d H:i", $NumFechaInicio);
+                    $diaActual = date("Y-m-d H:i:s");
+                    $MomentoActual = strtotime($diaActual);
+                    if ($NumFechaInicio < $MomentoActual) {
+                        $NumFechaInicio +=86400;
+                    }
+                    $StrFechaInicio = date("Y-m-d H:i:s", $NumFechaInicio);
                     $StatusHora = true;
                 }
                 
@@ -41,7 +49,7 @@
             $HorasTiempoLimpieza = $PartesTiempoLimpieza[0];
             $MinutosTiempoLimpieza = $PartesTiempoLimpieza[1];
             $MinutosTotalesLimpieza = ($HorasTiempoLimpieza * 60) + $MinutosTiempoLimpieza;
-            $StrFechaFin = date("Y-m-d H:i", $NumFechaInicio+($MinutosTotalesLimpieza*60));
+            $StrFechaFin = date("Y-m-d H:i:s", $NumFechaInicio+($MinutosTotalesLimpieza*60));
             $PartesFechaInicio = explode(" ", $StrFechaInicio);
             $PartesFechaFin = explode(" ", $StrFechaFin);
             $fechaDia = $PartesFechaInicio[0];
