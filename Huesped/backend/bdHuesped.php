@@ -309,6 +309,32 @@
             
             return true;
         }
+
+        public function consultarCategoriasReportes($HID){
+            $sql = $this->con->prepare("SELECT * FROM categoriareporte
+            WHERE BINARY CatReporte_Hotel = '".$HID."'
+            AND BINARY CatReporte_Nombre != 'Spam'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarHabReservada($HID, $Hoy){
+            $sql = $this->con->prepare("SELECT HabReservada_ID FROM habitacionreservada 
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = HabReservada_Reservacion
+            WHERE BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+            AND BINARY HabReservada_Habitacion = '".$HID."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res[0]['HabReservada_ID'];
+        }
+
+        public function crearReporte($Habitacion, $Categoria, $Nombre, $Contenido){
+            $sql = $this->con->prepare("INSERT INTO reporte(Reporte_Nombre, Reporte_HabReservadas, Reporte_Categoria, Reporte_Contenido, Reporte_Estatus, Reporte_Servicio) 
+            VALUES ('".$Nombre."','".$Habitacion."','".$Categoria."', '".$Contenido."', '1', '1')");
+            $sql->execute();
+            return true;
+        }
         
     }
 
