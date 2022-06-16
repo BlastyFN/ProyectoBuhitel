@@ -164,6 +164,13 @@
             return 'Exito';
         }
 
+        public function consultarCargos($Reservacion){
+            $sql = $this->con->prepare("SELECT Cargo_Concepto, Cargo_Monto FROM cargo WHERE Cargo_Reservacion = '".$Reservacion."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
 
     
     }

@@ -563,3 +563,27 @@ function registrarCargo(concepto, monto) {
             console.log(err);
          }); 
 }
+
+function consultarCargos() {
+    const infoCarCargos = new FormData();
+        infoCarCargos.append('Reservacion', Editable);
+        fetch ('../backend/consultarCargos.php', {
+            method:'POST',
+            body: infoCarCargos
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto){
+           console.log(texto);
+           let Cargos = JSON.parse(texto);
+           console.log(Cargos);
+        })
+        .catch(function(err) {
+            console.log(err);
+         }); 
+}
