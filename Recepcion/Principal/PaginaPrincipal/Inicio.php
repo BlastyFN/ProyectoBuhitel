@@ -45,7 +45,11 @@ session_start();
 
             <div class="contIndividual" id="ContTipos">
                 <div class="cardBoard">Tipos</div>
-                <div class="card"></div>
+                <div class="card">
+                    <ol id="ListaDisponibles">
+
+                    </ol>
+                </div>
             </div>
 
  
