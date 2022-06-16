@@ -11,7 +11,7 @@ if (isset($_SESSION['sesionPersonal'])) {
             exit();
         break;
         case 'Recepcion':
-            header("Location: /Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", TRUE, 301);
+            header("Location: /Recepcion/Principal/PaginaPrincipal/Inicio.php", TRUE, 301);
             exit();
         break;
         case 'Limpieza':

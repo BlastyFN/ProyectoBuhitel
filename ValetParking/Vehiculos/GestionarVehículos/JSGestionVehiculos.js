@@ -187,13 +187,6 @@ function obtenerServicios() {
                     });
                     desplegar(infoServicios);
                 }
-
-
-
-                
-                
-                
-                
             }
          })
          .catch(function(err) {

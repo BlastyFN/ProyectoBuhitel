@@ -120,7 +120,7 @@ function redireccionar(Personal) {
                 }   
                 break;
             case "Recepcion":
-                URL=URL+"Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+                URL=URL+"/Recepcion/Principal/PaginaPrincipal/Inicio.php";
                 break;
             case "Limpieza":    
                 break;

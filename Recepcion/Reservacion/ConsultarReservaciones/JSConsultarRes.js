@@ -100,11 +100,7 @@ class TarjetaReservacion{
         var Nodo = document.createTextNode(Texto);
         return Nodo;
     }
-
     obtenerTipo(){
-//CHECKIN HOY = CHECKIN < MAÑANA 
-        //CHECK OUT HOY = CHECK OUT < MAÑANA
-        //ESTANCIA ACTUAL = CHECK OUT > MAÑANA && CHECK IN < MAÑANA
         var FCIN = new Date(this.CheckIn); 
         var FCOUT = new Date(this.CheckOut); 
         var Hoy = new Date();
@@ -131,8 +127,6 @@ class TarjetaReservacion{
                 }
             }
         }
-        
-        
         return Tipo;
     }
 

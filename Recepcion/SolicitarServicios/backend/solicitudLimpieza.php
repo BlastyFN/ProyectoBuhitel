@@ -33,10 +33,6 @@
                     $consultaLimpiezas = $bd->consultarLimpiezasPersonal($value["Personal_ID"], $fechaDia, $Hotel);
                     $minutosAcumulados = 0;
                     $npersonal = $key+1;
-                    // print_r("Num de personal: ".$npersonal."\n");
-                    // print_r("Nombre: ".$value["Personal_Nombre"]."\n");
-                    // print_r("ID: ".$value["Personal_ID"]."\n");
-                    // print_r("LIMPIEZAS:\n");
                     foreach ($consultaLimpiezas as $num => $limpieza) {
                         $numFechaInicio = strtotime($limpieza["Limpieza_HoraInicio"]);
                         $numFechaFinal = strtotime($limpieza["Limpieza_HoraFin"]);
