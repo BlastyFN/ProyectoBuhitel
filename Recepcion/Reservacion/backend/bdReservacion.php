@@ -157,6 +157,13 @@
             $sql->execute();
             return 'Exito';
         }
+        public function agregarCargo($Reservacion, $Concepto, $Monto){
+            $sql = $this->con->prepare("INSERT INTO cargo(Cargo_Reservacion, Cargo_Concepto, Cargo_Monto) 
+            VALUES ('".$Reservacion."','".$Concepto."','".$Monto."')");
+            $sql->execute();
+            return 'Exito';
+        }
+
 
     
     }

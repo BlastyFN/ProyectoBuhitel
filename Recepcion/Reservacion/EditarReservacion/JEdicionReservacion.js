@@ -520,6 +520,7 @@ btnCargar.addEventListener('click', function () {
                             let nconcepto = element.value;
                             let ncargo = element.nextSibling.value;    
                             console.log("Concepto: "+nconcepto+ " cargo: "+ncargo);
+                            registrarCargo(nconcepto, ncargo);
                         }
                         else{
                             contCargos.removeChild(element.parentNode);
@@ -531,9 +532,34 @@ btnCargar.addEventListener('click', function () {
                 });
             
            }
+           console.log("r: " +texto);
         })
         .catch(function(err) {
             console.log(err);
          }); 
   
 });
+
+function registrarCargo(concepto, monto) {
+    const infoAddCargo = new FormData();
+        infoAddCargo.append('Reservacion', Editable);
+        infoAddCargo.append('Concepto', concepto);
+        infoAddCargo.append('Monto', monto);
+        fetch ('../backend/agregarCargo.php', {
+            method:'POST',
+            body: infoAddCargo
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto){
+           console.log(texto);
+        })
+        .catch(function(err) {
+            console.log(err);
+         }); 
+}
