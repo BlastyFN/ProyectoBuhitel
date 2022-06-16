@@ -53,6 +53,7 @@ window.addEventListener('load', function (e) {
        
         cargarTipos();
         cargarHabitaciones(Editable);
+        consultarCargos()
         statusInicial = true;
     })
     .catch(function(err) {
@@ -582,6 +583,9 @@ function consultarCargos() {
            console.log(texto);
            let Cargos = JSON.parse(texto);
            console.log(Cargos);
+           Cargos.forEach(element => {
+            agregarCargos(element.Cargo_Concepto, element.Cargo_Monto);
+           });
         })
         .catch(function(err) {
             console.log(err);
