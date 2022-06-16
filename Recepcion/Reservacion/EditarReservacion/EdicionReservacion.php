@@ -28,7 +28,7 @@ else {
     <br>
     <br>
     <!-- Contenedor Datos Huesped-->
-    <form>
+    
     <section class="ContenedorFormulario Contenedor">
         <div class="AsideIzq"></div>
         <div class="CamposHuesped">
@@ -67,11 +67,27 @@ else {
             <button class="Verde BotonSMT Completo" id="EditarHab">EDITAR</button>
         </div>
     </section>
+    <h1 class="CentrarTexto">Cargos</h1>
+    <section class="Contenedor">
+        <div class="CamposCargos">
+                   
+            <br>
+            <div id="ECARGOS">
+            </div>
+            <button class="Naranja Completo" id="addCargo">AÑADIR</button>
+            <br><br>
+            <button class="Rojo Completo" id="borrarCargo">ELIMINAR</button>
+            <br><br>
+            <button class="Verde Completo" id="completarCargos">COMPLETAR</button>
+
+        </div>
+        
+    </section>
+
+    
     <br>
     <br>
-    
-    
-    </form>
+
 </body>
 <script src= "JEdicionReservacion.js"></script>
 <script src="../../../Recursos/clase-menu.js"></script>

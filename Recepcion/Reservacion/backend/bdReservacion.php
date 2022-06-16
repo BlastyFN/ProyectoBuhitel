@@ -152,6 +152,13 @@
             $sql->execute();
             return 'Exito';
         }
+        public function eliminarCargos($Reservacion){
+            $sql = $this->con->prepare("DELETE FROM `cargo` WHERE `Cargo_Reservacion` = '".$Reservacion."'");
+            $sql->execute();
+            return 'Exito';
+        }
+
+    
     }
 
 ?>

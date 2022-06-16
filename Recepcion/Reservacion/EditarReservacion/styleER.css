@@ -54,6 +54,9 @@ input[type="submit" i] {
 .Verde{
     background-color: #679436;
 }
+.Rojo{
+    background-color: #E63946;
+}
 /*----------*/
 .Contenedor{
     display: flex;
@@ -152,5 +155,20 @@ input[type="submit" i] {
 
 .Mitad{
     width: 45%;
+    margin-left: 2%;
+}
+
+.CamposCargos{
+    width: 50%;
+    align-content: center;
+}
+
+.CampoConcepto{
+    width: 75%;
+    margin-left: 2%;
+}
+
+.CampoMonto{
+    width: 15%;
     margin-left: 2%;
 }

@@ -5,7 +5,10 @@ const CampoContacto = document.getElementById('CampoContacto');
 const Campo_CheckIn = document.getElementById('Campo_CHECKIN');
 const Campo_CheckOut = document.getElementById('Campo_CHECKOUT');
 const PTOTAL = document.getElementById('PrecioTotal');
-
+const contCargos = document.getElementById('ECARGOS');
+const btnAddCargo = document.getElementById('addCargo');
+const btnElCargo = document.getElementById('borrarCargo');
+const btnCargar = document.getElementById('completarCargos');
 //BOTONES
 const btnAddHabitaciones = document.getElementById('addInput');
 const btnEditarHabitaciones = document.getElementById('EditarHab');
@@ -454,3 +457,83 @@ function registrarHabitaciones(Reservacion) {
     });
     window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
 }
+
+btnAddCargo.addEventListener('click', function () {
+   agregarCargos("", ""); 
+});
+
+btnElCargo.addEventListener('click', function () {
+    var Eliminables = document.querySelectorAll('.CheckBox');
+    Eliminables.forEach(element => {
+        if (element.checked == true) {
+
+            contCargos.removeChild(element.parentNode);
+        }
+    }); 
+});
+
+function agregarCargos(concepto, monto) {
+    var almacen = document.createElement('div');
+    var cbox = document.createElement('input');
+    cbox.setAttribute('type', 'checkbox');
+    cbox.classList.add('CheckBox');
+    var iConcepto = document.createElement('input');
+    iConcepto.setAttribute('placeholder', 'Concepto');
+    iConcepto.setAttribute('type', 'text');
+    iConcepto.classList.add('CampoConcepto');
+    iConcepto.classList.add('EntradaTexto');
+    var iCargo = document.createElement('input');
+    iCargo.setAttribute('placeholder', 'Monto');
+    iCargo.setAttribute('type', 'number');
+    iCargo.classList.add('CampoMonto');
+    iCargo.classList.add('EntradaTexto');
+    var salto = document.createElement('br');
+    iConcepto.value = concepto;
+    iCargo.value = monto;
+    almacen.appendChild(cbox);
+    almacen.appendChild(iConcepto);
+    almacen.appendChild(iCargo);
+    almacen.appendChild(salto);
+    contCargos.appendChild(almacen);
+}
+
+btnCargar.addEventListener('click', function () {
+    const infoCargos = new FormData();
+        infoCargos.append('Reservacion', Editable);
+        fetch ('../backend/eliminarCargos.php', {
+            method:'POST',
+            body: infoCargos
+        })
+        .then(function(response){
+            if(response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        })
+        .then(function(texto){
+           if (texto == '1') {
+                var conceptos = document.querySelectorAll(".CampoConcepto");
+                conceptos.forEach(element => {
+                    if (element.value != "") {
+                        if (element.nextSibling.value != "") {
+                            let nconcepto = element.value;
+                            let ncargo = element.nextSibling.value;    
+                            console.log("Concepto: "+nconcepto+ " cargo: "+ncargo);
+                        }
+                        else{
+                            contCargos.removeChild(element.parentNode);
+                        }
+                    }
+                    else{
+                        contCargos.removeChild(element.parentNode);
+                    }
+                });
+            
+           }
+        })
+        .catch(function(err) {
+            console.log(err);
+         }); 
+  
+});

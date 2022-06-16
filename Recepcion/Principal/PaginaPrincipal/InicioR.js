@@ -4,6 +4,7 @@ const textoDisponibilidad = document.getElementById("PorDisponibilidad");
 const listaTipos = document.getElementById("ListaDisponibles");
 
 window.addEventListener("load", cargarData);
+var intervalo = window.setInterval(cargarData, 20000);
 function cargarData() {
     cargarChecks();
     cargarDisponibilidad();
@@ -61,6 +62,7 @@ function cargarChecks() {
 }
 
 function cargarTipos() {
+    listaTipos.innerHTML ="";
     fetch('../backend/consultarTipos.php', {
         method: 'POST'
     })
@@ -75,6 +77,7 @@ function cargarTipos() {
         console.log(texto);
         let info = JSON.parse(texto);
         info.forEach(element => {
+
             console.log(element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles" + element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles");
             let textoLista = element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles";
             let ElementoLista = document.createElement("li");
