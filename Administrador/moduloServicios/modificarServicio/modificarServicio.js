@@ -21,9 +21,9 @@ window.addEventListener('load',e=>{
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(function(infoPersonal){
-        console.log(infoPersonal);
-        for(element of infoPersonal){
+    }).then(function(infoServicio){
+        console.log(infoServicio);
+        for(element of infoServicio){
             inputNombres.value = element.Producto_Nombre;
             categoria.value = element.CatProd_Categoria; 
             precio.value = element.Producto_Precio;

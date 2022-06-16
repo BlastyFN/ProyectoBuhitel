@@ -29,6 +29,34 @@ class database
 		return $res;
 	}
 
+	
+    function obtenerCategoriaReportes($hotel){
+		$sql = $this->con->prepare("SELECT * FROM categoriareporte  WHERE CatReporte_Hotel = '".$hotel."' ORDER BY CatReporte_Prioridad ASC");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return $res;
+	}
+
+	function reasignarCategoria($hotel,$nuevaPrioridad,$nombreCategoria){
+		$sqltest = $this->con->prepare("SELECT * FROM categoriareporte WHERE CatReporte_Nombre = '".$nombreCategoria."' AND CatReporte_Hotel = '".$hotel."'");
+		$sqltest->execute();
+		$res = $sqltest->fetchall();
+	
+		if (count($res) > 0){
+			$sql = $this->con->prepare("UPDATE categoriareporte SET CatReporte_Prioridad = '".$nuevaPrioridad."' WHERE CatReporte_Nombre = '".$nombreCategoria."'");
+			$sql->execute();
+			return "si";
+			
+		}else{
+			$sql = $this->con->prepare("INSERT INTO categoriareporte 
+			(CatReporte_Hotel, CatReporte_Nombre, CatReporte_Prioridad) VALUES 
+			('".$hotel."', '".$nombreCategoria."', '".$nuevaPrioridad."')");
+			$sql->execute();
+			return "no";
+			
+		}
+	}
     
 
 

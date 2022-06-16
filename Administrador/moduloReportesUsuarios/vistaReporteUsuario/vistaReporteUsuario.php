@@ -42,28 +42,62 @@ session_start();
     <h1 class="titulo">
         Vista específica de reporte
     </h1>
-    <section class="chat">
 
-        <p class="destinatario">Personal asignado: </p>
-        <div class="cuerpoChat">
-            <div class="contenedorMensajes">
+    <div class="contenedorReporte">
+        <section class="infoReporte">
+            <h3>
+                Detalles 
+            </h3>
+            <br>
+            <p class="descripcionReporte">
+                Mensaje
+            </p>
 
-                </div>
-                    <form class="envioMensaje" id="envioMensaje">
-                        <input type="text" class="nuevoMensaje" id="mensajeChat">
-                        <button class="enviarMensaje" type="submit" >></button>
+        </section>
 
-                    </form>
-                </div>
-
+        <section class="eleccionPersonal">
+            <div class="listaPersonal">
+                <select name="tipoPersonal" id="tipoPersonal" class="formText">
+                    <option selected="true" disabled>Tipo de personal</option>
+                    <option value="Recepcion">Recepcionista</option>
+                    <option value="Limpieza">Personal de limpieza</option>
+                    <option value="Valet">Valet parking</option>
+                    <option value="Servicio">Personal de servicio</option>
+                    
+                </select>
+                <label class="formTextRadio">
+                    <input type="radio" name="color" value=""> Personal1
+                </label>
+                <br>
+                <label class="formTextRadio">
+                    <input type="radio" name="color" value=""> Personal2
+                </label>
             </div>
-        </div>    
-        <div class="botones">
+        </section>
+
+        <section class="chat" >
+
+
+            <p class="destinatario">Personal asignado: </p>
+            <div class="cuerpoChat">
+                <div class="contenedorMensajes">
+
+                    </div>
+                        <form class="envioMensaje" id="envioMensaje">
+                            <input type="text" class="nuevoMensaje" id="mensajeChat">
+                            <button class="enviarMensaje" type="submit" >></button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>    
+            <div class="botones">
+                
+            </div>
             
-        </div>
-        
-    </section>
-    
+        </section>
+    </div>
 
 
 

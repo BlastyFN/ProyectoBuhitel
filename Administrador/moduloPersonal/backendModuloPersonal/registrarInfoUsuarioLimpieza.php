@@ -15,7 +15,7 @@
 	    $bd = new database();
         $res = $bd-> registrarInfoUsuarioLimpieza($personalID,$inicioJornada,$finJornada,$inicioDescanso,$finDescanso);
         echo $res;
-        echo "si";
+        
     }
 
 ?>

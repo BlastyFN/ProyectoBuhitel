@@ -21,20 +21,7 @@ if(isset($_POST['pisos']) &&  isset($_POST['numHabs'])){
 		for($contHabs = 0; $contHabs < $habsPorPiso; $contHabs++){ //Definir todas las habitaciones de cada piso
 			$nombreHab = $piso * 100 + $contHabs + 1;
 			$bd->registrarHab($nombreHab,$pisoID,$TipoHabID);
-		}
-	
+		}	
 	}
-
-	//$pisoID = $bd->obtenerPisoID($piso,$hotel);
-	//echo '{"tel":'.$pisoID.'}';
-	
-
-	// if($res == true){
-	// 	echo($res . 'con ' . $NumPisos . ' pisos');
-	// }else{
-	// 	echo("no");
-	// }
-
-
 }
 ?>

@@ -4,6 +4,7 @@ const mensajeChat = document.querySelector('#mensajeChat');
 const contenedorMensajes = document.querySelector('.contenedorMensajes');
 const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
+const descripcionReporte = document.querySelector('.descripcionReporte');
 const obtenerReporteEspecifico = new FormData();
 
 window.addEventListener('load', e => {
@@ -20,7 +21,7 @@ window.addEventListener('load', e => {
         console.log(infoPersonal);
         for(element of infoPersonal){
             titulo.textContent = element.Reporte_Nombre;
-            
+            descripcionReporte.textContent = element.Reporte_Contenido;
         }
     })
 })

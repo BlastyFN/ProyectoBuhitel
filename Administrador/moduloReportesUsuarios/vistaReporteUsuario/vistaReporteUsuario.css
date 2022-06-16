@@ -9,6 +9,7 @@ h1{
     width: 60%;
     margin-left: 10%;
     height: 500px;
+    display: none;
    
 }
 
@@ -30,7 +31,7 @@ h1{
 }
 
 .nuevoMensaje{
-    width: 85%;
+    width: 75%;
     margin-top: 10px;
     font-size: 20px;
     padding: 5px 5px;
@@ -46,12 +47,13 @@ h1{
     border-style: none;
     font-size: 20px;
     color: #fff;
+    width: 20%;
 }
 
 .enviarMensaje:hover {
     opacity: .9;
     cursor: pointer;
- }
+}
 
 
 
@@ -59,10 +61,9 @@ h1{
     background: #59114D;
     color: #FFF;
     border-radius: 10px;
-    padding: 5px;
-    
+    padding: 5px;    
      
- }
+}
 
 .mensajeRecibido span{
     border: 1px solid #59114D;
@@ -70,18 +71,55 @@ h1{
     padding: 5px;
     
      
- }
+}
 
-  .mensajeEnviado{
-     display:flex;
-     flex-direction: row;
-     justify-content: flex-end;
-     margin: 5px 10px;
- }
+.mensajeEnviado{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 5px 10px;
+}
 
-   .mensajeRecibido{
-     display:flex;
-     flex-direction: row;
+.mensajeRecibido{
+    display:flex;
+    flex-direction: row;
     
-      margin: 5px 10px;
- }
+    margin: 5px 10px;
+}
+
+.contenedorReporte{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5%;
+}
+
+.infoReporte{
+    width: 30%;
+    padding-top: 50px;
+    text-align: justify;
+}
+
+.eleccionPersonal {
+    background: #FFF;
+
+     width: 60%;
+    margin-left: 10%;
+    height: 500px;
+}
+.formText{
+    width: 100%;
+    
+    font-size: 20px;
+    padding: 1% 15px;
+    border-radius: 5px;
+    border-style: solid ;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.formTextRadio{
+    width: 100%;   
+    font-size: 20px;
+    margin-left: 20px;
+   
+
+}

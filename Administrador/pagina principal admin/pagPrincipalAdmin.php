@@ -1,8 +1,8 @@
 <?php 
 session_start();
-if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
-            header("Location: /index.php", TRUE, 301);
-}
+//if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
+//            header("Location: /index.php", TRUE, 301);
+//}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +23,26 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
 
     <section class="main">
         <section class="containCards">
-           
+            <div class="contIndividual" >
+                    <div class="cardBoard ">Información de habitaciones</div>
+                    <div class="card infoHabs"></div>
+
+            </div>
+
+            <div class="contIndividual" >
+                    <div class="cardBoard">Información de reportes</div>
+                    <div class="card"></div>
+            </div>
+
+            <div class="contIndividual" >
+                    <div class="cardBoard">Información de limpieza</div>
+                    <div class="card"></div>
+            </div>
+
+            <div class="contIndividual" >
+                    <div class="cardBoard">Información de servicios</div>
+                    <div class="card"></div>
+            </div>
             
         </section>
      </section>
@@ -31,6 +50,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     
     <script src="../../Recursos/clase-menu.js"></script>
     <script src="../../Recursos/menuTransition.js"></script>
+    <script src="pagPrincipalAdmin.js"></script>
 
     
 </body>

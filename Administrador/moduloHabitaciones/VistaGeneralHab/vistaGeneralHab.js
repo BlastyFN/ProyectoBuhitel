@@ -159,16 +159,11 @@ function obtenerPisosHotel(){
             } else {
                throw "Error en la llamada Ajax"
             }      
-    }).then(function(res){
-   
+    }).then(function(res){  
         var contadorPisos  = 1;
-        for(element of res){
-            
-            var ingresarHabs = [];
-            const contenedorPisos = document.querySelector('.vistaHabs');
-            
-            obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{
-                
+        for(element of res){           
+            const contenedorPisos = document.querySelector('.vistaHabs');            
+            obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
                 console.log(nPiso);
                 pisos.push(nPiso);
                 contenedorPisos.appendChild(nPiso.HTML);
@@ -193,20 +188,12 @@ function obtenerPisosHotel(){
                             items:6
                         }
                     }
-                });
-               
+                });  
             });
-            contadorPisos++;
-
-
-    
-            // console.log(pisos);
+            contadorPisos++;          
         }        
-        
-
     });
-    resolve();
-    // console.log(pisos);
+    resolve(); 
   });  
    
 }
@@ -221,33 +208,24 @@ function obtenerHabs(pisoID, numPiso){
         fetch("../backend/obtenerHabsPorPiso.php", {
             method:'POST', body: solicitarNumHabs
         }).then(function(response){
-            if(response.ok){
-                
-                return response.text();
-                
+            if(response.ok){               
+                return response.text();                
             } else {
                 throw "Error en la llamada Ajax"
             }      
         }).then(function(resHabs){
             //console.log(resHabs);
             var jsonHabs = JSON.parse(resHabs);
-            
             for(element of jsonHabs){
                 nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
                     element.habitacion_tipo, element.TipoHab_Nombre);
                 resuArray.push(nuevaHab);
                 
             }
-            // console.log(resuArray);
-            //return resuArray;
-
             const nuevoPiso = new Piso(pisoID, numPiso, resuArray);
-            
-            // console.log(pisos);
             resolve(nuevoPiso);
         });
-    });
-    // console.log(pisos);
+    });    
 }
 
 
