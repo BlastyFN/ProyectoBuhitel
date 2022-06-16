@@ -7,7 +7,7 @@ window.addEventListener("load", cargarData);
 function cargarData() {
     cargarChecks();
     cargarDisponibilidad();
-    // cargarTipos();
+    cargarTipos();
 }
 
 function cargarDisponibilidad() {
@@ -72,7 +72,15 @@ function cargarTipos() {
         }
     })
     .then(function(texto){
-
+        console.log(texto);
+        let info = JSON.parse(texto);
+        info.forEach(element => {
+            console.log(element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles" + element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles");
+            let textoLista = element.Cantidad + " Habitaciones " + element.Nombre + " Disponibles";
+            let ElementoLista = document.createElement("li");
+            ElementoLista.innerHTML = textoLista;
+            listaTipos.appendChild(ElementoLista);
+        });
     })
     .catch(function(err) {
         console.log(err);

@@ -25,12 +25,6 @@
             return $res;
         }
 
-        public function consultarDisponibles($Tipo, $Hoy){
-            $sql = $this->con->prepare("");
-            $sql->execute();
-            $res = $sql->fetchall();
-            return $res;
-        }
 
         public function consultarCINS($Hotel, $Hoy, $Manana){
             $sql = $this->con->prepare("SELECT HabReservada_ID FROM habitacionreservada
@@ -65,6 +59,14 @@
             INNER JOIN reservacion ON reservacion.Reservacion_ID = HabReservada_Reservacion
             WHERE BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
             AND BINARY habitacion.Habitacion_Tipo = '".$Tipo."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarTipos($Hotel){
+            $sql = $this->con->prepare("SELECT TipoHab_ID, TipoHab_Nombre FROM tipohabitacion 
+            WHERE TipoHab_Hotel = '".$Hotel."'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;

@@ -7,18 +7,21 @@
     $Hotel = $_SESSION['sesionPersonal']['Hotel'];
     $bd = new database();
     $Tipos = $bd->consultarTipos($Hotel);
-    $ListaTipos;
+    $ListaTipos = [];
     foreach ($Tipos as $key => $tipo) {
         $THAB = [];
         $THAB['ID'] = $tipo['TipoHab_ID'];
         $THAB['Nombre'] = $tipo['TipoHab_Nombre'];
         $THAB['Cantidad'] = 0;
+        array_push($ListaTipos, $THAB);
     }
 
     foreach ($ListaTipos as $key => $NTIPO) {
         $Totales = $bd->consultarHabsTipo($NTIPO['ID']);
-        $Ocupadas = $bd->consultarHabsOcupadas($NTIPO['ID']);
-        $NTIPO['Cantidad'] = count($Totales) - count($Ocupadas);
+        $Ocupadas = $bd->consultarHabsOcupadas($NTIPO['ID'], $Hoy);
+        // $ListaTipos[$key]['Totales'] = count($Totales);
+        // $ListaTipos[$key]['Ocupadas'] = count($Ocupadas);
+        $ListaTipos[$key]['Cantidad'] = count($Totales) - count($Ocupadas);
     }
     
     
