@@ -15,9 +15,14 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehículos</title>
     <link rel="stylesheet" href="styleVisualizar.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<section id="header-menu" class="header-menu" >
+
+</section>
     <div id="Encabezado">
         <h2 class="CentrarTexto TituloPrincipal">Servicio a la habitacion</h1>
     </div>
@@ -70,5 +75,7 @@ else {
         </section>
     </section>
     <script src= "JSGestionarPedidos.js"></script>
+    <script src="../../../Recursos/clase-menu.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
 </body>
 </html>

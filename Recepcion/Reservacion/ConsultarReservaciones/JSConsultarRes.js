@@ -363,5 +363,5 @@ function callbackCanc() {
 function editar() {
     
     localStorage.setItem("Editar", this.value);    
-    window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/EditarReservacion/EdicionReservacion.php";
+    window.location.href="https://corporativotdo.com/Recepcion/Reservacion/EditarReservacion/EdicionReservacion.php";
 }

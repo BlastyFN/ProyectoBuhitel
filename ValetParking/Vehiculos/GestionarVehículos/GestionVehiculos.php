@@ -19,6 +19,9 @@ else {
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
 </head>
 <body>
+<section id="header-menu" class="header-menu" >
+
+</section>
     <div id="Encabezado">
         <h2 class="CentrarTexto TituloPrincipal">Valet Parking</h1>
     </div>

@@ -284,7 +284,7 @@ function cambiarOpciones() {
     const SelectOpciones = this.nextSibling;
     const TipoNuevo = this.value;
     console.log(TipoNuevo);
-        for (let i = this.options.length; i >= 0; i--) {
+        for (let i = this.nextSibling.length; i >= 0; i--) {
             SelectOpciones.remove(i);
         }
     console.log(SelectOpciones);
