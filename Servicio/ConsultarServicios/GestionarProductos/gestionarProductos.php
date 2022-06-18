@@ -19,24 +19,24 @@ session_start();
 
     </section>
 
-    <section class="search">
-        <form action="GET">
-            <input type="text" class="searchElement" placeholder="busca Servicios, categorias..." id="">
-            <button type="submit" class="searchButton">Buscar</button>
-        </form>
-
+    <section id ="contenedorSelects" class="contenedor">
+        <br><br><br>
+        <select name="SelectCategoria" id="SelectCategoria">
+            <option selected="true" disabled="disabled">Categoría</option>
+        </select>
+        <br><br><br>
+        <select name="SelectProducto" id="SelectProducto">
+            <option selected="true" disabled="disabled">Producto</option>
+        </select>
+        <br><br>
+        <label class="switch">
+            <input type="checkbox" id="cbox">
+            <span class="slider"></span>
+        </label>
     </section>
 
-    <section class="contenedorTablaServicios">
-        <table class="tablaServicios">
-
-        </table>
-
-        <button class="btnAdd"> Añadir </button>
-
-    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="vistaGeneralServicios.js"></script>
+    <script src="gestionProductos.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
 </body>

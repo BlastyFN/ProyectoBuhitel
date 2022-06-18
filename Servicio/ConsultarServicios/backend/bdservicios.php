@@ -47,6 +47,28 @@
             return $res;
         }
 
+        public function consultarCategorias($Hotel){
+            $sql = $this->con->prepare("SELECT CatProd_ID, CatProd_Categoria FROM categoriaproductos
+            WHERE BINARY CatProd_Hotel = '".$Hotel."' ");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function consultarProductos($Categoria){
+            $sql = $this->con->prepare("SELECT Producto_ID, Producto_Nombre, Producto_Existencia FROM producto 
+            WHERE BINARY Producto_Categoria ='".$Categoria."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
+        public function cambiarExistencia ($Producto, $Existencia){
+            $sql = $this->con->prepare("UPDATE producto SET Producto_Existencia= '".$Existencia."' WHERE BINARY Producto_ID = '".$Producto."'");
+            $sql->execute();
+            return 1;
+        }
+
     }
 
 ?>
