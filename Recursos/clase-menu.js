@@ -23,7 +23,7 @@ const linksRecepcion = ["Administrador/pagina principal admin/pagPrincipalAdmin.
 const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos"];
 const linksValet = ["ValetParking/Vehiculos/GestionarVehíc;ulos"]
 const opcionesServicio = ["Gestionar pedidos","Gestionar productos"];
-const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php, Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php"]
+const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", "Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php"]
 
 class MenuLateral{
     constructor(opciones, links){
@@ -92,8 +92,8 @@ class MenuLateral{
             listaLinks = linksValet;
         }
         else if(localStorage.Tipo == "Servicio"){
-            listaOpciones = opcionesValet;
-            listaLinks = linksValet;
+            listaOpciones = opcionesServicio;
+            listaLinks = linksServicio;
         }
 
         listaOpciones.forEach((item) => {
