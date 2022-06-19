@@ -1,16 +1,24 @@
 <?php 
     session_start();
     include "bdservicios.php";
-    include "/../../../Recursos/Twilio/buhi.php";
+    include "../../../Recursos/Twilio/buhi.php";
     if (isset($_SESSION['sesionPersonal']['Hotel']) && isset($_POST['Estatus']) && isset($_POST['Servicio'])){
+        date_default_timezone_set('America/Mexico_City');
+        $zonahoraria = date_default_timezone_get();
+        $Hoy = date('Y-m-d H:i:s');
         $bd = new database();
         $Estatus = $_POST['Estatus'];
         $Servicio = $_POST['Servicio'];
         $res = $bd->actualizarEstatus($Servicio, $Estatus);
-        $mensajero = new buhi();
-        $numero = "5213311177391";
-        $mensaje = "Holaa";
-        $resultado = $mensajero->enviarMensaje($numero, $mensaje); 
+        
+        $numero = $bd->obtenerNumero($Servicio, $Hoy);
+        if ($numero != false) {
+            $nuevostatus = $bd->obtenerStatus($Estatus);
+            $mensajero = new buhi();
+            $mensaje = "Hola! Aquí Buhi notificando que tu pedido ha cambiado de estatus a: ".$nuevostatus;
+            $resultado = $mensajero->enviarMensaje($numero, $mensaje); 
+        }
+        
         echo $Estatus;
     }
 

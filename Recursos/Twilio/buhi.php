@@ -2,19 +2,18 @@
 
 // Update the path below to your autoload.php,
 // see https://getcomposer.org/doc/01-basic-usage.md
-require_once '/twilio-php-main/src/twilio/autoload.php';
+require_once 'twilio-php-main/src/Twilio/autoload.php';
 
 use Twilio\Rest\Client;
 
-
-
-print($message->sid);
 class buhi{
-    private $con;
+    private $sid;
+    private $token;
+    private $twilio;
     function __construct(){
-        $sid = "AC479a3f0203ff0e309abb54e9dd4ebb8f";
-        $token = "08e57113d4b0e83f20019378433cd015";
-        $twilio = new Client($sid, $token);
+        $this->sid = "AC479a3f0203ff0e309abb54e9dd4ebb8f";
+        $this->token = "4112f31af823f40d1691b818e78cf5d5";
+        $this->twilio = new Client($this->sid, $this->token);
     }
     //funciones
     public function enviarMensaje($Destinatario, $Mensaje){

@@ -69,6 +69,33 @@
             return 1;
         }
 
+        public function obtenerNumero($Servicio, $Hoy){
+            $sql = $this->con->prepare("SELECT habitacionreservada.HabReservada_NumWhatsapp FROM servicio 
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            WHERE BINARY Servicio_ID = '".$Servicio."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $num;
+            if ($res[0]['HabReservada_NumWhatsapp'] != '0') {
+                $num = $res[0]['HabReservada_NumWhatsapp'];
+            }
+            else{
+                $num = false;
+            }
+            return $num;
+        }
+
+        public function obtenerStatus($Estatus){
+            $sql = $this->con->prepare("SELECT EstatusServicio_Nombre FROM estatusservicio WHERE EstatusServicio_ID = '".$Estatus."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            $Nombre = $res[0]['EstatusServicio_Nombre'];
+            return $Nombre;
+        }
+
     }
 
 ?>

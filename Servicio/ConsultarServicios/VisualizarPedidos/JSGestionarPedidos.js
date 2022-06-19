@@ -102,7 +102,6 @@ function obtenerServicio() {
     var SER = this.querySelector('td').textContent;
     
     ServicioActual = Servicios.find(element => element.ID === SER);
-    console.log(ServicioActual);
     textoHabitacion.innerHTML = "Habitacion: " + ServicioActual.Habitacion;
     textoServicio.innerHTML = "Pedido: #" + ServicioActual.ID;
     textoHora.innerHTML = "Hora: " + ServicioActual.Hora;
@@ -255,7 +254,6 @@ function obtenerProductos(SERID) {
         }
     })
     .then(function(texto) {
-        console.log(texto);
         if (texto != "0" && texto != "x") {
             const ContenedorProductos = document.getElementById('SeccionCarritos');
             while (ContenedorProductos.firstChild) {
@@ -264,7 +262,6 @@ function obtenerProductos(SERID) {
             let Carritos = JSON.parse(texto);
             // console.log(Carritos);
             Carritos.forEach(Carrito => {
-                console.log(Carrito);
                 let LineaProducto = document.createElement('h1');
                 LineaProducto.classList.add("Morado");
                 LineaProducto.classList.add("TextoCompleto");
