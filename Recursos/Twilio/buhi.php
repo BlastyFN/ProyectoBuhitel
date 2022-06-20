@@ -11,8 +11,8 @@ class buhi{
     private $token;
     private $twilio;
     function __construct(){
-        $this->sid = "AC479a3f0203ff0e309abb54e9dd4ebb8f";
-        $this->token = "4112f31af823f40d1691b818e78cf5d5";
+        $this->sid = "";
+        $this->token = "";
         $this->twilio = new Client($this->sid, $this->token);
     }
     //funciones
