@@ -3,27 +3,29 @@ var listaLinks = [];
 
 const opcionesAdministrador = ["Pagina Principal", "Configuración de habitaciones","Configuracion de usuarios",
     "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas",
-    "Modificar información general","Configuracion de chatbot"]
+    "Modificar información general","Configuracion de chatbot", "Modificar mi información"]
 const linksAdministrador = ["Administrador/pagina principal admin/pagPrincipalAdmin.php",
  "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php", 
  "Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php", 
  "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php","Link Reportes de usuarios", 
- "Link Reportes sistema", "link modificar info general","link configuración chatbot"];
+ "Link Reportes sistema", "link modificar info general","link configuración chatbot", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
-    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking"];
+    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", "Modificar mi información"];
 const linksRecepcion = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", 
     "Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", 
     "Recepcion/Reservacion/CrearReservacion/Reservacion.php", 
     "Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php",
     "Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php", 
     "Recepcion/SolicitarServicios/SolicitarServicio/SolServHab.php", 
-    "Recepcion/SolicitarServicios/SolicitarValet/SolValet.php"];
+    "Recepcion/SolicitarServicios/SolicitarValet/SolValet.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
-const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos"];
-const linksValet = ["ValetParking/Vehiculos/GestionarVehíc;ulos"]
-const opcionesServicio = ["Gestionar pedidos","Gestionar productos"];
-const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", "Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php"]
+const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos", "Modificar mi información"];
+const linksValet = ["ValetParking/Vehiculos/GestionarVehíc;ulos", "Modificar mi información", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
+const opcionesServicio = ["Gestionar pedidos","Gestionar productos", "Modificar mi información"];
+const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", "Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
+const opcionesLimpieza = ["Gestionar limpiezas", "Modificar mi información"];
+const linksLimpieza = ["Limpieza/GestionLimpiezas/PaginaPrincipalLimpieza/PaginaPrincipalLimpieza.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
 
 class MenuLateral{
     constructor(opciones, links){
@@ -94,6 +96,10 @@ class MenuLateral{
         else if(localStorage.Tipo == "Servicio"){
             listaOpciones = opcionesServicio;
             listaLinks = linksServicio;
+        }
+        else if(localStorage.Tipo == "Limpieza"){
+            listaOpciones = opcionesLimpieza;
+            listaLinks = linksLimpieza;
         }
 
         listaOpciones.forEach((item) => {

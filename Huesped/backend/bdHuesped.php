@@ -201,7 +201,8 @@
 
         public function consultarProductos($Categoria){
             $sql = $this->con->prepare("SELECT Producto_Nombre, Producto_Precio, Producto_ID FROM producto 
-            WHERE Producto_Categoria = '".$Categoria."'");
+            WHERE BINARY Producto_Categoria = '".$Categoria."'
+            AND BINARY Producto_Existencia = '1'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
@@ -334,6 +335,20 @@
             VALUES ('".$Nombre."','".$Habitacion."','".$Categoria."', '".$Contenido."', '1', '1')");
             $sql->execute();
             return true;
+        }
+
+        public function consultarReportes($Habitacion, $Hoy){
+            $sql = $this->con->prepare("SELECT Reporte_Nombre, estatusreporte.EstatusReporte_Estatus FROM reporte
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
+            INNER JOIN categoriareporte ON categoriareporte.CatReporte_ID = Reporte_Categoria
+            INNER JOIN estatusreporte ON estatusreporte.EstatusReporte_ID = Reporte_Estatus
+            WHERE BINARY habitacion.Habitacion_ID = '".$Habitacion."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
         }
         
     }

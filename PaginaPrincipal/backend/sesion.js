@@ -122,7 +122,9 @@ function redireccionar(Personal) {
             case "Recepcion":
                 URL=URL+"/Recepcion/Principal/PaginaPrincipal/Inicio.php";
                 break;
-            case "Limpieza":    
+            case "Limpieza":   
+           
+                URL=URL+"Limpieza/GestionLimpiezas/PaginaPrincipalLimpieza/PaginaPrincipalLimpieza.php ";
                 break;
             case "Valet":
                 URL=URL+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php";
