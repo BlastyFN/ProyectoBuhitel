@@ -1,54 +1,208 @@
-.main{
-    flex-direction: row;
+*{
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
-    float: left;
-    width: 90%;
-    height: 800px;
-    margin-left: 5%;
-    z-index: 50px;
+
+}
+body {
+    background-color: #ECE5F0;
+}
+
+p{
+    font-size: 16px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+}
+
+h1{
+    font-size: 30px;
+    color: #ECE5F0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
-.main .cardBoard {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+h2{
+    font-size: 45px;
+    color: #59114D;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3{
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 50;
+    color: #59114D;
+}
+button{
+    color:black;
+    font-size:20px;
+    /* border-style:solid;
+    border-color: black; */
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+button:hover{
+    cursor:pointer;
+    opacity: .5;
+}
+button:disabled{
+    background-color: gray;
+    cursor:auto;
+}
+button:disabled{
+    opacity: 1;
+}
+input[type=text] {
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+  textarea{
+    color: black;
+    font-size: 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    font-family: 'Open Sans', sans-serif;
+    resize: none;
+  }
+/*----------*/
+.Naranja{
+    background-color: #E98A15;
+}
+.Verde{
+    background-color: #679436;
+}
+
+.Morado{
     background-color: #59114D;
-    border-radius: 10px;
-    padding: 5px;
-    color: #fff;
 }
 
-.main .card {
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    background-color: #FFF;
-    border-radius: 10px;
-    padding: 5px;
-    border: 1px solid #59114D;
-    top: 20%;
+.Azul{
+    background-color: #427AA1;
 }
 
-.main .containCards{
+.TBlanco{
+    color: white;
+}
+
+.Rojo{
+    background-color: #E63946;
+}
+/*----------*/
+.Contenedor{
     display: flex;
-    flex-direction: row ;
-    box-sizing: border-box;
-    float: left;
-    width: 90%;
-    height: 800px;
-    margin-left: 5%;
-   
-    
-    
+    justify-content: center;
+}
+.CentrarTexto{
+    text-align: center;
+
+}
+.TituloPrincipal{
+    font-weight: lighter;
+    align-self: center;
+    text-align: center;
 }
 
-.main .contIndividual{
-    position: relative;
-    margin-top: 5%;
-    margin-left: 10%;
-    width: 35%;
-    height: 20%;
-    display:block ;
-   
+.BtonModel{
+    border-radius: 10px;
+}
+
+/* CAJAS FORMATOS */
+
+.Formulario{
+    width: 40%;
+}
+
+.Tabla{
+    width: 60%;
+}
+
+/* FORMULARIO */
+.TextoMitad{
+    width: 46%;
+    margin-left: 2%;
+}
+
+.TextoCompleto{
+    width: 95%;
+    margin-left: 2%;
+}
+
+.TextoAlineado{
+    text-align: center;
+}
+/* FORMULARIO */
+
+/* TABLA */
+table{
+    border-style: solid;
+    border-color: black;
+    width: 96%;
+    margin-left: 2%;
+
+    border-collapse:collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+thead{
+    color: #ECE5F0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+}
+th{
+    padding: 5px;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #427AA1;
+
+  }
+  
+  td{
+      text-align: center;
+      font-size: 22px;
+      font-family: 'Open Sans', sans-serif;
+  }
+
+  tbody tr:hover{
+      background-color: #E98A15;
+      cursor: grab;
+  }
+/* TABLA */
+
+
+.RedTop{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-style: solid;
+    border-color: black;
+    border-bottom-style: none;
+}
+.RedMid{
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: black;
+
+}
+
+.RedBot{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-style: solid;
+    border-color: black;
+    border-top-style: none;
 }

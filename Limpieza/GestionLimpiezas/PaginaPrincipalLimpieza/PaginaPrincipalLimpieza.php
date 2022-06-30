@@ -1,39 +1,74 @@
 <?php 
 session_start();
-//if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
-//            header("Location: /index.php", TRUE, 301);
-//}
+if ($_SESSION['sesionPersonal']['Tipo']!='Limpieza') {
+            header("Location: /index.php", TRUE, 301);
+}
+else {
+    # code...
+}
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pagPrincipalAdmin.css">
+    <title>Limpiezas</title>
     <link rel="stylesheet" href="PaginaPrincipalLimpieza.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
-
-    <title>Buhitel: Administrador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<section id="header-menu" class="header-menu" >
 
-    <section id="header-menu" class="header-menu" >
+</section>
+    <div id="Encabezado">
+        <h2 class="CentrarTexto TituloPrincipal">Limpiezas</h1>
+    </div>
+    <br><br>
+    <section class="Contenedor">
+        
+        <section class="Formulario">
+            <h3 class="CentrarTexto">Próxima</h3>
+            
+            
+                <h1 class="TextoCompleto TextoAlineado Azul RedTop RedMid" id="txtHab">Habitación</h1>
+                <h1 class="TextoCompleto Verde RedMid" id="txtPiso">Piso: #</h1>
+                <h1 class="TextoCompleto Verde RedMid" id="txtHora">Hora: </h1>
+                <h1 class="TextoCompleto Verde RedMid" id="txtTipo">Tipo: </h1>
+                <section id="SeccionCarritos">
 
-    </section>
+                </section>
+                <button class="Verde RedMid TextoCompleto" id="btnConfirmar" >Comenzar</button>
+                
+                <button class="Rojo RedMid RedBot TextoCompleto" id="btnCancelar" >Cancelar</button>
 
-    <section class="main">
-        <section class="containCards">
-           
+            
             
         </section>
-     </section>
 
-    
+        <section class="Tabla ">
+            <h3 class="CentrarTexto">Orden del día</h3>
+            <table>
+                <thead class="Morado">
+                    <tr class="">
+                        <th>Habitación</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody id="CuerpoTabla">
+                    
+                </tbody>
+
+              
+            </table>
+        </section>
+    </section>
+    <script src= "PaginaPrincipalLimpieza.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
-    <script src="PaginaPrincipalLimpieza.js"></script>
-
-    
 </body>
 </html>
