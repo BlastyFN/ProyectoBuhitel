@@ -178,10 +178,7 @@ tbody tr:nth-child(odd) {
       font-family: 'Open Sans', sans-serif;
   }
 
-  tbody tr:hover{
-      background-color: #E98A15;
-      cursor: grab;
-  }
+
 /* TABLA */
 
 
@@ -196,7 +193,6 @@ tbody tr:nth-child(odd) {
     border-left-style: solid;
     border-right-style: solid;
     border-color: black;
-
 }
 
 .RedBot{
@@ -205,4 +201,9 @@ tbody tr:nth-child(odd) {
     border-bottom-style: solid;
     border-color: black;
     border-top-style: none;
+}
+
+.tbox{
+    outline: none;
+    border-radius: 0;
 }

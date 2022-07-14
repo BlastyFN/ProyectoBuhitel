@@ -37,12 +37,9 @@ else {
                 <h1 class="TextoCompleto Verde RedMid" id="txtPiso">Piso: #</h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtHora">Hora: </h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtTipo">Tipo: </h1>
-                <section id="SeccionCarritos">
-
-                </section>
-                <button class="Verde RedMid TextoCompleto" id="btnConfirmar" >Comenzar</button>
+                <textarea name="txtNotas" placeholder="Notas:" class="Verde RedMid TextoCompleto tbox" id="txtNotas" cols="20" rows="5"></textarea>    
+                <button class="Verde RedMid RedBot TextoCompleto" id="btnConfirmar" value="1">Comenzar</button>
                 
-                <button class="Rojo RedMid RedBot TextoCompleto" id="btnCancelar" >Cancelar</button>
 
             
             

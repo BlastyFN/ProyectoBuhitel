@@ -1,5 +1,11 @@
 const Tabla = document.getElementById("CuerpoTabla");
-
+const btnCompletar = document.getElementById("btnConfirmar");
+const txtNotas = document.getElementById("txtNotas");
+const txtHabitacion = document.getElementById("txtHab");
+const txtPiso = document.getElementById("txtPiso");
+const txtHora = document.getElementById("txtHora");
+const txtTipo = document.getElementById("txtTipo");
+var NLimpID;
 class Limpieza { 
     constructor(ID, Habitacion, Inicio, Fin, Estatus, Tipo, Piso){
         this.ID = ID;
@@ -81,7 +87,7 @@ function cargarTabla() {
                 );
                 //Añade el objeto al array de objetos
                 LimpiezasNuevas.push(LIMP);
-       
+                
              }); 
              desplegadora(LimpiezasNuevas);
         }
@@ -101,4 +107,74 @@ function desplegadora(Limpiezas) {
     Limpiezas.forEach(Limpieza => {
         Tabla.appendChild(Limpieza.HTML);
     });
+    determinarNueva(Limpiezas[0]);
+}
+
+
+function determinarNueva(Limp) {
+    console.log(Limp.Habitacion);
+    txtHabitacion.innerHTML = "Habitacion "+ Limp.Habitacion;
+    txtPiso.innerHTML = "Piso: #"+ Limp.Piso;
+    txtTipo.innerHTML = "Tipo: "+ Limp.Tipo;
+    var Fecha = Limp.Inicio;
+    var PartesFecha = Fecha.split(" ");
+    var Hora = PartesFecha[1];
+    var TextoHora = Hora.slice(0, 5);
+    txtHora.innerHTML = "Hora: "+TextoHora;
+    NLimpID = Limp.ID;
+}
+
+btnCompletar.addEventListener("click", function () {
+    //EN LA BD 1 = Pendiente, 2 = En proceso y 3 = Completada
+    switch (this.value) {
+        case '1':
+            alert("En proceso");
+            this.value = 2;
+            this.innerHTML = "En proceso";
+            cambiarEstatus(2);
+            //
+            break;
+        case '2':
+            alert("Completado");
+            this.value = 1;
+            this.innerHTML = "Completado";
+            cambiarEstatus(3);
+            window.location.reload()
+
+            break;
+    
+        default:
+            break;
+    }
+});
+
+function cambiarEstatus(Estatus) {
+        //CONSULTA
+    const infoLimpieza = new FormData();
+    infoLimpieza.append("Notas", txtNotas.value);
+    infoLimpieza.append("Limpieza", NLimpID);
+    infoLimpieza.append("Estatus", Estatus);
+    fetch('../backend/cambiarEstatusLimpieza.php', {
+        method:'POST',
+        body: infoLimpieza
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+       if (texto == '1') {
+        console.log("Exito");
+       }
+       else{
+        alert("Error");
+        console.log(texto);
+       }
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
 }
