@@ -267,7 +267,7 @@ btnRes.addEventListener('click', function (e) {
     })
     .then(function(texto){
         registrarHabitaciones(texto);
-        window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+        window.location.href="https://corporativotdo.com/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
     })
     .catch(function(err) {
         console.log(err);

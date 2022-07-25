@@ -19,6 +19,17 @@
             return $res;
         }
 
+        public function consultarFecha($Habitacion, $Hoy){
+            $sql = $this->con->prepare("SELECT reservacion.Reservacion_CheckOut FROM habitacionreservada
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = HabReservada_Reservacion
+            WHERE BINARY HabReservada_Habitacion = '".$Habitacion."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
         public function consultarCodigo($codigo){
             $sql = $this->con->prepare("SELECT habitacion.Habitacion_Nombre, hotel.Hotel_Nombre, huesped.Huesped_Nombre, huesped.Huesped_Apellidos, HabReservada_ID FROM habitacionreservada
             INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
