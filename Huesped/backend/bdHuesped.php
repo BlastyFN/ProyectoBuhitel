@@ -20,7 +20,7 @@
         }
 
         public function consultarFecha($Habitacion, $Hoy){
-            $sql = $this->con->prepare("SELECT reservacion.Reservacion_CheckOut FROM habitacionreservada
+            $sql = $this->con->prepare("SELECT reservacion.Reservacion_CheckOut, HabReservada_ID FROM habitacionreservada
             INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion
             INNER JOIN reservacion ON reservacion.Reservacion_ID = HabReservada_Reservacion
             WHERE BINARY HabReservada_Habitacion = '".$Habitacion."'
@@ -243,6 +243,12 @@
             $Precio = $res[0]['Producto_Precio'];
             $PrecioTotal = $Precio * $Cantidad;
             return $PrecioTotal;
+        }
+        public function registrarRespuesta($HabRes, $Numero, $Valor){
+            $sql = $this->con->prepare("INSERT INTO respuestasencuesta(Respuestas_HabReservadas, Respuesta_NumPregunta, Respuesta_Valor) 
+            VALUES ('".$HabRes."','".$Numero."','".$Valor."')");
+            $sql->execute();
+            return true;
         }
 
         public function actualizarEstatus($Servicio, $Estatus){
