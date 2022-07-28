@@ -12,7 +12,7 @@ const linksAdministrador = ["Administrador/pagina principal admin/pagPrincipalAd
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
     "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", "Modificar mi información"];
-const linksRecepcion = ["Administrador/pagina principal admin/pagPrincipalAdmin.html", 
+const linksRecepcion = ["Recepcion/Principal/PaginaPrincipal/Inicio.php", 
     "Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", 
     "Recepcion/Reservacion/CrearReservacion/Reservacion.php", 
     "Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php",
