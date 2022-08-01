@@ -330,7 +330,7 @@ function editarLimp() {
     var LimpFormato = this.name.replace(" ", "T");
     localStorage.setItem("LimpHabitacion", this.id);    
     localStorage.setItem("LimpInicio", LimpFormato);
-    window.location.href="https://localhost/Buhitel/Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php";
+    window.location.href="https://corporativotdo.com/Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php";
 
 }
 
@@ -411,5 +411,5 @@ function editarServ() {
     localStorage.setItem("EditarServicio", "true");  
     localStorage.setItem("NombreHabEd", this.id);    
     localStorage.setItem("IDServEd", this.value);
-    window.location.href="https://localhost/Buhitel/Recepcion/SolicitarServicios/EditarServicio/EdServHab.php";
+    window.location.href="https://corporativotdo.com/Recepcion/SolicitarServicios/EditarServicio/EdServHab.php";
 }
