@@ -1,7 +1,7 @@
 #grafica{
     
-    height: 80%;
-    width: 60%;
+    height: 40vh ;
+    width: 80vw;
     overflow-x: scroll;
 }
 
@@ -10,8 +10,48 @@
     height: 40px;
     margin-top: 10px;
     font-size: 15px;
-    margin-left: 40%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px;
     border-style: solid ;
     border-color: rgba(0, 0, 0, .3);
+}
+
+h1{
+    margin: 0 auto;
+    font-size: 25px;
+    width: 80%;
+    
+}
+
+.btnTiempo {
+    padding: 10px 30px;
+    border-radius: 50px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    background: #fff;
+    color:#59114D;
+    cursor: pointer;
+}
+
+.botonesTiempo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnTiempo:hover {
+    opacity: .8;
+    
+}
+
+.active{
+    background: #59114D;
+    color: #fff;
+}
+
+.chart-container{
+    width : 50%;
+    margin: 30px auto;
 }

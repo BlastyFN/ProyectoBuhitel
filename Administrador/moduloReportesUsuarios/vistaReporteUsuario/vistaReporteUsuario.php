@@ -55,7 +55,7 @@ session_start();
 
         </section>
 
-        <section class="eleccionPersonal">
+        <section class="eleccionPersonal ">
             <div class="listaPersonal">
                 <select name="tipoPersonal" id="tipoPersonal" class="formText">
                     <option selected="true" disabled>Tipo de personal</option>
@@ -65,13 +65,12 @@ session_start();
                     <option value="Servicio">Personal de servicio</option>
                     
                 </select>
-                <label class="formTextRadio">
-                    <input type="radio" name="color" value=""> Personal1
-                </label>
-                <br>
-                <label class="formTextRadio">
-                    <input type="radio" name="color" value=""> Personal2
-                </label>
+                <div class="listaSeleccionPersonal">
+                   
+
+                </div>
+                <button class="asignarPersonal" disabled="true">Asignar</button>
+
             </div>
         </section>
 

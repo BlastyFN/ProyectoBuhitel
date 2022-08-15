@@ -5,7 +5,7 @@ session_start();
         $bd = new database();
         $periodo = $_POST['dias'];
         $fechaInicio = strtotime($_POST['fechaInicio']);
-        
+        $hotel = 44;
         $arregloRes = array();
         
        switch($periodo){
@@ -19,6 +19,7 @@ session_start();
                 $periodo->modify('+ 4 hours');
                 $fechasqlFin = $periodo->format('Y-m-d H:i:s');
                 $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel);
                 
                 array_push($arregloRes,$resConsulta);
             }    
@@ -29,6 +30,7 @@ session_start();
                 $fechasqlInicio = date("Y-m-d", $i);
                 $fechasqlFin = date("Y-m-d", $i+86400);
                 $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel);
                 array_push($arregloRes,$resConsulta);
                
             }
@@ -43,6 +45,7 @@ session_start();
                 $periodo->modify('+ 6 days');
                 $fechasqlFin = $periodo->format('Y-m-d');
                 $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel);
                 array_push($arregloRes,$resConsulta);
             }
                 
@@ -57,6 +60,7 @@ session_start();
                 $periodo->modify('+1 month - 1 day');
                 $fechasqlFin = $periodo->format('Y-m-d');
                 $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel);
                 array_push($arregloRes,$resConsulta);
                 
             }
@@ -67,7 +71,7 @@ session_start();
         
         
        
-
+ 
         echo json_encode($arregloRes);
     }
 

@@ -3,6 +3,7 @@ session_start();
     include "bd.php";
     if( isset($_POST['fechaInicio']) && isset($_POST['dias'])){
         $bd = new database();
+        $hotel = 44;
         $periodo = $_POST['dias'];
         $fechaInicio = strtotime($_POST['fechaInicio']);
         
@@ -18,7 +19,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d H:i:s'));
                 $periodo->modify('+ 4 hours');
                 $fechasqlFin = $periodo->format('Y-m-d H:i:s');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta = $bd->obtenerNumeroLimpiezas($fechasqlInicio, $fechasqlFin,$hotel);
                 
                 array_push($arregloRes,$resConsulta);
             }    
@@ -28,7 +29,7 @@ session_start();
             for($i = $fechaInicio; $i <= $fechaFin; $i+=86400){
                 $fechasqlInicio = date("Y-m-d", $i);
                 $fechasqlFin = date("Y-m-d", $i+86400);
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta = $bd->obtenerNumeroLimpiezas($fechasqlInicio, $fechasqlFin,$hotel);
                 array_push($arregloRes,$resConsulta);
                
             }
@@ -42,7 +43,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+ 6 days');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta = $bd->obtenerNumeroLimpiezas($fechasqlInicio, $fechasqlFin,$hotel);
                 array_push($arregloRes,$resConsulta);
             }
                 
@@ -56,7 +57,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+1 month - 1 day');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin);
+                $resConsulta = $bd->obtenerNumeroLimpiezas($fechasqlInicio, $fechasqlFin,$hotel);
                 array_push($arregloRes,$resConsulta);
                 
             }
@@ -65,8 +66,6 @@ session_start();
        } 
 
         
-        
-       
 
         echo json_encode($arregloRes);
     }

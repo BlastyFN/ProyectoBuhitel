@@ -10,8 +10,10 @@ h1{
     margin-left: 10%;
     height: 500px;
     display: none;
-   
+    flex-direction: column;
 }
+
+
 
 .contenedorMensajes{
     height: 70vh;
@@ -101,8 +103,8 @@ h1{
 
 .eleccionPersonal {
     background: #FFF;
-
-     width: 60%;
+    display: none;
+    width: 60%;
     margin-left: 10%;
     height: 500px;
 }
@@ -123,3 +125,33 @@ h1{
    
 
 }
+
+.activo{
+    display:flex;
+}
+
+.btnactivo{
+    display:inline;
+}
+
+.listaSeleccionPersonal{
+    display:flex;
+    flex-direction: column;
+}
+.asignarPersonal:disabled{
+    background: #ccc;
+  
+}
+.asignarPersonal {
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    
+}
+
+
+

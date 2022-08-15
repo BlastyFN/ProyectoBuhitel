@@ -41,6 +41,8 @@ window.addEventListener('load', e => {
         }
         
         tablaReportes.appendChild(fragment);
+
+        
     })
 })
 

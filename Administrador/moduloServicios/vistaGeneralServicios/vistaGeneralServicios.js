@@ -43,8 +43,7 @@ window.addEventListener('load', e => {
 
             fragment.appendChild(tr);
             console.log(tr);
-        }
-        
+        }     
         tablaServicios.appendChild(fragment);
     })
 })

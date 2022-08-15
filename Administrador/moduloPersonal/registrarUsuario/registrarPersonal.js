@@ -35,7 +35,7 @@ formRegistroUsuario.addEventListener('submit', function(e){
         console.log(inputTipoPersonal.value);
         if(inputTipoPersonal.value == "Limpieza"){
             localStorage.setItem("personalID", id);
-            window.location.href="http://localhost/ProyectoBuhitel/Administrador/moduloPersonal/completarRegistroUsuarioLimpieza/completarRegistroUsuarioLimpieza.php";
+            window.location.href="https://corporativotdo.com/Administrador/moduloPersonal/completarRegistroUsuarioLimpieza/completarRegistroUsuarioLimpieza.php";
         }
         alert(texto);
     })

@@ -193,6 +193,15 @@ function registrar() {
                 alert("Registro completado con éxito");
                 //Limpia el formulario
                 limpiar();
+
+                const correoFirebase = document.getElementById('campo_Correo');
+                const contrasenaFirebase = document.getElementById('campo_Contrasena');
+
+                firebase.auth().createUserWithEmailAndPassword(correoFirebase, contrasenaFirebase).catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ..
+                });
                 //Repliega el formulario de confirmación
                 replegarConfirmador();
                 break;

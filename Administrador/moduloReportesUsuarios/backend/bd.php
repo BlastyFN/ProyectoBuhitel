@@ -8,6 +8,13 @@ class database
 		$this->con = new PDO ('mysql:host localhost= localhost;dbname=corpo206_buhitel','root','');
 	}
 
+	function obtenerListaPersonal($tipo){
+		$sql = $this->con->prepare("SELECT * FROM personal WHERE Personal_Tipo = '".$tipo."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+			
+		return $res;
+	}
 
 	function obtenerReportes($hotel){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
@@ -20,8 +27,9 @@ class database
 	}
 
     function obtenerReporteEspecifico($reporte_id){
-		$sql = $this->con->prepare("SELECT reporte.Reporte_Nombre, 
-        categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
+		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
+        categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
+		reporte.Reporte_Servicio, reporte.Reporte_Estatus FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
         = categoriareporte.CatReporte_ID WHERE reporte.Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();

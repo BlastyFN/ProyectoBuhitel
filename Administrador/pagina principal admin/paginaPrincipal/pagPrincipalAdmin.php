@@ -11,7 +11,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pagPrincipalAdmin.css">
-    <link rel="stylesheet" href="../../Recursos/estilos-menu.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
 
     <title>Buhitel: Administrador</title>
 </head>
@@ -31,7 +31,7 @@ session_start();
 
             <div class="contIndividual" >
                     <div class="cardBoard">Información de reportes</div>
-                    <div class="card"></div>
+                    <div class="card infoReportes"></div>
             </div>
 
             <div class="contIndividual" >
@@ -48,8 +48,8 @@ session_start();
      </section>
 
     
-    <script src="../../Recursos/clase-menu.js"></script>
-    <script src="../../Recursos/menuTransition.js"></script>
+    <script src="../../../Recursos/clase-menu.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
     <script src="pagPrincipalAdmin.js"></script>
 
     
