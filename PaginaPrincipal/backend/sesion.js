@@ -82,7 +82,7 @@ boton.addEventListener('click', function(e) {
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
-                    localStorage.setItem("user",user);
+                    localStorage.setItem("user",user.uid);
                     // ...
                 })
                 .catch(e=>{
