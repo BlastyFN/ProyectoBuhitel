@@ -192,7 +192,7 @@ function registrar() {
                 //Servidor responde que código coincide
                 alert("Registro completado con éxito");
                 //Limpia el formulario
-                limpiar();
+                
 
                 const correoFirebase = document.getElementById('campo_Correo');
                 const contrasenaFirebase = document.getElementById('campo_Contrasena');
@@ -203,6 +203,7 @@ function registrar() {
                     var errorMessage = error.message;
                     // ..
                 });
+                limpiar();
                 //Repliega el formulario de confirmación
                 replegarConfirmador();
                 break;
