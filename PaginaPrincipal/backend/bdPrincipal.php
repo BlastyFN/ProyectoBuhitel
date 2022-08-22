@@ -31,6 +31,16 @@
             $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
             ('".$HID."', 'Suite')");
             $sql->execute();
+            $sql = $this->con->prepare("INSERT INTO tipohabitacion (TipoHab_Hotel, TipoHab_Nombre) VALUES
+            ('".$HID."', 'Suite')");
+            $sql = $this->con->prepare("INSERT INTO tipohabitacion (CatReporte_Hotel, CatReporte_Nombre,
+              CatReporte_Prioridad) 
+              VALUES ('".$HID."', 'Emergencia', '1')");
+            $sql->execute();
+            $sql = $this->con->prepare("INSERT INTO tipohabitacion (CatReporte_Hotel, CatReporte_Nombre,
+            CatReporte_Prioridad) 
+            VALUES ('".$HID."', 'Spam', '2')");
+          $sql->execute();
             return 2;
         }
 

@@ -197,7 +197,8 @@ function registrar() {
                 const correoFirebase = document.getElementById('campo_Correo');
                 const contrasenaFirebase = document.getElementById('campo_Contrasena');
 
-                firebase.auth().createUserWithEmailAndPassword(correoFirebase, contrasenaFirebase).catch((error) => {
+                firebase.auth().createUserWithEmailAndPassword(correoFirebase.value, contrasenaFirebase.value)
+                .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     // ..

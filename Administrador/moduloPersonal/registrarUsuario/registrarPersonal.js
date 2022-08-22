@@ -21,6 +21,11 @@ formRegistroUsuario.addEventListener('submit', function(e){
     enviarRegistro.append('seguroSocial',inputSeguroSocial.value);
    
     
+    firebase.auth().createUserWithEmailAndPassword(inputCorreo.value, inputContraseña.value)
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    });
 
     fetch('../backendModuloPersonal/registrarPersonal.php' , {
         method:'POST', body:enviarRegistro

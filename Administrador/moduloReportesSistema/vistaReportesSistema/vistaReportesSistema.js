@@ -5,9 +5,17 @@ const diario = document.getElementById('btnDiario');
 const semanal = document.getElementById('btnSemanal');
 const mensual = document.getElementById('btnMensual');
 const anual = document.getElementById('btnAnual');
+const divBotones = document.querySelector('.botonesTiempo');
+const divBotonesPreguntas = document.querySelector('.botonesPreguntas');
+const h3Pregunta = document.querySelector('.pregunta');
+const btnsPreguntas = document.querySelectorAll('.btnPregunta');
+const apartadoPreguntas = document.querySelector('.apartadoPreguntas');
+const apartadoHabs = document.querySelector('.apartadoTiposHabs');
 var diasReporte = 1;
 var labels = [];
 var grafica;
+var numPregunta = 1;
+const fragment = document.createDocumentFragment();
 
 const infoReporte = new FormData();
 
@@ -135,7 +143,10 @@ function obtenerLabelsMeses(){
   })
 
   function generarGrafica(){
+    divBotones.classList.remove('oculto');
+    apartadoPreguntas.classList.add('oculto');
     labels = [];
+    var stringCondicionHabs = obtenerCondicionalHabs(); 
     if(fecha.value!='' && opciones.value!='0'){  
       if(diasReporte==1){
         obtenerLabelsHoras();
@@ -146,21 +157,21 @@ function obtenerLabelsMeses(){
       } else if(diasReporte==365){
         obtenerLabelsMeses();
       }
-      grafica.destroy();
+      
       switch(opciones.value){
         
         case '1': //Ingresos por estancia
-        console.log("Se entró a ingresos por estancia");
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerIngresosEstancia();
           
           break;
 
-        case '2':  //Ingresos de servicios
-        console.log("Se entró a ing por servicios");
+        case '2':  //Ingresos de servicios  
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerIngresosServicios();  
           break;
         
@@ -171,28 +182,45 @@ function obtenerLabelsMeses(){
           console.log("Se entró a num de limpiezas");
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerNumeroLimpiezas();
           break;
         case '6':
+         
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerNumeroOcupaciones();
           break;
         case '7':
+          
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerNumeroDesocupaciones();
           break;
         case '8':
+         
           infoReporte.append('fechaInicio', fecha.value);
           infoReporte.append('dias', diasReporte);
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerIngresosTotales();
           break;
         case '9':
+          divBotones.classList.add('oculto');
           obtenerProductosServicios();
           break;
         case '10':
+          infoReporte.append('habs', stringCondicionHabs);
           obtenerTiempoOcupaciones();
+          break;
+        case '13':
+          apartadoPreguntas.classList.remove('oculto');
+          infoReporte.append('fechaInicio', fecha.value);
+          infoReporte.append('dias', diasReporte);
+          infoReporte.append('numPregunta', numPregunta);
+          infoReporte.append('habs', stringCondicionHabs);
+          obtenerRespuestasEncuestaSalida();
           break;
       }
     }else{
@@ -200,8 +228,39 @@ function obtenerLabelsMeses(){
     }
   }
 
-  function generarGraficaPolar(labelsProductos,datos){
+  function generarGraficaLineal(labels, datos){
+    grafica.destroy();
+    console.log(datos);
+    grafica = new Chart (canvas, {
+      type: "line",
+      data: {
+        labels:labels,
+        datasets: [{
+          label: "Semanal",
+          data:datos
+        }]
+      }
+    })
+  }
 
+  function generarGraficaLineal(labels, datos, opciones){
+    grafica.destroy();
+    console.log(datos);
+    grafica = new Chart (canvas, {
+      type: "line",
+      data: {
+        labels:labels,
+        datasets: [{
+          label: "Semanal",
+          data:datos
+        }]
+      },
+      options:opciones
+    })
+  }
+
+  function generarGraficaPolar(labelsProductos,datos){
+    grafica.destroy();
     grafica = new Chart (canvas, {
       type: "polarArea",
       data: {
@@ -225,17 +284,7 @@ function obtenerLabelsMeses(){
           throw "Error en la llamada Ajax"
       }
     }).then(function(info){
-        console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+      generarGraficaLineal(labels,info);
         
         
     })
@@ -252,16 +301,7 @@ function obtenerLabelsMeses(){
       }
     }).then(function(info){
         console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+        generarGraficaLineal(labels,info);
         
     })
   }
@@ -277,16 +317,7 @@ function obtenerLabelsMeses(){
       }
     }).then(function(info){
         console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+        generarGraficaLineal(labels,info);
         
     })
   }
@@ -302,16 +333,7 @@ function obtenerLabelsMeses(){
       }
     }).then(function(info){
         console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+        generarGraficaLineal(labels,info);
         
     })
   }
@@ -327,16 +349,7 @@ function obtenerLabelsMeses(){
       }
     }).then(function(info){
         console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+        generarGraficaLineal(labels,info);
         
     })
   }
@@ -352,16 +365,7 @@ function obtenerLabelsMeses(){
       }
     }).then(function(info){
         console.log(info);
-        grafica = new Chart (canvas, {
-          type: "line",
-          data: {
-            labels:labels,
-            datasets: [{
-              label: "Semanal",
-              data:info
-            }]
-          }
-        })
+        generarGraficaLineal(labels,info);
         
     })
   }
@@ -399,7 +403,7 @@ function obtenerLabelsMeses(){
 
   function obtenerTiempoOcupaciones(){
     fetch('../backendReportesSistema/obtenerTiempoOcupaciones.php' , {
-      method:'POST'
+      method:'POST', body:infoReporte
     }).then(function(response){
       if(response.ok){
        return response.json();
@@ -420,12 +424,120 @@ function obtenerLabelsMeses(){
     })
   }
 
-   window.addEventListener('load', () =>{
+  function obtenerRespuestasEncuestaSalida(){
+    fetch('../backendReportesSistema/obtenerEncuestaSalida.php' , {
+      method:'POST', body: infoReporte
+    }).then(function(response){
+      if(response.ok){
+       return response.json();
+      } else {
+          throw "Error en la llamada Ajax"
+      }
+    }).then(function(info){
+        console.log(info); 
+        let opciones = {
+          scales: {
+              y: {
+                  max: 5,
+                  min: 0,
+                  ticks: {
+                      stepSize: 1
+                  }
+              }
+          }
+      };
+        generarGraficaLineal(labels,info,opciones);
 
+    })   
+  }
 
-       fecha.value = new Date().toISOString().slice(0, 10); 
-       grafica = new Chart (canvas)
-//     })
-})
+  window.addEventListener('load', () =>{
+    fecha.value = new Date().toISOString().slice(0, 10); 
+    grafica = new Chart (canvas);
+    definirInfoPregunta(numPregunta);
+    cargarTiposHabs();
+  })
 
+  divBotonesPreguntas.addEventListener('click', e =>{
+    console.log(e);
+    if(e.target.classList.contains('btnPregunta')){
+        var idPregunta = e.target.id;
+        definirInfoPregunta(idPregunta);
+        generarGrafica();
+    }
+  })
+
+  
+
+   apartadoHabs.addEventListener('click', e =>{
+    console.log(e);
+  
+    if(e.target.classList.contains('checkboxHab')){
+      generarGrafica();
+    }
+  })
+
+  function definirInfoPregunta(id){
+    var infoPregunta = ["Calificación del servicio de limpieza","Calificación del servicio a la habitación",
+    "calificación del servicio de recepción","Calificación del servicio de valet", 
+    "Calificación de la atención general","Calificación de la calidad de las instalaciones",
+    "Caliicación de la limpieza de áreas comunes","Calificación del seguimiento de reportes",
+    "Calificación de la atención del chatbot","Calificación de la velocidad de atención"]
+    console.log(infoPregunta[id-1]);
+    h3Pregunta.textContent = infoPregunta[id-1];
+    numPregunta = id;
+
+    for(element of btnsPreguntas){
+      if (id == element.id){
+        element.classList.add('active');
+      } else{
+        element.classList.remove('active');  
+      }
+    }
+
+  }
+
+  function cargarTiposHabs(){
+    this.preventDefault;
+    fetch('../backendReportesSistema/obtenerTiposDeHabs.php' , {
+        method:'POST'
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){   
+        for(element of texto){  //Por cada elemento del json
+            console.log(texto);
+            var checkboxHab = document.createElement('input');
+            checkboxHab.setAttribute('type',"checkbox");
+            checkboxHab.id = element.tipohab_ID;
+            checkboxHab.checked = true;
+            checkboxHab.classList.add('checkboxHab');
+
+            var labelHab = document.createElement('label');
+            labelHab.textContent = element.tipohab_nombre;
+            
+            fragment.appendChild(checkboxHab);
+            fragment.appendChild(labelHab);
+        }
+        
+        apartadoHabs.appendChild(fragment);
+        
+    });
+}
+
+function obtenerCondicionalHabs(){
+  let checkboxes = document.querySelectorAll('.checkboxHab');
+  console.log(checkboxes);
+  var stringCondicion = "";
+  for (element of checkboxes){
+    if (!element.checked){
+      stringCondicion += " AND tipohabitacion.TipoHab_ID != " + element.id;
+    }
+  }
+  console.log(stringCondicion);
+  return stringCondicion;
+}
 

@@ -7,6 +7,7 @@ session_start();
         $fechaInicio = strtotime($_POST['fechaInicio']);
         $hotel = 44;
         $arregloRes = array();
+        $condicionalHabs = $_POST['habs'];
         
        switch($periodo){
         case 1:
@@ -18,7 +19,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d H:i:s'));
                 $periodo->modify('+ 4 hours');
                 $fechasqlFin = $periodo->format('Y-m-d H:i:s');
-                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel);
+                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 
                 array_push($arregloRes,$resConsulta);
             }    
@@ -28,7 +29,7 @@ session_start();
             for($i = $fechaInicio; $i <= $fechaFin; $i+=86400){
                 $fechasqlInicio = date("Y-m-d", $i);
                 $fechasqlFin = date("Y-m-d", $i+86400);
-                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio,$fechasqlFin, $hotel);
+                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio,$fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
                
             }
@@ -42,7 +43,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+ 6 days');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel);
+                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
             }
                 
@@ -56,7 +57,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+1 month - 1 day');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel);
+                $resConsulta = $bd->obtenerNumeroOcupaciones($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
                 
             }

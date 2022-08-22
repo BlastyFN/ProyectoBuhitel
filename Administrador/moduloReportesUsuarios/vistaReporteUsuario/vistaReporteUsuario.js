@@ -28,6 +28,7 @@ window.addEventListener('load', e => {
         console.log(infoPersonal);
         for(element of infoPersonal){
             reporteID = element.Reporte_ID;
+
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
             if (element.Reporte_usuario == null){
@@ -86,7 +87,7 @@ tipoPersonal.addEventListener('change',() =>{
 
 btnAsignar.addEventListener('click', () => {
     const seguimiento = new FormData();
-    var valorServicio ;
+    var valorServicio;
     if(tipoPersonal.value == "Recepcion")valorServicio=4;
     else if(tipoPersonal.value == "Limpieza") valorServicio=5;
     else if(tipoPersonal.value == "Valet") valorServicio=3;
@@ -129,7 +130,7 @@ const contenidoChat = (user) => {
             console.log("input vacio")
             return
         }
-        firebase.firestore().collection('chatBuhitel').add({
+        firebase.firestore().collection(reporteID.toString()).add({
             mensaje: mensajeChat.value,
             uid: user.uid,
             fecha: Date.now()
@@ -139,7 +140,7 @@ const contenidoChat = (user) => {
         .catch(e => console.log(e));        
     })
 
-    firebase.firestore().collection('chatBuhitel').orderBy('fecha')
+    firebase.firestore().collection(reporteID.toString()).orderBy('fecha')
     .onSnapshot(query => {
         contenedorMensajes.innerHTML = "";
         query.forEach(mensaje => {

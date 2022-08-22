@@ -33,6 +33,7 @@ h1{
     background: #fff;
     color:#59114D;
     cursor: pointer;
+    transition: .1s ease;
 }
 
 .botonesTiempo{
@@ -46,12 +47,63 @@ h1{
     
 }
 
+.btnPregunta{
+    padding: 10px 30px;
+    border-radius: 50px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    background: #fff;
+    color:#59114D;
+    cursor: pointer;
+    transition: .1s ease;
+}
+
+.btnPregunta:hover {
+    opacity: .8;
+    
+}
+
 .active{
     background: #59114D;
     color: #fff;
+    transition: .1s ease;
 }
 
 .chart-container{
-    width : 50%;
+    width : 80%;
     margin: 30px auto;
 }
+
+.apartadoPreguntas{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.oculto {
+    display: none;
+}
+
+.indicacionPregunta{
+    margin: auto;
+}
+
+.seccionPreguntas{
+    margin: 20px auto ;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pregunta{
+    margin: 0 auto;
+}
+
+.botonesPreguntas{
+    margin:auto;
+}
+
+

@@ -78,7 +78,18 @@ boton.addEventListener('click', function(e) {
                 console.log(infoPersonal);
                 //ENVÍA A REDIRECCIONAR CON EL OBJETO DE PARAMETRO
                 guardarInfo(infoPersonal);
-                
+                firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value) 
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    localStorage.setItem("user",user);
+                    // ...
+                })
+                .catch(e=>{
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                })
+
                 break;
         }
      })
