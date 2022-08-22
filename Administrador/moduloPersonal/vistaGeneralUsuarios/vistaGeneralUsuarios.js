@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var personalID = e.target.id;
             enviarID.append('id',e.personalID);
             localStorage.setItem("personalID", personalID);
-            window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/verPersonalEspecifico/verPersonalEspecifico.php";
+            window.location.href="https://corporativotdo.com/Administrador/moduloPersonal/verPersonalEspecifico/verPersonalEspecifico.php";
            
         }
     })
@@ -63,6 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 btnAñadir.addEventListener('click', e =>{
-    window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/registrarUsuario/registrarPersonal.php";
+    window.location.href="https://corporativotdo.com/Administrador/moduloPersonal/registrarUsuario/registrarPersonal.php";
 })
 

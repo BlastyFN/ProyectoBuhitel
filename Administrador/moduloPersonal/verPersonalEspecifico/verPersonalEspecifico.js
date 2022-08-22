@@ -35,11 +35,11 @@ window.addEventListener('load', e => {
 
 
 btnVolver.addEventListener('click', e=>{
-    window.location.href = "http://localhost/Buhitel/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+    window.location.href = "https://corporativotdo.com/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
 })
 
 
 
 btnModificar.addEventListener('click', e =>{
-    window.location.href="http://localhost/Buhitel/Administrador/moduloPersonal/modificarPersonal/modificarPersonal.php";
+    window.location.href="https://corporativotdo.com/Administrador/moduloPersonal/modificarPersonal/modificarPersonal.php";
 })

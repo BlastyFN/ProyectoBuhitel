@@ -5,7 +5,7 @@ class database
 	private $con;
 
 	function __construct(){
-		$this->con = new PDO ('mysql:host localhost= localhost;dbname=corpo206_buhitel','root','');
+		$this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
 	}
 
 	function registrarPersonal($hotel,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial){
