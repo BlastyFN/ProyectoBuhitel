@@ -1,0 +1,119 @@
+h1{
+    font-size: 25px;
+    width: 50%;
+    margin-left: 40%;
+    margin-top: 50px;
+}
+
+.chat{
+    width: 60%;
+    margin-left: 10%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.contenedorMensajes{
+    height: 70vh;
+    overflow-y: scroll;
+    
+    
+}
+
+.cuerpoChat{
+    background: #FFF;
+    border-radius: 10px ;
+    padding: 10px 20px;
+}
+
+.enviomensaje{
+    width:100%;
+}
+
+.nuevoMensaje{
+    width: 75%;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border-style: solid ;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.enviarMensaje{
+    background: #1d1068;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 20px;
+    color: #fff;
+    width: 20%;
+}
+
+.enviarMensaje:hover {
+    opacity: .9;
+    cursor: pointer;
+}
+
+
+
+.mensajeEnviado span{
+    background: #59114D;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 5px;    
+     
+}
+
+.mensajeRecibido span{
+    border: 1px solid #59114D;
+    border-radius: 10px;
+    padding: 5px;
+    
+     
+}
+
+.mensajeEnviado{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 5px 10px;
+}
+
+.mensajeRecibido{
+    display:flex;
+    flex-direction: row;
+    
+    margin: 5px 10px;
+}
+
+.contenedorReporte{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5%;
+}
+
+.infoReporte{
+    width: 30%;
+    padding-top: 50px;
+    text-align: justify;
+}
+
+
+
+.formText{
+    width: 100%;
+    
+    font-size: 20px;
+    padding: 1% 15px;
+    border-radius: 5px;
+    border-style: solid ;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+
+
+
+
