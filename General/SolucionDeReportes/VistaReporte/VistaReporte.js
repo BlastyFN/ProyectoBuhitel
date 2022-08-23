@@ -24,11 +24,13 @@ window.addEventListener('load', e => {
         }
     }).then(function(infoPersonal){
         console.log(infoPersonal);
-        reporteID = element.Reporte_ID;
-         titulo.textContent = element.Reporte_Nombre;
-        descripcionReporte.textContent = element.Reporte_Contenido;
-        user = localStorage.getItem("user");
-        contenidoChat(user);
+        for( element of infoPersonal){
+            reporteID = element.Reporte_ID;
+            titulo.textContent = element.Reporte_Nombre;
+            descripcionReporte.textContent = element.Reporte_Contenido;
+            user = localStorage.getItem("user");
+            contenidoChat(user);
+        }
         
     })
 })
