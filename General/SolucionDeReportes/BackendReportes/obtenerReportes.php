@@ -4,7 +4,7 @@
     $personal =  $_SESSION['sesionPersonal']['ID'];
 	
     $bd = new database();
-    $res = $bd-> obtenerReportes($personal);
+    $res = $bd->obtenerReportes($personal);
     echo json_encode($res);
 
 

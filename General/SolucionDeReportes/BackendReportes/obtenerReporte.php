@@ -7,7 +7,7 @@
        
         $reporte_id = $_POST['reporteID'];
         $bd = new database();
-        $res = $bd-> obtenerReporteEspecifico($reporte_id);
+        $res = $bd->obtenerReporteEspecifico($reporte_id);
         echo json_encode($res);
 
     }
