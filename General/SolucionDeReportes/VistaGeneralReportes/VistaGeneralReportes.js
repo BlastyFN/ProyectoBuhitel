@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var reporteID = e.target.id;
             //enviarID.append('id',e.reporteID);
             localStorage.setItem("reporteID", reporteID);
-            window.location.href="http://localhost/ProyectoBuhitel/General/SolucionDeReportes/VistaReporte/VistaReporte.php";
+            window.location.href="https://corporativotdo.com/General/SolucionDeReportes/VistaReporte/VistaReporte.php";
            
         }
     })

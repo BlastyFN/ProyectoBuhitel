@@ -13,6 +13,7 @@ const listaPersonal = document.querySelector('.listaSeleccionPersonal');
 const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
 var reporteID;
+user = localStorage.getItem("user");
 
 window.addEventListener('load', e => {
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
