@@ -3,8 +3,8 @@
     session_start();
    
 
-        //$hotel = $_SESSION['sesionPersonal']['Hotel'];
-        $hotel = 46;
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
+       
        
         $bd = new database();
         $res = $bd-> obtenerCategoriaReportes($hotel);

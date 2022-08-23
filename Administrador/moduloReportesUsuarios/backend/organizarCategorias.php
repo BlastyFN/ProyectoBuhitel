@@ -4,7 +4,7 @@ session_start();
 if(isset($_POST['listaNombresCats'])){
     $res = "";
     $listaCats = json_decode($_POST['listaNombresCats']);
-	$hotel =  46;//$_SESSION['sesionPersonal']['Hotel'];
+	$hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
     // foreach ($listaCats as $categoria) {
     //     bd->reasignarCategoria()
