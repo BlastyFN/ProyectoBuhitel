@@ -456,7 +456,7 @@ function registrarHabitaciones(Reservacion) {
             console.log(err);
          }); 
     });
-    window.location.href="https://localhost/Buhitel/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
+    window.location.href="https://corporativotdo.com/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
 }
 
 btnAddCargo.addEventListener('click', function () {
