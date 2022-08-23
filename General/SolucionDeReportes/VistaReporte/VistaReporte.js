@@ -6,7 +6,7 @@ const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
-
+user = localStorage.getItem("user");
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
@@ -28,7 +28,7 @@ window.addEventListener('load', e => {
             reporteID = element.Reporte_ID;
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
-            user = localStorage.getItem("user");
+           
             contenidoChat(user);
         }
         
