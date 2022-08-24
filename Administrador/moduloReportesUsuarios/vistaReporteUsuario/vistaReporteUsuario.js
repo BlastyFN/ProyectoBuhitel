@@ -13,7 +13,7 @@ const listaPersonal = document.querySelector('.listaSeleccionPersonal');
 const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
 var reporteID;
-user = localStorage.getItem("user");
+
 
 window.addEventListener('load', e => {
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
@@ -112,16 +112,15 @@ btnAsignar.addEventListener('click', () => {
     })
 })
 
-firebase.auth().onAuthStateChanged(user => {
-    if(user){
-        accionCerrarSesion()
-        contenidoChat(user)
-    }else{
-        accionAcceder()
-        console.log('usuario no registrado')
+const user = firebase.auth().currentUser;
 
-    }
-})
+if(user){
+    contenidoChat(user)
+}else{
+    console.log('usuario no registrado')
+
+}
+
 
 const contenidoChat = (user) => {
     formulario.addEventListener('submit',(e) =>{
@@ -169,32 +168,7 @@ const contenidoChat = (user) => {
     })
 }
 
-const accionAcceder = () => {
 
-    botones.innerHTML = /*html*/`
-        <button class="btnAcc" id="btnAcceder">Acceder</button>
-    `
-    
-   const btnAcceder = document.querySelector('#btnAcceder')    
-    btnAcceder.addEventListener('click', async() => {
-        console.log('entro')
-        const provider = new firebase.auth.GoogleAuthProvider();
-        try {
-            await firebase.auth().signInWithPopup(provider)
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-}
-
-const accionCerrarSesion = () => {
-    botones.innerHTML = /*html*/`
-        <button class="btn btn-outline-danger" id="btnCerrar">Cerrar Sesión</button>
-    `
-    const btnCerrar = document.querySelector('#btnCerrar')
-    btnCerrar.addEventListener('click', () => firebase.auth().signOut())
-}
 
 
 

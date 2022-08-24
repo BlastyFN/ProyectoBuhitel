@@ -9,7 +9,7 @@ const opcionesAdministrador = ["Pagina Principal",
     "Reportes de análisis de sistemas",
      "Modificar mi información"]
 
-const linksAdministrador = ["Administrador/paginaPrincipalAdmin/pagPrincipalAdmin.php",
+const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/pagPrincipalAdmin.php",
  "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php", 
  "Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php", 
  "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php",
