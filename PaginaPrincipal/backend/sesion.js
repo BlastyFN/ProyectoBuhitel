@@ -78,13 +78,10 @@ boton.addEventListener('click', function(e) {
                 console.log(infoPersonal);
                 //ENVÍA A REDIRECCIONAR CON EL OBJETO DE PARAMETRO
                 guardarInfo(infoPersonal);
-                firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value) 
-                .then((userCredential) => {
-                    // Signed in
-                    var user = userCredential.user;
-                    localStorage.setItem("user",user.uid);
-                    // ...
-                })
+                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                .then(() => {
+                    return firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value)
+                }) 
                 .catch(e=>{
                     var errorCode = error.code;
                     var errorMessage = error.message;
@@ -125,7 +122,7 @@ function redireccionar(Personal) {
             switch (Personal.Personal_Tipo) {
             case "Administrador":                  
                 if(estado == 1){
-                    URL=URL+"Administrador/pagina%principal%admin/pagPrincipalAdmin.php";
+                    URL=URL+"Administrador\paginaPrincipalAdmin\paginaPrincipal\pagPrincipalAdmin.php";
                 }else if(estado == 0){
                         URL=URL+"Administrador/moduloHabitaciones/confInicialHab/conInicialHab.php";
                 }   

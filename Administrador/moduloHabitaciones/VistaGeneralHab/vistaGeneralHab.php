@@ -41,8 +41,8 @@
 
                         <li><a href="../modificarPisosYHabs/modificarPisosYHabs.php">Modificar pisos y habitaciones</a></li>
                     </ul>
-
-        </div>
+     </div>
+     
     <div class="vistaHabs">
            
     </div>
@@ -71,7 +71,7 @@
     <script src="owlCarousel.js"></script>
     <script src="vistaGeneralHab.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
-    <script src="../../../recursos/menuTransition.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
   
 
 </body>
