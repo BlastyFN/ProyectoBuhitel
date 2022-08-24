@@ -12,6 +12,7 @@ const obtenerReporteEspecifico = new FormData();
 const listaPersonal = document.querySelector('.listaSeleccionPersonal');
 const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
+const user = firebase.auth().currentUser;
 var reporteID;
 
 
@@ -113,7 +114,6 @@ btnAsignar.addEventListener('click', () => {
 })
 
 
-const user = Object.keys(window.sessionStorage);
 
 if(user){
     console.log(user);
@@ -125,6 +125,7 @@ if(user){
 
 
 const contenidoChat = (user) => {
+    this.preventDefault();
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
         console.log(mensajeChat.value);
