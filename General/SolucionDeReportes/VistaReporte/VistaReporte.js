@@ -6,7 +6,9 @@ const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
-const user = Object.keys(window.sessionStorage);
+
+const userKey = Object.keys(window.sessionStorage);
+const user = userKey ? JSON.parse(sessionStorage.getItem(userKey)) : undefined;
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();

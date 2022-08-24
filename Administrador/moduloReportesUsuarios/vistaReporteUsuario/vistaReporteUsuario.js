@@ -12,7 +12,6 @@ const obtenerReporteEspecifico = new FormData();
 const listaPersonal = document.querySelector('.listaSeleccionPersonal');
 const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
-const user = firebase.auth().currentUser;
 var reporteID;
 
 
@@ -114,6 +113,8 @@ btnAsignar.addEventListener('click', () => {
 })
 
 
+const userKey = Object.keys(window.sessionStorage);
+const user = userKey ? JSON.parse(sessionStorage.getItem(userKey)) : undefined;
 
 if(user){
     console.log(user);
