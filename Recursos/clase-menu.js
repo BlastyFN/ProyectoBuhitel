@@ -150,6 +150,7 @@ class MenuLateral{
 }
 
 function cerrarSesion() {
+    firebase.auth().signOut();
     fetch('../../../Recursos/cerrarSesion.php', {
         method:'POST'
     })
