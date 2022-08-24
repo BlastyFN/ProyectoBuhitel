@@ -18,21 +18,32 @@ const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/
  "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
-    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", "Modificar mi información"];
+    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", 
+    "Seguimiento de reportes",
+    "Modificar mi información"];
 const linksRecepcion = ["Recepcion/Principal/PaginaPrincipal/Inicio.php", 
     "Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php", 
     "Recepcion/Reservacion/CrearReservacion/Reservacion.php", 
     "Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php",
     "Recepcion/SolicitarServicios/SolicitarLimpieza/SolLimpieza.php", 
     "Recepcion/SolicitarServicios/SolicitarServicio/SolServHab.php", 
-    "Recepcion/SolicitarServicios/SolicitarValet/SolValet.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
+    "Recepcion/SolicitarServicios/SolicitarValet/SolValet.php",
+    "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
+     "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
-const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos", "Modificar mi información"];
-const linksValet = ["ValetParking/Vehiculos/GestionarVehíc;ulos", "Modificar mi información", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
-const opcionesServicio = ["Gestionar pedidos","Gestionar productos", "Modificar mi información"];
-const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", "Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
-const opcionesLimpieza = ["Gestionar limpiezas", "Modificar mi información"];
-const linksLimpieza = ["Limpieza/GestionLimpiezas/PaginaPrincipalLimpieza/PaginaPrincipalLimpieza.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
+const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos", "Seguimiento de reportes", "Modificar mi información"];
+const linksValet = ["ValetParking/Vehiculos/GestionarVehículos", 
+"\ValetParking\Vehiculos\VisualizarVehiculos\AgregarVehiculos.php",
+"General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
+const opcionesServicio = ["Gestionar pedidos","Gestionar productos", "Seguimiento de reportes", "Modificar mi información"];
+const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", 
+"Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php", 
+"General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
+"General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
+const opcionesLimpieza = ["Gestionar limpiezas", "Seguimiento de reportes", "Modificar mi información"];
+const linksLimpieza = ["Limpieza/GestionLimpiezas/PaginaPrincipalLimpieza/PaginaPrincipalLimpieza.php",
+"General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
+ "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
 
 class MenuLateral{
     constructor(opciones, links){

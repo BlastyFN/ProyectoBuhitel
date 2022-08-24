@@ -113,8 +113,8 @@ btnAsignar.addEventListener('click', () => {
 })
 
 
-const userKey = Object.keys(window.sessionStorage);
-const user = userKey ? JSON.parse(sessionStorage.getItem(userKey)) : undefined;
+const userKey = Object.keys(window.localStorage);
+const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
 
 
 

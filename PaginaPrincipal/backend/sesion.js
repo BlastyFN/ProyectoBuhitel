@@ -78,7 +78,7 @@ boton.addEventListener('click', function(e) {
                 console.log(infoPersonal);
                 //ENVÍA A REDIRECCIONAR CON EL OBJETO DE PARAMETRO
                 guardarInfo(infoPersonal);
-                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                 .then(() => {
                     return firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value)
                 }) 
