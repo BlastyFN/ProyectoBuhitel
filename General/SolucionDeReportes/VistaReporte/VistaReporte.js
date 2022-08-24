@@ -7,8 +7,6 @@ const titulo = document.querySelector('.titulo');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 
-const userKey = Object.keys(window.localStorage);
-const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
@@ -31,13 +29,19 @@ window.addEventListener('load', e => {
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
            
-            contenidoChat(user);
         }
         
     })
 })
 
-
+firebase.auth().onAuthStateChanged(user => {
+    if(user){
+       
+        contenidoChat(user)
+    }else{
+       console.log("sin usuario con sesion activa")
+    }
+})
 
 
 
