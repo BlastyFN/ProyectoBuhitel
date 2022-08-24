@@ -165,14 +165,17 @@ const contenidoChat = (user) => {
         contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     })
 }
+firebase.auth().onAuthStateChanged(function user(){
+    if(user){
+        console.log(user);
+        contenidoChat(user)
+    }else{
+        console.log('usuario no registrado')
+    }
 
-if(user){
-    console.log(user);
-    contenidoChat(user)
-}else{
-    console.log('usuario no registrado')
+})
+  
 
-}
 
 
 
