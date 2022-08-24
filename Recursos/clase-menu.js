@@ -1,14 +1,21 @@
 var listaOpciones = [];
 var listaLinks = [];
 
-const opcionesAdministrador = ["Pagina Principal", "Configuración de habitaciones","Configuracion de usuarios",
-    "Configuracion de servicios", "Reportes de usuarios","Reportes de análisis de sistemas",
-    "Modificar información general","Configuracion de chatbot", "Modificar mi información"]
-const linksAdministrador = ["Administrador/pagina principal admin/pagPrincipalAdmin.php",
+const opcionesAdministrador = ["Pagina Principal", 
+    "Configuración de habitaciones",
+    "Configuracion de usuarios",
+    "Configuracion de servicios", 
+    "Reportes de usuarios",
+    "Reportes de análisis de sistemas",
+     "Modificar mi información"]
+
+const linksAdministrador = ["Administrador/paginaPrincipalAdmin/pagPrincipalAdmin.php",
  "Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php", 
  "Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php", 
- "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php","Link Reportes de usuarios", 
- "Link Reportes sistema", "link modificar info general","link configuración chatbot", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
+ "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php",
+ "Administrador/moduloReportesUsuarios/vistaGeneralReportesUsuarios/vistaGeneralReportesUsuarios.php", 
+ "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php",
+ "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
     "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", "Modificar mi información"];

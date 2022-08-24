@@ -236,8 +236,11 @@ function obtenerLabelsMeses(){
       data: {
         labels:labels,
         datasets: [{
-          label: "Semanal",
+          backgroundColor: 'rgba(89,17,77,1.0)',
+          borderColor: 'rgba(89,17,77,1.0)',
+          pointBorderColor: 'rgba(89,17,77,1.0)',
           data:datos
+
         }]
       }
     })
@@ -251,7 +254,9 @@ function obtenerLabelsMeses(){
       data: {
         labels:labels,
         datasets: [{
-          label: "Semanal",
+          backgroundColor: 'rgba(89,17,77,1.0)',
+          borderColor: 'rgba(89,17,77,0.65)',
+         
           data:datos
         }]
       },

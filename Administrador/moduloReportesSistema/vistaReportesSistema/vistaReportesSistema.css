@@ -1,9 +1,4 @@
-#grafica{
-    
-    height: 40vh ;
-    width: 80vw;
-    overflow-x: scroll;
-}
+
 
 .formText{
     width: 30%;
@@ -105,5 +100,6 @@ h1{
 .botonesPreguntas{
     margin:auto;
 }
+
 
 

@@ -11,7 +11,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vistaGeneralUsuarios.css">
-    <link rel="stylesheet" href="../../../recursos/estilos-menu.css">
+    <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <title>Lista de usuarios</title>
 </head>
 <body>
@@ -37,7 +37,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </section>
     
     <script src="vistaGeneralUsuarios.js"></script>
-    <script src="../../../recursos/clase-menu.js"></script>
-    <script src="../../../recursos/menuTransition.js"></script>
+    <script src="../../../Recursos/clase-menu.js"></script>
+    <script src="../../../Recursos/menuTransition.js"></script>
 </body>
 </html>
