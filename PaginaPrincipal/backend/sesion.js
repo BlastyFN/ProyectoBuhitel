@@ -85,7 +85,7 @@ boton.addEventListener('click', function(e) {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                 })
-
+                observador();
                 break;
         }
      })
@@ -98,6 +98,7 @@ function observador(){
     firebase.auth().onAuthStateChanged(function (user){
         if (user){
            console.log(user); 
+           localStorage.setItem("uid",user.uid);
         }
     })
 }
