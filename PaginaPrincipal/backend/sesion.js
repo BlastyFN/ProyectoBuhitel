@@ -122,7 +122,7 @@ function redireccionar(Personal) {
             switch (Personal.Personal_Tipo) {
             case "Administrador":                  
                 if(estado == 1){
-                    URL=URL+"Administrador\paginaPrincipalAdmin\paginaPrincipal\pagPrincipalAdmin.php";
+                    URL=URL+"Administrador/paginaPrincipalAdmin/paginaPrincipal/pagPrincipalAdmin.php";
                 }else if(estado == 0){
                         URL=URL+"Administrador/moduloHabitaciones/confInicialHab/conInicialHab.php";
                 }   
