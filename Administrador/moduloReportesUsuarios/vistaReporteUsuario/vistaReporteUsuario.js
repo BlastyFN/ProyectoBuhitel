@@ -116,13 +116,7 @@ btnAsignar.addEventListener('click', () => {
 const userKey = Object.keys(window.sessionStorage);
 const user = userKey ? JSON.parse(sessionStorage.getItem(userKey)) : undefined;
 
-if(user){
-    console.log(user);
-    contenidoChat(user)
-}else{
-    console.log('usuario no registrado')
 
-}
 
 
 const contenidoChat = (user) => {
@@ -172,7 +166,13 @@ const contenidoChat = (user) => {
     })
 }
 
+if(user){
+    console.log(user);
+    contenidoChat(user)
+}else{
+    console.log('usuario no registrado')
 
+}
 
 
 
