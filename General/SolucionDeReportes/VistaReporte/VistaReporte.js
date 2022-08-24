@@ -6,7 +6,7 @@ const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
-user = localStorage.getItem("user");
+const user = Object.keys(window.sessionStorage);
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
@@ -49,7 +49,7 @@ const contenidoChat = (user) => {
         }
         firebase.firestore().collection(reporteID.toString()).add({
             mensaje: mensajeChat.value,
-            uid: user,
+            uid: user.uid,
             fecha: Date.now()
         })
         .then(res => {console.log("Mensaje guardado")
@@ -62,7 +62,7 @@ const contenidoChat = (user) => {
         contenedorMensajes.innerHTML = "";
         query.forEach(mensaje => {
             console.log(mensaje.data());
-            if(mensaje.data().uid === user){
+            if(mensaje.data().uid === user.uid){
                 var divMensaje = document.createElement('div');
                 divMensaje.classList.add('mensajeEnviado');
                 const spanMensaje = document.createElement('span');

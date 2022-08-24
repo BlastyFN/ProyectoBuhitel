@@ -112,9 +112,11 @@ btnAsignar.addEventListener('click', () => {
     })
 })
 
-const user = firebase.auth().currentUser;
+
+const user = Object.keys(window.sessionStorage);
 
 if(user){
+    console.log(user);
     contenidoChat(user)
 }else{
     console.log('usuario no registrado')
