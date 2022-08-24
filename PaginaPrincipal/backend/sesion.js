@@ -78,14 +78,10 @@ boton.addEventListener('click', function(e) {
                 console.log(infoPersonal);
                 //ENVÍA A REDIRECCIONAR CON EL OBJETO DE PARAMETRO
                 guardarInfo(infoPersonal);
-                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-                .then(() => {
-                    user = firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value);
-                    userID = user.uid;
-                    localStorage.setItem("uid",userID);
-                    return firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value)
-                }) 
-                .catch(e=>{
+               
+                
+                firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value)
+                .catch(function(error){
                     var errorCode = error.code;
                     var errorMessage = error.message;
                 })
@@ -98,7 +94,13 @@ boton.addEventListener('click', function(e) {
      });
 });
 
-
+function observador(){
+    firebase.auth().onAuthStateChanged(function (user){
+        if (user){
+           console.log(user); 
+        }
+    })
+}
 
 
 
