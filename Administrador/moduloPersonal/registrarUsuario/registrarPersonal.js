@@ -41,7 +41,7 @@ formRegistroUsuario.addEventListener('submit', function(e){
         if(inputTipoPersonal.value == "Limpieza"){
             localStorage.setItem("personalID", id);
             window.location.href="https://corporativotdo.com/Administrador/moduloPersonal/completarRegistroUsuarioLimpieza/completarRegistroUsuarioLimpieza.php";
-        }
+        } 
         
     })
 });

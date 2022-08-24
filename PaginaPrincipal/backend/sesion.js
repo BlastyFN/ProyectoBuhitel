@@ -80,6 +80,9 @@ boton.addEventListener('click', function(e) {
                 guardarInfo(infoPersonal);
                 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                 .then(() => {
+                    user = firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value);
+                    userID = user.uid;
+                    localStorage.setItem("uid",userID);
                     return firebase.auth().signInWithEmailAndPassword(Correo.value,Clave.value)
                 }) 
                 .catch(e=>{
