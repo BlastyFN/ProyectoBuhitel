@@ -113,14 +113,20 @@ btnAsignar.addEventListener('click', () => {
 })
 
 
-const userKey = Object.keys(window.localStorage);
-const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
+firebase.auth().onAuthStateChanged(user => {
+    if(user){
+       
+        contenidoChat(user)
+    }else{
+       console.log("sin usuario con sesion activa")
+    }
+})
 
 
 
 
 const contenidoChat = (user) => {
-    this.preventDefault();
+    
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
         console.log(mensajeChat.value);
@@ -165,16 +171,7 @@ const contenidoChat = (user) => {
         contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     })
 }
-firebase.auth().onAuthStateChanged(function user(){
-    if(user){
-        console.log(user);
-        contenidoChat(user)
-    }else{
-        console.log('usuario no registrado')
-    }
 
-})
-  
 
 
 
