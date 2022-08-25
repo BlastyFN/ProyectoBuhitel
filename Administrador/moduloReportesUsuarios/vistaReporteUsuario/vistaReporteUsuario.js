@@ -126,7 +126,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 const contenidoChat = (user) => {
-    
+    console.log(user);
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
         console.log(mensajeChat.value);
