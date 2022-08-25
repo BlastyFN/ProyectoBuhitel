@@ -22,6 +22,30 @@ h1{
     
 }
 
+
+.contenedorMensajes::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedorMensajes::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.contenedorMensajes::-webkit-scrollbar-button:increment,.contenedorMensajes::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.contenedorMensajes::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.contenedorMensajes::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+
 .cuerpoChat{
     background: #FFF;
     border-radius: 10px ;
