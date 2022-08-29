@@ -99,7 +99,7 @@ btnAsignar.addEventListener('click', () => {
     seguimiento.append('personal',valorPersonal);
     seguimiento.append('servicio',valorServicio);
     seguimiento.append('reporteID', reporteID)/8
-    fetch('../backend/AsignarSeguimiento.php' , {
+    fetch('../backend/asignarSeguimiento.php' , {
         method:'POST', body:seguimiento
     }).then(function(response){
         if(response.ok){
