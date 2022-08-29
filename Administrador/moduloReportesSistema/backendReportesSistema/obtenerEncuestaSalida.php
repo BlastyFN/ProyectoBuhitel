@@ -5,7 +5,7 @@ session_start();
         $bd = new database();
         $periodo = $_POST['dias'];
         $fechaInicio = strtotime($_POST['fechaInicio']);
-        $hotel = 44;
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $numPregunta = $_POST['numPregunta'];
         $arregloRes = [];
         $condicionalHabs = $_POST['habs'];

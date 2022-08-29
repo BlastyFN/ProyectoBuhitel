@@ -5,8 +5,8 @@ class database
 	private $con;
 
 	function __construct(){
-		$this->con = new PDO ('mysql:host localhost= localhost;dbname=corpo206_buhitel','root','');
-	}
+		$this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
+    }
 
 	function obtenerInfoGeneralServicio($hotel, $fechaInicio,$fechaFin, $condicionalHabs){
         $sql = $this->con->prepare("SELECT Servicio_PrecioTotal FROM servicio 
@@ -150,5 +150,14 @@ class database
 		return $res;
 
 	}
+
+    function obtenerNombreHotel($hotel){
+        $sql = $this->con->prepare("SELECT Hotel_Nombre FROM hotel WHERE
+		hotel_ID = '".$hotel."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return $res;
+    }
 }
 ?>

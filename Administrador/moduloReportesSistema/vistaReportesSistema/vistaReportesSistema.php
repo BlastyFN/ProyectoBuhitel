@@ -12,7 +12,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="vistaReportesSistema.css">
-    <title>Registro de nuevo usuario</title>
+    <title>Estadísticas del hotel</title>
 </head>
 <body>
     <section id="header-menu" class="header-menu">
@@ -75,12 +75,16 @@ session_start();
             <canvas id="grafica"></canvas>
         </div>
 
+        <div class="contenedorBotonPdf">
+            <button class="descargaPdf">Descargar PDF</button>
+        </div>
+
+        <div class="footer"></div>
+
+
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" 
-    integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script src="vistaReportesSistema.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
