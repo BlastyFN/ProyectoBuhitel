@@ -40,8 +40,11 @@ class Piso{
         var habitaciones = this.habs;
         console.log(habitaciones);
                 
-        for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){    
-            if(habitaciones[contHabs].habNombre.includes(busqueda.value) || 
+        for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){ 
+            if(busqueda.value == ""){
+                divCarousel.appendChild(habitaciones[contHabs].HTML);
+            }   
+            else if(habitaciones[contHabs].habNombre.includes(busqueda.value) || 
                habitaciones[contHabs].habTipoNombre.includes(busqueda.value)){   
 
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
