@@ -4,6 +4,8 @@ const mensajeChat = document.querySelector('#mensajeChat');
 const contenedorMensajes = document.querySelector('.contenedorMensajes');
 const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
+const categoria = document.querySelector('.categoria');
+const estatus = document.querySelector('.estatus');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 const eleccionPersonal = document.querySelector('.eleccionPersonal');
@@ -12,6 +14,9 @@ const obtenerReporteEspecifico = new FormData();
 const listaPersonal = document.querySelector('.listaSeleccionPersonal');
 const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
+const btnSpam = document.querySelector('.spam');
+const btnCompletado = document.querySelector('.completado');
+const divAcciones = document.querySelector('.acciones');
 var reporteID;
 
 
@@ -31,6 +36,8 @@ window.addEventListener('load', e => {
             reporteID = element.Reporte_ID;
 
             titulo.textContent = element.Reporte_Nombre;
+            categoria.textContent = element.CatReporte_Nombre;
+            estatus.textContent = element.EstatusReporte_Estatus;
             descripcionReporte.textContent = element.Reporte_Contenido;
             if (element.Reporte_usuario == null){
                 eleccionPersonal.classList.add('activo');   
@@ -40,7 +47,26 @@ window.addEventListener('load', e => {
                 chat.classList.add('activo');
                 console.log("si");
             }
+            if(element.CatReporte_Nombre != "Spam" || element.EstatusReporte_Estatus != "Completado"){
+                divAcciones.classList.add('activo');
+            }
         }
+    })
+})
+
+btnSpam.addEventListener('click', ()=> {
+    const nombreCat = new FormData();
+    nonmbreCat.append('nombre',"Spam");
+    fetch('../backend/modificarCategoria.php' , {
+        method:'POST', body:seguimiento
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+  
     })
 })
 

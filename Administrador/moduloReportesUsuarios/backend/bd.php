@@ -29,12 +29,37 @@ class database
     function obtenerReporteEspecifico($reporte_id){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
         categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
-		reporte.Reporte_Servicio, reporte.Reporte_Estatus FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
-        = categoriareporte.CatReporte_ID WHERE reporte.Reporte_ID = '".$reporte_id."'");
+		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus FROM reporte 
+		INNER JOIN categoriareporte ON reporte.Reporte_Categoria = categoriareporte.CatReporte_ID
+		INNER JOIN estatusReporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
+		WHERE reporte.Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
 		
 		return $res;
+	}
+
+	function obtenerCategoriaID($hotel, $nombreCat){
+		$sql = $this->con->prepare("SELECT CatReporte_ID FROM categoriareporte 
+		WHERE CatReporte_Hotel = '".$hotel."' &&
+		CatReporte_Nombre = '".$nombreCat."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		foreach ($res as $dato){
+			return $dato['CatReporte_ID'];
+		}
+		
+		return "0";	
+	}
+
+	function marcarComoSpam($categoria_id, $reporte_id){
+		$sql = $this->con->prepare("UPDATE reporte 
+		SET Reporte_Categoria = '".$categoria_id."' 
+		WHERE Reporte_ID = '".$reporte_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return "0";
 	}
 
 	
@@ -52,7 +77,9 @@ class database
 		$res = $sqltest->fetchall();
 	
 		if (count($res) > 0){
-			$sql = $this->con->prepare("UPDATE categoriareporte SET CatReporte_Prioridad = '".$nuevaPrioridad."' WHERE CatReporte_Nombre = '".$nombreCategoria."'");
+			$sql = $this->con->prepare("UPDATE categoriareporte 
+			SET CatReporte_Prioridad = '".$nuevaPrioridad."' 
+			WHERE CatReporte_Nombre = '".$nombreCategoria."'");
 			$sql->execute();
 			return "si";
 			

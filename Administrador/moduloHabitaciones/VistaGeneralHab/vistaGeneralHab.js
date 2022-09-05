@@ -9,7 +9,9 @@ const precioNoche = document.querySelector('.precioNoche');
 const numCamas = document.querySelector('.numCamas');
 const limpiezaNormal = document.querySelector('.limpiezaNormal');
 const limpiezaProfunda = document.querySelector('.limpiezaProfunda');
-
+const btnBuscar = document.querySelector('.searchButton');
+const busqueda = document.querySelector('.searchElement');
+const contenedorPisos = document.querySelector('.vistaHabs');
 const fragment = document.createDocumentFragment();
 
 
@@ -38,10 +40,12 @@ class Piso{
         var habitaciones = this.habs;
         console.log(habitaciones);
                 
-        for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){
-                    
-           divCarousel.appendChild(habitaciones[contHabs].HTML);
+        for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){    
+            if(habitaciones[contHabs].habNombre.includes(busqueda.value) || 
+               habitaciones[contHabs].habTipoNombre.includes(busqueda.value)){   
 
+                divCarousel.appendChild(habitaciones[contHabs].HTML);
+            }
         }   
         fragment.appendChild(divCarousel);
                     
@@ -125,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 });
 
+btnBuscar.addEventListener('click', (e)=>{
+    e.preventDefault();
+    for (piso of pisos) {
+        contenedorPisos.appendChild(piso.HTML);
+    }
+    
+
+})
+
 
 const seleccionarHab = e =>{
     if(e.target.classList.contains('inside-item')){
@@ -151,6 +164,7 @@ btnCerrarPopup.addEventListener('click', e =>{
 
 function obtenerPisosHotel(){
   return new Promise((resolve,reject)=>{
+   
     fetch("../backend/obtenerPisos.php", {
         method:'POST'
     }).then(function(response){
@@ -161,8 +175,7 @@ function obtenerPisosHotel(){
             }      
     }).then(function(res){  
         var contadorPisos  = 1;
-        for(element of res){           
-            const contenedorPisos = document.querySelector('.vistaHabs');            
+        for(element of res){                       
             obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
                 console.log(nPiso);
                 pisos.push(nPiso);

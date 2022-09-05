@@ -3,7 +3,7 @@ session_start();
     include "bd.php";
     if( isset($_POST['fechaInicio']) && isset($_POST['dias'])){
         $bd = new database();
-        $hotel = 44;
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $periodo = $_POST['dias'];
         $fechaInicio = strtotime($_POST['fechaInicio']);
         $condicionalHabs = $_POST['habs'];

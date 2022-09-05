@@ -148,6 +148,11 @@ h1{
 
 }
 
+.acciones{
+    display: none;
+    
+}
+
 .activo{
     display:flex;
 }
@@ -174,6 +179,7 @@ h1{
     color: #fff;
     
 }
+
 
 
 

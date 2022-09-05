@@ -49,6 +49,14 @@ session_start();
                 Detalles 
             </h3>
             <br>
+            <p class="categoria">
+                Cat
+            </p>
+            <br>
+            <p class="estatus">
+                Status
+            </p>
+            <br>
             <p class="descripcionReporte">
                 Mensaje
             </p>
@@ -96,6 +104,11 @@ session_start();
             </div>
             
         </section>
+    </div>
+    <div class="acciones">
+        <button class="spam"></button>
+        <button class="completado"></button>
+        
     </div>
 
 

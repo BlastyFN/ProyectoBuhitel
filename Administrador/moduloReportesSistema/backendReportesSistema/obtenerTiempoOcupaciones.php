@@ -3,7 +3,7 @@ session_start();
     include "bd.php";
  
     $bd = new database();
-    $hotel = 44;
+    $hotel = $_SESSION['sesionPersonal']['Hotel'];
     $arregloRes = [];
     $condicionalHabs = $_POST['habs'];
     for($i = 0; $i < 14; $i+=2){

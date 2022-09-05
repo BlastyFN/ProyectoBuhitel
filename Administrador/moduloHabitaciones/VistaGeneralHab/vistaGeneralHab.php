@@ -20,14 +20,8 @@
         Estas son las habitaciones de tu hotel
     </h1>
     <section class="search">
-        <form action="GET">
-            <input type="text" class="searchElement" placeholder="busca habitaciones, tipos de habitaciones..." id="">
-            <button type="submit" class="searchButton">Buscar</button>
-        </form>
-    
-
-
-
+        <input type="text" class="searchElement" placeholder="busca habitaciones, tipos de habitaciones..." id="">
+        <button class="searchButton">Buscar</button>
     </section>
 
     
