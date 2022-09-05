@@ -31,7 +31,7 @@ class database
         categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
 		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus FROM reporte 
 		INNER JOIN categoriareporte ON reporte.Reporte_Categoria = categoriareporte.CatReporte_ID
-		INNER JOIN estatusReporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
+		INNER JOIN estatusreporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
 		WHERE reporte.Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
@@ -55,6 +55,16 @@ class database
 	function marcarComoSpam($categoria_id, $reporte_id){
 		$sql = $this->con->prepare("UPDATE reporte 
 		SET Reporte_Categoria = '".$categoria_id."' 
+		WHERE Reporte_ID = '".$reporte_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return "0";
+	}
+
+	function completarReporte($reporte_id, $estatus){
+		$sql = $this->con->prepare("UPDATE reporte 
+		SET Reporte_Estatus = '".$estatus."' 
 		WHERE Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
