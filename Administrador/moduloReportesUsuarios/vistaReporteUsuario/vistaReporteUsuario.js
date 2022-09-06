@@ -58,7 +58,7 @@ btnSpam.addEventListener('click', ()=> {
     const nombreCat = new FormData();
     nombreCat.append('nombre',"Spam");
     fetch('../backend/modificarCategoria.php' , {
-        method:'POST', body:seguimiento
+        method:'POST', body:nombreCat
     }).then(function(response){
         if(response.ok){
          return response.json();
