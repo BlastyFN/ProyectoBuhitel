@@ -106,8 +106,8 @@ session_start();
         </section>
     </div>
     <div class="acciones">
-        <button class="spam"></button>
-        <button class="completado"></button>
+        <button class="spam">Spam</button>
+        <button class="completado">Completado</button>
         
     </div>
 
