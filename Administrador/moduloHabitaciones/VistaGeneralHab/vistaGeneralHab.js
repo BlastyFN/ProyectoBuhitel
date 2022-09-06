@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 btnBuscar.addEventListener('click', (e)=>{
     e.preventDefault();
     for (piso of pisos) {
-        contenedorPisos.innerHTML"";
+        contenedorPisos.innerHTML="";
         contenedorPisos.appendChild(piso.HTML);
     }
     
