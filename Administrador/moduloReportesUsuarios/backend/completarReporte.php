@@ -3,7 +3,7 @@
     session_start();
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
    
-    $idReporte = $_POST["id"];
+    $idReporte = $_POST["reporte"];
 
     $bd = new database();
     $bd->completarReporte($idReporte);

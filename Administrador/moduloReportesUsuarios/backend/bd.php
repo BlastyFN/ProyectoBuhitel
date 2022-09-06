@@ -62,7 +62,7 @@ class database
 		return "0";
 	}
 
-	function completarReporte($reporte_id, $estatus){
+	function completarReporte($reporte_id){
 		$sql = $this->con->prepare("UPDATE reporte 
 		SET Reporte_Estatus = '".$estatus."' 
 		WHERE Reporte_ID = '".$reporte_id."'");

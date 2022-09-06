@@ -71,6 +71,23 @@ btnSpam.addEventListener('click', ()=> {
     })
 })
 
+btnCompletado.addEventListener('click', ()=> {
+    const nombreCat = new FormData();
+    nombreCat.append('nombre',"Spam");
+    nombreCat.append('reporte', reporteID)
+    fetch('../backend/completarReporte.php' , {
+        method:'POST', body:nombreCat
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+        
+    })
+})
+
 tipoPersonal.addEventListener('change',() =>{
     const fragment = document.createDocumentFragment();
     btnAsignar.disabled=false;
