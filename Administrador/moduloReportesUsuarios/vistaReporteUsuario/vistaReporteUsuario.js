@@ -57,16 +57,17 @@ window.addEventListener('load', e => {
 btnSpam.addEventListener('click', ()=> {
     const nombreCat = new FormData();
     nombreCat.append('nombre',"Spam");
+    nombreCat.append('reporte', reporteID)
     fetch('../backend/modificarCategoria.php' , {
         method:'POST', body:nombreCat
     }).then(function(response){
         if(response.ok){
-         return response.json();
+         return response.text();
         } else {
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-  
+        
     })
 })
 
