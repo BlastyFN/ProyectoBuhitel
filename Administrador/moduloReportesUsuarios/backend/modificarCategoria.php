@@ -3,7 +3,7 @@
     session_start();
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
     $nombreCat = $_POST["nombre"];
-    $idReporte = $_POST["nombre"];
+    $idReporte = $_POST["reporte"];
 
     $bd = new database();
     $idCategoria = $bd->obtenerCategoriaID($hotel,$nombreCat);
