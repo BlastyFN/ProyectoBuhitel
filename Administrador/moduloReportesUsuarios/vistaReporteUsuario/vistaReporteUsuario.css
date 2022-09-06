@@ -180,6 +180,26 @@ h1{
     
 }
 
+.spam{
+    background: #E98A15;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    
+}
+
+.completar{
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+}
 
 
 
