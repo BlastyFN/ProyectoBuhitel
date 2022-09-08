@@ -12,7 +12,11 @@ const limpiezaProfunda = document.querySelector('.limpiezaProfunda');
 const btnBuscar = document.querySelector('.searchButton');
 const busqueda = document.querySelector('.searchElement');
 const contenedorPisos = document.querySelector('.vistaHabs');
+const btnGuardar = document.querySelector('.guardar');
+var tiposHabs;
 const fragment = document.createDocumentFragment();
+
+var habID;
 
 
 class Piso{
@@ -108,6 +112,7 @@ function cargarOpcionesTiposHab(){
     }).then(function(texto){
         for(element of texto){  //Por cada elemento del json
             console.log(texto);
+            tiposHabs = texto;
             var inputTipoHab = document.createElement('option');
             inputTipoHab.classList.add('opcTipoHab');
             inputTipoHab.setAttribute('value',element.tipohab_ID);
@@ -122,6 +127,38 @@ function cargarOpcionesTiposHab(){
     });
 }
 
+opciones.addEventListener('change', (e)=>{
+    e.preventDefault();
+
+    for (const tipoHab of tiposHabs) {
+        if(tipoHab.tipohab_ID = opciones[selectedIndex].id)
+        precioNoche = tipoHab.TipoHab_Precio;
+        numCamas = tipoHab.TipoHab_NumCamas;
+        limpiezaNormal = tipoHab.TipoHab_TiempoLimpNormal;
+        limpiezaProfunda = tipoHab.TipoHab_TiempoLimpProfunda;
+            
+    }
+    
+})
+
+btnGuardar.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const modificarHabTipo = new FormData();
+    modificarHabTipo.append("habID",habID);
+    modificarHabTipo.append("tipoID",opciones[selectedIndex].id)
+    
+    fetch('../backend/cambiarHabTipo.php' , {
+        method:'POST',body:modificarHabTipo
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+ 
+    });
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     obtenerPisosHotel().then(
@@ -149,6 +186,7 @@ const seleccionarHab = e =>{
     if(e.target.classList.contains('inside-item')){
         e.stopPropagation();
         console.log(e.target.parentElement.id);
+        habID = e.target.parentElement.id;
         overlay.classList.add('active');
         popup.classList.add('active');
         cargarOpcionesTiposHab();

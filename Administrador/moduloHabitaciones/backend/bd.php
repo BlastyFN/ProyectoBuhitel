@@ -94,9 +94,17 @@ class database
 		$sql->execute();
 		return "se ha modificado la habitación " . $nombre. " correctamente";
 	}
+
+	function cambiarTipoHab($tipoID, $habID){
+		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Tipo = '".$tipoHab."'
+		WHERE Habitacion_ID = '".$habID."'");
+		$sql->execute();
+		return "Se ha cambiado el tipo de habitacion";
+	}
  
 	function obtenerTiposHabs($hotel){
-		$sql = $this->con->prepare("SELECT tipohab_ID, tipohab_nombre FROM tipohabitacion WHERE
+		$sql = $this->con->prepare("SELECT tipohab_ID, tipohab_nombre, tipohab_precio,
+		tipohab_numCamas, tipohab_TiempoLimpNormal, tipohab_TiempoLimpProfunda FROM tipohabitacion WHERE
 		tipohab_hotel = '".$hotel."'");
 		$sql->execute();
 		$res = $sql->fetchall();
@@ -116,7 +124,7 @@ class database
 	}
 
 	function obtenerPisos($hotel){
-		$sql = $this->con->prepare("SELECT piso_numero, piso_ID FROM piso WHERE Piso_Hotel = '".$hotel."'");
+		$sql = $this->con->prepare("SELECT piso_numero, piso_ID FROM piso WHERE Piso_Hotel = '".$hotel."' ODRER BY piso_numero ASC");
 		$sql->execute();
 		$res = $sql->fetchall();
 		return $res;
@@ -130,7 +138,10 @@ class database
 	}
 
 	function obtenerHabs($hotel, $piso){
-		$sql = $this->con->prepare("SELECT habitacion_ID, habitacion_nombre, habitacion_tipo, tipohabitacion.TipoHab_Nombre FROM habitacion INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID WHERE habitacion_piso =  '".$piso."' ORDER BY habitacion.Habitacion_Nombre ASC");
+		$sql = $this->con->prepare("SELECT habitacion_ID, habitacion_nombre, habitacion_tipo, 
+		tipohabitacion.TipoHab_Nombre, tipohabitacion.TipoHab_Precio, tipohabitacion.TipoHab_NumCamas,
+		tipohabitacion.TipoHab_TiempoLimpNormal, tipohabitacion.TipoHab_TiempoLimpProfunda
+		 FROM habitacion INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID WHERE habitacion_piso =  '".$piso."' ORDER BY habitacion.Habitacion_Nombre ASC");
 		$sql->execute();
 		$res = $sql->fetchall();
 		return $res;
