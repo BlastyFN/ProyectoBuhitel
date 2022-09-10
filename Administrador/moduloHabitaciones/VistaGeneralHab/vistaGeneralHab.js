@@ -132,10 +132,10 @@ opciones.addEventListener('change', (e)=>{
 
     for (const tipoHab of tiposHabs) {
         if(tipoHab.tipohab_ID == opciones.selectedIndex.id)
-        precioNoche = tipoHab.TipoHab_Precio;
-        numCamas = tipoHab.TipoHab_NumCamas;
-        limpiezaNormal = tipoHab.TipoHab_TiempoLimpNormal;
-        limpiezaProfunda = tipoHab.TipoHab_TiempoLimpProfunda;
+        precioNoche.value = tipoHab.TipoHab_Precio;
+        numCamas.value = tipoHab.TipoHab_NumCamas;
+        limpiezaNormal.value = tipoHab.TipoHab_TiempoLimpNormal;
+        limpiezaProfunda.value = tipoHab.TipoHab_TiempoLimpProfunda;
             
     }
     
