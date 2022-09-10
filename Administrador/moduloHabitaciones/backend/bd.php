@@ -124,7 +124,7 @@ class database
 	}
 
 	function obtenerPisos($hotel){
-		$sql = $this->con->prepare("SELECT piso_numero, piso_ID FROM piso WHERE Piso_Hotel = '".$hotel."' ODRER BY piso_numero ASC");
+		$sql = $this->con->prepare("SELECT piso_numero, piso_ID FROM piso WHERE Piso_Hotel = '".$hotel."' ODRER BY Piso_Numero ASC");
 		$sql->execute();
 		$res = $sql->fetchall();
 		return $res;

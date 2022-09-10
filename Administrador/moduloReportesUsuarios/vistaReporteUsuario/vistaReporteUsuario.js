@@ -73,7 +73,7 @@ btnSpam.addEventListener('click', ()=> {
 
 btnCompletado.addEventListener('click', ()=> {
     const nombreCat = new FormData();
-    nombreCat.append('nombre',"Spam");
+
     nombreCat.append('reporte', reporteID)
     fetch('../backend/completarReporte.php' , {
         method:'POST', body:nombreCat
