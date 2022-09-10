@@ -131,7 +131,7 @@ opciones.addEventListener('change', (e)=>{
     e.preventDefault();
 
     for (const tipoHab of tiposHabs) {
-        if(tipoHab.tipohab_ID == opciones.selectedIndex.id)
+        if(tipoHab.tipohab_ID == opciones.value)
         precioNoche.value = tipoHab.TipoHab_Precio;
         numCamas.value = tipoHab.TipoHab_NumCamas;
         limpiezaNormal.value = tipoHab.TipoHab_TiempoLimpNormal;
@@ -145,7 +145,7 @@ btnGuardar.addEventListener('click', (e)=>{
     e.preventDefault();
     const modificarHabTipo = new FormData();
     modificarHabTipo.append("habID",habID);
-    modificarHabTipo.append("tipoID",opciones[selectedIndex].id)
+    modificarHabTipo.append("tipoID",opciones.value)
     
     fetch('../backend/cambiarHabTipo.php' , {
         method:'POST',body:modificarHabTipo
