@@ -96,8 +96,8 @@ class database
 	}
 
 	function cambiarTipoHab($habID, $tipoID){
-		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Tipo = '".$tipoHab."'
-		WHERE Habitacion_ID = '".$habID."'");
+		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Tipo = ".$tipoHab."
+		WHERE Habitacion_ID = ".$habID."");
 		$sql->execute();
 		return "Se ha cambiado el tipo de habitacion";
 	}
