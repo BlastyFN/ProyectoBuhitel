@@ -133,12 +133,12 @@ opciones.addEventListener('change', (e)=>{
     e.preventDefault();
 
     for (const tipoHab of tiposHabs) {
-        if(tipoHab.tipohab_ID == opciones.value)
+        if(tipoHab.tipohab_ID == opciones.value){
         precioNoche.textContent = "Precio por noche: $" + tipoHab.TipoHab_Precio;
         numCamas.textContent = "Número de camas: " + tipoHab.TipoHab_NumCamas;
         limpiezaNormal.textContent = "Tiempo de limpieza normal"+  tipoHab.TipoHab_TiempoLimpNormal;
         limpiezaProfunda.textContent = "Tiempo de limpieza profunda " + tipoHab.TipoHab_TiempoLimpProfunda;
-            
+        }
     }
     
 })
@@ -147,10 +147,10 @@ btnDesactivar.addEventListener('click', ()=>{
     hab = obtenerObjetoHab(habID);
     hab.habitcion_estado = !hab.habitacion_estado;
     if(hab.habitacion_estado == true){
-        btnDesactivar.textContent = Deshabilitar
+        btnDesactivar.textContent = "Deshabilitar";
     } 
     else{
-        btnDesactivar.textContent = Habilitar
+        btnDesactivar.textContent = "Habilitar";
     }
 })
 
