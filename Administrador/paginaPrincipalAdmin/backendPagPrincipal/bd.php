@@ -12,7 +12,7 @@ class database
 
 	function obtenerHabsDesocupadas($hotel){
 		$sql = $this->con->prepare("SELECT Habitacion_ID FROM habitacion INNER JOIN piso ON piso.Piso_ID 
-		= Habitacion_Piso WHERE piso.Piso_Hotel = '".$hotel."' AND Habitacion_Estado = 0");
+		= Habitacion_Piso WHERE piso.Piso_Hotel = '".$hotel."' AND Habitacion_Estado = 1");
 		$sql->execute();
 		$res = $sql->fetchall();
 		return count($res);
