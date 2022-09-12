@@ -143,7 +143,7 @@ opciones.addEventListener('change', (e)=>{
     
 })
 
-function btnDesactivar(){
+btnDesactivar.addEventListener('click', ()=>{
     hab = obtenerObjetoHab(habID);
     hab.habitcion_estado = !hab.habitacion_estado;
     if(hab.habitacion_estado == true){
@@ -152,7 +152,7 @@ function btnDesactivar(){
     else{
         btnDesactivar.textContent = Habilitar
     }
-}
+})
 
 btnGuardar.addEventListener('click', (e)=>{
     e.preventDefault();
