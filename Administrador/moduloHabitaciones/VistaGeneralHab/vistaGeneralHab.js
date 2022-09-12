@@ -309,7 +309,7 @@ function obtenerHabs(pisoID, numPiso){
 
 function obtenerObjetoHab(id){
     for (piso of pisos) {
-        for (hab of piso) {
+        for (hab of piso.habs) {
             if (hab.habID == id) return hab;
         }
     }
