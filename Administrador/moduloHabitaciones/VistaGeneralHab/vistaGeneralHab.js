@@ -12,11 +12,13 @@ const limpiezaProfunda = document.querySelector('.limpiezaProfunda');
 const btnBuscar = document.querySelector('.searchButton');
 const busqueda = document.querySelector('.searchElement');
 const contenedorPisos = document.querySelector('.vistaHabs');
+const btnDesactivar = document.querySelector('.desactivar');
 const btnGuardar = document.querySelector('.guardar');
 var tiposHabs;
 const fragment = document.createDocumentFragment();
 
 var habID;
+var habSeleccionada;
 
 
 class Piso{
@@ -132,14 +134,25 @@ opciones.addEventListener('change', (e)=>{
 
     for (const tipoHab of tiposHabs) {
         if(tipoHab.tipohab_ID == opciones.value)
-        precioNoche.value = tipoHab.TipoHab_Precio;
-        numCamas.value = tipoHab.TipoHab_NumCamas;
-        limpiezaNormal.value = tipoHab.TipoHab_TiempoLimpNormal;
-        limpiezaProfunda.value = tipoHab.TipoHab_TiempoLimpProfunda;
+        precioNoche.textContent = "Precio por noche: $" + tipoHab.TipoHab_Precio;
+        numCamas.textContent = "Número de camas: " + tipoHab.TipoHab_NumCamas;
+        limpiezaNormal.textContent = "Tiempo de limpieza normal"+  tipoHab.TipoHab_TiempoLimpNormal;
+        limpiezaProfunda.textContent = "Tiempo de limpieza profunda " + tipoHab.TipoHab_TiempoLimpProfunda;
             
     }
     
 })
+
+function btnDesactivar(){
+    hab = obtenerObjetoHab(habID);
+    hab.habitcion_estado = !hab.habitacion_estado;
+    if(hab.habitacion_estado == true){
+        btnDesactivar.textContent = Deshabilitar
+    } 
+    else{
+        btnDesactivar.textContent = Habilitar
+    }
+}
 
 btnGuardar.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -187,6 +200,14 @@ const seleccionarHab = e =>{
         e.stopPropagation();
         console.log(e.target.parentElement.id);
         habID = e.target.parentElement.id;
+        var hab = obtenerObjetoHab(habID);
+        console.log(hab);
+        if(hab.habitacion_estado == true){
+            btnDesactivar.textContent = Deshabilitar
+        } 
+        else{
+            btnDesactivar.textContent = Habilitar
+        }
         overlay.classList.add('active');
         popup.classList.add('active');
         cargarOpcionesTiposHab();
@@ -285,4 +306,12 @@ function obtenerHabs(pisoID, numPiso){
     });    
 }
 
+
+function obtenerObjetoHab(id){
+    for (piso of pisos) {
+        for (hab of piso) {
+            if (hab.habID == id) return hab;
+        }
+    }
+}
 

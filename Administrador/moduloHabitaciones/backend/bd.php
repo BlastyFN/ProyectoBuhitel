@@ -138,7 +138,7 @@ class database
 	}
 
 	function obtenerHabs($hotel, $piso){
-		$sql = $this->con->prepare("SELECT habitacion_ID, habitacion_nombre, habitacion_tipo, 
+		$sql = $this->con->prepare("SELECT habitacion_ID, habitacion_nombre, habitacion_tipo, habitacion_estado,
 		tipohabitacion.TipoHab_Nombre, tipohabitacion.TipoHab_Precio, tipohabitacion.TipoHab_NumCamas,
 		tipohabitacion.TipoHab_TiempoLimpNormal, tipohabitacion.TipoHab_TiempoLimpProfunda
 		 FROM habitacion INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID WHERE habitacion_piso =  '".$piso."' ORDER BY habitacion.Habitacion_Nombre ASC");
