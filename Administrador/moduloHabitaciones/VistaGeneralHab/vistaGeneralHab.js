@@ -203,10 +203,10 @@ const seleccionarHab = e =>{
         var hab = obtenerObjetoHab(habID);
         console.log(hab);
         if(hab.habitacion_estado == true){
-            btnDesactivar.textContent = Deshabilitar
+            btnDesactivar.textContent = "Deshabilitar";
         } 
         else{
-            btnDesactivar.textContent = Habilitar
+            btnDesactivar.textContent = "Habilitar";
         }
         overlay.classList.add('active');
         popup.classList.add('active');
