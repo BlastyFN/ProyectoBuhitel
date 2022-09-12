@@ -5,7 +5,7 @@
 	$bd = new database();
     $res = $bd-> obtenerTiposHabs($hotel);
     
-    echo $res;
+    echo json_encode($res);
 
 
 ?>
