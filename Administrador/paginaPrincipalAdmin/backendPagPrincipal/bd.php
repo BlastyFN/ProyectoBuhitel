@@ -18,6 +18,18 @@ class database
 		return count($res);
 	}
 
+	function obtenerReservaciones($hotel, $hoy){
+		$sql = $this->con->prepare("SELECT HabReservada_ID FROM habitacionreservada 
+		INNER JOIN reservacion ON reservacion.Reservacion_ID = HabReservada_Reservacion
+		INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion
+		INNER JOIN piso ON piso.Piso_ID = habitacion.Habitacion_Piso
+		WHERE BINARY '".$hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+		AND BINARY piso.Piso_Hotel = '".$hotel."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		return count($res);
+	}
+
 	function obtenerNumReportes($hotel){
 		$sql = $this->con->prepare("SELECT * FROM reporte INNER JOIN habitacionreservada ON 
 		Reporte_HabReservadas = habitacionreservada.HabReservada_ID INNER JOIN habitacion ON 
