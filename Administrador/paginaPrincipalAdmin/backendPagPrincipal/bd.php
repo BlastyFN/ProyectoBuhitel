@@ -34,8 +34,8 @@ class database
 		$sql = $this->con->prepare("SELECT * FROM reporte INNER JOIN habitacionreservada ON 
 		Reporte_HabReservadas = habitacionreservada.HabReservada_ID INNER JOIN habitacion ON 
 		habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID INNER JOIN piso ON 
-		habitacion.Habitacion_Piso = piso.Piso_ID WHERE piso.Piso_Hotel = 44 AND
-		reporte.Reporte_Estatus != 8");
+		habitacion.Habitacion_Piso = piso.Piso_ID WHERE piso.Piso_Hotel = '".$hotel."' AND
+		reporte.Reporte_Estatus != 5");
 		$sql->execute();
 		$res = $sql->fetchall();
 		return count($res);
