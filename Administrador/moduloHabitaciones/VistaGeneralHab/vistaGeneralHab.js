@@ -157,8 +157,8 @@ btnDesactivar.addEventListener('click', ()=>{
 btnGuardar.addEventListener('click', (e)=>{
     e.preventDefault();
     const modificarHabTipo = new FormData();
-    modificarHabTipo.append("habID",habID);
-    modificarHabTipo.append("tipoID",opciones.value)
+    modificarHabTipo.append("habID",number(habID));
+    modificarHabTipo.append("tipoID",number(opciones.value))
     
     fetch('../backend/cambiarHabTipo.php' , {
         method:'POST',body:modificarHabTipo
