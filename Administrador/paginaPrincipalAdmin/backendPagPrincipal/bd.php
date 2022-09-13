@@ -44,7 +44,7 @@ class database
 	function obtenerPersonalTrabajando($hotel, $fecha){
 		$sql = $this->con->prepare("SELECT * FROM infousuariolimpieza 
 		INNER JOIN personal ON personal.Personal_ID = InfoLimpieza_Personal
-		WHERE BINARY '".$hoy."' BETWEEN InfoLimpieza_InicioJornada AND InfoLimpieza_FinJornada
+		WHERE BINARY '".$fecha."' BETWEEN InfoLimpieza_InicioJornada AND InfoLimpieza_FinJornada
 		AND BINARY personal.Personal_Hotel = '".$hotel."'");
 		$sql->execute();
 		$res = $sql->fetchall();
