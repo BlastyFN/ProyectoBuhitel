@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+
+firebase.auth().onAuthStateChanged(user => {
+    if(user){
+       
+        contenidoChat(user)
+    }else{
+       console.log("sin usuario con sesion activa")
+    }
+})
+
+
 const contenidoChat = (user) => {
    
     firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')

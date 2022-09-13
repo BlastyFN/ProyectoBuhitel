@@ -66,6 +66,17 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
+
+
+firebase.auth().onAuthStateChanged(user => {
+    if(user){
+       
+        contenidoChat(user)
+    }else{
+       console.log("sin usuario con sesion activa")
+    }
+})
+
 function iniciarEnBd(){
     const nombreCat = new FormData();
 
