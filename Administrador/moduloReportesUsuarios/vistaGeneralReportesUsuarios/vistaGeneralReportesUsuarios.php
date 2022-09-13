@@ -13,6 +13,19 @@ session_start();
     <link rel="stylesheet" href="vistaGeneralReportesUsuarios.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <title>Lista de usuarios</title>
+      
+    <script>
+       
+       const firebaseConfig = {
+            apiKey: "AIzaSyBrHawuSKbh1cqGl5rAAldb6JBhnClp6z0",
+            authDomain: "chatbuhitel.firebaseapp.com",
+            projectId: "chatbuhitel",
+            storageBucket: "chatbuhitel.appspot.com",
+            messagingSenderId: "483326716419",
+            appId: "1:483326716419:web:05f9f5595cc415e3567c36"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     <section id="header-menu" class="header-menu">

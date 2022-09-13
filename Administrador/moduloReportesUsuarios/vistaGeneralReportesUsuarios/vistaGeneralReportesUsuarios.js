@@ -59,3 +59,35 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 })
+
+const contenidoChat = (user) => {
+   
+    firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(notif.data().uid === user.uid){
+    
+            }
+            else {
+                alert(notif.data().mensaje);
+                notif.ref.delete();
+            }
+        })           
+    });
+    
+
+firebase.firestore().collection(reporteID.toString()+"message").orderBy('fecha')
+.onSnapshot(query => {
+    query.forEach(notif =>{
+        if(notif.data().uid === user.uid){
+
+        }
+        else {
+            alert(notif.data().mensaje);
+            notif.ref.delete();
+        }
+    })           
+});
+
+
+}

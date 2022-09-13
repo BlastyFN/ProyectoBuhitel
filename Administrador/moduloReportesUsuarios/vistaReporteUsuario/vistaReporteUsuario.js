@@ -191,6 +191,12 @@ const contenidoChat = (user) => {
         })
         .then(res => {console.log("Mensaje guardado")
         mensajeChat.value = ''})
+        .catch(e => console.log(e));
+        firebase.firestore().collection(reporteID.toString()+"messages").add({
+            mensaje: localStorage.Nombre + "Nuevo mensaje del administrador",
+            uid: user.uid,
+            fecha: Date.now()
+        })
         .catch(e => console.log(e));        
     })
 

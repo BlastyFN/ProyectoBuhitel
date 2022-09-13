@@ -97,6 +97,12 @@ const contenidoChat = (user) => {
         })
         .then(res => {console.log("Mensaje guardado")
         mensajeChat.value = ''})
+        .catch(e => console.log(e));
+             firebase.firestore().collection(reporteID.toString()+"message").add({
+            mensaje: localStorage.Nombre + "Nuevo mensaje de" + localStorage.Nombre,
+            uid: user.uid,
+            fecha: Date.now()
+        })
         .catch(e => console.log(e));        
     })
 
@@ -130,7 +136,7 @@ const contenidoChat = (user) => {
     btnCompletado.addEventListener('click', ()=> {
         completarEnBd();
         firebase.firestore().collection(reporteID.toString()+"notif").add({
-            mensaje: "Se ha completado el reporte",
+            mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
             uid: user.uid,
             fecha: Date.now()
         })
@@ -140,7 +146,7 @@ const contenidoChat = (user) => {
     btnCompletado.addEventListener('click', ()=> {
         completarEnBd();
         firebase.firestore().collection(reporteID.toString()+"notif").add({
-            mensaje: localStorage.Nombre + " ha iniciado el seguimiento de reporte",
+            mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
             uid: user.uid,
             fecha: Date.now()
         })
