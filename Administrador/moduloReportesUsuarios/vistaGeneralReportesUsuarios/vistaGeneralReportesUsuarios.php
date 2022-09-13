@@ -13,7 +13,9 @@ session_start();
     <link rel="stylesheet" href="vistaGeneralReportesUsuarios.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <title>Lista de usuarios</title>
-      
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script>
        
        const firebaseConfig = {
