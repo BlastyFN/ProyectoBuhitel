@@ -1,6 +1,6 @@
 const cardInfoHabs = document.querySelector('.infoHabs');
 const cardInfoReportes = document.querySelector('.infoReportes');
-const cardInfoPersonal = document.querySelector('infoPersonal');
+const cardInfoPersonal = document.querySelector('.infoPersonal');
 window.addEventListener('load', ()=>{
     fetch("../backendPagPrincipal/obtenerHabsDesocupadas.php", {
         method:'POST'
@@ -40,7 +40,7 @@ window.addEventListener('load', ()=>{
         }      
     }).then(function(resPers){
         console.log(resPers);
-        cardInfoPersonal.textContent = "Hay " + resPers + " trabajadores de limpieza en horario labora";
+        cardInfoPersonal.textContent = "Hay " + resPers + " trabajadores de limpieza en horario laboral";
 
     });
 })
