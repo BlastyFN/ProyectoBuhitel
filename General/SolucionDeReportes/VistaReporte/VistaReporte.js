@@ -8,6 +8,7 @@ const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 const btnIniciar = document.querySelector('.iniciar');
 const btnCompletado = document.querySelector('.completado');
+const btnNotificar = document.querySelector('.notificar');
 
 const obtenerReporteEspecifico = new FormData();
 

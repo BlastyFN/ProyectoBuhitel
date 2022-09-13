@@ -2,6 +2,7 @@ const contenedorCartas = document.querySelector('.containCards');
 const fragment = document.createDocumentFragment();
 
 
+
 window.addEventListener('load', e => {
     fetch('../BackendReportes/obtenerReportes.php' , {
         method:'POST'
@@ -83,22 +84,8 @@ function iniciarEnBd(){
 }
 
 
-function completarEnBd(){
-    const nombreCat = new FormData();
 
-    nombreCat.append('reporte', reporteID)
-    fetch('../BackendReportes/completarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        
-    })
-}
+
 
 
 
