@@ -123,12 +123,12 @@ const contenidoChat = (user) => {
 firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
-        if(mensaje.data().uid === user.uid){
+        if(notif.data().uid === user.uid){
 
         }
         else {
             alert(notif.data().mensaje);
-            notif.ref.delete();
+            //notif.ref.delete();
         }
     })           
 });
