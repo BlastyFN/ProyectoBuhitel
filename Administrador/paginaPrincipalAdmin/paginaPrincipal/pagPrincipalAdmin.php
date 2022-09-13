@@ -36,7 +36,7 @@ session_start();
 
             <div class="contIndividual" >
                     <div class="cardBoard">Información de limpieza</div>
-                    <div class="card"></div>
+                    <div class="card infoPersonal"></div>
             </div>
 
             <div class="contIndividual" >
