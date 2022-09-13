@@ -143,10 +143,10 @@ const contenidoChat = (user) => {
         .catch(e => console.log(e));
     })
 
-    btnCompletado.addEventListener('click', ()=> {
-        completarEnBd();
+    btnNotificar.addEventListener('click', ()=> {
+        //completarEnBd();
         firebase.firestore().collection(reporteID.toString()+"notif").add({
-            mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
+            mensaje: "El administrador pide que inicies el seguimiento",
             uid: user.uid,
             fecha: Date.now()
         })
