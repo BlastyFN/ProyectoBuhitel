@@ -24,7 +24,7 @@ var reporteID;
 window.addEventListener('load', e => {
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
     fetch('../backend/obtenerReporteEspecifico.php' , {
-        method:'POST', body:
+        method:'POST', body:obtenerReporteEspecifico
         
     }).then(function(response){
         if(response.ok){
