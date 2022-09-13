@@ -154,6 +154,16 @@ h1{
     height: 100px;
 }
 
+.notificar{
+    background: #427AA1;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
 .activo{
     display:flex;
 }
@@ -201,6 +211,8 @@ h1{
     font-size: 20px;
     color: #fff;
 }
+
+
 
 
 

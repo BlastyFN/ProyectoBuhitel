@@ -6,6 +6,8 @@ const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
+const btnIniciar = document.querySelector('.iniciar');
+const btnCompletado = document.querySelector('.completado');
 
 const obtenerReporteEspecifico = new FormData();
 
@@ -42,6 +44,24 @@ firebase.auth().onAuthStateChanged(user => {
        console.log("sin usuario con sesion activa")
     }
 })
+
+
+function completarEnBd(){
+    const nombreCat = new FormData();
+
+    nombreCat.append('reporte', reporteID)
+    fetch('../backend/completarReporte.php' , {
+        method:'POST', body:nombreCat
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+        
+    })
+}
 
 
 
@@ -89,6 +109,29 @@ const contenidoChat = (user) => {
         contenedorMensajes.appendChild(fragment);
         contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     })
+
+    btnCompletado.addEventListener('click', ()=> {
+        completarEnBd();
+        firebase.firestore().collection(reporteID.toString()+"notif").add({
+            mensaje: "Se ha completado el reporte",
+            uid: user.uid,
+            fecha: Date.now()
+        })
+        .catch(e => console.log(e));
+    })
+
+firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+.onSnapshot(query => {
+    query.forEach(notif =>{
+        if(mensaje.data().uid === user.uid){
+
+        }
+        else {
+            alert(notif.data().mensaje);
+            notif.ref.delete();
+        }
+    })           
+});
 }
 
 

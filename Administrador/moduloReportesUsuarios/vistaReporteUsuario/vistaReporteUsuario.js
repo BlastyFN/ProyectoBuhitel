@@ -16,6 +16,7 @@ const btnAsignar = document.querySelector('.asignarPersonal');
 const obtenerListaPersonal = new FormData();
 const btnSpam = document.querySelector('.spam');
 const btnCompletado = document.querySelector('.completado');
+const btnNotificar = document.querySelector('.notificar');
 const divAcciones = document.querySelector('.acciones');
 var reporteID;
 
@@ -23,22 +24,24 @@ var reporteID;
 window.addEventListener('load', e => {
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
     fetch('../backend/obtenerReporteEspecifico.php' , {
-        method:'POST', body:obtenerReporteEspecifico
+        method:'POST', body:
+        
     }).then(function(response){
         if(response.ok){
          return response.json();
         } else {
             throw "Error en la llamada Ajax"
         }
+
     }).then(function(infoPersonal){
         console.log(infoPersonal);
         for(element of infoPersonal){
             reporteID = element.Reporte_ID;
-
             titulo.textContent = element.Reporte_Nombre;
             categoria.textContent = element.CatReporte_Nombre;
             estatus.textContent = element.EstatusReporte_Estatus;
             descripcionReporte.textContent = element.Reporte_Contenido;
+
             if (element.Reporte_usuario == null){
                 eleccionPersonal.classList.add('activo');   
                 console.log("no");
@@ -71,7 +74,9 @@ btnSpam.addEventListener('click', ()=> {
     })
 })
 
-btnCompletado.addEventListener('click', ()=> {
+
+
+function completarEnBd(){
     const nombreCat = new FormData();
 
     nombreCat.append('reporte', reporteID)
@@ -86,7 +91,7 @@ btnCompletado.addEventListener('click', ()=> {
     }).then(function(texto){
         
     })
-})
+}
 
 tipoPersonal.addEventListener('change',() =>{
     const fragment = document.createDocumentFragment();
@@ -130,7 +135,8 @@ tipoPersonal.addEventListener('change',() =>{
     })
 })
 
-btnAsignar.addEventListener('click', () => {
+
+function cambiarStatusEnBd(){
     const seguimiento = new FormData();
     var valorServicio;
     if(tipoPersonal.value == "Recepcion")valorServicio=4;
@@ -154,7 +160,7 @@ btnAsignar.addEventListener('click', () => {
     }).then(function(texto){
   
     })
-})
+}
 
 
 firebase.auth().onAuthStateChanged(user => {
@@ -188,6 +194,7 @@ const contenidoChat = (user) => {
         .catch(e => console.log(e));        
     })
 
+
     firebase.firestore().collection(reporteID.toString()).orderBy('fecha')
     .onSnapshot(query => {
         contenedorMensajes.innerHTML = "";
@@ -214,6 +221,44 @@ const contenidoChat = (user) => {
         contenedorMensajes.appendChild(fragment);
         contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
     })
+
+        //                      --- Notificaciones ---
+    btnAsignar.addEventListener('click', () => {
+            cambiarStatusEnBd();
+            firebase.firestore().collection(reporteID.toString()+"notif").add({
+                mensaje: "Has sido asignado a un reporte de seguimiento especial",
+                uid: user.uid,
+                fecha: Date.now()
+            })
+            .catch(e => console.log(e));
+        })
+
+    btnCompletado.addEventListener('click', ()=> {
+            completarEnBd();
+            firebase.firestore().collection(reporteID.toString()+"notif").add({
+                mensaje: "Se ha completado el reporte",
+                uid: user.uid,
+                fecha: Date.now()
+            })
+            .catch(e => console.log(e));
+        })
+
+    firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(mensaje.data().uid === user.uid){
+ 
+            }
+            else {
+                alert(notif.data().mensaje);
+                notif.ref.delete();
+            }
+        })           
+    });
+
+
+
+
 }
 
 

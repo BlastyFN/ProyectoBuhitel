@@ -75,7 +75,8 @@ session_start();
                 </div>
             </div>    
             <div class="botones">
-                
+                <button class="iniciar" visible="false">Iniciar Seguimiento</button>
+                <button class="completado">Completado</button>
             </div>
             
         </section>

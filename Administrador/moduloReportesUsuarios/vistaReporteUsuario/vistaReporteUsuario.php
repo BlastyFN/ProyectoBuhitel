@@ -107,6 +107,7 @@ session_start();
     </div>
     <div class="acciones">
         <button class="spam">Spam</button>
+        <button class="notificar">Notificar Manualmente</button>
         <button class="completado">Completado</button>
         
     </div>
