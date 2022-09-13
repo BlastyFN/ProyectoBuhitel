@@ -192,7 +192,7 @@ const contenidoChat = (user) => {
         .then(res => {console.log("Mensaje guardado")
         mensajeChat.value = ''})
         .catch(e => console.log(e));
-        firebase.firestore().collection(reporteID.toString()+"messages").add({
+        firebase.firestore().collection(reporteID.toString()+"message").add({
             mensaje: localStorage.Nombre + "Nuevo mensaje del administrador",
             uid: user.uid,
             fecha: Date.now()
@@ -249,6 +249,15 @@ const contenidoChat = (user) => {
             .catch(e => console.log(e));
         })
 
+        btnNotificar.addEventListener('click', ()=> {
+        //completarEnBd();
+        firebase.firestore().collection(reporteID.toString()+"notif").add({
+            mensaje: "El administrador pide que inicies el seguimiento",
+            uid: user.uid,
+            fecha: Date.now()
+        })
+        .catch(e => console.log(e));
+    })
     firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
     .onSnapshot(query => {
         query.forEach(notif =>{

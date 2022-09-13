@@ -8,7 +8,7 @@ const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 const btnIniciar = document.querySelector('.iniciar');
 const btnCompletado = document.querySelector('.completado');
-const btnNotificar = document.querySelector('.notificar');
+
 
 const obtenerReporteEspecifico = new FormData();
 
@@ -144,15 +144,7 @@ const contenidoChat = (user) => {
         .catch(e => console.log(e));
     })
 
-    btnNotificar.addEventListener('click', ()=> {
-        //completarEnBd();
-        firebase.firestore().collection(reporteID.toString()+"notif").add({
-            mensaje: "El administrador pide que inicies el seguimiento",
-            uid: user.uid,
-            fecha: Date.now()
-        })
-        .catch(e => console.log(e));
-    })
+
 
 firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
 .onSnapshot(query => {

@@ -76,7 +76,7 @@ const contenidoChat = (user) => {
     });
     
 
-firebase.firestore().collection(reporteID.toString()+"message").orderBy('fecha')
+firebase.firestore().collection(reporteID.toString()+"messages").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){
