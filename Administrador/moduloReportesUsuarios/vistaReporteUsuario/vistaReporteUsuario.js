@@ -251,7 +251,7 @@ const contenidoChat = (user) => {
             }
             else {
                 alert(notif.data().mensaje);
-                //notif.ref.delete();
+                notif.ref.delete();
             }
         })           
     });

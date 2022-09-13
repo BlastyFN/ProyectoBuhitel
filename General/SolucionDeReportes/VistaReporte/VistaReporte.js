@@ -45,12 +45,29 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
+function iniciarEnBd(){
+    const nombreCat = new FormData();
+
+    nombreCat.append('reporte', reporteID)
+    fetch('../BackendReportes/iniciarReporte.php' , {
+        method:'POST', body:nombreCat
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+        
+    })
+}
+
 
 function completarEnBd(){
     const nombreCat = new FormData();
 
     nombreCat.append('reporte', reporteID)
-    fetch('../backend/completarReporte.php' , {
+    fetch('../BackendReportes/completarReporte.php' , {
         method:'POST', body:nombreCat
     }).then(function(response){
         if(response.ok){
@@ -120,6 +137,16 @@ const contenidoChat = (user) => {
         .catch(e => console.log(e));
     })
 
+    btnCompletado.addEventListener('click', ()=> {
+        completarEnBd();
+        firebase.firestore().collection(reporteID.toString()+"notif").add({
+            mensaje: localStorage.Nombre + " ha iniciado el seguimiento de reporte",
+            uid: user.uid,
+            fecha: Date.now()
+        })
+        .catch(e => console.log(e));
+    })
+
 firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
@@ -128,7 +155,7 @@ firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
         }
         else {
             alert(notif.data().mensaje);
-            //notif.ref.delete();
+            notif.ref.delete();
         }
     })           
 });

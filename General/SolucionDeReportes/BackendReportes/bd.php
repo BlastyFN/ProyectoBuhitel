@@ -29,7 +29,25 @@ class database
 		return $res;
 	}
 
-	
+	function completarReporte($reporte_id){
+		$sql = $this->con->prepare("UPDATE reporte 
+		SET Reporte_Estatus = '5' 
+		WHERE Reporte_ID = '".$reporte_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return "0";
+	}
+
+	function iniciarReporte($reporte_id){
+		$sql = $this->con->prepare("UPDATE reporte 
+		SET Reporte_Estatus = '3' 
+		WHERE Reporte_ID = '".$reporte_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return "0";
+	}
 
 
 
