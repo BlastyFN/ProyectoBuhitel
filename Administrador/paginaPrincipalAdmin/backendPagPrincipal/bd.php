@@ -66,7 +66,7 @@ class database
 			if (count($consulta)>0) {
 				$cantidad = 0;
 				foreach ($consulta as $key => $pedido) {
-					$cantidad = $cantidad +  $consulta[0]['CarroProd_NumProductos'];
+					$cantidad = $cantidad +  $pedido['CarroProd_NumProductos'];
 				}
 				$elemento['Nombre'] = $producto['Producto_Nombre'];
 				$elemento['ID'] = $producto['Producto_ID'];
