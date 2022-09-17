@@ -52,7 +52,7 @@
         $nuevoArreglo = array_sort($Arreglo, 'Cantidad', SORT_ASC);
         return $nuevoArreglo[0];
     }
-    function array_sort($array, $on, $order)
+    function array_sort($array, $on, $order=SORT_ASC)
     {
         $new_array = array();
         $sortable_array = array();
