@@ -64,7 +64,10 @@ class database
 			$sql->execute();
 			$consulta = $sql->fetchall();
 			if (count($consulta)>0) {
-				$cantidad = $consulta[0]['CarroProd_NumProductos'];
+				$cantidad = 0;
+				foreach ($consulta as $key => $pedido) {
+					$cantidad = $cantidad +  $consulta[0]['CarroProd_NumProductos'];
+				}
 				$elemento['Nombre'] = $producto['Producto_Nombre'];
 				$elemento['ID'] = $producto['Producto_ID'];
 				$elemento['Cantidad'] = $cantidad;
