@@ -6,7 +6,7 @@
     $hoy = date('c');
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
-    $d=rand(1,3);
+    $d=rand(1,4);
     $res;
     $elemento;
     switch ($d) {
