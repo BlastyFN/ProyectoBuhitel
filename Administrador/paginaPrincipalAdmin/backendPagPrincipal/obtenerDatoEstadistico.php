@@ -13,7 +13,7 @@
         case '1':
             $lista = $bd->obtenerProductoMasPedido($hotel);
             $listaOrdenada = array_sort($lista, 'Cantidad', SORT_ASC);
-            $elemento = obtenerMayor($listaOrdenada[0]);
+            $elemento = $listaOrdenada[0];
             $frase = "El producto más pedido es: " . $elemento['Nombre'] . " pedido " .$elemento['Cantidad']. "Veces";
         break;
 
