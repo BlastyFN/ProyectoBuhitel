@@ -69,7 +69,7 @@ class database
 			$elemento['Cantidad'] = $cantidad;
 			array_push($Lista, $elemento);
 		}
-		return $res;
+		return $Lista;
 	}
 
 

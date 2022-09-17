@@ -12,7 +12,7 @@
     switch ($d) {
         case '1':
             $lista = $bd->obtenerProductoMasPedido($hotel);
-            $elemento = $Lista[0]['Nombre'];
+            $elemento = $lista[0]['Nombre'];
             $frase = "El producto más pedido es: " . $elemento;
         break;
 
