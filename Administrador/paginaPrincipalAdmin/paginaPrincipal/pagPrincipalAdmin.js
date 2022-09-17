@@ -2,7 +2,11 @@ const cardInfoHabs = document.querySelector('.infoHabs');
 const cardInfoReportes = document.querySelector('.infoReportes');
 const cardInfoPersonal = document.querySelector('.infoPersonal');
 const cardInfoEstadistica = document.querySelector('.infoEstadistica');
-window.addEventListener('load', ()=>{
+window.addEventListener("load", cargarInfo);
+var intervalo = window.setInterval(cargarInfo, 10000);
+
+
+function cargarInfo() {
     fetch("../backendPagPrincipal/obtenerHabsDesocupadas.php", {
         method:'POST'
     }).then(function(response){
@@ -58,5 +62,4 @@ window.addEventListener('load', ()=>{
         cardInfoEstadistica.textContent =  resEstad ;
 
     });
-})
-
+}
