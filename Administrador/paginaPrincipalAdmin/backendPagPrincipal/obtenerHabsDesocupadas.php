@@ -12,6 +12,9 @@
     if ($res2>0) {
         $num =  $res - $res2;
     }
+    else{
+        $num = $res;
+    }
     echo strval($num);
     
 ?>

@@ -51,6 +51,27 @@ class database
 		return count($res);
 	}
 
+	function obtenerProductoMasPedido($hotel){
+		$sql = $this->con->prepare("SELECT Producto_ID, Producto_Nombre FROM producto 
+		INNER JOIN categoriaproductos ON categoriaproductos.CatProd_ID = Producto_Categoria
+		WHERE BINARY categoriaproductos.CatProd_Hotel = '".$hotel."'");
+		$sql->execute();
+		$productos = $sql->fetchall();
+		$Lista = array();
+		foreach ($productos as $key => $producto) {
+			$sql = $this->con->prepare("SELECT CarroProd_NumProductos FROM carritoproductos
+			WHERE BINARY CarroProd_Producto = '".$producto['Producto_ID']."'");
+			$sql->execute();
+			$consulta = $sql->fetchall();
+			$cantidad = $consulta[0]['CarroProd_NumProductos'];
+			$elemento['Nombre'] = $producto['Producto_Nombre'];
+			$elemento['ID'] = $producto['Producto_ID'];
+			$elemento['Cantidad'] = $cantidad;
+			array_push($Lista, $elemento);
+		}
+		return $res;
+	}
+
 
 }
 

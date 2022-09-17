@@ -40,8 +40,8 @@ session_start();
             </div>
 
             <div class="contIndividual" >
-                    <div class="cardBoard">Información de servicios</div>
-                    <div class="card"></div>
+                    <div class="cardBoard">Información estadística</div>
+                    <div class="card infoEstadistica"></div>
             </div>
             
         </section>

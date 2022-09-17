@@ -1,6 +1,7 @@
 const cardInfoHabs = document.querySelector('.infoHabs');
 const cardInfoReportes = document.querySelector('.infoReportes');
 const cardInfoPersonal = document.querySelector('.infoPersonal');
+const cardInfoEstadistica = document.querySelector('.infoEstadistica');
 window.addEventListener('load', ()=>{
     fetch("../backendPagPrincipal/obtenerHabsDesocupadas.php", {
         method:'POST'
@@ -12,7 +13,7 @@ window.addEventListener('load', ()=>{
         }      
     }).then(function(resHabs){
         console.log(resHabs);
-        cardInfoHabs.textContent = "Hay " + resHabs + " Habitaciones desocupadas";
+        cardInfoHabs.textContent = "Hay " + resHabs + " habitaciones desocupadas";
 
     });
 
@@ -26,7 +27,7 @@ window.addEventListener('load', ()=>{
         }      
     }).then(function(resHabs){
         console.log(resHabs);
-        cardInfoReportes.textContent = "Hay " + resHabs + " Reportes pendientes";
+        cardInfoReportes.textContent = "Hay " + resHabs + " reportes pendientes";
 
     });
 
