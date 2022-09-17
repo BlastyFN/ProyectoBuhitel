@@ -50,9 +50,9 @@
 
     function obtenerMayor($Arreglo){
         $nuevoArreglo = array_sort($Arreglo, 'Cantidad', SORT_ASC);
-        return $nuevoArreglo;
+        return $nuevoArreglo[0];
     }
-    function array_sort($array, $on, $order=SORT_ASC)
+    function array_sort($array, $on, $order)
     {
         $new_array = array();
         $sortable_array = array();
