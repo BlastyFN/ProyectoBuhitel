@@ -13,7 +13,7 @@
         case '1':
             $lista = $bd->obtenerProductoMasPedido($hotel);
             $elemento = obtenerMayor($lista);
-            $frase = "El producto más pedido es: " . $elemento;
+            $frase = "El producto más pedido es: " . $elemento['Nombre'] . " pedido " .$elemento['Cantidad']. "Veces";
         break;
 
         case '2':
@@ -50,7 +50,7 @@
 
     function obtenerMayor($Arreglo){
         $nuevoArreglo = array_sort($Arreglo, 'Cantidad', SORT_ASC);
-        return $nuevoArreglo[0]['Nombre'];
+        return $nuevoArreglo;
     }
     function array_sort($array, $on, $order=SORT_ASC)
     {
