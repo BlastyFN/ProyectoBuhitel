@@ -6,21 +6,25 @@
     $hoy = date('c');
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
-    $d=rand(1,1);
+    $d=rand(1,2);
     $res;
     $elemento;
     switch ($d) {
         case '1':
-            $lista = $bd->obtenerProductoMasPedido($hotel);
+            //PRODUCTO MAS PEDIDO
+            $lista = $bd->obtenerProductoPedidos($hotel);
             $listaOrdenada = array_sort($lista, 'Cantidad', SORT_DESC);
             $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
-            $frase = "El producto más pedido es: " . $elemento['Nombre'] . " con un total de " .$elemento['Cantidad']. " veces solicitado";
+            $frase = "El producto más pedido es: " . $elemento['Nombre'] . " con un total de " .$elemento['Cantidad']. " unidades solicitadas";
 
         break;
 
         case '2':
-            # $lista = $bd->obtenerProductoMenosPedido($hotel, $hoy);
-            $frase = "El producto menos pedido es :". $elemento;
+            //PRODUCTO MENOS PEDIDO
+            $lista = $bd->obtenerProductoPedidos($hotel);
+            $listaOrdenada = array_sort($lista, 'Cantidad', SORT_ASC);
+            $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
+            $frase = "El producto menos pedido es: " . $elemento['Nombre'] . " con un total de " .$elemento['Cantidad']. " unidades solicitadas";
         break;
 
         case '3':

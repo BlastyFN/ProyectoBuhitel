@@ -51,7 +51,7 @@ class database
 		return count($res);
 	}
 
-	function obtenerProductoMasPedido($hotel){
+	function obtenerProductoPedidos($hotel){
 		$sql = $this->con->prepare("SELECT Producto_ID, Producto_Nombre FROM producto 
 		INNER JOIN categoriaproductos ON categoriaproductos.CatProd_ID = Producto_Categoria
 		WHERE BINARY categoriaproductos.CatProd_Hotel = '".$hotel."'");
