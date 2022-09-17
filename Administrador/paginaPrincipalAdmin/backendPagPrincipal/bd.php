@@ -90,8 +90,8 @@ class database
 			$sql->execute();
 			$consulta = $sql->fetchall();
 			$cantidad = count($consulta);
-			$elemento['Nombre'] = $producto['CatReporte_Nombre'];
-			$elemento['ID'] = $producto['CatReporte_ID'];
+			$elemento['Nombre'] = $categoria['CatReporte_Nombre'];
+			$elemento['ID'] = $categoria['CatReporte_ID'];
 			$elemento['Cantidad'] = $cantidad;
 			array_push($Lista, $elemento);
 			
