@@ -6,7 +6,7 @@
     $hoy = date('c');
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
-    $d=rand(1,4);
+    $d=rand(1,6);
     $res;
     $elemento;
     switch ($d) {
@@ -44,13 +44,19 @@
         break;
 
         case '5':
-            # $lista = $bd->obtenerTipoMenosPedido($hotel, $hoy);
-            $frase = "El tipo de habitación menos reservado es: ". $elemento;
+            //TIPO HABITACIÓN MÁS RESERVADA
+            $lista = $bd->obtenerTiposHabReservadas($hotel);
+            $listaOrdenada = array_sort($lista, 'Cantidad', SORT_DESC);
+            $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
+            $frase = "El tipo de habitación más reservado es: ". $elemento['Nombre'] . " con un total de " . $elemento['Cantidad'] . " reservaciones";
         break;
 
         case '6':
-            # $lista = $bd->obtenerCantidadDeReportes($hotel, $hoy);
-            $frase = "En los últimos 30 días han habido ". $elemento . " reportes en tu hotel ";
+            //TIPO HABITACIÓN MENOS RESERVADA
+            $lista = $bd->obtenerTiposHabReservadas($hotel);
+            $listaOrdenada = array_sort($lista, 'Cantidad', SORT_ASC);
+            $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
+            $frase = "El tipo de habitación menos reservado es: ". $elemento['Nombre'] . " con un total de " . $elemento['Cantidad'] . " reservaciones";
         break;
         default:
             # defautl

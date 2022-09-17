@@ -99,6 +99,29 @@ class database
 		return $Lista;
 	}
 
+	function obtenerTiposHabReservadas($hotel){
+		$sql = $this->con->prepare("SELECT TipoHab_ID, TipoHab_Nombre FROM tipohabitacion
+		WHERE BINARY TipoHab_Hotel = '".$hotel."'");
+		$sql->execute();
+		$tipos = $sql->fetchall();
+		$Lista = array();
+		foreach ($tipos as $key => $tipo) {
+			$sql = $this->con->prepare("SELECT tipohabitacion.TipoHab_Nombre, habitacion.Habitacion_Nombre FROM habitacionreservada
+			INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion
+			INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+			WHERE BINARY tipohabitacion.TipoHab_ID = '".$tipo['TipoHab_ID']."'");
+			$sql->execute();
+			$consulta = $sql->fetchall();
+			$cantidad = count($consulta);
+			$elemento['Nombre'] = $tipo['TipoHab_Nombre'];
+			$elemento['ID'] = $tipo['TipoHab_ID'];
+			$elemento['Cantidad'] = $cantidad;
+			array_push($Lista, $elemento);
+			
+		}
+		return $Lista;
+	}
+
 
 }
 
