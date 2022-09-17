@@ -6,7 +6,7 @@
     $hoy = date('c');
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
 	$bd = new database();
-    $d=rand(1,2);
+    $d=rand(1,3);
     $res;
     $elemento;
     switch ($d) {
@@ -28,8 +28,11 @@
         break;
 
         case '3':
-            # $lista = $bd->obtenerAreaMasReportada($hotel, $hoy);
-            $frase = "El área más reportada es: " . $elemento;
+            //CATEGORIA MAS REPORTADA
+            $lista = $bd->obtenerCategoriasReportadas($hotel);
+            $listaOrdenada = array_sort($lista, 'Cantidad', SORT_DESC);
+            $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
+            $frase = "La categoría más reportada es: " . $elemento['Nombre'] . " con un total de ". $elemento['Cantidad']. " reportes";
         break;
 
         case '4':

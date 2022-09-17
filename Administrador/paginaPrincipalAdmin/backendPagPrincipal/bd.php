@@ -78,6 +78,27 @@ class database
 		return $Lista;
 	}
 
+	function obtenerCategoriasReportadas($hotel){
+		$sql = $this->con->prepare("SELECT CatReporte_ID, CatReporte_Nombre FROM categoriareporte
+		WHERE BINARY CatReporte_Hotel = '".$hotel."'");
+		$sql->execute();
+		$categorias = $sql->fetchall();
+		$Lista = array();
+		foreach ($categorias as $key => $categoria) {
+			$sql = $this->con->prepare("SELECT Reporte_ID FROM reporte 
+			WHERE BINARY Reporte_Categoria = '".$categoria['CatReporte_ID']."'");
+			$sql->execute();
+			$consulta = $sql->fetchall();
+			$cantidad = count($consulta);
+			$elemento['Nombre'] = $producto['CatReporte_Nombre'];
+			$elemento['ID'] = $producto['CatReporte_ID'];
+			$elemento['Cantidad'] = $cantidad;
+			array_push($Lista, $elemento);
+			
+		}
+		return $Lista;
+	}
+
 
 }
 
