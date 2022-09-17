@@ -14,8 +14,8 @@
             $lista = $bd->obtenerProductoMasPedido($hotel);
             $listaOrdenada = array_sort($lista, 'Cantidad', SORT_DESC);
             $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
-            // $frase = "El producto más pedido es: " . $elemento['Nombre'] . " pedido " .$elemento['Cantidad']. "Veces";
-            $frase = var_dump( $listaOrdenada);
+            $frase = "El producto más pedido es: " . $elemento['Nombre'] . " con un total de " .$elemento['Cantidad']. " veces solicitado";
+
         break;
 
         case '2':
