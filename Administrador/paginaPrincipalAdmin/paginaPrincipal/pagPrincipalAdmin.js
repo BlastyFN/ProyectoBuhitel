@@ -44,5 +44,19 @@ window.addEventListener('load', ()=>{
         cardInfoPersonal.textContent = "Hay " + resPers + " trabajadores de limpieza en horario laboral";
 
     });
+
+    fetch("../backendPagPrincipal/obtenerDatoEstadistico.php", {
+        method:'POST'
+    }).then(function(response){
+        if(response.ok){               
+            return response.text();                
+        } else {
+            throw "Error en la llamada Ajax"
+        }      
+    }).then(function(resEstad){
+        console.log(resEstad);
+        cardInfoEstadistica.textContent =  resEstad ;
+
+    });
 })
 
