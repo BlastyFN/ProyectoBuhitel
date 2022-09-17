@@ -36,8 +36,11 @@
         break;
 
         case '4':
-            # $lista = $bd->obtenerTipoMasPedido($hotel, $hoy);
-            $frase = "El tipo de habitación más reservado es: ". $elemento;
+            //CATEGORIA MENOS REPORTADA
+            $lista = $bd->obtenerCategoriasReportadas($hotel);
+            $listaOrdenada = array_sort($lista, 'Cantidad', SORT_ASC);
+            $elemento = $listaOrdenada[array_key_first($listaOrdenada)];
+            $frase = "La categoría menos reportada es: " . $elemento['Nombre'] . " con un total de ". $elemento['Cantidad']. " reportes";
         break;
 
         case '5':
