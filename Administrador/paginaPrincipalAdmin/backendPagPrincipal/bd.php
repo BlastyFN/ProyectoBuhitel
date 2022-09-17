@@ -63,11 +63,14 @@ class database
 			WHERE BINARY CarroProd_Producto = '".$producto['Producto_ID']."'");
 			$sql->execute();
 			$consulta = $sql->fetchall();
-			$cantidad = $consulta[0]['CarroProd_NumProductos'];
-			$elemento['Nombre'] = $producto['Producto_Nombre'];
-			$elemento['ID'] = $producto['Producto_ID'];
-			$elemento['Cantidad'] = $cantidad;
-			array_push($Lista, $elemento);
+			if (count($consulta)>0) {
+				$cantidad = $consulta[0]['CarroProd_NumProductos'];
+				$elemento['Nombre'] = $producto['Producto_Nombre'];
+				$elemento['ID'] = $producto['Producto_ID'];
+				$elemento['Cantidad'] = $cantidad;
+				array_push($Lista, $elemento);
+			}
+			
 		}
 		return $Lista;
 	}
