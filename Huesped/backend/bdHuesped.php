@@ -362,10 +362,18 @@
             INNER JOIN categoriareporte ON categoriareporte.CatReporte_ID = Reporte_Categoria
             INNER JOIN estatusreporte ON estatusreporte.EstatusReporte_ID = Reporte_Estatus
             WHERE BINARY habitacion.Habitacion_ID = '".$Habitacion."'
-            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut
+            AND BINARY Reporte_Estatus != '6'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
+        }
+
+        public function solucionarReporte($Reporte){
+            $sql = $this->con->prepare("UPDATE reporte SET Reporte_Estatus = '6'
+            WHERE  BINARY Reporte_ID = '".$Reporte."'");
+            $sql->execute();
+            return true;
         }
         
     }
