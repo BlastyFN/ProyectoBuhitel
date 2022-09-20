@@ -92,6 +92,14 @@ const contenidoChat = (user) => {
             console.log("input vacio")
             return
         }
+
+        firebase.firestore().collection("message").add({
+            mensaje: "Nuevo mensaje de " + localStorage.Nombre,
+            uid: user.uid,
+            fecha: Date.now()
+        })
+        .catch(e => console.log(e)); 
+
         firebase.firestore().collection(reporteID.toString()).add({
             mensaje: mensajeChat.value,
             uid: user.uid,
@@ -100,12 +108,7 @@ const contenidoChat = (user) => {
         .then(res => {console.log("Mensaje guardado")
         mensajeChat.value = ''})
         .catch(e => console.log(e));
-             firebase.firestore().collection("message").add({
-            mensaje: localStorage.Nombre + "Nuevo mensaje de" + localStorage.Nombre,
-            uid: user.uid,
-            fecha: Date.now()
-        })
-        .catch(e => console.log(e));        
+                    
     })
 
     firebase.firestore().collection(reporteID.toString()).orderBy('fecha')
