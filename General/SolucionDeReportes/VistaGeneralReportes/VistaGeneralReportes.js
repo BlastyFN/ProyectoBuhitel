@@ -68,38 +68,6 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 
-firebase.auth().onAuthStateChanged(user => {
-    if(user){
-       
-        contenidoChat(user)
-    }else{
-       console.log("sin usuario con sesion activa")
-    }
-})
-
-function iniciarEnBd(){
-    const nombreCat = new FormData();
-
-    nombreCat.append('reporte', reporteID)
-    fetch('../BackendReportes/iniciarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        
-    })
-}
-
-
-
-
-
-
-
 const contenidoChat = (user) => {
    
     firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
