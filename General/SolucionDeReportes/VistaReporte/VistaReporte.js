@@ -13,7 +13,7 @@ const btnCompletado = document.querySelector('.completado');
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
-var reporteID;
+var reporteID, reporteUsuario;
 
 window.addEventListener('load', e => {
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
@@ -29,6 +29,7 @@ window.addEventListener('load', e => {
         console.log(infoPersonal);
         for( element of infoPersonal){
             reporteID = element.Reporte_ID;
+            reporteUsuario = element.Reporte_usuario;
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
            
@@ -99,7 +100,7 @@ const contenidoChat = (user) => {
         .then(res => {console.log("Mensaje guardado")
         mensajeChat.value = ''})
         .catch(e => console.log(e));
-             firebase.firestore().collection(reporteID.toString()+"message").add({
+             firebase.firestore().collection("message").add({
             mensaje: localStorage.Nombre + "Nuevo mensaje de" + localStorage.Nombre,
             uid: user.uid,
             fecha: Date.now()
@@ -136,7 +137,7 @@ const contenidoChat = (user) => {
 
     btnCompletado.addEventListener('click', ()=> {
         completarEnBd();
-        firebase.firestore().collection(reporteID.toString()+"notif").add({
+        firebase.firestore().collection("notif").add({
             mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
             uid: user.uid,
             fecha: Date.now()
@@ -146,7 +147,7 @@ const contenidoChat = (user) => {
 
 
 
-firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+firebase.firestore().collection("notif").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){
