@@ -109,6 +109,22 @@ class database
 			$sql->execute();
 			return "0";
 	}
+
+	public function obtenerNumero($Reporte){
+		$sql = $this->con->prepare("SELECT habitacionreservada.HabReservada_NumWhatsapp FROM reporte
+		INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
+		WHERE BINARY Reporte_ID = '".$Reporte."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		$num;
+		if ($res[0]['HabReservada_NumWhatsapp'] != '0') {
+			$num = $res[0]['HabReservada_NumWhatsapp'];
+		}
+		else{
+			$num = false;
+		}
+		return $num;
+	}
     
 
 
