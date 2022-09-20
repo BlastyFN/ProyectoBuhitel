@@ -70,7 +70,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 const contenidoChat = (user) => {
    
-    firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+    firebase.firestore().collection(localStorage.getItem('personalID').toString()+"notif").orderBy('fecha')
     .onSnapshot(query => {
         query.forEach(notif =>{
             if(notif.data().uid === user.uid){
@@ -84,7 +84,7 @@ const contenidoChat = (user) => {
     });
     
 
-firebase.firestore().collection(reporteID.toString()+"message").orderBy('fecha')
+firebase.firestore().collection(localStorage.getItem('personalID').toString()+"message").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){
