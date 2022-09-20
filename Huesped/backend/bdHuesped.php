@@ -355,7 +355,7 @@
         }
 
         public function consultarReportes($Habitacion, $Hoy){
-            $sql = $this->con->prepare("SELECT Reporte_Nombre, estatusreporte.EstatusReporte_Estatus FROM reporte
+            $sql = $this->con->prepare("SELECT Reporte_Nombre, estatusreporte.EstatusReporte_Estatus, Reporte_ID FROM reporte
             INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
             INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
             INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
