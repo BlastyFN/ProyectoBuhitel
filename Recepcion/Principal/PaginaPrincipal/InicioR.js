@@ -25,7 +25,7 @@ function cargarDisponibilidad() {
     .then(function(texto){
         let numero = parseFloat(texto)*100;
         let porcentaje = 100-numero;
-        
+        console.log("texto");
         let porstring = String(porcentaje);
         let punto = porstring.indexOf(".");
         let Stfinal = porstring.substring(0, punto+3);
