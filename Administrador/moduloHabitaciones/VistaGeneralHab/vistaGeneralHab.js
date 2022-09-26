@@ -44,11 +44,10 @@ class Piso{
         divCarousel.classList.add("owl-carousel","owl-theme","owl-loaded", "owl-drag");
         
         var habitaciones = this.habs;
-        console.log(habitaciones);
+        
                 
         for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){ 
-            console.log(habitaciones[contHabs].habNombre);
-            console.log(habitaciones[contHabs].habTipoNombre);
+
             if(busqueda.value == ""){
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
             }   
@@ -113,13 +112,13 @@ function cargarOpcionesTiposHab(){
         }
     }).then(function(texto){
         for(element of texto){  //Por cada elemento del json
-            console.log(texto);
+
             tiposHabs = texto;
             var inputTipoHab = document.createElement('option');
             inputTipoHab.classList.add('opcTipoHab');
             inputTipoHab.setAttribute('value',element.tipohab_ID);
             inputTipoHab.textContent = element.tipohab_nombre;
-            console.log(inputTipoHab.value);
+  
             fragment.appendChild(inputTipoHab);
             
         }
@@ -198,10 +197,9 @@ btnBuscar.addEventListener('click', (e)=>{
 const seleccionarHab = e =>{
     if(e.target.classList.contains('inside-item')){
         e.stopPropagation();
-        console.log(e.target.parentElement.id);
+
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
-        console.log(hab);
         if(hab.habitacion_estado == true){
             btnDesactivar.textContent = "Deshabilitar";
         } 
@@ -219,7 +217,7 @@ btnCerrarPopup.addEventListener('click', e =>{
     overlay.classList.remove('active');
     popup.classList.remove('active');
     let inputs = Array.prototype.slice.call(document.getElementsByClassName("opcTipoHab"), 0);
-    console.log(inputs);
+
     for(element of inputs){
         element.remove();
       } 
@@ -239,13 +237,14 @@ function obtenerPisosHotel(){
                throw "Error en la llamada Ajax"
             }      
     }).then(function(res){  
+        console.log(res);
         var contadorPisos  = 1;
         for(element of res){                       
             obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
-                console.log(nPiso);
+                
                 pisos.push(nPiso);
                 contenedorPisos.appendChild(nPiso.HTML);
-                console.log(nPiso.HTML);
+                
 
                 var owl = $('.owl-carousel');
                 owl.owlCarousel({
@@ -292,7 +291,7 @@ const obtenerHabs = (pisoID, numPiso) => {
                 throw "Error en la llamada Ajax"
             }      
         }).then(function(resHabs){
-            //console.log(resHabs);
+            
             var jsonHabs = JSON.parse(resHabs);
             for(element of jsonHabs){
                 nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
