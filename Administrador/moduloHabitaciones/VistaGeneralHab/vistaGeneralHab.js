@@ -240,6 +240,7 @@ function obtenerPisosHotel(){
             }      
     }).then(function(res){  
         var contadorPisos  = 1;
+        console.log(res);
         for(element of res){                       
             obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
                 console.log(nPiso);
