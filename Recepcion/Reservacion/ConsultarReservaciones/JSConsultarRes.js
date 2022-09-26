@@ -259,7 +259,7 @@ function separadora(Colores) {
     }
     
     
-    var desplegables = Verdes.concat(Rojas, Moradas, Grises);
+    var desplegables = Rojas.concat(Verdes, Moradas, Grises);
 
     console.log(Grises);
     desplegadora(desplegables);
