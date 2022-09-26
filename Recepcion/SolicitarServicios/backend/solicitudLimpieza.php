@@ -132,7 +132,7 @@
 
                             
                         }
-                        //SI LOS TRABAJADORES ES IGUAL A LAS OCUPACIONES
+                        //SI LOS TRABAJADORES DISPONIBLES ES IGUAL A LAS OCUPACIONES
                         if ($contadorTrabajadoresDiferentes == count($personalActivo)) {
                             
                             array_push($PeriodosInternos, strtotime($limpieza["Limpieza_HoraInicio"]));

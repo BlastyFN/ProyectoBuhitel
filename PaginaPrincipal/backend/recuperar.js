@@ -128,7 +128,7 @@ function validarCodigo(Codigo) {
         if(texto == '1'){
             alert("Codigo Confirmado");
             //Redirecciona al cambio de contraseña
-            window.location.href="http://localhost/Buhitel/PaginaPrincipal/cambiarContrasena.php";
+            window.location.href="https://corporativotdo.com/PaginaPrincipal/cambiarContrasena.php";
         }
         else{
             //El servidor devuelve error

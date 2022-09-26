@@ -51,6 +51,7 @@ class database
 		return count($res);
 	}
 
+
 	function obtenerProductoPedidos($hotel){
 		$sql = $this->con->prepare("SELECT Producto_ID, Producto_Nombre FROM producto 
 		INNER JOIN categoriaproductos ON categoriaproductos.CatProd_ID = Producto_Categoria

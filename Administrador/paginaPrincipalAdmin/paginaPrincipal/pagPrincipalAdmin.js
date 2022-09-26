@@ -17,7 +17,7 @@ function cargarInfo() {
         }      
     }).then(function(resHabs){
         console.log(resHabs);
-        cardInfoHabs.textContent = "Hay " + resHabs + " habitaciones desocupadas";
+        cardInfoHabs.textContent = resHabs;
 
     });
 

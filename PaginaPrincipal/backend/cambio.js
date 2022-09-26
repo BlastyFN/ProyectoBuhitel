@@ -70,7 +70,7 @@ botonCambio.addEventListener('click', function (e) {
            case '2':
                //El servidor ejecuta todo correctamente y envía a inicio de sesión
                 console.log(texto);
-                window.location.href="http://localhost/Buhitel/PaginaPrincipal/InicioSesion.php";
+                window.location.href="https://corporativotdo.com/PaginaPrincipal/InicioSesion.php";
                break;
            default:
                break;

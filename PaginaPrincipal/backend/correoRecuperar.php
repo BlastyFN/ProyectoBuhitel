@@ -6,7 +6,7 @@ if(isset($_POST['Correo'])){
 	//ASOCIACIÓN DE VARIABLES
 	$Correo = $_POST['Correo'];
     $Titulo = 'Codigo de recuperacion';
-    $Mensaje = 'Hola! Aquí está tu código para recuperar tu contraseña:'.'<br>';
+    $Mensaje = 'Hola! Aquí está tu código para recuperar tu contraseña: ';
 
     $codigo = '';
     $caracteres = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
@@ -16,7 +16,7 @@ if(isset($_POST['Correo'])){
         $codigo .= $caracterRandom;
     }
     $Mensaje .= $codigo;
-    $Mensaje .= "<br> Si NO solicitaste recuperar tu contraseña, haz caso omiso a este correo";
+    $Mensaje .= " Si NO solicitaste recuperar tu contraseña, haz caso omiso a este correo";
     //CREACIÓN DE OBJETO DB
 	$cor = new mailer();
     //LLAMADA A LA FUNCIÓN

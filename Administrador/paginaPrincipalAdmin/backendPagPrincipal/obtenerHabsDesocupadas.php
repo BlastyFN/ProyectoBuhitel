@@ -15,6 +15,7 @@
     else{
         $num = $res;
     }
-    echo strval($num);
+    $string = "Hay " . $num . " habitaciones desocupadas y ". $res2 . " habitaciones ocupadas";
+    echo $string;
     
 ?>

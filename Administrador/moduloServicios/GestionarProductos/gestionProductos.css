@@ -1,0 +1,168 @@
+.searchElement{
+    width: 50%;
+    margin: 10px 10px;
+    padding: 0 15px;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.searchButton{
+    display: inline-block;
+    background: #59114D;
+    margin: 10px 10px;
+    padding: 0px 30px;
+    width: auto;
+    height: 34px;
+    border-radius: 50px;
+    border-style: none;
+    
+    font-size: 15px;
+    color: #fff;
+}
+
+.search form{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 10px;
+    padding-left: 15% ;
+    
+}
+
+.tablaPersonl{
+    border: 1px solid #000;
+}
+
+.contenedorTablaServicios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 80%;
+    border: 1px solid #59114D;
+    border-top: 20px solid #59114D;
+ }
+
+ table td{
+    padding-left: 5%;
+ }
+
+ .nombrePersonal {
+    width: 25%;
+    text-align: left;
+    vertical-align: top;
+    border-right: .1px solid #59114D;
+    border-collapse: collapse;
+    padding: 0.3em;
+    caption-side: bottom;
+ }
+
+ .ver{
+    background: #E98A15;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border-style: none; 
+    font-size: 15px;
+    color: #fff;
+ }
+
+ .btnAdd {
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    margin: 50px 10px;
+}
+
+select{
+    width: 50%;
+    border-radius: 15px;
+    font-size: 25px;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    color:#59114D ;
+}
+
+.contenedor{
+    width: 70%;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 10%;
+    height: 34px;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(209, 81, 81);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(230%);
+    -ms-transform: translateX(230%);
+    transform: translateX(230%);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
