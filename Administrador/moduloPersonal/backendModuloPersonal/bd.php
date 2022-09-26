@@ -72,7 +72,7 @@ class database
 		return $res;
 	}
 
-	function modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,
+	function modificarPersonal($personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,
 	$correo,$password,$seguroSocial){
 
 		$sql = $this->con->prepare( "UPDATE personal SET personal_nombre = '".$nombre."',

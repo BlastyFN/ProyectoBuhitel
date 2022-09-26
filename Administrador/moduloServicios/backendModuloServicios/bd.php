@@ -8,7 +8,7 @@ class database
 		$this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');
 	}
 
-	function crearCategoria($categoria){
+	function crearCategoria($hotel,$categoria){
 		$sqltest = $this->con->prepare("SELECT * FROM categoriaproductos  WHERE catprod_categoria = '".$categoria."'");
 		$sqltest->execute();
 		$res = $sqltest->fetchall();

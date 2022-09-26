@@ -37,5 +37,5 @@ window.addEventListener('load', e => {
 
 btnVolver.addEventListener('click', e =>{
     
-    window.location.href = "http://localhost/Buhitel/Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php";
+    window.location.href = "https://corporativotdo.com/Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php";
 })

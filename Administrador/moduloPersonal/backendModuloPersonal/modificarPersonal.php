@@ -14,10 +14,9 @@ session_start();
         $passwordS = md5($password);
         $seguroSocial = $_POST['seguroSocial'];
         
-        $hotel =  $_SESSION['sesionPersonal']['Hotel'];
-        $personalId = 35;
+        $personalId =  $_SESSION['sesionPersonal']['ID'];
 	    $bd = new database();
-        $res = $bd-> modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$passwordS,$seguroSocial);
+        $res = $bd-> modificarPersonal($personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$passwordS,$seguroSocial);
         echo $res;
     }
 

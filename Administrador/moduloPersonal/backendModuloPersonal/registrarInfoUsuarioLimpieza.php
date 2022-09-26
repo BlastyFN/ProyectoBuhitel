@@ -4,7 +4,7 @@
     if(isset($_POST['inicioJornada']) &&  isset($_POST['finJornada']) && isset($_POST['inicioDescanso']) 
     && isset($_POST['finDescanso'])){
 
-        $personalID =  $_SESSION['sesionPersonal']['Hotel'];
+        $personalID =  $_SESSION['sesionPersonal']['ID'];
         $inicioJornada = $_POST['inicioJornada'];
         $finJornada = $_POST['finJornada'];
         $inicioDescanso = $_POST['inicioDescanso'];
