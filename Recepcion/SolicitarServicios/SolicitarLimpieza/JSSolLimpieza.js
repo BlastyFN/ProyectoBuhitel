@@ -105,7 +105,7 @@ function solicitarLimpieza() {
             alert("Habitación inválida")
         }
         if (texto == "NP") {
-            alert("No hay persobal trabajando a esa hora");
+            alert("No hay personal trabajando a esa hora");
         }
         else{
             infoJSON = JSON.parse(texto);
@@ -143,7 +143,7 @@ function cancelar() {
         while (contenedor.firstChild) {
             contenedor.removeChild(contenedor.firstChild);
         }
-        alert(texto);
+        console.log(texto);
      })
      .catch(function(err) {
         console.log(err);

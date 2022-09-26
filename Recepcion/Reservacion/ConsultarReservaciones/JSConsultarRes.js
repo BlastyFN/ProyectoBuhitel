@@ -234,18 +234,18 @@ function separadora(Colores) {
     var Rojas=[];
     var Moradas=[];
     var Grises=[];
-   if (Colores[0] == true) {
-        Verdes = Reservaciones.filter(function (Habitacion) {
-            return Habitacion.Tipo === "Verde";
-        });
-   }
-   else{
 
-   }
+
     if (Colores[1] == true) {
         Rojas = Reservaciones.filter(function (Habitacion) {
             return Habitacion.Tipo === "Rojo";
         }); 
+    }
+
+    if (Colores[0] == true) {
+        Verdes = Reservaciones.filter(function (Habitacion) {
+            return Habitacion.Tipo === "Verde";
+        });
     }
     if (Colores[2] == true) {
         Moradas = Reservaciones.filter(function (Habitacion) {

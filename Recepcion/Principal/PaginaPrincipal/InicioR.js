@@ -23,12 +23,18 @@ function cargarDisponibilidad() {
         }
     })
     .then(function(texto){
-        let numero = parseFloat(texto)*100;
+        var Stfinal;
+        if (texto != "0") {
+            let numero = parseFloat(texto)*100;
         let porcentaje = 100-numero;
         console.log(texto);
         let porstring = String(porcentaje);
         let punto = porstring.indexOf(".");
-        let Stfinal = porstring.substring(0, punto+3);
+        Stfinal = porstring.substring(0, punto+3);
+        }
+        else{
+            Stfinal = "100";
+        }
         textoDisponibilidad.innerHTML=Stfinal+ "%"
         console.log(Stfinal);
     })

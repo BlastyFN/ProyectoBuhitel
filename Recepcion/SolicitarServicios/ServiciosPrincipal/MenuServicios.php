@@ -33,7 +33,7 @@ else {
     <br><br>
     
     <br><br>
-    <h1 class="alinearTexto Azul TBlanco" id="tituloHab">Habitación 2409</h1>
+    <h1 class="alinearTexto Azul TBlanco" id="tituloHab">Habitación</h1>
     <br><br>
     <section id="ContenedorL">
         

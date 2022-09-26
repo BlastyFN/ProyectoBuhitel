@@ -534,6 +534,7 @@ btnCargar.addEventListener('click', function () {
             
            }
            console.log("r: " +texto);
+           window.location.href="https://corporativotdo.com/Recepcion/Reservacion/ConsultarReservaciones/ConsultaReservaciones.php";
         })
         .catch(function(err) {
             console.log(err);
