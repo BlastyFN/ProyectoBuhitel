@@ -8,6 +8,7 @@ const opcionesAdministrador = ["Pagina Principal",
     "Configuracion de servicios", 
     "Reportes de usuarios",
     "Reportes de análisis de sistemas",
+    "Gestionar productos",
      "Modificar mi información"]
 
 const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/pagPrincipalAdmin.php",
@@ -15,7 +16,8 @@ const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/
  "Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php", 
  "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php",
  "Administrador/moduloReportesUsuarios/vistaGeneralReportesUsuarios/vistaGeneralReportesUsuarios.php", 
- "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php",
+ "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php", 
+ "Administrador/moduloServicios/GestionarProductos/gestionarProductos.php",
  "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
