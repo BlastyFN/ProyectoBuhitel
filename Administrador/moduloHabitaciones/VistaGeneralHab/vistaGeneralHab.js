@@ -173,14 +173,13 @@ btnGuardar.addEventListener('click', (e)=>{
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    obtenerPisosHotel().then(
-        carouselesHab.addEventListener('click', e =>{
-            seleccionarHab(e);
+    pisos = obtenerPisosHotel();
+    obtenerHabs()
+    carouselesHab.addEventListener('click', e =>{
+        seleccionarHab(e);
 
-        })
+    })
         
-
-    );
 });
 
 btnBuscar.addEventListener('click', (e)=>{
@@ -226,8 +225,6 @@ btnCerrarPopup.addEventListener('click', e =>{
 
 
 function obtenerPisosHotel(){
-  return new Promise((resolve,reject)=>{
-   
     fetch("../backend/obtenerPisos.php", {
         method:'POST'
     }).then(function(response){
@@ -236,49 +233,49 @@ function obtenerPisosHotel(){
             } else {
                throw "Error en la llamada Ajax"
             }      
-    }).then(function(res){  
-        console.log(res);
-        var contadorPisos  = 1;
-        for(element of res){                       
-            obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
+    }).then(function(pisos){  
+        
+        return(pisos);
+        // var contadorPisos  = 1;
+        // for(element of res){                       
+        //     obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
                 
-                pisos.push(nPiso);
-                contenedorPisos.appendChild(nPiso.HTML);
+        //         pisos.push(nPiso);
+        //         contenedorPisos.appendChild(nPiso.HTML);
                 
 
-                var owl = $('.owl-carousel');
-                owl.owlCarousel({
-                    loop:false,
-                    nav:true,
-                    margin:10,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:3
-                        },            
-                        960:{
-                            items:5
-                        },
-                        1200:{
-                            items:6
-                        }
-                    }
-                });  
-            });
-            contadorPisos++;          
-        }        
+        //         var owl = $('.owl-carousel');
+        //         owl.owlCarousel({
+        //             loop:false,
+        //             nav:true,
+        //             margin:10,
+        //             responsive:{
+        //                 0:{
+        //                     items:1
+        //                 },
+        //                 600:{
+        //                     items:3
+        //                 },            
+        //                 960:{
+        //                     items:5
+        //                 },
+        //                 1200:{
+        //                     items:6
+        //                 }
+        //             }
+        //         });  
+        //     });
+        //     contadorPisos++;          
+        // }        
     });
-    resolve(); 
-  });  
+} 
    
-}
 
 
 
-const obtenerHabs = (pisoID, numPiso) => {
-    return new Promise((resolve,reject) => {
+
+const obtenerHabs = (pisos) => {
+    pisos.forEach(element => {
         var resuArray = [];
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",pisoID);
@@ -297,12 +294,14 @@ const obtenerHabs = (pisoID, numPiso) => {
                 nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
                     element.habitacion_tipo, element.TipoHab_Nombre);
                 resuArray.push(nuevaHab);
-                
+                    
             }
             const nuevoPiso = new Piso(pisoID, numPiso, resuArray);
-            resolve(nuevoPiso);
+            
         });
-    });    
+    });
+    
+      
 }
 
 

@@ -14,7 +14,7 @@ session_start();
         $passwordS = md5($password);
         $seguroSocial = $_POST['seguroSocial'];
         
-        $personalId =  $_SESSION['sesionPersonal']['ID'];
+        $personalId =  $_POST['personalID'];
 	    $bd = new database();
         $res = $bd-> modificarPersonal($personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$passwordS,$seguroSocial);
         echo $res;

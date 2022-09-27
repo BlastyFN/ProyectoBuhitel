@@ -10,9 +10,10 @@ const inputContraseña = document.getElementById('password');
 const inputSeguroSocial = document.getElementById('seguroSocial'); 
 
 window.addEventListener('load',e=>{
-
+    const obtenerPersonal = new FormData();
+    obtenerPersonal.append('personalID', localStorage.getItem());
     fetch('../backendModuloPersonal/obtenerPersonalEspecifico.php' , {
-        method:'POST'
+        method:'POST', body:obtenerPersonal
     }).then(function(response){
         if(response.ok){
          return response.json();
@@ -35,7 +36,7 @@ window.addEventListener('load',e=>{
 
 formRegistroUsuario.addEventListener('submit', function(e){
     e.preventDefault();    
-
+    enviarRegistro.append('personalID',localstorage.getItem('personalID'));
     enviarRegistro.append('nombres',inputNombres.value);
     enviarRegistro.append('apellidoP',inputApellidoP.value);
     enviarRegistro.append('apellidoM',inputApellidoM.value);
