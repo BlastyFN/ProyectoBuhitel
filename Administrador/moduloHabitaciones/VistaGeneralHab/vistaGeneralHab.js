@@ -236,7 +236,7 @@ function obtenerPisosHotel(){
     }).then(function(pisos){  
         var contadorPisos  = 1;
         for(element of pisos){                       
-            obtenerHabs(element.piso_ID,contadorPisos);               
+            obtenerHabs(element.piso_ID);               
             
             contadorPisos++;
         }        
@@ -247,8 +247,8 @@ function obtenerPisosHotel(){
 
 
 
-const obtenerHabs = (pisos) => {
-    pisos.forEach(element => {
+const obtenerHabs = (pisoID) => {
+    
         var resuArray = [];
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",pisoID);
@@ -295,9 +295,7 @@ const obtenerHabs = (pisos) => {
 
             
         });
-    });
-    
-      
+
 }
 
 
