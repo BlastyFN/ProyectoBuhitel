@@ -234,13 +234,10 @@ function obtenerPisosHotel(){
                throw "Error en la llamada Ajax"
             }      
     }).then(function(pisos){  
-        
-    
         var contadorPisos  = 1;
-        for(element of res){                       
+        for(element of pisos){                       
             obtenerHabs(element.piso_ID,contadorPisos);               
-                
-
+            
             contadorPisos++;
         }        
     });
