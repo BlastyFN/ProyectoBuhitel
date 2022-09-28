@@ -235,38 +235,14 @@ function obtenerPisosHotel(){
             }      
     }).then(function(pisos){  
         
-        return(pisos);
-        // var contadorPisos  = 1;
-        // for(element of res){                       
-        //     obtenerHabs(element.piso_ID,contadorPisos).then((nPiso) =>{               
-                
-        //         pisos.push(nPiso);
-        //         contenedorPisos.appendChild(nPiso.HTML);
+    
+        var contadorPisos  = 1;
+        for(element of res){                       
+            obtenerHabs(element.piso_ID,contadorPisos);               
                 
 
-        //         var owl = $('.owl-carousel');
-        //         owl.owlCarousel({
-        //             loop:false,
-        //             nav:true,
-        //             margin:10,
-        //             responsive:{
-        //                 0:{
-        //                     items:1
-        //                 },
-        //                 600:{
-        //                     items:3
-        //                 },            
-        //                 960:{
-        //                     items:5
-        //                 },
-        //                 1200:{
-        //                     items:6
-        //                 }
-        //             }
-        //         });  
-        //     });
-        //     contadorPisos++;          
-        // }        
+            contadorPisos++;
+        }        
     });
 } 
    
@@ -297,6 +273,29 @@ const obtenerHabs = (pisos) => {
                     
             }
             const nuevoPiso = new Piso(pisoID, numPiso, resuArray);
+            pisos.push(nuevoPiso);
+            contenedorPisos.appendChild(nuevoPiso.HTML);
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                loop:false,
+                nav:true,
+                margin:10,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:3
+                    },            
+                    960:{
+                        items:5
+                    },
+                    1200:{
+                        items:6
+                    }
+                }
+            });  
+
             
         });
     });

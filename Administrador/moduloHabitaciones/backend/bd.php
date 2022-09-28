@@ -147,7 +147,7 @@ class database
 		return $res;
 	}
 	
-	function eliminarHab($hab){
+	function eliminarHab($hab){  //Añadir condicinal al hotel
 		$sql = $this->con->prepare("DELETE FROM habitacion WHERE habitacion_nombre =  $hab");
 		$sql->execute();
 		

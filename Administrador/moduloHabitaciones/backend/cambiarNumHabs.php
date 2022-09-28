@@ -15,7 +15,7 @@
         if($nuevoNumHabs > $antiguoNumHabs){
             for($cont = $antiguoNumHabs; $cont <= $nuevoNumHabs; $cont++){
                 if($cont != ($piso*100)){
-			        $bd->registrarHab($cont,$pisoID,1);
+			        $bd->registrarHab($cont,$pisoID,1); // Cambiar el 1 por el id del tipo de hab
                 }
 		    }
             echo "Se han agregado ". ($nuevoNumHabs - $antiguoNumHabs). " habitaciones";
