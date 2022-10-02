@@ -78,8 +78,8 @@
                     //CONSULTAR HORARIO DEL MÁS DESOCUPADO
                     $horarioPrincipal = $bd->consultarHorario($personalOrdenado[$ordenGeneral[0]]['ID']);
                     //DETERMINAR VARIABLES DE HORARIO
-                    $Techo = $horarioPrincipal['InfoLimpieza_InicioJornada'];
-                    $Suelo = $horarioPrincipal['InfoLimpieza_FinJornada'];
+                    $Techo = $fechaDia ." ". $horarioPrincipal['InfoLimpieza_InicioJornada'];
+                    $Suelo = $fechaDia ." ".$horarioPrincipal['InfoLimpieza_FinJornada'];
                     $DescansoInicio = $horarioPrincipal['InfoLimpieza_InicioDescanso'];
                     $DescansoFinal = $horarioPrincipal['InfoLimpieza_FinDescanso'];
                     $Descanso['Limpieza_HoraInicio'] = $fechaDia." ".$DescansoInicio;
