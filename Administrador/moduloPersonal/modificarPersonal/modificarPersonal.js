@@ -46,7 +46,6 @@ formRegistroUsuario.addEventListener('submit', function(e){
     enviarRegistro.append('apellidoM',inputApellidoM.value);
     enviarRegistro.append('tipoPersonal', inputTipoPersonal.value);
     enviarRegistro.append('correo',inputCorreo.value);
-    enviarRegistro.append();
     enviarRegistro.append('seguroSocial',inputSeguroSocial.value);
    
     
