@@ -51,7 +51,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
         <form action="" method="POST" class="cambiarPassForm">
             <input type="text" class="formText" id="password" placeholder="Contraseña">
             <input type="text" class="formText" id="confirmPassword" placeholder="Confirmar Contraseña">
-            <button type="submit" class="btnCambiarPass">Cambiar Contraseña</button>
+            <button type="submit" class="btnCambiarPass enviarInfo" disabled="true">Cambiar Contraseña</button>
         </form>
         
     </section>
