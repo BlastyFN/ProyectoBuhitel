@@ -85,6 +85,16 @@ class database
 
 	}
 
+	function modificarPasswordPersonal($personalId,$password){
+
+		$sql = $this->con->prepare( "UPDATE personal 
+		SET personal_contrasena = '".$password."'
+		WHERE personal_id = '".$personalId."'");
+	    $sql->execute();
+		return "se ha cambiado la contraseña";
+
+	}
+
 }
 
 ?>

@@ -2,7 +2,7 @@
 session_start();
     include "bd.php";
     if(isset($_POST['nombres']) &&  isset($_POST['apellidoP']) && isset($_POST['apellidoM']) 
-    && isset($_POST['tipoPersonal']) && isset($_POST['correo']) && isset($_POST['password'])
+    && isset($_POST['tipoPersonal']) && isset($_POST['correo'])
     && isset($_POST['seguroSocial'])){
 
         $nombre = $_POST['nombres'];

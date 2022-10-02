@@ -1,5 +1,8 @@
 const formRegistroUsuario = document.querySelector('.formNuevoUsuario');
+const formCambiarPassword = document.querySelector('.cambiarPassForm');
+const btnCambiarPass = document.querySelector('.btnCambiarPass');
 const enviarRegistro = new FormData();
+const cambiarPassword = new FormData();
 
 const inputNombres = document.getElementById('nombreUsr');
 const inputApellidoP = document.getElementById('apellidoP');
@@ -8,6 +11,7 @@ const inputTipoPersonal = document.getElementById('tipoPersonal');
 const inputCorreo = document.getElementById('correoUsr');
 const inputContraseña = document.getElementById('password');
 const inputSeguroSocial = document.getElementById('seguroSocial'); 
+const confirmPassword = document.getElementById('confirmPassword');
 
 window.addEventListener('load',e=>{
     const obtenerPersonal = new FormData();
@@ -42,7 +46,7 @@ formRegistroUsuario.addEventListener('submit', function(e){
     enviarRegistro.append('apellidoM',inputApellidoM.value);
     enviarRegistro.append('tipoPersonal', inputTipoPersonal.value);
     enviarRegistro.append('correo',inputCorreo.value);
-    enviarRegistro.append('password',inputContraseña.value);
+    enviarRegistro.append();
     enviarRegistro.append('seguroSocial',inputSeguroSocial.value);
    
     
@@ -60,3 +64,40 @@ formRegistroUsuario.addEventListener('submit', function(e){
         alert(texto);
     })
 });
+
+inputContraseña.addEventListener("keyup", verificarClave);
+inputContraseña.addEventListener("blur", verificarClave);
+confirmPassword.addEventListener("keyup", verificarClave);
+confirmPassword.addEventListener("blur", verificarClave);
+
+function verificarClave() {
+    btnCambiarPass.disabled = true;
+    if (inputContraseña.value == confirmPassword.value) {
+        if (inputContraseña.value != "" && confirmPassword.value != "") {
+            //console.log(campoClave.value + " " + confirmPassword.value);
+            btnCambiarPass.disabled = false;
+        }
+    }
+
+}
+
+
+formCambiarPassword.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    enviarRegistro.append('personalID',localstorage.getItem('personalID'));
+    cambiarPassword.append('password',inputContraseña.value);
+    cambiarPassword.append('confirmPassword',confirmPassword.value);
+    
+     fetch('../backendModuloPersonal/modificarPasswordPersonal.php' , {
+        method:'POST', body:cambiarPassword
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+        
+        alert(texto);
+    })
+})

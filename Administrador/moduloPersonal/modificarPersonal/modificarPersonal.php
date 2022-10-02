@@ -40,13 +40,18 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
             </select>
 
             <input type="text" class="formText" id="correoUsr" placeholder="Correo">
-            <input type="text" class="formText" id="password" placeholder="Contraseña">
             <input type="text" class="formText" id="seguroSocial" placeholder="Número de seguridad social">
             <br>
             
     
             <button type="submit" class="enviarInfo">Modificar</button>
   
+        </form>
+
+        <form action="" method="POST" class="cambiarPassForm">
+            <input type="text" class="formText" id="password" placeholder="Contraseña">
+            <input type="text" class="formText" id="confirmPassword" placeholder="Confirmar Contraseña">
+            <button type="submit" class="btnCambiarPass">Cambiar Contraseña</button>
         </form>
         
     </section>
