@@ -2,6 +2,7 @@ const formRegistroServicio = document.querySelector('.formNuevoServicio');
 const obtenerInfo = new FormData();
 const enviarRegistro = new FormData();
 
+const opciones = document.getElementById('opcCategorias');
 const nombre = document.getElementById('nombre');
 const categoria = document.getElementById('categoria');
 const precio = document.getElementById('precio');
@@ -45,11 +46,11 @@ window.addEventListener('load',e=>{
         console.log(res);
         for(element of res){  //Por cada elemento del json
             
-            var inputTipoHab = document.createElement('option');
-            inputTipoHab.setAttribute('value',element.tipohab_ID);
-            inputTipoHab.textContent = element.tipohab_nombre;
-            console.log(inputTipoHab.value);
-            fragment.appendChild(inputTipoHab);
+            var inputCategoria = document.createElement('option');
+            inputCategoria.setAttribute('value',element.CatProd_ID);
+            inputCategoria.textContent = element.CatProd_Categoria;
+            console.log(inputCategoria.value);
+            fragment.appendChild(inputCategoria);
             
         }
         

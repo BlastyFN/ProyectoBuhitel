@@ -28,7 +28,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
             <input type="text" class="formText" id="nombre" placeholder="Nombre">
             <div class="infoPrecioCat">
                 <input type="text" class="formText" id="categoria" placeholder="Categoría">
-                <select name="categoria" id="categoria" class="formText">
+                <select name="opcCategorias" id="opcCategorias" class="formText">
                     
                 </select>
                 <input type="number" class="formText" id="precio" placeholder="0">
@@ -71,7 +71,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </div>
         
     </section>
-    <script src="modificarPersonal.js"></script>
+    <script src="modificarServicio.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
     
