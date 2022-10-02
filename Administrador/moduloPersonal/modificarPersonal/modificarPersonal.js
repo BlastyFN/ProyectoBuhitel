@@ -83,7 +83,7 @@ function verificarClave() {
 
 formCambiarPassword.addEventListener('submit', (e)=>{
     e.preventDefault();
-    enviarRegistro.append('personalID',localStorage.getItem('personalID'));
+    cambiarPassword.append('personalID',localStorage.getItem('personalID'));
     cambiarPassword.append('password',inputContraseña.value);
     cambiarPassword.append('confirmPassword',confirmPassword.value);
     
