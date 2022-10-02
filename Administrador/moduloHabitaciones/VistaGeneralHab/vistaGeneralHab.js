@@ -77,6 +77,7 @@ class Habitacion {
     }
 
     obtenerHTML(){
+    
         
         const divHab = document.createElement('div');
         divHab.classList.add("item","carousel-elemento");
@@ -232,17 +233,17 @@ function obtenerPisosHotel(){
             return response.json();
             } else {
                throw "Error en la llamada Ajax"
-            }      
+            }
     }).then(function(pisos){  
         var contadorPisos  = 1;
-        for(element of pisos){                       
-            obtenerHabs(element.piso_ID);               
-            
+        for(element of pisos){
+            obtenerHabs(element.piso_ID);
+
             contadorPisos++;
-        }        
+        }
     });
-} 
-   
+}
+
 
 
 
@@ -292,8 +293,7 @@ const obtenerHabs = (pisoID) => {
                     }
                 }
             });  
-
-            
+           
         });
 
 }

@@ -11,7 +11,7 @@ const inputSeguroSocial = document.getElementById('seguroSocial');
 
 window.addEventListener('load',e=>{
     const obtenerPersonal = new FormData();
-    obtenerPersonal.append('personalID', localStorage.getItem());
+    obtenerPersonal.append('personalID', localStorage.getItem('personalID'));
     fetch('../backendModuloPersonal/obtenerPersonalEspecifico.php' , {
         method:'POST', body:obtenerPersonal
     }).then(function(response){
