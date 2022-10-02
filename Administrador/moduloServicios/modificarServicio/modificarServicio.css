@@ -1,5 +1,5 @@
 
-.formNuevoUsuario {
+.formNuevoServicio {
     display: flex;
     flex-direction: row;
     width: 35%;
@@ -47,4 +47,49 @@ h1 {
     color: #fff;
     
 }
+
+.overlay{
+    background: rgba(0,0,0,.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.overlay.active{
+    visibility: visible;
+}
+
+.popup{
+    background: #59114D;
+    box-shadow: 0px 0px 5px 0px rgb(0,0,0,.3);
+    color: #FFF;
+    width: 50%;
+    height: 400px;
+    padding: 40px;
+    
+    border-radius: 30px;
+    transition: .3s ease all;
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.popup .cerrarPopup {
+    font-size: 16px;
+    line-height: 16px;
+    display: block;
+    text-align: right;
+    color: #427AA1;
+    transition: .3s ease all;
+}
+
+.popup .cerrarPopup:hover {
+    color: #000;
+}
+
 

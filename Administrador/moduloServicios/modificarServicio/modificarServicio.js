@@ -1,14 +1,14 @@
-const formRegistroUsuario = document.querySelector('.formNuevoUsuario');
+const formRegistroServicio = document.querySelector('.formNuevoServicio');
 const obtenerInfo = new FormData();
 const enviarRegistro = new FormData();
 
-const nombre = document.getElementById('nombreUsr');
+const nombre = document.getElementById('nombre');
 const categoria = document.getElementById('categoria');
 const precio = document.getElementById('precio');
 const existencia = document.getElementById('existencia');
 const descripcion = document.getElementById('descripcion');
-const opcAgotado = document.getElementById('false');
-const opcStock = document.getElementById('true');
+const opcAgotado = document.getElementById('agotado');
+const opcStock = document.getElementById('stock');
 
 
 window.addEventListener('load',e=>{
@@ -32,23 +32,43 @@ window.addEventListener('load',e=>{
            
         }
     })
+
+    fetch('../backend/consultarCategorias.php' , {
+        method:'POST'
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(res){
+        console.log(res);
+        for(element of res){  //Por cada elemento del json
+            
+            var inputTipoHab = document.createElement('option');
+            inputTipoHab.setAttribute('value',element.tipohab_ID);
+            inputTipoHab.textContent = element.tipohab_nombre;
+            console.log(inputTipoHab.value);
+            fragment.appendChild(inputTipoHab);
+            
+        }
+        
+        opciones.appendChild(fragment);
+        cargarInfoTipoHab(opciones.value);
+    });
 })
 
 
-formRegistroUsuario.addEventListener('submit', function(e){
+formRegistroServicio.addEventListener('submit', function(e){
     e.preventDefault();    
 
     enviarRegistro.append('nombres',nombre.value);
     enviarRegistro.append('apellidoP',categoria.value);
     enviarRegistro.append('apellidoM',inputApellidoM.value);
     enviarRegistro.append('tipoPersonal', inputTipoPersonal.value);
-    enviarRegistro.append('correo',inputCorreo.value);
-    enviarRegistro.append('password',inputContraseña.value);
-    enviarRegistro.append('seguroSocial',inputSeguroSocial.value);
-   
-    
 
-    fetch('../backendModuloPersonal/modificarPersonal.php' , {
+
+    fetch('../backendModuloPersonal/modificarServicio.php' , {
         method:'POST', body:enviarRegistro
     }).then(function(response){
         if(response.ok){

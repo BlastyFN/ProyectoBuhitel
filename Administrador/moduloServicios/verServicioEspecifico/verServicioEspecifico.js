@@ -5,6 +5,7 @@ const precio = document.querySelector('.precio');
 const descripcion = document.querySelector('.descripcion');
 const existencia = document.querySelector('.existencia');
 const btnVolver = document.querySelector('.volver');
+const btnModificar = document.querySelector('.modificar');
 const pedirServicio = new FormData();
 
 
@@ -38,4 +39,8 @@ window.addEventListener('load', e => {
 btnVolver.addEventListener('click', e =>{
     
     window.location.href = "https://corporativotdo.com/Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php";
+})
+
+btnModificar.addEventListener('click',e =>{
+    window.location.href = "https://corporativotdo.com/Administrador/moduloServicios/modificarServicio/modificarServicio.php";
 })

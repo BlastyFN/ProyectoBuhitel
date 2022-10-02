@@ -13,7 +13,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <? include('../../../Recursos/includeHead.php') ?>
-    <title>Viendo información del personal seleccionado</title>
+    <title>Viendo información del servicio seleccionado</title>
 </head>
 <body>
     
