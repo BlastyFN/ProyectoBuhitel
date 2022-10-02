@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var productoID = e.target.id;
             enviarID.append('id',productoID);
             localStorage.setItem("productoID", productoID);
-            window.location.href="http://localhost/Buhitel/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
+            window.location.href="https://corporativotdo.com/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
            
            
         }
@@ -64,5 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 btnAdd.addEventListener('click', e =>{
-    window.location.href= "http://localhost/Buhitel/Administrador/moduloServicios/registrarServicio/registrarServicio.php";
+    window.location.href= "https://corporativotdo.com/Administrador/moduloServicios/registrarServicio/registrarServicio.php";
 })
