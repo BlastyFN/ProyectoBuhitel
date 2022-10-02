@@ -12,6 +12,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="modificarPisosYHabs.css">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Document</title>
 </head>
     <section class="header-menu" id="header-menu">

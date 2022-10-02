@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="vistaGeneralHab.css">
     <link rel="stylesheet" href="../../recursos/OwlCarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../../recursos/OwlCarousel/owl.theme.default.min.css">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Nuevo tipo de habitacion</title>
 </head>
 <body>

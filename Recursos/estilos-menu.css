@@ -22,6 +22,7 @@ body {
     width: 500px;
     height:100%;
     background: #427AA1;
+    top: 0;
     left: 0;
     transition:  1s ease;
     z-index: 100;
@@ -70,7 +71,7 @@ body {
     width: 40px;
     text-align: center;
     font-size: 30px;
-    
+    margin-top: 110px;
     color: #fff;
     background-color: #59114D;
     border-radius: 5px;
