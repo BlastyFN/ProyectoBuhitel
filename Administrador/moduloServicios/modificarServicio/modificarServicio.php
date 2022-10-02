@@ -12,7 +12,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="modificarServicio.css">
-    <title>modficación de personal</title>
+    <? include('../../../Recursos/includeHead.php') ?>
+    <title>modficación de servicio</title>
 </head>
 <body>
     <section id="header-menu" class="header-menu">

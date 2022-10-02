@@ -12,7 +12,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pagPrincipalAdmin.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
-
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Buhitel: Administrador</title>
 </head>
 <body>

@@ -12,7 +12,7 @@
         
         $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
-        $bd -> crearCategoria($categoria);
+        $bd -> crearCategoria($hotel,$categoria);
         $categoriaID = $bd -> obtenerCategoriaID($categoria);
         $res = $bd-> registrarServicio($hotel,$nombre,$categoriaID,$precio,$descripcion);
         echo $categoriaID;

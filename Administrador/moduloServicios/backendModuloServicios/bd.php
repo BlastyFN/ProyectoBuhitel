@@ -13,8 +13,8 @@ class database
 		$sqltest->execute();
 		$res = $sqltest->fetchall();
 		if (count($res) < 1){
-			$sql = $this->con->prepare( "INSERT INTO categoriaproductos (catprod_categoria) 
-	    	VALUES ('".$categoria."')" );
+			$sql = $this->con->prepare( "INSERT INTO categoriaproductos (catprod_categoria, CatProd_Hotel) 
+	    	VALUES ('".$categoria."','".$hotel."')" );
 	    	$sql->execute();
 			return "se ha realizado con exito la configuración";
     	}

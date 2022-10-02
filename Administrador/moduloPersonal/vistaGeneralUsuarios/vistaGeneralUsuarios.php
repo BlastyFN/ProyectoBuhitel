@@ -12,6 +12,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vistaGeneralUsuarios.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Lista de usuarios</title>
 </head>
 <body>

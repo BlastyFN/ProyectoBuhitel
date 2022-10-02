@@ -12,7 +12,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="nuevoTipoHab.css">
-<? include('../../../Recursos/includeHead.php') ?>
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Nuevo tipo de habitacion</title>
 </head>
 <body>
