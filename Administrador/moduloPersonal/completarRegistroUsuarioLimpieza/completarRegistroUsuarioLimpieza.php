@@ -19,7 +19,7 @@ session_start();
 
     </section>
 
-    <h1>
+    <h1 style="text-align: center;">
         Ingrese la información del nuevo usuario
     </h1>
     <section class="contFormulario">

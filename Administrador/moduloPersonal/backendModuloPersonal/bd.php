@@ -72,6 +72,15 @@ class database
 		return $res;
 	}
 
+	function eliminarPersonal($hotel,$personal_id){
+		$sql = $this->con->prepare("DELETE FROM personal WHERE
+		personal_hotel = '".$hotel."' AND personal_ID =  '".$personal_id."'");
+		$sql->execute();
+		$sql->fetchall();
+		
+		return "Eliminado";
+	}
+
 	function modificarPersonal($personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,
 	$correo,$password,$seguroSocial){
 
