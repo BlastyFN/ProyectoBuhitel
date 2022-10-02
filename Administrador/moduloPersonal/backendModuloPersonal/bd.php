@@ -79,7 +79,7 @@ class database
 		personal_apaterno = '".$apellidoP."', personal_amaterno = '".$apellidoM."',
 		personal_tipo = '".$tipoPersonal."', personal_correo = '".$correo."',personal_contrasena
 		= '".$password."', personal_seguro = '".$seguroSocial."'
-		WHERE personal_id = '".$personalId."' AND personal_hotel = '".$hotel."' " );
+		WHERE personal_id = '".$personalId."'" );
 	    $sql->execute();
 		return "se ha realizado la modificación";
 
