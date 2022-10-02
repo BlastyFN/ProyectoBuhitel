@@ -32,7 +32,7 @@ window.addEventListener('load',e=>{
             inputApellidoM.value = element.Personal_AMaterno;
             inputTipoPersonal.value = element.Personal_Tipo;
             inputCorreo.value = element.Personal_Correo;
-            inputContraseña.value = element.Personal_Contrasena;
+            //inputContraseña.value = element.Personal_Contrasena;
             inputSeguroSocial.value = element.Personal_Seguro;
         }
     })
@@ -40,7 +40,7 @@ window.addEventListener('load',e=>{
 
 formRegistroUsuario.addEventListener('submit', function(e){
     e.preventDefault();    
-    enviarRegistro.append('personalID',localstorage.getItem('personalID'));
+    enviarRegistro.append('personalID',localStorage.getItem('personalID'));
     enviarRegistro.append('nombres',inputNombres.value);
     enviarRegistro.append('apellidoP',inputApellidoP.value);
     enviarRegistro.append('apellidoM',inputApellidoM.value);
@@ -84,7 +84,7 @@ function verificarClave() {
 
 formCambiarPassword.addEventListener('submit', (e)=>{
     e.preventDefault();
-    enviarRegistro.append('personalID',localstorage.getItem('personalID'));
+    enviarRegistro.append('personalID',localStorage.getItem('personalID'));
     cambiarPassword.append('password',inputContraseña.value);
     cambiarPassword.append('confirmPassword',confirmPassword.value);
     

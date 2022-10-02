@@ -9,6 +9,16 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.cambiarPassForm {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .formText{
     width: 100%;
