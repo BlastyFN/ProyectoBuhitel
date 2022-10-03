@@ -27,7 +27,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
         <form class="formNuevoServicio" action="" method="post">
             <input type="text" class="formText" id="nombre" placeholder="Nombre">
             <div class="infoPrecioCat">
-                <input type="text" class="formText" id="categoria" placeholder="Categoría">
+                
                 <select name="opcCategorias" id="opcCategorias" class="formText">
                     
                 </select>

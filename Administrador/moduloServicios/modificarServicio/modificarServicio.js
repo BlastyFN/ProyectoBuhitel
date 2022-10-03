@@ -54,7 +54,7 @@ formRegistroServicio.addEventListener('submit', function(e){
     enviarRegistro.append('descripcion', descripcion.value);
 
 
-    fetch('../backendModuloPersonal/modificarServicio.php' , {
+    fetch('../backendModuloServicios/modificarServicio.php' , {
         method:'POST', body:enviarRegistro
     }).then(function(response){
         if(response.ok){
