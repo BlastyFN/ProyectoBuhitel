@@ -74,6 +74,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <script src="modificarServicio.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </body>
 </html>

@@ -60,8 +60,13 @@ formRegistroServicio.addEventListener('submit', function(e){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-        console.log(texto);
-        alert(texto);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El servicio se ha modificado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        });
     })
 });
 
