@@ -6,7 +6,7 @@
         $producto_id = $_POST['productoID'];
         $bd = new database();
         $res = $bd-> obtenerServicioEspecifico($hotel,$producto_id);
-        return $res;
+        echo json_encode($res);
 
     }
 ?>
