@@ -102,6 +102,15 @@ class database
 
 	}
 
+	function eliminarProducto($productoId){
+		$sql = $this->con->prepare("DELETE FROM producto WHERE
+		producto_ID =  '".$productoId."'");
+		$sql->execute();
+		$sql->fetchall();
+		
+		return "Eliminado";
+	}
+
 }
 
 ?>
