@@ -10,9 +10,9 @@ const inputFinDescanso = document.getElementById('finDescanso');
 formRegistroUsuario.addEventListener('submit', function(e){
     e.preventDefault();    
 
-    enviarRegistro.append('inicioJornada',inputFinJornada.value);
+    enviarRegistro.append('inicioJornada',inputInicioJornada.value);
     enviarRegistro.append('finJornada',inputFinJornada.value);
-    enviarRegistro.append('inicioDescanso',inputFinDescanso.value);
+    enviarRegistro.append('inicioDescanso',inputInicioDescanso.value);
     enviarRegistro.append('finDescanso', inputFinDescanso.value);
  
 
