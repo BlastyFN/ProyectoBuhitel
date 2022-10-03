@@ -69,6 +69,7 @@ formRegistroServicio.addEventListener('submit', function(e){
 });
 
 function obtenerInfoServicio(){
+    obtenerInfo.append('productoID', localStorage.getItem('productoID'));
     fetch('../backendModuloServicios/obtenerServicioEspecifico.php' , {
         method:'POST', body:obtenerInfo
     }).then(function(response){
