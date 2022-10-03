@@ -31,9 +31,6 @@ window.addEventListener('load',e=>{
             var inputCategoria = document.createElement('option');
             inputCategoria.setAttribute('value',element.CatProd_ID);
             inputCategoria.textContent = element.CatProd_Categoria;
-            if (element.CatProd_ID == categoriaProducto){
-                
-            }
             console.log(inputCategoria.value);
             fragment.appendChild(inputCategoria);
             
@@ -49,7 +46,7 @@ formRegistroServicio.addEventListener('submit', function(e){
     e.preventDefault();    
     enviarRegistro.append('productoID',localStorage.getItem('productoID'));
     enviarRegistro.append('nombre',nombre.value);
-    enviarRegistro.append('categoria',categoria.value);
+    enviarRegistro.append('categoria',opciones.value);
     enviarRegistro.append('precio',precio.value);
     enviarRegistro.append('descripcion', descripcion.value);
 
