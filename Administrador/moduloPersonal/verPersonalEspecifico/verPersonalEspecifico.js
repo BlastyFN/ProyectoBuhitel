@@ -80,6 +80,8 @@ function eliminarUsuario(){
             title: 'El personal se ha eliminado correctamente',
             showConfirmButton: false,
             timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
         });
     })
 }

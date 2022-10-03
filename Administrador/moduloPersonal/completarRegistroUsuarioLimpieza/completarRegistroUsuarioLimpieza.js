@@ -25,7 +25,14 @@ formRegistroUsuario.addEventListener('submit', function(e){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-        console.log(texto);
-        alert(texto);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El personal se ha registrado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+        });
     })
 });

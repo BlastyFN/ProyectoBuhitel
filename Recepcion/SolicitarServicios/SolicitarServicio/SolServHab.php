@@ -16,6 +16,7 @@ else {
     <link rel="stylesheet" href="../styleServicios.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Solicitar Servicio a la Habitación</title>
 </head>
 <body>

@@ -15,6 +15,7 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleServicios.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Solicitar Servicio a la Habitación</title>
 </head>
 <body>

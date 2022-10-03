@@ -97,6 +97,14 @@ formCambiarPassword.addEventListener('submit', (e)=>{
         }
     }).then(function(texto){
         
-        alert(texto);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El personal se ha modificado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+        });
     })
 })

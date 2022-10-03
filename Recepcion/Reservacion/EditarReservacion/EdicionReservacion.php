@@ -13,6 +13,7 @@ else {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <? include('../../../Recursos/includeHead.php') ?>
     <title>Editar</title>
     <link rel="stylesheet" href="styleER.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
