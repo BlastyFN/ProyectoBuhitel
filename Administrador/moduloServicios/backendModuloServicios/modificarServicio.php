@@ -1,22 +1,19 @@
 <?php
     include "bd.php";
-    if(isset($_POST['nombres']) &&  isset($_POST['apellidoP']) && isset($_POST['apellidoM']) 
-    && isset($_POST['tipoPersonal']) && isset($_POST['correo']) && isset($_POST['password'])
-    && isset($_POST['seguroSocial'])){
+    if(isset($_POST['nombre']) &&  isset($_POST['categoria']) && isset($_POST['precio']) 
+    && isset($_POST['descripcion'])){
 
-        $nombre = $_POST['nombres'];
-        $apellidoP = $_POST['apellidoP'];
-        $apellidoM = $_POST['apellidoM'];
-        $tipoPersonal = $_POST['tipoPersonal'];
-        $correo = $_POST['correo'];
-        $password = $_POST['password'];
-        $seguroSocial = $_POST['seguroSocial'];
+        $nombre = $_POST['nombre'];
+        $categoria = $_POST['categoria'];
+        $precio = $_POST['precio'];
+        $descripcion = $_POST['descripcion'];
+       
         
         $hotel = 1;
-        $personalId = 2;
+        $personalId = $_POST['productoID'];
 	    $bd = new database();
-        $res = $bd-> modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
-        echo $res;
+        //$res = $bd-> modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
+        echo "si";
     }
 
 ?>

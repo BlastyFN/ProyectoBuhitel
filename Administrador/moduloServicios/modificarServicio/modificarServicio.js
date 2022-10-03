@@ -44,6 +44,7 @@ window.addEventListener('load',e=>{
         }
     }).then(function(res){
         console.log(res);
+        const fragment = document.createDocumentFragment();
         for(element of res){  //Por cada elemento del json
             
             var inputCategoria = document.createElement('option');
@@ -62,11 +63,11 @@ window.addEventListener('load',e=>{
 
 formRegistroServicio.addEventListener('submit', function(e){
     e.preventDefault();    
-
-    enviarRegistro.append('nombres',nombre.value);
-    enviarRegistro.append('apellidoP',categoria.value);
-    enviarRegistro.append('apellidoM',inputApellidoM.value);
-    enviarRegistro.append('tipoPersonal', inputTipoPersonal.value);
+    enviarRegistro.append('productoID',localStorage.getItem('productoID'));
+    enviarRegistro.append('nombre',nombre.value);
+    enviarRegistro.append('categoria',categoria.value);
+    enviarRegistro.append('precio',precio.value);
+    enviarRegistro.append('descripcion', descripcion.value);
 
 
     fetch('../backendModuloPersonal/modificarServicio.php' , {
