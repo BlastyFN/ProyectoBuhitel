@@ -74,7 +74,7 @@ function obtenerInfoServicio(){
         method:'POST', body:obtenerInfo
     }).then(function(response){
         if(response.ok){
-         return response.text();
+         return response.json();
         } else {
             throw "Error en la llamada Ajax"
         }
