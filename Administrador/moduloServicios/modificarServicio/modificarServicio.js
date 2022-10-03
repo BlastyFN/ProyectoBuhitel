@@ -69,7 +69,7 @@ formRegistroServicio.addEventListener('submit', function(e){
 });
 
 function obtenerInfoServicio(){
-    fetch('../backendModuloPersonal/obtenerServicioEspecifico.php' , {
+    fetch('../backendModuloServicios/obtenerServicioEspecifico.php' , {
         method:'POST', body:obtenerInfo
     }).then(function(response){
         if(response.ok){
