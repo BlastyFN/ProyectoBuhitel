@@ -8,12 +8,10 @@
         $precio = $_POST['precio'];
         $descripcion = $_POST['descripcion'];
        
-        
-        $hotel = 1;
-        $personalId = $_POST['productoID'];
+        $productoId = $_POST['productoID'];
 	    $bd = new database();
-        //$res = $bd-> modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,$correo,$password,$seguroSocial);
-        echo "si";
+        $res = $bd-> modificarServicio($productoId,$nombre,$categoria,$precio,$descripcion);
+        return $res;
     }
 
 ?>

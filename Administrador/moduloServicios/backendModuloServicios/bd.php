@@ -91,14 +91,12 @@ class database
 		return $res;
 	}
 
-	function modificarPersonal($hotel,$personalId,$nombre,$apellidoP,$apellidoM,$tipoPersonal,
-	$correo,$password,$seguroSocial){
+	function modificarServicio($productoId,$nombre,$categoria,$precio,$descripcion){
 
-		$sql = $this->con->prepare( "UPDATE personal SET personal_nombre = '".$nombre."',
-		personal_apaterno = '".$apellidoP."', personal_amaterno = '".$apellidoM."',
-		personal_tipo = '".$tipoPersonal."', personal_correo = '".$correo."',personal_contrasena
-		= '".$password."', personal_seguro = '".$seguroSocial."'
-		WHERE personal_id = '".$personalId."' AND personal_hotel = '".$hotel."' " );
+		$sql = $this->con->prepare( "UPDATE producto SET producto_nombre = '".$nombre."',
+		producto_categoria = '".$categoria."', producto_precio = '".$precio."',
+		producto_descripcion = '".$descripcion."'
+		WHERE producto_id = '".$productoId."' ");
 	    $sql->execute();
 		return "se ha realizado la modificación";
 
