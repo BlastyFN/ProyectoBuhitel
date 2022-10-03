@@ -10,29 +10,10 @@ const existencia = document.getElementById('existencia');
 const descripcion = document.getElementById('descripcion');
 const opcAgotado = document.getElementById('agotado');
 const opcStock = document.getElementById('stock');
+var categoriaProducto;
 
 
 window.addEventListener('load',e=>{
-    obtenerInfo.append('productoID',localStorage.getItem("productoID"));
-    fetch('../backendModuloPersonal/obtenerServicioEspecifico.php' , {
-        method:'POST', body:obtenerInfo
-    }).then(function(response){
-        if(response.ok){
-         return response.json();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(infoServicio){
-        console.log(infoServicio);
-        for(element of infoServicio){
-            nombre.value = element.Producto_Nombre;
-            categoria.value = element.CatProd_Categoria; 
-            precio.value = element.Producto_Precio;
-            descripcion.value = element.Producto_Descripcion;
-            
-           
-        }
-    })
 
     fetch('../backendModuloServicios/consultarCategorias.php' , {
         method:'POST'
@@ -50,13 +31,16 @@ window.addEventListener('load',e=>{
             var inputCategoria = document.createElement('option');
             inputCategoria.setAttribute('value',element.CatProd_ID);
             inputCategoria.textContent = element.CatProd_Categoria;
+            if (element.CatProd_ID == categoriaProducto){
+                
+            }
             console.log(inputCategoria.value);
             fragment.appendChild(inputCategoria);
             
         }
-        
         opciones.appendChild(fragment);
-        cargarInfoTipoHab(opciones.value);
+        obtenerInfoServicio();
+   
     });
 })
 
@@ -83,3 +67,25 @@ formRegistroServicio.addEventListener('submit', function(e){
         alert(texto);
     })
 });
+
+function obtenerInfoServicio(){
+    fetch('../backendModuloPersonal/obtenerServicioEspecifico.php' , {
+        method:'POST', body:obtenerInfo
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(infoServicio){
+        console.log(infoServicio);
+        for(element of infoServicio){
+            nombre.value = element.Producto_Nombre;
+            opciones.value = element.CatProd_Categoria; 
+            precio.value = element.Producto_Precio;
+            descripcion.value = element.Producto_Descripcion;
+            
+           
+        }
+    })
+}
