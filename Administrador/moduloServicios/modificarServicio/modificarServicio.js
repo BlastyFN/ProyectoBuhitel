@@ -25,16 +25,16 @@ window.addEventListener('load',e=>{
     }).then(function(infoServicio){
         console.log(infoServicio);
         for(element of infoServicio){
-            inputNombres.value = element.Producto_Nombre;
+            nombre.value = element.Producto_Nombre;
             categoria.value = element.CatProd_Categoria; 
             precio.value = element.Producto_Precio;
-            descripcion.selectedIndex = 1;
+            descripcion.value = element.Producto_Descripcion;
             
            
         }
     })
 
-    fetch('../backend/consultarCategorias.php' , {
+    fetch('../backendModuloServicios/consultarCategorias.php' , {
         method:'POST'
     }).then(function(response){
         if(response.ok){
