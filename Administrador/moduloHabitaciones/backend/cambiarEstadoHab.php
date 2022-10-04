@@ -11,6 +11,6 @@
     }
    
     $bd = new database();
-    $bd->cambiarEstadoHab($habID,!$habEstado);
+    $bd->cambiarEstadoHab($habID,$habEstado);
 
 ?>
