@@ -20,7 +20,7 @@
 		    }
             echo "Se han agregado ". ($nuevoNumHabs - $antiguoNumHabs). " habitaciones";
         } else{
-            for($cont = $antiguoNumHabs; $cont >= $nuevoNumHabs; $cont--){
+            for($cont = $antiguoNumHabs; $cont > $nuevoNumHabs; $cont--){
 			    if($piso-$cont!=0){
                     $bd->eliminarHab($cont);
                 }
