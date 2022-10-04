@@ -106,7 +106,7 @@ class Habitacion {
     }
 }
 
-function cargarOpcionesTiposHab(){
+function cargarOpcionesTiposHab(hab){
 
 
     this.preventDefault;
@@ -126,6 +126,9 @@ function cargarOpcionesTiposHab(){
             inputTipoHab.classList.add('opcTipoHab');
             inputTipoHab.setAttribute('value',element.tipohab_ID);
             inputTipoHab.textContent = element.tipohab_nombre;
+            if(hab.habTipoNombre == element.tipohab_nombre){
+                opciones.value = element.tipohab_ID;
+            }
   
             fragment.appendChild(inputTipoHab);
             
@@ -224,7 +227,7 @@ const seleccionarHab = e =>{
         
         overlay.classList.add('active');
         popup.classList.add('active');
-        cargarOpcionesTiposHab();
+        cargarOpcionesTiposHab(hab);
         
     }
 };    
