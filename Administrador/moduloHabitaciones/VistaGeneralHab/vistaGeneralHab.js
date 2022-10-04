@@ -75,7 +75,7 @@ class Piso{
 }
 
 class Habitacion {
-    constructor(habID,habNombre, habTipo, habTipoNombre){
+    constructor(habID,habNombre, habTipo, habTipoNombre, estado){
         this.habID = habID;
         this.habNombre = habNombre;
         this.habTipo = habTipo;
@@ -86,8 +86,6 @@ class Habitacion {
     }
 
     obtenerHTML(){
-    
-        
         const divHab = document.createElement('div');
         divHab.classList.add("item","carousel-elemento");
         divHab.setAttribute("id",this.habID);
@@ -204,15 +202,18 @@ btnBuscar.addEventListener('click', (e)=>{
 const seleccionarHab = e =>{
     if(e.target.classList.contains('inside-item')){
         e.stopPropagation();
+        nombreHab.textContent = "Habitación " + hab.habNombre;
 
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
-        if(hab.habitacion_estado == true){
+        
+        if(hab.habitacion_estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
         } 
         else{
             btnDesactivar.textContent = "Habilitar";
         }
+        
         overlay.classList.add('active');
         popup.classList.add('active');
         cargarOpcionesTiposHab();
@@ -249,7 +250,8 @@ function obtenerPisosHotel(){
             resuArray = [];
             for(hab of piso[2]){
                 nuevaHab = new Habitacion(hab.habitacion_ID, hab.habitacion_nombre,
-                    hab.habitacion_tipo, hab.TipoHab_Nombre);
+                    hab.habitacion_tipo, hab.TipoHab_Nombre, hab.habitacion_estado
+                    );
                 resuArray.push(nuevaHab);          
             }
             var nuevoPiso = new Piso(piso.piso_ID, piso.piso_numero, resuArray);
