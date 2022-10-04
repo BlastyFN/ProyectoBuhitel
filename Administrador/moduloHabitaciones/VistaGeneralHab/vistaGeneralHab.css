@@ -359,3 +359,23 @@ h1 {
     text-decoration: none;
     text-align: center;
 }
+
+.desactivar{
+    background: #427AA1;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.guardar{
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+}

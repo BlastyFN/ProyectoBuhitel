@@ -57,8 +57,10 @@
             <h5 class="numCamas popupContent">Número de camas: 1</h5>
             <h5 class="limpiezaNormal popupContent ">Tiempo de limpieza normal: 2 horas</h5>
             <h5 class="limpiezaProfunda popupContent ">Tiempo de limpieza profunda: 2 horas</h5> 
-            <button class="desactivar">Desactivar</button>
-            <button class="guardar">Guardar</button>
+            <div>
+                <button class="desactivar">Desactivar</button>
+                <button class="guardar">Guardar</button>
+            </div>
         </div>
     </div>
 
