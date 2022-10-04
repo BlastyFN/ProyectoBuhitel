@@ -315,68 +315,9 @@ function cargarPisosEnPantalla(){
 
 
 
-
-const obtenerHabs = (pisosHotel) => {
-    for(element of pisosHotel){
-
-        const solicitarNumHabs = new FormData();
-        solicitarNumHabs.append("piso",element.piso_ID);
-        fetch("../backend/obtenerHabsPorPiso.php", {
-            method:'POST', body: solicitarNumHabs
-        }).then(function(response){
-            if(response.ok){               
-                return response.text();                
-            } else {
-                throw "Error en la llamada Ajax"
-            }      
-        }).then(function(resHabs){
-            var id = element.piso_ID;
-            var numero = element.piso_numero;
-            var jsonHabs = JSON.parse(resHabs);
-            var resuArray = [];
-            for(hab of jsonHabs){
-                nuevaHab = new Habitacion(hab.habitacion_ID,hab.habitacion_nombre,
-                    hab.habitacion_tipo, hab.TipoHab_Nombre);
-                resuArray.push(nuevaHab);
-                    
-            }
-            var nuevoPiso = new Piso(id, numero, resuArray);
-            console.log(nuevoPiso);
-            console.log(numero);
-            pisos.push(nuevoPiso);
-            
-            contenedorPisos.appendChild(nuevoPiso.HTML);
-           
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                loop:false,
-                nav:true,
-                margin:10,
-                responsive:{
-                    0:{
-                       items:1
-                    },
-                    600:{
-                        items:3
-                 },            
-                    960:{
-                        items:5
-                     },
-                    1200:{
-                        items:6
-                    }
-                }
-            });  
-                 
-        });
-        
-    }
-}
-
-
 function obtenerObjetoHab(id){
     for (piso of pisos) {
-        for (hab of piso.habs) {
+        for (hab of piso[2]) {
             if (hab.habID == id) return hab;
         }
     }
