@@ -174,7 +174,7 @@ btnGuardar.addEventListener('click', (e)=>{
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    pisos = obtenerPisosHotel();
+    obtenerPisosHotel();
     
     carouselesHab.addEventListener('click', e =>{
         seleccionarHab(e);
@@ -234,9 +234,9 @@ function obtenerPisosHotel(){
             } else {
                throw "Error en la llamada Ajax"
             }
-    }).then(function(pisos){  
+    }).then(function(pisosHotel){  
         var contadorPisos  = 1;
-        for(element of pisos){
+        for(element of pisosHotel){
             obtenerHabs(element.piso_ID,contadorPisos);
 
             contadorPisos++;
@@ -272,28 +272,29 @@ const obtenerHabs = (pisoID, numPiso) => {
             }
             var nuevoPiso = new Piso(pisoID, numPiso, resuArray);
             console.log(nuevoPiso);
+            console.log(numPiso);
             pisos.push(nuevoPiso);
-            contenedorPisos.appendChild(nuevoPiso.HTML);
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                loop:false,
-                nav:true,
-                margin:10,
-                responsive:{
-                    0:{
-                        items:1
-                    },
-                    600:{
-                        items:3
-                    },            
-                    960:{
-                        items:5
-                    },
-                    1200:{
-                        items:6
-                    }
-                }
-            });  
+            //contenedorPisos.appendChild(nuevoPiso.HTML);
+            // // var owl = $('.owl-carousel');
+            // owl.owlCarousel({
+            //     loop:false,
+            //     nav:true,
+            //     margin:10,
+            //     responsive:{
+            //         0:{
+            //             items:1
+            //         },
+            //         600:{
+            //             items:3
+            //         },            
+            //         960:{
+            //             items:5
+            //         },
+            //         1200:{
+            //             items:6
+            //         }
+            //     }
+            // });  
            
         });
 
