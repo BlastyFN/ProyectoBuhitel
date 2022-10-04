@@ -283,7 +283,7 @@ function cargarPisosEnPantalla(){
 const obtenerHabs = (pisosHotel) => {
     var contadorPisos  = 1;
     for(element of pisosHotel){
-        
+        console.log(element);
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",element.piso_ID);
         fetch("../backend/obtenerHabsPorPiso.php", {
