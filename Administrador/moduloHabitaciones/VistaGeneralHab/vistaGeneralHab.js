@@ -175,7 +175,7 @@ btnGuardar.addEventListener('click', (e)=>{
 
 document.addEventListener('DOMContentLoaded', () => {
     pisos = obtenerPisosHotel();
-    obtenerHabs()
+    
     carouselesHab.addEventListener('click', e =>{
         seleccionarHab(e);
 
@@ -237,7 +237,7 @@ function obtenerPisosHotel(){
     }).then(function(pisos){  
         var contadorPisos  = 1;
         for(element of pisos){
-            obtenerHabs(element.piso_ID);
+            obtenerHabs(element.piso_ID,contadorPisos);
 
             contadorPisos++;
         }
@@ -248,7 +248,7 @@ function obtenerPisosHotel(){
 
 
 
-const obtenerHabs = (pisoID) => {
+const obtenerHabs = (pisoID, numPiso) => {
     
         var resuArray = [];
         const solicitarNumHabs = new FormData();
