@@ -60,8 +60,15 @@ formConfInicial.addEventListener('click', function(e){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-        window.location.replace("https://corporativotdo.com/Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php"); 
-       
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se ha guardado la configuración',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php";
+        });
     })
 });
 

@@ -46,8 +46,15 @@ btnEnviar.addEventListener('click', function(e){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-        console.log(texto);
-        alert(texto);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El tipo de habitación se ha registrado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloHabitaciones/VistaGeneralHab/vistaGeneralHab.php";
+        });
 
         for(element in opciones){
             opciones.remove(element);

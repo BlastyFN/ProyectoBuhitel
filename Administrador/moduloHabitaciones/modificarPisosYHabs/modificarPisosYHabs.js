@@ -75,8 +75,13 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
-        alert(res);
-        console.log(res);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El piso se ha eliminado',
+            showConfirmButton: false,
+            timer: 2500
+        });
         IDpisos.pop();
         
     });
@@ -95,8 +100,13 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
-        alert(res);
-        console.log(res);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El piso ha sido añadido',
+            showConfirmButton: false,
+            timer: 2500
+        });
         IDpisos.push(res);
         
     });
@@ -116,8 +126,13 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
-        alert(res);
-        console.log(res);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se han realizado los cambios',
+            showConfirmButton: false,
+            timer: 2500
+        });
         
     });
  }

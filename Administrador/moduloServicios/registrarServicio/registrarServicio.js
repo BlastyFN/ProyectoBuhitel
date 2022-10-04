@@ -30,7 +30,7 @@ formRegistroUsuario.addEventListener('submit', function(e){
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'El personal se ha registrado correctamente',
+            title: 'El servicio se ha registrado correctamente',
             showConfirmButton: false,
             timer: 2500
         }).then(()=>{
