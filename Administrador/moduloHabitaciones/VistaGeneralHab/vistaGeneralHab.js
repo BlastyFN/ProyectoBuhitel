@@ -234,7 +234,7 @@ function obtenerPisosHotel(){
             }
     }).then(function(pisosHotel){  
  
-            obtenerHabs(element.piso_ID,contadorPisos,pisosHotel);
+            obtenerHabs(contadorPisos,pisosHotel);
 
         cargarPisosEnPantalla();
     });
@@ -250,12 +250,12 @@ function cargarPisosEnPantalla(){
 
 
 
-const obtenerHabs = (pisoID, numPiso, pisosHotel) => {
+const obtenerHabs = (pisosHotel) => {
     var contadorPisos  = 1;
     for(element of pisosHotel){
         var resuArray = [];
         const solicitarNumHabs = new FormData();
-        solicitarNumHabs.append("piso",pisoID);
+        solicitarNumHabs.append("piso",element.piso_ID);
         fetch("../backend/obtenerHabsPorPiso.php", {
             method:'POST', body: solicitarNumHabs
         }).then(function(response){
@@ -273,9 +273,9 @@ const obtenerHabs = (pisoID, numPiso, pisosHotel) => {
                 resuArray.push(nuevaHab);
                     
             }
-            var nuevoPiso = new Piso(pisoID, numPiso, resuArray);
+            var nuevoPiso = new Piso(element.piso_ID, contadorPisos, resuArray);
             console.log(nuevoPiso);
-            console.log(numPiso);
+            console.log(contadorPisos);
             pisos.push(nuevoPiso);
             //contenedorPisos.appendChild(nuevoPiso.HTML);
             // // var owl = $('.owl-carousel');
