@@ -245,6 +245,42 @@ function obtenerPisosHotel(){
  
         //obtenerHabs(pisosHotel);
         console.log(pisosHotel);
+        for (const piso of pisosHotel) {
+            for(hab of piso[2]){
+                resuArray = [];
+                nuevaHab = new Habitacion(piso[2].habitacion_ID,piso[2].habitacion_nombre,
+                    piso[2].habitacion_tipo, piso[2].hab.TipoHab_Nombre);
+                resuArray.push(nuevaHab);          
+            }
+            var nuevoPiso = new Piso(piso.piso_ID, piso.piso_numero, resuArray);
+            console.log(nuevoPiso);
+            console.log(numero);
+            pisos.push(nuevoPiso);
+            
+            contenedorPisos.appendChild(nuevoPiso.HTML);
+           
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                loop:false,
+                nav:true,
+                margin:10,
+                responsive:{
+                    0:{
+                       items:1
+                    },
+                    600:{
+                        items:3
+                 },            
+                    960:{
+                        items:5
+                     },
+                    1200:{
+                        items:6
+                    }
+                }
+            });  
+
+        }
         
         
     });
