@@ -21,7 +21,13 @@ window.addEventListener("load", function () {
             var informacion = JSON.parse(texto);
             console.log(informacion);
             console.log(informacion.Twilio_PreguntaAbierta);
-            campoPregunta.value = informacion.Twilio_PreguntaAbierta;
+            if (informacion.Twilio_PreguntaAbierta != "") {
+                campoPregunta.value = informacion.Twilio_PreguntaAbierta;
+            }
+            else{
+                campoPregunta.value = "¿Cuál es tu opinión en general del hotel?";
+            }
+            
             
         }
      })

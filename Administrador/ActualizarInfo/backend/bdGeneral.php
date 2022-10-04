@@ -21,6 +21,12 @@
             return "Pregunta actualizada con éxito";
         }
         
+        public function insertarPregunta($Pregunta, $Hotel){
+            $sql = $this->con->prepare( "INSERT INTO twilio (Twilio_Hotel, Twilio_PreguntaAbierta) 
+	    	VALUES ('".$Hotel."','".$Pregunta."')");
+            $sql->execute();
+            return "Pregunta insertada con éxito";
+        }
 
         
     }
