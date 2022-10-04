@@ -181,11 +181,11 @@ btnDesactivar.addEventListener('click', ()=>{
     }).then((text) => {
         
         if(hab.estado == "1"){
-            btnDesactivar.textContent = "Deshabilitar";
+            btnDesactivar.textContent = "Habilitar";
             hab.estado = "0";
         } 
         else{
-            btnDesactivar.textContent = "Habilitar";
+            btnDesactivar.textContent = "Deshabilitar";
             hab.estado = "1";
         }
         Swal.fire({
