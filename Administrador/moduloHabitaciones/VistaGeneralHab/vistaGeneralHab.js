@@ -254,7 +254,6 @@ function obtenerPisosHotel(){
             }
             var nuevoPiso = new Piso(piso.piso_ID, piso.piso_numero, resuArray);
             console.log(nuevoPiso);
-            console.log(numero);
             pisos.push(nuevoPiso);
             
             contenedorPisos.appendChild(nuevoPiso.HTML);
