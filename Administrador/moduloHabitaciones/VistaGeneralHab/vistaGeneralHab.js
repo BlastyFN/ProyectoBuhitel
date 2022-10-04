@@ -234,7 +234,7 @@ function obtenerPisosHotel(){
             }
     }).then(function(pisosHotel){  
  
-            obtenerHabs(contadorPisos,pisosHotel);
+            obtenerHabs(pisosHotel);
 
         cargarPisosEnPantalla();
     });
