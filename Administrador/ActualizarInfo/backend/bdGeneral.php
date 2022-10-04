@@ -20,7 +20,7 @@
             INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
             INNER JOIN piso ON piso.Piso_ID = habitacion.Habitacion_Piso
             WHERE BINARY piso.Piso_Hotel = '".$Hotel."'
-            AND BINARY Reservacion_CheckOut BETWEEN '".$Hoy."' AND '".$HaceUnMes."'");
+            AND BINARY Reservacion_CheckOut BETWEEN '".$HaceUnMes."' AND '".$Hoy."'");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
