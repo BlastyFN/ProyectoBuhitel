@@ -163,14 +163,30 @@ opciones.addEventListener('change', (e)=>{
 })
 
 btnDesactivar.addEventListener('click', ()=>{
-    hab = obtenerObjetoHab(habID);
-    hab.habitcion_estado = !hab.habitacion_estado;
-    if(hab.habitacion_estado == true){
-        btnDesactivar.textContent = "Deshabilitar";
-    } 
-    else{
-        btnDesactivar.textContent = "Habilitar";
-    }
+    var hab = obtenerObjetoHab(habID);
+    const modificarHab = new FormData();
+    modificarHab.append("habID",Number(habID));
+    modificarHab.append("habEstado",hab.estado);
+    
+    fetch('../backend/cambiarEstadoHab.php' , {
+        method:'POST',body:modificarHab
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+       
+        hab.estado = !hab.estado;
+        if(hab.habitacion_estado == "1"){
+            btnDesactivar.textContent = "Deshabilitar";
+        } 
+        else{
+            btnDesactivar.textContent = "Habilitar";
+        }
+    });
+
 })
 
 btnGuardar.addEventListener('click', (e)=>{

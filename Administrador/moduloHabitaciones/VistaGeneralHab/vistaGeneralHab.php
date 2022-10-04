@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../recursos/OwlCarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../../recursos/OwlCarousel/owl.theme.default.min.css">
     <? include('../../../Recursos/includeHead.php') ?>
+    <script src="https://kit.fontawesome.com/48533e2cd1.js" crossorigin="anonymous"></script>
     <title>Nuevo tipo de habitacion</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
     <div class="overlay">
         <div class="popup">
             <a href="#" id="cerrarPopup" class="cerrarPopup">
-                x
+            <i class="fa-regular fa-circle-xmark"></i>
             </a>
             <h4 class="nombreHab">Habitación 101</h4>
             Tipo de habitación <select name="tipoHabs" id="opcDesplegable" class="popupContent">

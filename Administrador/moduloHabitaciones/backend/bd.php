@@ -116,6 +116,12 @@ class database
 		$sql->execute();
 		return "Se ha cambiado el tipo de habitacion";
 	}
+	function cambiarEstadoHab($habID, $habEstado){
+		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Estado = ".$habEstado."
+		WHERE Habitacion_ID = ".$habID);
+		$sql->execute();
+		return "Se ha cambiado el estado de la habitacion";
+	}
  
 	function obtenerTiposHabs($hotel){
 		$sql = $this->con->prepare("SELECT tipohab_ID, tipohab_nombre, tipohab_precio,
