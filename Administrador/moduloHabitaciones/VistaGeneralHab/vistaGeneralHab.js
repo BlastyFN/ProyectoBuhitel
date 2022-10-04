@@ -282,10 +282,10 @@ function cargarPisosEnPantalla(){
 
 const obtenerHabs = (pisosHotel) => {
     for(element of pisosHotel){
-        console.log(element.piso_ID);
-        console.log(element.piso_numero);
+        var id = element.piso_ID;
+        var numero = element.piso_numero;
         const solicitarNumHabs = new FormData();
-        solicitarNumHabs.append("piso",element.piso_ID);
+        solicitarNumHabs.append("piso",id);
         fetch("../backend/obtenerHabsPorPiso.php", {
             method:'POST', body: solicitarNumHabs
         }).then(function(response){
@@ -304,9 +304,9 @@ const obtenerHabs = (pisosHotel) => {
                 resuArray.push(nuevaHab);
                     
             }
-            var nuevoPiso = new Piso(element.piso_ID, element.piso_numero, resuArray);
+            var nuevoPiso = new Piso(id, numero, resuArray);
             console.log(nuevoPiso);
-            console.log(element.piso_numero);
+            console.log(numero);
             pisos.push(nuevoPiso);
             
             contenedorPisos.appendChild(nuevoPiso.HTML);
