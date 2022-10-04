@@ -128,11 +128,12 @@ function cargarOpcionesTiposHab(hab){
             inputTipoHab.classList.add('opcTipoHab');
             inputTipoHab.setAttribute('value',element.tipohab_ID);
             inputTipoHab.textContent = element.tipohab_nombre;
+
+  
+            fragment.appendChild(inputTipoHab);
             if(hab.habTipoNombre == element.tipohab_nombre){
                 opciones.value = element.tipohab_ID;
             }
-  
-            fragment.appendChild(inputTipoHab);
             
         }
         
