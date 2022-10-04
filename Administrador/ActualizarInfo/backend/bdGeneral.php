@@ -14,7 +14,7 @@
         }
 
         public function consultarRespuesta($Hotel, $Hoy, $HaceUnMes){
-            $sql = $this->con->prepare("SELECT Respuestas_ID, Respuestas_HabReservadas, Respuesta_NumPregunta, Respuesta_ValorFROM respuestasencuesta
+            $sql = $this->con->prepare("SELECT Respuestas_ID, Respuestas_HabReservadas, Respuesta_NumPregunta, Respuesta_Valor FROM respuestasencuesta
             INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Respuestas_HabReservadas
             INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
             INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
