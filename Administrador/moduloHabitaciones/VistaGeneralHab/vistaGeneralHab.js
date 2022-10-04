@@ -234,7 +234,7 @@ function obtenerPisosHotel(){
             }
     }).then(function(pisosHotel){  
  
-            obtenerHabs(pisosHotel);
+        obtenerHabs(pisosHotel);
 
         cargarPisosEnPantalla();
     });
@@ -267,6 +267,7 @@ const obtenerHabs = (pisosHotel) => {
         }).then(function(resHabs){
             
             var jsonHabs = JSON.parse(resHabs);
+          
             for(element of jsonHabs){
                 nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
                     element.habitacion_tipo, element.TipoHab_Nombre);
