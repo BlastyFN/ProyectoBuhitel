@@ -12,5 +12,5 @@
    
     $bd = new database();
     $bd->cambiarEstadoHab($habID,$habEstado);
-
+    return "se ha cambiado el estado";
 ?>

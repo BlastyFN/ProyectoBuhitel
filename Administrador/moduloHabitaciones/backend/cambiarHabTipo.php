@@ -5,5 +5,5 @@
     $tipoID = $_POST['tipoID'];
     $bd = new database();
     $bd->cambiarTipoHab($habID,$tipoID);
-
+    return "se ha cambiado correctamente";
 ?>

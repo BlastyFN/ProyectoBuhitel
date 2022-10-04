@@ -172,12 +172,12 @@ btnDesactivar.addEventListener('click', ()=>{
         method:'POST',body:modificarHab
     }).then(function(response){
         if(response.ok){
-         return response.json();
+         return response.text();
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(() => {
-       
+    }).then((text) => {
+        
         hab.estado = !hab.estado;
         if(hab.habitacion_estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
@@ -206,11 +206,11 @@ btnGuardar.addEventListener('click', (e)=>{
         method:'POST',body:modificarHabTipo
     }).then(function(response){
         if(response.ok){
-         return response.json();
+         return response.text();
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(()=>{
+    }).then((text)=>{
         Swal.fire({
             position: 'center',
             icon: 'success',
