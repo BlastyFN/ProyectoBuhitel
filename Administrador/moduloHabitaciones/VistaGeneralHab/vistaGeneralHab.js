@@ -110,7 +110,7 @@ class Habitacion {
 
 function cargarOpcionesTiposHab(hab){
 
-
+    var defaultValue;
     this.preventDefault;
     fetch('../backend/obtenerTiposDeHabs.php' , {
         method:'POST'
@@ -132,12 +132,12 @@ function cargarOpcionesTiposHab(hab){
   
             fragment.appendChild(inputTipoHab);
             if(hab.habTipoNombre == element.tipohab_nombre){
-                opciones.value = element.tipohab_ID;
+                defaultValue = element.tipohab_ID;
             }
             
-        }
-        
+        }  
         opciones.appendChild(fragment);
+        opciones.value = defaultValue;
         for (const tipoHab of tiposHabs) {
             if(tipoHab.tipohab_ID == opciones.value){
                 precioNoche.textContent = "Precio por noche: $" + tipoHab.tipohab_precio;
