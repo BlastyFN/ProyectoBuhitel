@@ -96,6 +96,7 @@ class Habitacion {
         divHab.appendChild(nombreHab);
 
         const tipoHab = document.createElement('h4');
+        tipoHab.id = "tipoHab" + this.habID;
         tipoHab.classList.add('inside-item');
         tipoHab.textContent = this.habTipoNombre;
         divHab.appendChild(tipoHab);
@@ -184,6 +185,7 @@ btnDesactivar.addEventListener('click', ()=>{
         } 
         else{
             btnDesactivar.textContent = "Habilitar";
+            hab.estado = "1";
         }
         Swal.fire({
             position: 'center',
@@ -211,6 +213,8 @@ btnGuardar.addEventListener('click', (e)=>{
             throw "Error en la llamada Ajax"
         }
     }).then((text)=>{
+        var nombreTipoHab = opciones.options[opciones.selecterIndex].text; 
+        document.getElementById('tipoHab'+habID).textContent = nombreTipoHab;
         Swal.fire({
             position: 'center',
             icon: 'success',
