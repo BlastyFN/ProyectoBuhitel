@@ -6,7 +6,7 @@ session_start();
         $pisos = $bd-> obtenerPisos($hotel);
         for($contPisos = 0; $contPisos < count($pisos); $contPisos++){
             $habs = $bd->obtenerHabs($hotel, $pisos[$contPisos]['piso_ID']);
-            array_push($pisos[$contPisos],array($habs));
+            array_push($pisos[$contPisos],$habs);
         }
         echo json_encode($pisos); 
 
