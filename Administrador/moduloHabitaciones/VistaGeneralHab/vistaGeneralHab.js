@@ -244,7 +244,7 @@ function obtenerPisosHotel(){
 }
 
 function cargarPisosEnPantalla(){
-    for (piso of pisos) {
+    for (const piso of pisos) {
         contenedorPisos.innerHTML="";
         contenedorPisos.appendChild(piso.HTML);
     }
