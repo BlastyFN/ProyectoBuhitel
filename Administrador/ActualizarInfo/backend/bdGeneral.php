@@ -15,7 +15,7 @@
 
         public function actualizarPregunta($Pregunta, $Hotel){
             $sql = $this->con->prepare("UPDATE twilio 
-            SET Twilio_PreguntaAbierta='".$Pregunta."', 
+            SET Twilio_PreguntaAbierta='".$Pregunta."' 
             WHERE BINARY Twilio_Hotel='".$Hotel."'");
             $sql->execute();
             return "Pregunta actualizada con éxito";
