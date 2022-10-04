@@ -132,6 +132,14 @@ function cargarOpcionesTiposHab(){
         }
         
         opciones.appendChild(fragment);
+        for (const tipoHab of tiposHabs) {
+            if(tipoHab.tipohab_ID == opciones.value){
+                precioNoche.textContent = "Precio por noche: $" + tipoHab.tipohab_precio;
+                numCamas.textContent = "Número de camas: " + tipoHab.tipohab_numCamas;
+                limpiezaNormal.textContent = "Tiempo de limpieza normal: "+  tipoHab.tipohab_TiempoLimpNormal;
+                limpiezaProfunda.textContent = "Tiempo de limpieza profunda: " + tipoHab.tipohab_TiempoLimpProfunda;
+            }
+        }
         
     });
 }
@@ -141,10 +149,10 @@ opciones.addEventListener('change', (e)=>{
         console.log(tiposHabs);
     for (const tipoHab of tiposHabs) {
         if(tipoHab.tipohab_ID == opciones.value){
-            precioNoche.textContent = "Precio por noche: $" + tipoHab.TipoHab_Precio;
-            numCamas.textContent = "Número de camas: " + tipoHab.TipoHab_NumCamas;
-            limpiezaNormal.textContent = "Tiempo de limpieza normal"+  tipoHab.TipoHab_TiempoLimpNormal;
-            limpiezaProfunda.textContent = "Tiempo de limpieza profunda " + tipoHab.TipoHab_TiempoLimpProfunda;
+            precioNoche.textContent = "Precio por noche: $" + tipoHab.tipohab_precio;
+            numCamas.textContent = "Número de camas: " + tipoHab.tipohab_numCamas;
+            limpiezaNormal.textContent = "Tiempo de limpieza normal: "+  tipoHab.tipohab_TiempoLimpNormal;
+            limpiezaProfunda.textContent = "Tiempo de limpieza profunda: " + tipoHab.tipohab_TiempoLimpProfunda;
         }
     }
     
