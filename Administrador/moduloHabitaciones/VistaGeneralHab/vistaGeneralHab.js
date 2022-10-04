@@ -132,13 +132,13 @@ function cargarOpcionesTiposHab(){
         }
         
         opciones.appendChild(fragment);
-        //cargarInfoTipoHab(opciones.value);
+        
     });
 }
 
 opciones.addEventListener('change', (e)=>{
     e.preventDefault();
-
+        console.log(tiposHabs);
     for (const tipoHab of tiposHabs) {
         if(tipoHab.tipohab_ID == opciones.value){
             precioNoche.textContent = "Precio por noche: $" + tipoHab.TipoHab_Precio;
@@ -205,7 +205,7 @@ const seleccionarHab = e =>{
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
         console.log(hab);
-        nombreHab.textContent = "Habitación " + hab.habitacion_nombre;
+        nombreHab.textContent = "Habitación " + hab.habNombre;
 
         if(hab.habitacion_estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
