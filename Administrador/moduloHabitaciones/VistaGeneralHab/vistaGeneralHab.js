@@ -178,9 +178,9 @@ btnDesactivar.addEventListener('click', ()=>{
         }
     }).then((text) => {
         
-        hab.estado = !hab.estado;
         if(hab.habitacion_estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
+            hab.habitacion_estado = "0";
         } 
         else{
             btnDesactivar.textContent = "Habilitar";
