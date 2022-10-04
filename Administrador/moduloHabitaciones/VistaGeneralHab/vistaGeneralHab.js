@@ -235,8 +235,8 @@ function obtenerPisosHotel(){
     }).then(function(pisosHotel){  
  
         obtenerHabs(pisosHotel);
-
-        cargarPisosEnPantalla();
+        console.log("ya cargó toda la info en el then de pisos");
+        
     });
 }
 
@@ -304,7 +304,7 @@ const obtenerHabs = (pisosHotel) => {
         });
         
     }
-
+    console.log("ya cargó toda la info fuera del foreach");
 }
 
 
