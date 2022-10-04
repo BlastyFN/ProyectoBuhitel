@@ -45,7 +45,7 @@ class Piso{
         
         var habitaciones = this.habs;
         
-        hasRooms = false;   
+        var hasRooms = false;   
         for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){ 
 
             if(busqueda.value == ""){
