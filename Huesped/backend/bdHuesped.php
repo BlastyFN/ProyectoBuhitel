@@ -375,6 +375,14 @@
             $sql->execute();
             return true;
         }
+
+        public function consultarPregunta($Hotel){
+            $sql = $this->con->prepare("SELECT Twilio_PreguntaAbierta FROM twilio
+            WHERE BINARY Twilio_Hotel = '".$Hotel."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
         
     }
 
