@@ -205,7 +205,7 @@ const seleccionarHab = e =>{
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
         nombreHab.textContent = "Habitación " + hab.habitacion_nombre;
-        
+
         if(hab.habitacion_estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
         } 
@@ -317,8 +317,8 @@ function cargarPisosEnPantalla(){
 
 
 function obtenerObjetoHab(id){
-    for (piso of pisos) {
-        for (hab of piso.habs) {
+    for (const piso of pisos) {
+        for (const hab of piso.habs) {
             if (hab.habID == id) return hab;
         }
     }
