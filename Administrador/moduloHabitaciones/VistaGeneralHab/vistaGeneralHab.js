@@ -270,7 +270,7 @@ const obtenerHabs = (pisoID, numPiso) => {
                 resuArray.push(nuevaHab);
                     
             }
-            const nuevoPiso = new Piso(pisoID, numPiso, resuArray);
+            var nuevoPiso = new Piso(pisoID, numPiso, resuArray);
             pisos.push(nuevoPiso);
             contenedorPisos.appendChild(nuevoPiso.HTML);
             var owl = $('.owl-carousel');
