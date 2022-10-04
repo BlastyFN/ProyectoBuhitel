@@ -8,11 +8,11 @@
 
         $res1 = $bd->consultarPregunta($Hotel);
         if (isset($res1[0])) {
-            $res = $bd->actualizarPregunta($Hotel, $Pregunta);
+            $res = $bd->actualizarPregunta($Pregunta, $Hotel);
             echo $res;
         }
         else{
-            $res = $bd->insertarPregunta($Hotel, $Pregunta);
+            $res = $bd->insertarPregunta($Pregunta, $Hotel);
             echo $res;
         }
     

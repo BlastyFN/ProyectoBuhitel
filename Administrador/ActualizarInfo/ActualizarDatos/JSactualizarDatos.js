@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
             var informacion = JSON.parse(texto);
             console.log(informacion);
             console.log(informacion.Twilio_PreguntaAbierta);
-            if (informacion.Twilio_PreguntaAbierta != "") {
+            if (informacion.Twilio_PreguntaAbierta !=  null) {
                 campoPregunta.value = informacion.Twilio_PreguntaAbierta;
             }
             else{
