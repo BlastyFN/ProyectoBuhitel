@@ -317,7 +317,7 @@ function cargarPisosEnPantalla(){
 
 function obtenerObjetoHab(id){
     for (piso of pisos) {
-        for (hab of piso[2]) {
+        for (hab of piso.habs) {
             if (hab.habID == id) return hab;
         }
     }
