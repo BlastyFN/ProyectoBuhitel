@@ -13,6 +13,19 @@
             return $res;
         }
 
+        public function consultarRespuesta($Hotel, $Hoy, $HaceUnMes){
+            $sql = $this->con->prepare("SELECT Respuestas_ID, Respuestas_HabReservadas, Respuesta_NumPregunta, Respuesta_ValorFROM respuestasencuesta
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Respuestas_HabReservadas
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            INNER JOIN habitacion ON habitacion.Habitacion_ID = habitacionreservada.HabReservada_Habitacion
+            INNER JOIN piso ON piso.Piso_ID = habitacion.Habitacion_Piso
+            WHERE BINARY piso.Piso_Hotel = '".$Hotel."'
+            AND BINARY Reservacion_CheckOut BETWEEN '".$Hoy."' AND '".$HaceUnMes."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
         public function actualizarPregunta($Pregunta, $Hotel){
             $sql = $this->con->prepare("UPDATE twilio 
             SET Twilio_PreguntaAbierta='".$Pregunta."' 

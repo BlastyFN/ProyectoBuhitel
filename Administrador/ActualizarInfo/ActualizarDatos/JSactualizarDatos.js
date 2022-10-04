@@ -1,8 +1,13 @@
 const campoPregunta = document.getElementById("NPregunta");
 const btnActualizar = document.getElementById("btnActualizar");
-
+const contRespuestas = document.getElementById("Respuestas");
 
 window.addEventListener("load", function () {
+    cargarPregunta();
+
+});
+
+function cargarPregunta() {
     fetch ('../backend/obtenerDatos.php', {
         method:'POST'
     })
@@ -31,7 +36,39 @@ window.addEventListener("load", function () {
      .catch(function(err) {
         console.log(err);
      }); 
-});
+}
+
+function cargarRespuestas() {
+    fetch ('../backend/obtenerRespuestas.php', {
+        method:'POST'
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        if (texto == "0") {
+            alert("No hay respuestas");
+        }
+        else{
+
+            var informacion = JSON.parse(texto);
+            console.log(informacion);
+            console.log(informacion);
+            informacion.forEach(element => {
+                console.log(element);
+                console.log(element.Respuesta_Valor);
+            });
+
+        }
+     })
+     .catch(function(err) {
+        console.log(err);
+     }); 
+}
 
 btnActualizar.addEventListener("click", function (e) {
     e.preventDefault();

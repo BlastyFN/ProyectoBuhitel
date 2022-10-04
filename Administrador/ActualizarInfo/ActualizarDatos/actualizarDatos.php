@@ -32,6 +32,17 @@ else{
         </form>
 
         <br><br>
+        <h1>
+        Respuestas de últimos 30 días
+    </h1>
+    <br><br>
+    <div id="Respuestas">
+        
+    </div>
+    </section>
+    
+  
+
     </section>
     <script src="JSactualizarDatos.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
