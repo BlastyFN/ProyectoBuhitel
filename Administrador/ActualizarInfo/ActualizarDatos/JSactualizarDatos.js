@@ -61,6 +61,11 @@ function cargarRespuestas() {
             informacion.forEach(element => {
                 console.log(element);
                 console.log(element.Respuesta_Valor);
+                var fila = document.createElement('p');
+                fila.innerHTML = "R: "+element.Respuesta_Valor;
+                var salto = document.createElement('br');
+                contRespuestas.appendChild(fila);
+                contRespuestas.appendChild(salto);
             });
 
         }
