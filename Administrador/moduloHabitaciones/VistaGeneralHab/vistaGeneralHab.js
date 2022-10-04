@@ -176,7 +176,7 @@ btnDesactivar.addEventListener('click', ()=>{
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(function(texto){
+    }).then(() => {
        
         hab.estado = !hab.estado;
         if(hab.habitacion_estado == "1"){
@@ -185,6 +185,13 @@ btnDesactivar.addEventListener('click', ()=>{
         else{
             btnDesactivar.textContent = "Habilitar";
         }
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El estado se ha modificado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        });
     });
 
 })
@@ -203,7 +210,14 @@ btnGuardar.addEventListener('click', (e)=>{
         } else {
             throw "Error en la llamada Ajax"
         }
-    }).then(function(texto){
+    }).then(()=>{
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El tipo de habitación se ha modificado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        });
  
     });
 })
