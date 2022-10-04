@@ -12,6 +12,8 @@ document.addEventListener('click',function(e){
     if(e.target && e.target.classList == 'modificarInfo'){
         e.preventDefault();
         let inputs = Array.prototype.slice.call(document.getElementsByClassName("campo"), 0);
+        console.log(antiguosValores);
+        console.log(inputs);
         var values = new Array();
         for(var cont = 0; cont < IDpisos.length;cont++){
             if (antiguosValores[cont] != inputs[cont].value ){
