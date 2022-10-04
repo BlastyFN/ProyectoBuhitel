@@ -80,6 +80,7 @@ class Habitacion {
         this.habNombre = habNombre;
         this.habTipo = habTipo;
         this.habTipoNombre = habTipoNombre;
+        this.estado = estado;
     }
     get HTML(){
         return this.obtenerHTML();
@@ -218,7 +219,7 @@ const seleccionarHab = e =>{
         console.log(hab);
         nombreHab.textContent = "Habitación " + hab.habNombre;
 
-        if(hab.habitacion_estado == "1"){
+        if(hab.estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
         } 
         else{
