@@ -9,9 +9,9 @@
         $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $bd = new database();
         $piso = $bd-> obtenerPiso($pisoID,$hotel);
-        $antiguoNumHabs = $piso * 100 + $antiguoNumHabs;
-        $nuevoNumHabs =$piso * 100 + $nuevoNumHabs;
-        
+        $antiguoNumHabs = $piso * 100 + (int)$antiguoNumHabs;
+        $nuevoNumHabs =$piso * 100 + (int)$nuevoNumHabs;
+         
         if($nuevoNumHabs > $antiguoNumHabs){
             for($cont = $antiguoNumHabs; $cont <= $nuevoNumHabs; $cont++){
                 if($cont != ($piso*100)){
