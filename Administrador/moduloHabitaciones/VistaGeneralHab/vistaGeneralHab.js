@@ -298,9 +298,9 @@ const obtenerHabs = (pisosHotel) => {
             
             var jsonHabs = JSON.parse(resHabs);
             var resuArray = [];
-            for(element of jsonHabs){
-                nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
-                    element.habitacion_tipo, element.TipoHab_Nombre);
+            for(hab of jsonHabs){
+                nuevaHab = new Habitacion(hab.habitacion_ID,hab.habitacion_nombre,
+                    hab.habitacion_tipo, hab.TipoHab_Nombre);
                 resuArray.push(nuevaHab);
                     
             }
