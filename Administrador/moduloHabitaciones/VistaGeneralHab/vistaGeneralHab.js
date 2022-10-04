@@ -248,8 +248,8 @@ function obtenerPisosHotel(){
         for (const piso of pisosHotel) {
             for(hab of piso[2]){
                 resuArray = [];
-                nuevaHab = new Habitacion(piso[2].habitacion_ID,piso[2].habitacion_nombre,
-                    piso[2].habitacion_tipo, piso[2].TipoHab_Nombre);
+                nuevaHab = new Habitacion(hab.habitacion_ID, hab.habitacion_nombre,
+                    hab.habitacion_tipo, hab.TipoHab_Nombre);
                 resuArray.push(nuevaHab);          
             }
             var nuevoPiso = new Piso(piso.piso_ID, piso.piso_numero, resuArray);
