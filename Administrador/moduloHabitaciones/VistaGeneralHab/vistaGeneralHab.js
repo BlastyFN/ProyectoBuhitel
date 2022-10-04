@@ -63,9 +63,10 @@ class Piso{
             return fragment;
         }
         else{
+            const fragment2 = document.createDocumentFragment();
             const divPiso = document.createElement('div');
-            fragment.appendChild(divPiso);
-            return fragment;
+            fragment2.appendChild(divPiso);
+            return fragment2;
         }
         
     }
