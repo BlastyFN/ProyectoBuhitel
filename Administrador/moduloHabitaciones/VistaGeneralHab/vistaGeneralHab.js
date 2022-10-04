@@ -202,7 +202,7 @@ btnBuscar.addEventListener('click', (e)=>{
 const seleccionarHab = e =>{
     if(e.target.classList.contains('inside-item')){
         e.stopPropagation();
-        nombreHab.textContent = "Habitación " + hab.habNombre;
+        nombreHab.textContent = "Habitación " + hab.habitacion_nombre;
 
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
