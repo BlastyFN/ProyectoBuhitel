@@ -52,7 +52,7 @@ class Piso{
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
                 hasRooms = true; 
             }   
-            else if(habitaciones[contHabs].habNombre == busqueda.value || 
+            else if(habitaciones[contHabs].habNombre.includes(busqueda.value) || 
                habitaciones[contHabs].habTipoNombre.includes(busqueda.value)){   
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
                 hasRooms = true; 
