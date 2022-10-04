@@ -4,7 +4,7 @@ const contRespuestas = document.getElementById("Respuestas");
 
 window.addEventListener("load", function () {
     cargarPregunta();
-
+    cargarRespuestas();
 });
 
 function cargarPregunta() {
