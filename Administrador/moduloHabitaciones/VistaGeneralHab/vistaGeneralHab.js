@@ -201,6 +201,7 @@ btnDesactivar.addEventListener('click', ()=>{
 
 btnGuardar.addEventListener('click', (e)=>{
     e.preventDefault();
+    var hab = obtenerObjetoHab(habID);
     const modificarHabTipo = new FormData();
     modificarHabTipo.append("habID",Number(habID));
     modificarHabTipo.append("tipoID",Number(opciones.value))
@@ -216,6 +217,7 @@ btnGuardar.addEventListener('click', (e)=>{
     }).then((text)=>{
         var nombreTipoHab = opciones.options[opciones.selectedIndex].text;
         document.getElementById('tipoHab'+habID).textContent = nombreTipoHab;
+        hab.habTipoNombre = nombreTipoHab;
         Swal.fire({
             position: 'center',
             icon: 'success',
