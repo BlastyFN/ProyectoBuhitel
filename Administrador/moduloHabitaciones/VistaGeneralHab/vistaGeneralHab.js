@@ -246,6 +246,7 @@ function obtenerPisosHotel(){
         obtenerHabs(pisosHotel);
         
         
+        
     });
 }
 
@@ -282,8 +283,7 @@ function cargarPisosEnPantalla(){
 
 const obtenerHabs = (pisosHotel) => {
     for(element of pisosHotel){
-        var id = element.piso_ID;
-        var numero = element.piso_numero;
+
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",id);
         fetch("../backend/obtenerHabsPorPiso.php", {
@@ -295,7 +295,8 @@ const obtenerHabs = (pisosHotel) => {
                 throw "Error en la llamada Ajax"
             }      
         }).then(function(resHabs){
-            
+            var id = element.piso_ID;
+            var numero = element.piso_numero;
             var jsonHabs = JSON.parse(resHabs);
             var resuArray = [];
             for(hab of jsonHabs){
