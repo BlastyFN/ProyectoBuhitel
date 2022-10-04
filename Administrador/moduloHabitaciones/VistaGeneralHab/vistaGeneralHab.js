@@ -285,7 +285,7 @@ const obtenerHabs = (pisosHotel) => {
     for(element of pisosHotel){
 
         const solicitarNumHabs = new FormData();
-        solicitarNumHabs.append("piso",id);
+        solicitarNumHabs.append("piso",element.piso_ID);
         fetch("../backend/obtenerHabsPorPiso.php", {
             method:'POST', body: solicitarNumHabs
         }).then(function(response){
