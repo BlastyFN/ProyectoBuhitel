@@ -45,20 +45,22 @@ class Piso{
         
         var habitaciones = this.habs;
         
-                
+        hasRooms = false;   
         for(var contHabs = 0; contHabs < habitaciones.length;contHabs++){ 
 
             if(busqueda.value == ""){
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
+                hasRooms = true; 
             }   
-            else if(habitaciones[contHabs].habNombre.includes(busqueda.value) || 
+            else if(habitaciones[contHabs].habNombre == busqueda.value || 
                habitaciones[contHabs].habTipoNombre.includes(busqueda.value)){   
-
                 divCarousel.appendChild(habitaciones[contHabs].HTML);
+                hasRooms = true; 
             }
-        }   
-        fragment.appendChild(divCarousel);
-                    
+        }  
+        if(hasRooms == true){ 
+            fragment.appendChild(divCarousel);
+        }          
         return fragment;
     }
 
