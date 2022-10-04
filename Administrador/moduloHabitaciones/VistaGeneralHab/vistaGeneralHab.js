@@ -233,12 +233,9 @@ function obtenerPisosHotel(){
                throw "Error en la llamada Ajax"
             }
     }).then(function(pisosHotel){  
-        var contadorPisos  = 1;
-        for(element of pisosHotel){
-            obtenerHabs(element.piso_ID,contadorPisos);
+ 
+            obtenerHabs(element.piso_ID,contadorPisos,pisosHotel);
 
-            contadorPisos++;
-        }
         cargarPisosEnPantalla();
     });
 }
@@ -253,8 +250,9 @@ function cargarPisosEnPantalla(){
 
 
 
-const obtenerHabs = (pisoID, numPiso) => {
-    
+const obtenerHabs = (pisoID, numPiso, pisosHotel) => {
+    var contadorPisos  = 1;
+    for(element of pisosHotel){
         var resuArray = [];
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",pisoID);
@@ -300,8 +298,10 @@ const obtenerHabs = (pisoID, numPiso) => {
             //         }
             //     }
             // });  
-           
+                 
         });
+        contadorPisos++;
+    }
 
 }
 
