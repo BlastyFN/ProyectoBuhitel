@@ -253,7 +253,7 @@ function cargarPisosEnPantalla(){
 const obtenerHabs = (pisosHotel) => {
     var contadorPisos  = 1;
     for(element of pisosHotel){
-        var resuArray = [];
+        
         const solicitarNumHabs = new FormData();
         solicitarNumHabs.append("piso",element.piso_ID);
         fetch("../backend/obtenerHabsPorPiso.php", {
@@ -267,7 +267,7 @@ const obtenerHabs = (pisosHotel) => {
         }).then(function(resHabs){
             
             var jsonHabs = JSON.parse(resHabs);
-          
+            var resuArray = [];
             for(element of jsonHabs){
                 nuevaHab = new Habitacion(element.habitacion_ID,element.habitacion_nombre,
                     element.habitacion_tipo, element.TipoHab_Nombre);
@@ -278,6 +278,7 @@ const obtenerHabs = (pisosHotel) => {
             console.log(nuevoPiso);
             console.log(contadorPisos);
             pisos.push(nuevoPiso);
+            contadorPisos++;
             //contenedorPisos.appendChild(nuevoPiso.HTML);
             // // var owl = $('.owl-carousel');
             // owl.owlCarousel({
@@ -301,7 +302,7 @@ const obtenerHabs = (pisosHotel) => {
             // });  
                  
         });
-        contadorPisos++;
+        
     }
 
 }
