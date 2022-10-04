@@ -175,6 +175,7 @@ btnGuardar.addEventListener('click', (e)=>{
 
 document.addEventListener('DOMContentLoaded', () => {
     obtenerPisosHotel();
+
     
     carouselesHab.addEventListener('click', e =>{
         seleccionarHab(e);
@@ -185,10 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 btnBuscar.addEventListener('click', (e)=>{
     e.preventDefault();
-    for (piso of pisos) {
-        contenedorPisos.innerHTML="";
-        contenedorPisos.appendChild(piso.HTML);
-    }
+    cargarPisosEnPantalla();
     
 
 })
@@ -241,9 +239,16 @@ function obtenerPisosHotel(){
 
             contadorPisos++;
         }
+        cargarPisosEnPantalla();
     });
 }
 
+function cargarPisosEnPantalla(){
+    for (piso of pisos) {
+        contenedorPisos.innerHTML="";
+        contenedorPisos.appendChild(piso.HTML);
+    }
+}
 
 
 
