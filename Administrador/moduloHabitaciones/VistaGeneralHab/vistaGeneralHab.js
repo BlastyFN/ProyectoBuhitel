@@ -204,6 +204,7 @@ const seleccionarHab = e =>{
         e.stopPropagation();
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
+        console.log(hab);
         nombreHab.textContent = "Habitación " + hab.habitacion_nombre;
 
         if(hab.habitacion_estado == "1"){
