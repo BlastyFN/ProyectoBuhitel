@@ -281,7 +281,6 @@ function cargarPisosEnPantalla(){
 
 
 const obtenerHabs = (pisosHotel) => {
-    var contadorPisos  = 1;
     for(element of pisosHotel){
         console.log(element);
         const solicitarNumHabs = new FormData();
@@ -304,11 +303,11 @@ const obtenerHabs = (pisosHotel) => {
                 resuArray.push(nuevaHab);
                     
             }
-            var nuevoPiso = new Piso(element.piso_ID, contadorPisos, resuArray);
+            var nuevoPiso = new Piso(element.piso_ID, element.piso_numero, resuArray);
             console.log(nuevoPiso);
-            console.log(contadorPisos);
+            console.log(element.piso_numero);
             pisos.push(nuevoPiso);
-            contadorPisos++;
+            
             contenedorPisos.appendChild(nuevoPiso.HTML);
            
             var owl = $('.owl-carousel');
@@ -335,7 +334,6 @@ const obtenerHabs = (pisosHotel) => {
         });
         
     }
-    console.log("ya cargó toda la info fuera del foreach");
 }
 
 
