@@ -60,8 +60,12 @@ class Piso{
         }  
         if(hasRooms == true){ 
             fragment.appendChild(divCarousel);
-        }          
-        return fragment;
+            return fragment;
+        }
+        else{
+            return;
+        }
+        
     }
 
 
