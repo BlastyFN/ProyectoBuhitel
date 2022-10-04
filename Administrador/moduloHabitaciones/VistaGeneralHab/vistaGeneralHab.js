@@ -213,7 +213,7 @@ btnGuardar.addEventListener('click', (e)=>{
             throw "Error en la llamada Ajax"
         }
     }).then((text)=>{
-        var nombreTipoHab = opciones.options[opciones.selecterIndex].text; 
+        var nombreTipoHab = opciones.options[opciones.selectedIndex].text;
         document.getElementById('tipoHab'+habID).textContent = nombreTipoHab;
         Swal.fire({
             position: 'center',
