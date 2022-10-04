@@ -4,10 +4,9 @@ session_start();
         $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
         $pisos = $bd-> obtenerPisos($hotel);
-        foreach ($pisos as $piso) {
-            $habs = $bd->obtenerHabs($hotel, $piso['piso_ID']);
-        
-            array_push($piso,array($habs));
+        for($contPisos = 0; $contPisos < count($pisos); $contPisos++){
+            $habs = $bd->obtenerHabs($hotel, $pisos[$contPisos]['piso_ID']);
+            array_push($pisos[$contPisos],array($habs));
         }
         echo json_encode($pisos); 
 
