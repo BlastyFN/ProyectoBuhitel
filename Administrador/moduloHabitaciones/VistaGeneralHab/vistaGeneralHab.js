@@ -243,8 +243,8 @@ function obtenerPisosHotel(){
             }
     }).then(function(pisosHotel){  
  
-        obtenerHabs(pisosHotel);
-        
+        //obtenerHabs(pisosHotel);
+        console.log(pisosHotel);
         
         
     });

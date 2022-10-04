@@ -3,7 +3,11 @@ session_start();
     include "bd.php";
         $hotel =  $_SESSION['sesionPersonal']['Hotel'];
 	    $bd = new database();
-        $res = $bd-> obtenerPisos($hotel);
-        echo json_encode($res); 
+        $pisos = $bd-> obtenerPisos($hotel);
+        foreach ($pisos as $piso) {
+            $habs = $bd->obtenerHabs($hotel,$piso);
+            $piso->habs = $habs;
+        }
+        echo json_encode($pisos); 
 
 ?>
