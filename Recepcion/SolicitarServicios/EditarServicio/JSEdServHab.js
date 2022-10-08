@@ -28,7 +28,7 @@ window.addEventListener('load', function () {
     }
     else{
         alert("ERROR");
-        window.location.href="http://localhost/Buhitel/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
+        window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
 
     }
 });
@@ -485,6 +485,9 @@ function completarActualizacion(precio) {
         else{
             console.log(texto);
         }
+     })
+     .then(function() {
+        window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
      })
      .catch(function(err) {
         console.log(err);
