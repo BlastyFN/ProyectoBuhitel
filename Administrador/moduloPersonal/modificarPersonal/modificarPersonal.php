@@ -31,7 +31,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
                 <input type="text" class="formText" id="apellidoM" placeholder="Apellido materno">
             </div>
             
-            <select name="tipoPersonal" id="tipoPersonal" class="formText">
+            <select name="tipoPersonal" id="tipoPersonal" class="formText" onchange="verificarUsuariosLimpieza()">
                 <option selected="true" disabled>Tipo de personal</option>
                 <option value="Recepcion">Recepcionista</option>
                 <option value="Limpieza">Personal de limpieza</option>
