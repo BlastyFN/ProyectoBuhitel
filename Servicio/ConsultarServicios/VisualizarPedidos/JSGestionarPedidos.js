@@ -214,7 +214,7 @@ btnConfirmar.addEventListener('click', function () {
             console.log(this.value);
             ActForz = true;
             cargarTabla();
-            if (this.value == "2") {
+            if (this.value = "2") {
                 determinarColor("En Curso");
             }    
         }
