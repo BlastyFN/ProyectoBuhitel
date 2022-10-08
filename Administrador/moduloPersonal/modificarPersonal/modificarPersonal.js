@@ -43,6 +43,7 @@ window.addEventListener('load',e=>{
             //inputContraseña.value = element.Personal_Contrasena;
             inputSeguroSocial.value = element.Personal_Seguro;
         }
+        verificarUsuariosLimpieza();
     })
 })
 
@@ -76,6 +77,7 @@ inputContraseña.addEventListener("keyup", verificarClave);
 inputContraseña.addEventListener("blur", verificarClave);
 confirmPassword.addEventListener("keyup", verificarClave);
 confirmPassword.addEventListener("blur", verificarClave);
+inputTipoPersonal.addEventListener("change", verificarUsuariosLimpieza());
 
 function verificarClave() {
     btnCambiarPass.disabled = true;
@@ -171,3 +173,13 @@ formCambiarHorario.addEventListener('submit', function(e){
         });
     })
 });
+
+//                        Mostrar u ocultar modificacion horarios limpieza
+function verificarUsuariosLimpieza(){
+    if(inputTipoPersonal.value == "Limpieza"){
+        formCambiarHorario.style.display = "flex";
+    }
+    else {
+        formCambiarHorario.style.display = "none";
+    }
+}
