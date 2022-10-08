@@ -77,7 +77,7 @@ inputContraseña.addEventListener("keyup", verificarClave);
 inputContraseña.addEventListener("blur", verificarClave);
 confirmPassword.addEventListener("keyup", verificarClave);
 confirmPassword.addEventListener("blur", verificarClave);
-inputTipoPersonal.addEventListener("change", verificarUsuariosLimpieza());
+inputTipoPersonal.onchange(verificarUsuariosLimpieza());
 
 function verificarClave() {
     btnCambiarPass.disabled = true;
