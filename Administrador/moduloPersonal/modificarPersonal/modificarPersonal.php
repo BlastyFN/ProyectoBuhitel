@@ -54,6 +54,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
             <input type="text" class="formText" id="confirmPassword" placeholder="Confirmar Contraseña">
             <button type="submit" class="btnCambiarPass enviarInfo" disabled="true">Cambiar Contraseña</button>
         </form>
+
+        
         
     </section>
     <script src="modificarPersonal.js"></script>

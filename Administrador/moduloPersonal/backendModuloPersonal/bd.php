@@ -70,6 +70,16 @@ class database
 		$res = $sql->fetchall();
 		
 		return $res;
+	}	
+	
+	function obtenerHorarioPersonal($personal_id){
+		$sql = $this->con->prepare("SELECT * FROM personal 
+		INNER JOIN infousuariolimpieza ON infousuariolimpieza.InfoLimpieza_Personal = personal.Personal_ID
+		WHERE personal_ID =  '".$personal_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return $res;
 	}
 
 	function eliminarPersonal($hotel,$personal_id){

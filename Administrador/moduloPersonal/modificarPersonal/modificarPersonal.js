@@ -100,7 +100,7 @@ formCambiarPassword.addEventListener('submit', (e)=>{
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'El personal se ha modificado correctamente',
+            title: 'El horario de limpiezas se ha modificado correctamente',
             showConfirmButton: false,
             timer: 2500
         }).then(()=>{
@@ -108,3 +108,61 @@ formCambiarPassword.addEventListener('submit', (e)=>{
         });
     })
 })
+
+//                          Cargar información usuario limpieza
+window.addEventListener('load',e=>{
+    const obtenerHorarios = new FormData();
+    obtenerHorarios.append('personalID', localStorage.getItem('personalID'));
+    fetch('../backendModuloPersonal/obtenerHorariosPersonal.php' , {
+        method:'POST', body:obtenerHorarios
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(infoHorarios){
+        console.log(infoHorarios);
+        for(element of infoPersonal){
+            inputNombres.value = element.Personal_Nombre;
+            inputApellidoP.value = element.Personal_APaterno 
+            inputApellidoM.value = element.Personal_AMaterno;
+            inputTipoPersonal.value = element.Personal_Tipo;
+            inputCorreo.value = element.Personal_Correo;
+            //inputContraseña.value = element.Personal_Contrasena;
+            inputSeguroSocial.value = element.Personal_Seguro;
+        }
+    })
+})
+
+
+//                          Modificar información usuario limpieza
+formRegistroUsuario.addEventListener('submit', function(e){
+    e.preventDefault();    
+    enviarRegistro.append('personalID', localStorage.getItem('personalID'));
+    enviarRegistro.append('inicioJornada',inputInicioJornada.value);
+    enviarRegistro.append('finJornada',inputFinJornada.value);
+    enviarRegistro.append('inicioDescanso',inputInicioDescanso.value);
+    enviarRegistro.append('finDescanso', inputFinDescanso.value);
+ 
+
+    fetch('../backendModuloPersonal/registrarInfoUsuarioLimpieza.php' , {
+        method:'POST', body:enviarRegistro
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    }).then(function(texto){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El personal se ha registrado correctamente',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(()=>{
+            window.location.href = "https://corporativotdo.com/Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php";
+        });
+    })
+});
