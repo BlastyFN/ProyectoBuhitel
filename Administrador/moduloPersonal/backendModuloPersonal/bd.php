@@ -119,10 +119,10 @@ class database
 
 		$sql = $this->con->prepare( "UPDATE infousuariolimpieza
 		INNER JOIN personal ON infolimpieza_personal = personal.personal_id
-		SET infolimpieza_iniciojornada = '".$inicioJornada."'
-		SET infolimpieza_finjornada = '".$finJornada."'
-		SET infolimpieza_iniciodescanso = '".$inicioDescanso."'
-		SET infolimpieza_findescanso = '".$finDescanso."'
+		SET infolimpieza_iniciojornada = '".$inicioJornada."',
+		infolimpieza_finjornada = '".$finJornada."',
+		InfoLimpieza_InicioDescanso = '".$inicioDescanso."',
+		InfoLimpieza_FinDescanso = '".$finDescanso."'
 		WHERE personal_id = '".$personalId."'");
 	    $sql->execute();
 		return "se ha cambiado el horario";
