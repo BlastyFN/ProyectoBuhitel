@@ -133,9 +133,9 @@ window.addEventListener('load',e=>{
         console.log(infoHorarios);
         for(element of infoHorarios){
             inputInicioJornada.value = element.InfoLimpieza_InicioJornada;
-            inputFinJornada.value = InfoLimpieza_FinJornada;
-            inputInicioDescanso.value = InfoLimpieza_InicioDescanso;
-            inputFinDescanso.value = InfoLimpieza_FinDescanso; 
+            inputFinJornada.value = element.InfoLimpieza_FinJornada;
+            inputInicioDescanso.value = element.InfoLimpieza_InicioDescanso;
+            inputFinDescanso.value = element.InfoLimpieza_FinDescanso; 
         }
     })
 })

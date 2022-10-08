@@ -58,3 +58,31 @@ h1 {
     
 }
 
+.formCambiarHorario {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    text-align: center;
+    margin: auto auto;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.campo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.campo span{
+    width: 40%;
+}
+
+.campo .formtext{
+    width: 40%;
+}
