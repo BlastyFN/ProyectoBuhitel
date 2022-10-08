@@ -90,6 +90,9 @@ function cargarTabla() {
              verificarNuevo(ServiciosNuevos);
         }
         else{
+            while (infoTabla.firstChild) {
+                infoTabla.removeChild(infoTabla.firstChild);
+            }
         }
      })
      .catch(function(err) {
