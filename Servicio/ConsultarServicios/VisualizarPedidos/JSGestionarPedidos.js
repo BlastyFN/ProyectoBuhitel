@@ -210,10 +210,10 @@ btnConfirmar.addEventListener('click', function () {
         alert(texto); 
         ActForz = true;
         cargarTabla();
-        if (this.value = "2") {
+        if (this.value == "2") {
             determinarColor("En Curso");
         }
-        if (this.value = "3") {
+        if (this.value == "3") {
             window.location.reload();
         }
      })
