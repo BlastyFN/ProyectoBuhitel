@@ -12,6 +12,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link rel="stylesheet" href="modificarPersonal.css">
+    <link rel="stylesheet" href="../completarRegistroUsuarioLimpieza/completarRegistroUsuarioLimpieza.css">
     <? include('../../../Recursos/includeHead.php') ?>
     <title>modficación de personal</title>
 </head>
@@ -55,6 +56,31 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
             <button type="submit" class="btnCambiarPass enviarInfo" disabled="true">Cambiar Contraseña</button>
         </form>
 
+        <form class="formNuevoUsuario" action="" method="post">
+            <div class="campo">
+                <span>Hora de inicio de jornada</span><input type="time" class="formText" id="inicioJornada">
+            </div>
+
+             <div class="campo">
+                <span>Hora de fin de jornada </span><input type="time" class="formText" id="finJornada" >
+            </div>        
+            
+            <div class="campo">
+                <span>Hora de inicio de descanso </span><input type="time" class="formText" id="inicioDescanso">
+            </div>
+
+            <div class="campo">
+                <span>Hora de fin de descanso </span><input type="time" class="formText" id="finDescanso" >
+            </div>
+
+
+            <br>
+            
+    
+            <button type="submit" class="enviarInfo">Aceptar</button>
+  
+        </form>
+        
         
         
     </section>
