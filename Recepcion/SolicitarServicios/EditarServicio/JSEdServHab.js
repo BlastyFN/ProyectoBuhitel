@@ -15,26 +15,23 @@ var categorias;
 var IDHabitacion;
 var fase;
 window.addEventListener('load', function () {
+    
     contador = 0;
-    setTimeout(function(){
-        if (localStorage.EditarServicio == "true") {
-            EditableID  = this.localStorage.IDServEd;
-            campoHabCambio.value = localStorage.NombreHabEd;
-            textHabitacion.innerHTML = this.localStorage.NombreHabEd;
-            localStorage.EditarServicio = false;
-            consultarInfoServicio(EditableID);
-            cargarCategorias();
-            consultarCarritos(EditableID);
-            fase = 0;
-        }
-        else{
-            alert("ERROR");
-            window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
-    
-        }
-    },5000);
-    
-    
+    if (localStorage.EditarServicio == "true") {
+        EditableID  = this.localStorage.IDServEd;
+        campoHabCambio.value = localStorage.NombreHabEd;
+        textHabitacion.innerHTML = this.localStorage.NombreHabEd;
+        localStorage.EditarServicio = false;
+        consultarInfoServicio(EditableID);
+        cargarCategorias();
+        consultarCarritos(EditableID);
+        fase = 0;
+    }
+    else{
+        alert("ERROR");
+        window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
+
+    }
 });
 
 
