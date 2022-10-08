@@ -208,14 +208,16 @@ btnConfirmar.addEventListener('click', function () {
     })
     .then(function(texto) {
         alert(texto); 
-        ActForz = true;
-        cargarTabla();
-        if (this.value == "2") {
-            determinarColor("En Curso");
-        }
-        if (this.value == 3) {
+        if (this.value == "3") {
             window.location.reload();
+        }else{
+            ActForz = true;
+            cargarTabla();
+            if (this.value == "2") {
+                determinarColor("En Curso");
+            }    
         }
+
      })
      .catch(function(err) {
         console.log(err);
