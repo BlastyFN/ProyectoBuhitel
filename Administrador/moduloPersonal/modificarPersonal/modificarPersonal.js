@@ -151,7 +151,7 @@ formCambiarHorario.addEventListener('submit', function(e){
     enviarRegistro.append('finDescanso', inputFinDescanso.value);
  
 
-    fetch('../backendModuloPersonal/registrarInfoUsuarioLimpieza.php' , {
+    fetch('../backendModuloPersonal/ModificarHorariosPersonal.php' , {
         method:'POST', body:enviarRegistro
     }).then(function(response){
         if(response.ok){

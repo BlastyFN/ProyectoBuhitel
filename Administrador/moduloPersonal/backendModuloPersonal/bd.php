@@ -114,6 +114,21 @@ class database
 
 	}
 
+	function modificarHorariosPersonal($personalId,$inicioJornada,
+	$finJornada,$inicioDescanso,$finDescanso){
+
+		$sql = $this->con->prepare( "UPDATE infousuariolimpieza
+		INNER JOIN personal ON infolimpieza_personal = personal.personal_id
+		SET personal_contrasena = '".$inicioJornada."'
+		SET personal_contrasena = '".$finJornada."'
+		SET personal_contrasena = '".$inicioDescanso."'
+		SET personal_contrasena = '".$finDescanso."'
+		WHERE personal_id = '".$personalId."'");
+	    $sql->execute();
+		return "se ha cambiado el horario";
+
+	}
+
 }
 
 ?>
