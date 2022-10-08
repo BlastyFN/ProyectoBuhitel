@@ -208,7 +208,7 @@ btnConfirmar.addEventListener('click', function () {
     })
     .then(function(texto) {
         alert(texto); 
-        if (this.value == "3") {
+        if (this.value = "3") {
             window.location.reload();
         }else{
             console.log(this.value);
