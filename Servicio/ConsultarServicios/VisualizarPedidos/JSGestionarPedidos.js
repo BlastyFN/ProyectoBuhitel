@@ -235,9 +235,9 @@ btncCancelar.addEventListener('click', function () {
     })
     .then(function(texto) {
         alert(texto); 
-        ActForz = true;
-        cargarTabla();
-       
+        // ActForz = true;
+        // cargarTabla();
+        window.location.reload();
      })
      .catch(function(err) {
         console.log(err);
