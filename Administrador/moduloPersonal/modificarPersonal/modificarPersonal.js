@@ -132,13 +132,10 @@ window.addEventListener('load',e=>{
     }).then(function(infoHorarios){
         console.log(infoHorarios);
         for(element of infoHorarios){
-            inputNombres.value = element.Personal_Nombre;
-            inputApellidoP.value = element.Personal_APaterno 
-            inputApellidoM.value = element.Personal_AMaterno;
-            inputTipoPersonal.value = element.Personal_Tipo;
-            inputCorreo.value = element.Personal_Correo;
-            //inputContraseña.value = element.Personal_Contrasena;
-            inputSeguroSocial.value = element.Personal_Seguro;
+            inputInicioJornada.value = element.InfoLimpieza_InicioJornada;
+            inputFinJornada.value = InfoLimpieza_FinJornada;
+            inputInicioDescanso.value = InfoLimpieza_InicioDescanso;
+            inputFinDescanso.value = InfoLimpieza_FinDescanso; 
         }
     })
 })
