@@ -211,6 +211,7 @@ btnConfirmar.addEventListener('click', function () {
         if (this.value == "3") {
             window.location.reload();
         }else{
+            console.log(this.value);
             ActForz = true;
             cargarTabla();
             if (this.value == "2") {
