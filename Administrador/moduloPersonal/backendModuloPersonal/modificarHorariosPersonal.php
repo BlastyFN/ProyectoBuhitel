@@ -8,7 +8,6 @@ session_start();
         $finJornada = $_POST['finJornada'];
         $inicioDescanso = $_POST['inicioDescanso'];
         $finDescanso = $_POST['finDescanso'];
-        $NuevaClave = md5($password);
         $personalId =  $_POST['personalID'];
 	    $bd = new database();
 
