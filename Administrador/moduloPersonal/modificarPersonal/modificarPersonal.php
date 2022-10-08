@@ -50,13 +50,8 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
   
         </form>
 
-        <form action="" method="POST" class="cambiarPassForm">
-            <input type="text" class="formText" id="password" placeholder="Contraseña">
-            <input type="text" class="formText" id="confirmPassword" placeholder="Confirmar Contraseña">
-            <button type="submit" class="btnCambiarPass enviarInfo" disabled="true">Cambiar Contraseña</button>
-        </form>
 
-        <form class="formNuevoUsuario" action="" method="post">
+        <form class="formCambiarHorario" action="" method="post">
             <div class="campo">
                 <span>Hora de inicio de jornada</span><input type="time" class="formText" id="inicioJornada">
             </div>
@@ -81,6 +76,12 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
   
         </form>
         
+        
+        <form action="" method="POST" class="cambiarPassForm">
+            <input type="text" class="formText" id="password" placeholder="Contraseña">
+            <input type="text" class="formText" id="confirmPassword" placeholder="Confirmar Contraseña">
+            <button type="submit" class="btnCambiarPass enviarInfo" disabled="true">Cambiar Contraseña</button>
+        </form>
         
         
     </section>

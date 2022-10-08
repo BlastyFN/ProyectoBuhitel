@@ -1,6 +1,9 @@
 const formRegistroUsuario = document.querySelector('.formNuevoUsuario');
+const formCambiarHorario = document.querySelector('.formCambiarHorario');
+
 const formCambiarPassword = document.querySelector('.cambiarPassForm');
 const btnCambiarPass = document.querySelector('.btnCambiarPass');
+ 
 const enviarRegistro = new FormData();
 const cambiarPassword = new FormData();
 
@@ -12,6 +15,11 @@ const inputCorreo = document.getElementById('correoUsr');
 const inputContraseña = document.getElementById('password');
 const inputSeguroSocial = document.getElementById('seguroSocial'); 
 const confirmPassword = document.getElementById('confirmPassword');
+
+const inputInicioJornada = document.getElementById('inicioJornada');
+const inputFinJornada = document.getElementById('finJornada');
+const inputInicioDescanso = document.getElementById('inicioDescanso');
+const inputFinDescanso = document.getElementById('finDescanso');
 
 window.addEventListener('load',e=>{
     const obtenerPersonal = new FormData();
@@ -123,7 +131,7 @@ window.addEventListener('load',e=>{
         }
     }).then(function(infoHorarios){
         console.log(infoHorarios);
-        for(element of infoPersonal){
+        for(element of infoHorarios){
             inputNombres.value = element.Personal_Nombre;
             inputApellidoP.value = element.Personal_APaterno 
             inputApellidoM.value = element.Personal_AMaterno;
@@ -137,7 +145,7 @@ window.addEventListener('load',e=>{
 
 
 //                          Modificar información usuario limpieza
-formRegistroUsuario.addEventListener('submit', function(e){
+formCambiarHorario.addEventListener('submit', function(e){
     e.preventDefault();    
     enviarRegistro.append('personalID', localStorage.getItem('personalID'));
     enviarRegistro.append('inicioJornada',inputInicioJornada.value);
