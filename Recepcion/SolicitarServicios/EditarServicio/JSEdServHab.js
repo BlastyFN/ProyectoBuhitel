@@ -15,6 +15,7 @@ var categorias;
 var IDHabitacion;
 var fase;
 window.addEventListener('load', function () {
+    syncDelay(3000);
     contador = 0;
     if (localStorage.EditarServicio == "true") {
         EditableID  = this.localStorage.IDServEd;
