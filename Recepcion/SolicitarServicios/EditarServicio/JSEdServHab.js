@@ -29,7 +29,7 @@ window.addEventListener('load', function () {
     }
     else{
         alert("ERROR");
-        window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
+        window.location.href="https://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
 
     }
 });
@@ -482,7 +482,7 @@ function completarActualizacion(precio) {
                     ordenarCarrito(EditableID, ProdID, Cant);
                 });
             alert(texto);
-            window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
+            window.location.href="https://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
         }
         else{
             console.log(texto);
