@@ -111,6 +111,8 @@ function obtenerServicio() {
 }
 
 function verificarNuevo(Lista) {
+    console.log(Lista);
+    console.log(Servicios);
     if (ActForz == true) {
         ActForz = false;
         Servicios = Lista;

@@ -139,7 +139,7 @@ btnCompletar.addEventListener("click", function () {
             this.value = 1;
             this.innerHTML = "Completado";
             cambiarEstatus(3);
-            window.location.reload()
+            window.location.reload();
 
             break;
     

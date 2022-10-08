@@ -14,7 +14,7 @@ else {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <? include('../../../Recursos/includeHead.php') ?>
-    <title>Vehículos</title>
+    <title>Servicio</title>
     <link rel="stylesheet" href="styleVisualizar.css">
     <link rel="stylesheet" href="../../../Recursos/estilos-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
