@@ -481,13 +481,11 @@ function completarActualizacion(precio) {
                     ordenarCarrito(EditableID, ProdID, Cant);
                 });
             alert(texto);
+            window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
         }
         else{
             console.log(texto);
         }
-     })
-     .then(function() {
-        window.location.href="http://corporativotdo.com/Recepcion/SolicitarServicios/ServiciosPrincipal/MenuServicios.php";
      })
      .catch(function(err) {
         console.log(err);
