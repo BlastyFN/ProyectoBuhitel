@@ -12,7 +12,7 @@ session_start();
         $personalId =  $_POST['personalID'];
 	    $bd = new database();
 
-        $res = $bd-> modificarHorariosPersonal($personalId,$
+        $res = $bd-> modificarHorariosPersonal($personalId,
         $inicioJornada,$finJornada,$inicioDescanso,$finDescanso);
         
         
