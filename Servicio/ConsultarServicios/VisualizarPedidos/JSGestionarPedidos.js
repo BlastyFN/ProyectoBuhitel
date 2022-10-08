@@ -213,7 +213,7 @@ btnConfirmar.addEventListener('click', function () {
         if (this.value == "2") {
             determinarColor("En Curso");
         }
-        if (this.value == "3") {
+        if (this.value == 3) {
             window.location.reload();
         }
      })
