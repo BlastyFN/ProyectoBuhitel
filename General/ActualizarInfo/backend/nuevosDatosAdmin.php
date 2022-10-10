@@ -11,7 +11,7 @@
         $Correo = $_POST['Correo'];
         $Telefono = $_POST['Telefono'];
         $Hotel = $_POST['Hotel'];
-        $NH = $bd->actualizarHotel($Hotel, $Hotel_ID);
+        $NH = $bd->actualizarHotel($Hotel, $HotelID);
         $res = $bd->consultaInfoPersonal($Usuario);
         if (isset($res[0])) {
             $datos = json_encode($res[0]);
