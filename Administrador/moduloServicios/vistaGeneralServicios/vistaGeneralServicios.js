@@ -3,11 +3,15 @@ console.log(tablaServicios);
 const fragment = document.createDocumentFragment();
 var enviarID = new FormData();
 const btnAdd = document.querySelector('.btnAdd');
+const OrdenDES = "ORDER BY Producto_Precio ASC";
 console.log(btnAdd);
 
 window.addEventListener('load', e => {
+    const Criterios = new FormData();
+    Criterios.append("Orden", OrdenDES);
     fetch('../backendModuloServicios/obtenerServicios.php' , {
-        method:'POST'
+        method:'POST',
+        body: Criterios
     }).then(function(response){
         if(response.ok){
          return response.json();
