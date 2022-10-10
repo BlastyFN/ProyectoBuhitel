@@ -13,6 +13,15 @@
             return $res;
         }
 
+        public function consultaInfoGeneral($Usuario){
+            $sql = $this->con->prepare("SELECT hotel.Hotel_Nombre, Personal_Nombre, Personal_APaterno, Personal_AMaterno, Personal_Correo, Personal_Telefono FROM personal
+            INNER JOIN hotel ON hotel.Hotel_ID = Personal_Hotel
+            WHERE BINARY Personal_ID = '".$Usuario."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
         public function actualizarCCorreo($Nombre, $APatenro, $AMaterno, $Correo, $Telefono, $Usuario){
             $sql = $this->con->prepare("UPDATE personal 
             SET Personal_Nombre='".$Nombre."', 
@@ -29,6 +38,14 @@
             Personal_APaterno='".$APatenro."', Personal_AMaterno='".$AMaterno."', 
             Personal_Telefono='".$Telefono."'
             WHERE BINARY Personal_ID='".$Usuario."'");
+            $sql->execute();
+            return true;
+        }
+
+        public function actualizarHotel($NombreHotel, $HotelID){
+            $sql = $this->con->prepare("UPDATE hotel 
+            SET Hotel_Nombre ='".$NombreHotel."'
+            WHERE BINARY Hotel_ID = '".$HotelID."'");
             $sql->execute();
             return true;
         }

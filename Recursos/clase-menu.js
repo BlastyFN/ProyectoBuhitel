@@ -20,7 +20,7 @@ const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/
  "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php", 
  "Administrador/moduloServicios/GestionarProductos/gestionarProductos.php",
  "Administrador/ActualizarInfo/ActualizarDatos/actualizarDatos.php",
- "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
+ "General/ActualizarInfo/ActualizarDatosAdmin/actualizarDatos.php"];
 
 const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
     "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", 
