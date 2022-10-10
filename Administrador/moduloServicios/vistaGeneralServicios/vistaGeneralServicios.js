@@ -3,10 +3,12 @@ console.log(tablaServicios);
 const fragment = document.createDocumentFragment();
 var enviarID = new FormData();
 const btnAdd = document.querySelector('.btnAdd');
-const OrdenDES = "ORDER BY Producto_Precio ASC";
+const OrdenDES = "ORDER BY Producto_Precio DESC";
 console.log(btnAdd);
 
-window.addEventListener('load', e => {
+window.addEventListener('load', cargarTabla);
+
+function cargarTabla() {
     const Criterios = new FormData();
     Criterios.append("Orden", OrdenDES);
     fetch('../backendModuloServicios/obtenerServicios.php' , {
@@ -41,7 +43,7 @@ window.addEventListener('load', e => {
             btnVer.classList.add('ver');
             btnVer.setAttribute('id', element.producto_id);
             btnVer.textContent = 'Ver';
-    
+            btnVer.addEventListener('click', interVerProducto);
             tdBoton.appendChild(btnVer);
             tr.appendChild(tdBoton);
 
@@ -50,22 +52,36 @@ window.addEventListener('load', e => {
         }     
         tablaServicios.appendChild(fragment);
     })
-})
+}
 
-document.addEventListener('DOMContentLoaded', () => {
 
-    tablaServicios.addEventListener('click', e =>{
-        if(e.target.classList.contains('ver')){
-            var productoID = e.target.id;
-            enviarID.append('id',productoID);
-            localStorage.setItem("productoID", productoID);
-            window.location.href="https://corporativotdo.com/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
+
+function interVerProducto() {
+    var productoID = this.id;
+    verProducto(productoID);
+}
+
+
+function verProducto(PID) {
+    enviarID.append('id',PID);
+    localStorage.setItem("productoID", PID);
+    window.location.href="https://corporativotdo.com/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
+}
+
+// document.addEventListener('DOMContentLoaded', () => {
+
+//     tablaServicios.addEventListener('click', e =>{
+//         if(e.target.classList.contains('ver')){
+//             var productoID = e.target.id;
+//             enviarID.append('id',productoID);
+//             localStorage.setItem("productoID", productoID);
+//             window.location.href="https://corporativotdo.com/Administrador/moduloServicios/verServicioEspecifico/verServicioEspecifico.php";
            
            
-        }
-})
+//         }
+//     })
 
-})
+// })
 
 btnAdd.addEventListener('click', e =>{
     window.location.href= "https://corporativotdo.com/Administrador/moduloServicios/registrarServicio/registrarServicio.php";
