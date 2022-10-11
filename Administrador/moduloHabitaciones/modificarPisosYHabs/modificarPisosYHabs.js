@@ -203,7 +203,10 @@ function obtenerPisos(){
             //Se crea el input que recibe el valor para la modificación
             const inputNumHabs = document.createElement('input');
             inputNumHabs.setAttribute("type","number");
-            obtenerHabsPorPiso(element.piso_ID,inputNumHabs);
+            
+            inputNumHabs.value = element[2].length();
+            antiguosValores.push(element[2].length());
+
             inputNumHabs.classList.add("campo");
             contInfoPiso.appendChild(inputNumHabs);
             //Se crea el botón de eliminar
