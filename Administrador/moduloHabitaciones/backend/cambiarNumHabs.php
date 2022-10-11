@@ -7,12 +7,12 @@
         // $pisoID = $_POST['pisoID'];
         $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $bd = new database();
-        
-        $antiguoNumHabs = $piso * 100 + (int)$antiguoNumHabs;
-        $nuevoNumHabs =$piso * 100 + (int)$nuevoNumHabs;
+    
         
         for($contPisos = 0; $contPisos < count($antiguoNumHabs); $contPisos++){
-            $pisoID = $bd-> obtenerPisoID($contPisos,$hotel);
+            $antiguoNumHabs = ($contPisos+1) * 100 + (int)$antiguoNumHabs;
+            $nuevoNumHabs =($contPisos+1) * 100 + (int)$nuevoNumHabs;
+            $pisoID = $bd-> obtenerPisoID(($contPisos+1),$hotel);
             $tipoHab = $bd->obtenerPrimerTipoHabID($hotel);
             if($nuevoNumHabs > $antiguoNumHabs){
                 for($cont = $antiguoNumHabs; $cont <= $nuevoNumHabs; $cont++){
