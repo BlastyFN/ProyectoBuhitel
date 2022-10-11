@@ -170,9 +170,18 @@ class database
 	}
 	
 	function eliminarHab($hab, $hotel){  //Añadir condicinal al hotel
-		$sql = $this->con->prepare("DELETE FROM habitacion 
+		$sqlGetId = $this->con->prepare("SELECT habitacion_id FROM habitacion 
 		INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID
 		WHERE tipohabitacion.tipohab_hotel = '".$hotel."' && habitacion_nombre ='".$hab."'" );
+		$sqlGetId->execute();
+		$res = $sqlGetId->fetchall();
+		if (count($res) > 0)
+		{
+			foreach ($res as $dato)
+			$id = $dato['habitacion_ID'];
+		}
+		$sql = $this->con->prepare("DELETE FROM habitacion 
+		WHERE habitacion_ID ='".$id."'" );
 		$sql->execute();
 		
 		return;
