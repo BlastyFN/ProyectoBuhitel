@@ -26,12 +26,17 @@
 .search form{
     display: flex;
     flex-direction: row;
-    width: 70%;
+    width: 80%;
     text-align: center;
     margin: auto auto;
     margin-top: 10px;
-    padding-left: 15% ;
+    padding-left: 10% ;
     
+}
+
+.search h1{
+    color: #59114D;
+    margin: 10px 10px;
 }
 
 .tablaPersonl{
@@ -84,3 +89,69 @@ table {
     color: #fff;
     margin: 50px 10px;
 }
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 5%;
+    height: 30px;
+    margin: 10px 10px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: #2196F3;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: rgb(209, 81, 81);
+    
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(200%);
+    -ms-transform: translateX(200%);
+    transform: translateX(200%);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 15px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

@@ -19,12 +19,20 @@ session_start();
     <section id="header-menu" class="header-menu">
 
     </section>
-
+<br><br><br>
     <section class="search">
-        <form action="GET">
-            <input type="text" class="searchElement" placeholder="busca Servicios, categorias..." id="">
-            <button type="submit" class="searchButton">Buscar</button>
+        <form >
+        <input type="text" class="searchElement" placeholder="busca productos, categorias..." id="barraBusqueda">
+        <label class="switch">
+            <input type="checkbox" id="cbox">
+            <span class="slider"></span>
+        </label>
+        <h1 id="indicadorPrecio">Mayor precio</h1>
+
+        <button type="submit" class="searchButton" id="btnBuscar">Buscar</button>
         </form>
+        
+
 
     </section>
 

@@ -73,7 +73,7 @@ class database
 
 	function obtenerServicios($hotel, $Orden){
 		$sql = $this->con->prepare("SELECT producto.producto_id, producto.producto_nombre, 
-		categoriaproductos.catprod_categoria, producto_existencia FROM producto INNER JOIN categoriaproductos ON 
+		categoriaproductos.catprod_categoria, producto_existencia, producto_precio FROM producto INNER JOIN categoriaproductos ON 
 		producto.producto_categoria = categoriaproductos.CatProd_ID WHERE producto_hotel = '".$hotel."' ".$Orden."");
 		$sql->execute();
 		$res = $sql->fetchall();
