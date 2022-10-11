@@ -76,8 +76,8 @@ class database
 		$sqltest->execute();
 		$res = $sqltest->fetchall();
 		if (count($res) < 1){
-			$sql = $this->con->prepare( "INSERT INTO habitacion (habitacion_piso, habitacion_nombre, habitacion_tipo) 
-	    	VALUES ('".$pisoID."','".$hab."','".$tipoHab."')" );
+			$sql = $this->con->prepare( "INSERT INTO habitacion (habitacion_piso, habitacion_nombre, habitacion_alias, habitacion_tipo) 
+	    	VALUES ('".$pisoID."','".$hab."','".$hab."','".$tipoHab."')" );
 	    	$sql->execute();
     	}
 		return "se ha realizado con exito la configuración";
@@ -110,8 +110,9 @@ class database
 		return "se ha modificado la habitación " . $nombre. " correctamente";
 	}
 
-	function cambiarTipoHab($habID, $tipoID){
-		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Tipo = ".$tipoID."
+	function cambiarTipoHab($habID, $tipoID, $nombreHab){
+		$sql = $this->con->prepare("UPDATE habitacion SET Habitacion_Tipo = ".$tipoID.",
+		habitacion_alias = '".$nombreHab."' 
 		WHERE Habitacion_ID = ".$habID);
 		$sql->execute();
 		return "Se ha cambiado el tipo de habitacion";

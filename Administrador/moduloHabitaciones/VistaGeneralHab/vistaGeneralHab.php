@@ -48,7 +48,7 @@
             <a href="#" id="cerrarPopup" class="cerrarPopup">
             <i class="fa-regular fa-circle-xmark"></i>
             </a>
-            <h4 class="nombreHab">Habitación 101</h4>
+            <input type="text" class="nombreHab">
             Tipo de habitación <select name="tipoHabs" id="opcDesplegable" class="popupContent">
 
                 

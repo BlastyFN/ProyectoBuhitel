@@ -204,7 +204,8 @@ btnGuardar.addEventListener('click', (e)=>{
     var hab = obtenerObjetoHab(habID);
     const modificarHabTipo = new FormData();
     modificarHabTipo.append("habID",Number(habID));
-    modificarHabTipo.append("tipoID",Number(opciones.value))
+    modificarHabTipo.append("tipoID",Number(opciones.value));
+    modificarHabTipo.append("nombreHab",nombreHab.value);
     
     fetch('../backend/cambiarHabTipo.php' , {
         method:'POST',body:modificarHabTipo
@@ -254,7 +255,7 @@ const seleccionarHab = e =>{
         habID = e.target.parentElement.id;
         var hab = obtenerObjetoHab(habID);
         console.log(hab);
-        nombreHab.textContent = "Habitación " + hab.habNombre;
+        nombreHab.value = hab.habNombre;
 
         if(hab.estado == "1"){
             btnDesactivar.textContent = "Deshabilitar";
@@ -298,7 +299,7 @@ function obtenerPisosHotel(){
         for (const piso of pisosHotel) {
             resuArray = [];
             for(hab of piso[2]){
-                nuevaHab = new Habitacion(hab.habitacion_ID, hab.habitacion_nombre,
+                nuevaHab = new Habitacion(hab.habitacion_ID, hab.habitacion_alias,
                     hab.habitacion_tipo, hab.TipoHab_Nombre, hab.habitacion_estado
                     );
                 resuArray.push(nuevaHab);          
