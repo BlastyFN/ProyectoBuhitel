@@ -3,11 +3,11 @@ var listaOpciones = [];
 var listaLinks = [];
 
 const opcionesAdministrador = ["Pagina Principal", 
-    "Configuración de habitaciones",
-    "Configuracion de usuarios",
-    "Configuracion de servicios", 
+    "Habitaciones",
+    "Usuarios",
+    "Servicios", 
     "Reportes de usuarios",
-    "Reportes de análisis de sistemas",
+    "Estadísticas",
     "Gestionar productos",
     "Modificar Pregunta",
      "Modificar mi información"]
