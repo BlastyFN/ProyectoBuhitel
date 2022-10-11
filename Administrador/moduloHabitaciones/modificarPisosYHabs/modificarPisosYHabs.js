@@ -14,12 +14,16 @@ document.addEventListener('click',function(e){
         let inputs = Array.prototype.slice.call(document.getElementsByClassName("campo"), 0);
         console.log(antiguosValores);
         console.log(inputs);
-        var values = new Array();
-        for(var cont = 0; cont < IDpisos.length;cont++){
-            if (antiguosValores[cont] != inputs[cont].value ){
-                pedirCambio(antiguosValores[cont],inputs[cont].value,IDpisos[cont],cont);     
-            }
+        var nuevosValores = new Array();
+        for (const input of inputs) {
+            nuevosValores.push(input.value);
         }
+        pedirCambioPisos(antiguosValores, nuevosValores);
+        // for(var cont = 0; cont < IDpisos.length;cont++){
+        //     if (antiguosValores[cont] != inputs[cont].value ){
+        //         pedirCambio(antiguosValores[cont], inputs[cont].value , IDpisos[cont] ,cont);     
+        //     }
+        // }
     }
  });
 
@@ -111,11 +115,36 @@ function eliminarPiso(pisoID){
     });
  }
 
- function pedirCambio(antiguoNumHabs,nuevoNumHabs,pisoID,cont){
+//  function pedirCambio(antiguoNumHabs,nuevoNumHabs,pisoID,cont){
+//     const cambioNumHabs = new FormData();
+//     cambioNumHabs.append("antiguoNumHabs",antiguoNumHabs);
+//     cambioNumHabs.append("nuevoNumHabs",nuevoNumHabs);
+//     cambioNumHabs.append("pisoID",pisoID);
+//     fetch("../backend/cambiarNumHabs.php", {
+//         method:'POST', body: cambioNumHabs
+//     }).then(function(response){
+//         if(response.ok){
+//             return response.text();
+//         } else {
+//                throw "Error en la llamada Ajax"
+//         }      
+//     }).then(function(res){
+//         antiguosValores[cont]=nuevoNumHabs;
+//         Swal.fire({
+//             position: 'center',
+//             icon: 'success',
+//             title: 'Se han realizado los cambios',
+//             showConfirmButton: false,
+//             timer: 2500
+//         });
+        
+//     });
+//  }
+
+ function pedirCambioPisos(antiguoNumHabs,nuevoNumHabs){
     const cambioNumHabs = new FormData();
     cambioNumHabs.append("antiguoNumHabs",antiguoNumHabs);
     cambioNumHabs.append("nuevoNumHabs",nuevoNumHabs);
-    cambioNumHabs.append("pisoID",pisoID);
     fetch("../backend/cambiarNumHabs.php", {
         method:'POST', body: cambioNumHabs
     }).then(function(response){
@@ -125,7 +154,7 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
-        antiguosValores[cont]=nuevoNumHabs;
+        console.log(res);
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -136,8 +165,6 @@ function eliminarPiso(pisoID){
         
     });
  }
-
-
 function obtenerPisos(){
     this.preventDefault;
 
