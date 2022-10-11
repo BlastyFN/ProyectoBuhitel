@@ -92,6 +92,7 @@ class Habitacion {
         divHab.setAttribute("id",this.habID);
         const nombreHab = document.createElement('h4');
         nombreHab.classList.add('inside-item');
+        nombreHab.id = "nombreHab" + this.habID;
         nombreHab.textContent = "Habitación " + this.habNombre;
         divHab.appendChild(nombreHab);
 
@@ -220,6 +221,7 @@ btnGuardar.addEventListener('click', (e)=>{
         }
     }).then((text)=>{
         var nombreTipoHab = opciones.options[opciones.selectedIndex].text;
+        document.getElementById('nombreHab'+habID).textContent = nombreHab.value;
         document.getElementById('tipoHab'+habID).textContent = nombreTipoHab;
         hab.habTipoNombre = nombreTipoHab;
         Swal.fire({
