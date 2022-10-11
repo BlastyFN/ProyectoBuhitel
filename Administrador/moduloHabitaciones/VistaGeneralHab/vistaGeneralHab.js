@@ -14,7 +14,7 @@ const busqueda = document.querySelector('.searchElement');
 const contenedorPisos = document.querySelector('.vistaHabs');
 const btnDesactivar = document.querySelector('.desactivar');
 const btnGuardar = document.querySelector('.guardar');
-var tiposHabs;
+var tiposHabs; 
 const fragment = document.createDocumentFragment();
 
 var habID;
