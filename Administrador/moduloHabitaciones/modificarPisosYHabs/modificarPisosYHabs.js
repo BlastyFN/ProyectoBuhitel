@@ -17,8 +17,7 @@ document.addEventListener('click',function(e){
         var values = new Array();
         for(var cont = 0; cont < IDpisos.length;cont++){
             if (antiguosValores[cont] != inputs[cont].value ){
-                pedirCambio(antiguosValores[cont],inputs[cont].value,IDpisos[cont]);
-                antiguosValores[cont]=inputs[cont].value;
+                pedirCambio(antiguosValores[cont],inputs[cont].value,IDpisos[cont],cont);     
             }
         }
     }
@@ -112,7 +111,7 @@ function eliminarPiso(pisoID){
     });
  }
 
- function pedirCambio(antiguoNumHabs,nuevoNumHabs,pisoID){
+ function pedirCambio(antiguoNumHabs,nuevoNumHabs,pisoID,cont){
     const cambioNumHabs = new FormData();
     cambioNumHabs.append("antiguoNumHabs",antiguoNumHabs);
     cambioNumHabs.append("nuevoNumHabs",nuevoNumHabs);
@@ -126,6 +125,7 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
+        antiguosValores[cont]=input.nuevoNumHabs;
         Swal.fire({
             position: 'center',
             icon: 'success',
