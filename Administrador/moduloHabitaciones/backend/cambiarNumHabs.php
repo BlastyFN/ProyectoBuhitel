@@ -18,16 +18,16 @@
 
             if($nuevoNum > $antiguoNum){
                 for($cont = $antiguoNum; $cont <= $nuevoNum; $cont++){
-                    
+                    if($cont!=($contPisos+1)*100){
                         $bd->registrarHab($cont,$pisoID,$tipoHab);
-                    
+                    }
                 }
                 echo "Se han agregado ". ($nuevoNum - $antiguoNum). " habitaciones";
             } else{
                 for($cont = $antiguoNum; $cont > $nuevoNum; $cont--){
-                    
+                    if($cont!=($contPisos+1)*100){
                         $bd->eliminarHab((string)$cont,$hotel);
-                    
+                    }
                 }
                 echo "Se han eliminado ". $antiguoNum - $nuevoNum. " habitaciones";
             }
