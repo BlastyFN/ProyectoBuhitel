@@ -169,8 +169,10 @@ class database
 		return $res;
 	}
 	
-	function eliminarHab($hab){  //Añadir condicinal al hotel
-		$sql = $this->con->prepare("DELETE FROM habitacion WHERE habitacion_nombre =  $hab");
+	function eliminarHab($hab, $hotel){  //Añadir condicinal al hotel
+		$sql = $this->con->prepare("DELETE FROM habitacion 
+		INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID
+		WHERE tipohabitacion.tipohab_hotel = $hotel && habitacion_nombre =  $hab" );
 		$sql->execute();
 		
 		return;

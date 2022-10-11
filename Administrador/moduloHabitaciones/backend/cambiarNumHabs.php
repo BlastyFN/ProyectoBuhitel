@@ -22,7 +22,7 @@
         } else{
             for($cont = $antiguoNumHabs; $cont > $nuevoNumHabs; $cont--){
 			    if($piso-$cont!=0){
-                    $bd->eliminarHab($cont);
+                    $bd->eliminarHab($cont,$hotel);
                 }
             }
             echo "Se han eliminado ". ($antiguoNumHabs - $nuevoNumHabs). " habitaciones";
