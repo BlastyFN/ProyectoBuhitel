@@ -204,8 +204,8 @@ function obtenerPisos(){
             const inputNumHabs = document.createElement('input');
             inputNumHabs.setAttribute("type","number");
             
-            inputNumHabs.value = element[2].length();
-            antiguosValores.push(element[2].length());
+            inputNumHabs.value = element[2].length;
+            antiguosValores.push(element[2].length);
 
             inputNumHabs.classList.add("campo");
             contInfoPiso.appendChild(inputNumHabs);
