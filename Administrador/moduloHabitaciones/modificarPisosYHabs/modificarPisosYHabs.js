@@ -18,6 +18,8 @@ document.addEventListener('click',function(e){
         for (const input of inputs) {
             nuevosValores.push(input.value);
         }
+        console.log(antiguosValores);
+        console.log(nuevosValores);
         pedirCambioPisos(antiguosValores, nuevosValores);
         // for(var cont = 0; cont < IDpisos.length;cont++){
         //     if (antiguosValores[cont] != inputs[cont].value ){
@@ -143,8 +145,8 @@ function eliminarPiso(pisoID){
 
  function pedirCambioPisos(antiguoNumHabs,nuevoNumHabs){
     const cambioNumHabs = new FormData();
-    cambioNumHabs.append("antiguoNumHabs",antiguoNumHabs);
-    cambioNumHabs.append("nuevoNumHabs",nuevoNumHabs);
+    cambioNumHabs.append("antiguoNumHabs",JSON.stringify(antiguoNumHabs));
+    cambioNumHabs.append("nuevoNumHabs",JSON.stringify(nuevoNumHabs));
     fetch("../backend/cambiarNumHabs.php", {
         method:'POST', body: cambioNumHabs
     }).then(function(response){

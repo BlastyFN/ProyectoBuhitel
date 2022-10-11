@@ -2,8 +2,8 @@
     session_start();
     include "bd.php";
     if(isset($_POST['antiguoNumHabs']) && isset($_POST['nuevoNumHabs'])){
-        $antiguoNumHabs = $_POST['antiguoNumHabs'];
-        $nuevoNumHabs = $_POST['nuevoNumHabs'];
+        $antiguoNumHabs =json_decode($_POST['antiguoNumHabs']);
+        $nuevoNumHabs = json_decode( $_POST['nuevoNumHabs']);
         // $pisoID = $_POST['pisoID'];
         $hotel = $_SESSION['sesionPersonal']['Hotel'];
         $bd = new database();
