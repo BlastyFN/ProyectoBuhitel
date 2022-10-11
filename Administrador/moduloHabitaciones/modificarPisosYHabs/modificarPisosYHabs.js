@@ -88,6 +88,7 @@ function eliminarPiso(pisoID){
             timer: 2500
         });
         IDpisos.pop();
+        window.location.reload();
         
     });
 }
