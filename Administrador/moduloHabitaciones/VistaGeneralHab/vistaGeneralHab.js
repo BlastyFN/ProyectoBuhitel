@@ -206,6 +206,9 @@ btnGuardar.addEventListener('click', (e)=>{
     modificarHabTipo.append("habID",Number(habID));
     modificarHabTipo.append("tipoID",Number(opciones.value));
     modificarHabTipo.append("nombreHab",nombreHab.value);
+    console.log(hab);
+    console.log(opciones.value);
+    console.log(nombreHab.value);
     
     fetch('../backend/cambiarHabTipo.php' , {
         method:'POST',body:modificarHabTipo
