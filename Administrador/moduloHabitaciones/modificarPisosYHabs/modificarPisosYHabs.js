@@ -125,7 +125,7 @@ function eliminarPiso(pisoID){
                throw "Error en la llamada Ajax"
         }      
     }).then(function(res){
-        antiguosValores[cont]=input.nuevoNumHabs;
+        antiguosValores[cont]=nuevoNumHabs;
         Swal.fire({
             position: 'center',
             icon: 'success',
