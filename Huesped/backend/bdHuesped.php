@@ -282,6 +282,17 @@
             return $res;
         }
 
+        public function consultarCargos($Hoy, $Habitacion){
+            $sql = $this->con->prepare("SELECT Cargo_ID, Cargo_Concepto, Cargo_Monto FROM cargo
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = Cargo_Reservacion
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID
+            WHERE BINARY habitacionreservada.HabReservada_Habitacion = '".$Habitacion."'
+            AND BINARY '".$Hoy."' BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
         public function consultarLimpiezasEnCurso($Hoy, $Habitacion){
             $sql = $this->con->prepare("SELECT Limpieza_ID, Limpieza_Usuario, Limpieza_HoraInicio, Limpieza_HoraFin FROM limpieza 
             WHERE BINARY Limpieza_Habitacion = '".$Habitacion."'
