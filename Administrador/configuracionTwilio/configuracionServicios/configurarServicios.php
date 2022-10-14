@@ -32,7 +32,24 @@ else{
                 <input type="checkbox" id="cboxGeneral">
                 <span class="slider"></span>
             </label>
-            <button type="submit" class="enviarInfo" id="btnActualizar">Modificar</button>
+            <br><br>
+            <h1>Servicios</h1>
+            <label class="switch">
+                <input type="checkbox" id="cboxServicio">
+                <span class="slider"></span>
+            </label>
+            <br><br>
+            <h1>Limpiezas</h1>
+            <label class="switch">
+                <input type="checkbox" id="cboxLimpiezas">
+                <span class="slider"></span>
+            </label>
+            <br><br>
+            <h1>Valet Parking</h1>
+            <label class="switch">
+                <input type="checkbox" id="cboxValet">
+                <span class="slider"></span>
+            </label>
         </form>
 
         

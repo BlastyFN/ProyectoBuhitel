@@ -5,7 +5,7 @@
     width: 35%;
     text-align: center;
     margin: auto auto;
-    margin-top: 60px;
+    margin-top: 30px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -34,7 +34,7 @@ h1 {
     font-size: 25px;
     width: 50%;
     margin: auto auto;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .enviarInfo {
@@ -57,10 +57,10 @@ button:disabled{
 .switch {
     position: relative;
     display: inline-block;
-    width: 10%;
+    width: 34%;
     height: 34px;
-    margin-left: 45%;
-    margin-right: 45%;
+    margin-left: 33%;
+    margin-right: 33%;
   }
   
   /* Hide default HTML checkbox */
@@ -104,9 +104,9 @@ button:disabled{
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(230%);
-    -ms-transform: translateX(230%);
-    transform: translateX(230%);
+    -webkit-transform: translateX(485%);
+    -ms-transform: translateX(485%);
+    transform: translateX(485%);
   }
   
   /* Rounded sliders */

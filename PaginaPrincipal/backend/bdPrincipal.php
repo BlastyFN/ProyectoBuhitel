@@ -41,6 +41,10 @@
             CatReporte_Prioridad) 
             VALUES ('".$HID."', 'Spam', '2')");
           $sql->execute();
+
+          $sql = $this->con->prepare("INSERT INTO twilio (Twilio_Hotel, Twilio_PreguntaAbierta) 
+            VALUES ('".$HID."', '¿Cuál es su opinión general del hotel?')");
+          $sql->execute();
             return 2;
         }
 
