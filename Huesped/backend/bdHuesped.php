@@ -19,6 +19,14 @@
             return $res;
         }
 
+        public function consultarStatusTwilio($Campo, $Hotel){
+            $sql = $this->con->prepare("SELECT ".$Campo" FROM twilio
+            WHERE BINARY Twilio_Hotel = '".$Hotel."'");
+            $sql->execute();
+            $res = $sql->fetchall();
+            return $res;
+        }
+
         public function consultarFecha($Habitacion, $Hoy){
             $sql = $this->con->prepare("SELECT reservacion.Reservacion_CheckOut, HabReservada_ID FROM habitacionreservada
             INNER JOIN habitacion ON habitacion.Habitacion_ID = HabReservada_Habitacion

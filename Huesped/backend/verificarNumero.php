@@ -26,7 +26,13 @@
         $NHuesped = $res[0]['Huesped_Nombre'];
         $NHabitacion = $res[0]['Habitacion_Nombre'];
         $HabitacionID = $res[0]['Habitacion_ID'];
+        $HotelID = $bd->consultarHotel($HabitacionID);
+        $res2 = $bd->consultarStatusTwilio("Twilio_ChatBot", $HotelID);
+        if ($res2[0][0] == 0) {
+            $status = "disabled";
+        }
     }
+    
     //CREAR JSON PARA POSTEAR
     $arreglo = array(
         'registrado' => $status,
