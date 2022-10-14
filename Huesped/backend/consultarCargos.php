@@ -29,7 +29,7 @@
 
     //CREAR JSON PARA POSTEAR
     $arreglo = array(
-        'statlimp' => $status,
+        'cargstatus' => $status,
         'cargos' => $StringCargos
     );
     $JSONNUMERO = json_encode($arreglo);

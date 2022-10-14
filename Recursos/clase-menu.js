@@ -8,6 +8,7 @@ const opcionesAdministrador = ["Pagina Principal",
     "Servicios", 
     "Reportes de usuarios",
     "Estadísticas",
+    "Twilio",
     "Gestionar productos",
     "Modificar Pregunta",
      "Modificar mi información"]
@@ -17,13 +18,14 @@ const linksAdministrador = ["Administrador/paginaPrincipalAdmin/paginaPrincipal/
  "Administrador/moduloPersonal/vistaGeneralUsuarios/vistaGeneralUsuarios.php", 
  "Administrador/moduloServicios/vistaGeneralServicios/vistaGeneralServicios.php",
  "Administrador/moduloReportesUsuarios/vistaGeneralReportesUsuarios/vistaGeneralReportesUsuarios.php", 
- "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php", 
+ "Administrador/moduloReportesSistema/vistaReportesSistema/vistaReportesSistema.php",
+ "Administrador/configuracionTwilio/configuracionServicios/configurarServicios.php",
  "Administrador/moduloServicios/GestionarProductos/gestionarProductos.php",
  "Administrador/ActualizarInfo/ActualizarDatos/actualizarDatos.php",
  "General/ActualizarInfo/ActualizarDatosAdmin/actualizarDatos.php"];
 
-const opcionesRecepcion = ["Pagina Principal", "Consultar Reservaciones","Crear Reservaciones",
-    "Consultar servicios", "Servicios de limpieza","Servicio a habitación","Servicio de valet parking", 
+const opcionesRecepcion = ["Pagina Principal", "Habitaciones","Reservar",
+    "Servicios", "Limpieza","Servicio a la habitación","Valet", 
     "Seguimiento de reportes",
     "Modificar mi información"];
 const linksRecepcion = ["Recepcion/Principal/PaginaPrincipal/Inicio.php", 
@@ -36,8 +38,8 @@ const linksRecepcion = ["Recepcion/Principal/PaginaPrincipal/Inicio.php",
     "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
      "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
 
-const opcionesValet = ["Gestionar Vehículos","Visualizar Vehículos", "Seguimiento de reportes", "Modificar mi información"];
-const linksValet = ["ValetParking/Vehiculos/GestionarVehículos", 
+const opcionesValet = ["Solicitudes","Registrar", "Seguimiento de reportes", "Modificar mi información"];
+const linksValet = ["ValetParking/Vehiculos/GestionarVehículos/GestionVehiculos.php", 
 "\ValetParking\Vehiculos\VisualizarVehiculos\AgregarVehiculos.php",
 "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
 const opcionesServicio = ["Gestionar pedidos","Gestionar productos", "Seguimiento de reportes", "Modificar mi información"];
@@ -45,7 +47,7 @@ const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarP
 "Servicio/ConsultarServicios/GestionarProductos/gestionarProductos.php", 
 "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
 "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"];
-const opcionesLimpieza = ["Gestionar limpiezas", "Seguimiento de reportes", "Modificar mi información"];
+const opcionesLimpieza = ["Limpiezas", "Seguimiento de reportes", "Modificar mi información"];
 const linksLimpieza = ["Limpieza/GestionLimpiezas/PaginaPrincipalLimpieza/PaginaPrincipalLimpieza.php",
 "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php",
  "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
