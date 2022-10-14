@@ -1,21 +1,13 @@
 <?php 
     session_start();
-    include "bdGeneral.php";
+    include "bdTwilio.php";
     if (isset($_POST['Pregunta'])) {
         $bd = new database();
         $Hotel = $_SESSION['sesionPersonal']['Hotel'];
-        $Pregunta = $_POST['Pregunta'];
-
-        $res1 = $bd->consultarPregunta($Hotel);
-        if (isset($res1[0])) {
-            $res = $bd->actualizarPregunta($Pregunta, $Hotel);
-            echo $res;
-        }
-        else{
-            $res = $bd->insertarPregunta($Pregunta, $Hotel);
-            echo $res;
-        }
-    
+        $Campo = $_POST['Campo'];
+        $Valor = $_POST['Valor'];
+        $res = $bd->actualizarEstado($Hotel, $Campo, $Valor);
+        echo $res;
     }
     else{
         echo "0";

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "bdGeneral.php";
+    include "bdTwilio.php";
     if (isset($_SESSION['sesionPersonal'])) {
         $bd = new database();
         $Hotel = $_SESSION['sesionPersonal']['Hotel'];
