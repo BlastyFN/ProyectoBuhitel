@@ -20,7 +20,7 @@
         }
 
         public function consultarStatusTwilio($Campo, $Hotel){
-            $sql = $this->con->prepare("SELECT ".$Campo" FROM twilio
+            $sql = $this->con->prepare("SELECT ".$Campo." FROM twilio
             WHERE BINARY Twilio_Hotel = '".$Hotel."'");
             $sql->execute();
             $res = $sql->fetchall();

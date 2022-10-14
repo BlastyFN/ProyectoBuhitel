@@ -28,7 +28,7 @@
         $HabitacionID = $res[0]['Habitacion_ID'];
         $HotelID = $bd->consultarHotel($HabitacionID);
         $res2 = $bd->consultarStatusTwilio("Twilio_ChatBot", $HotelID);
-        if ($res2[0][0] == 0) {
+        if ($res2[0][0] == "0") {
             $status = "disabled";
         }
     }
