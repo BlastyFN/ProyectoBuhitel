@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include "bdTwilio.php";
-    if (isset($_POST['Pregunta'])) {
+    if (isset($_POST['Campo'])) {
         $bd = new database();
         $Hotel = $_SESSION['sesionPersonal']['Hotel'];
         $Campo = $_POST['Campo'];
