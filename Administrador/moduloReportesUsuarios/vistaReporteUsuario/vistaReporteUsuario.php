@@ -103,6 +103,7 @@ session_start();
     <script src="../../../Recursos/clase-menu.js"></script>
     
     <script src="../../../Recursos/menuTransition.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="vistaReporteUsuario.js"></script>
 
 

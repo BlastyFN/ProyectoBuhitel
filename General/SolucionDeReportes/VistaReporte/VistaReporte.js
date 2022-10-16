@@ -79,51 +79,69 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
-function iniciarEnBd(){
-    const nombreCat = new FormData();
-    nombreCat.append('reporte', reporteID)
-    fetch('../BackendReportes/iniciarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Se ha iniciado el seguimiento del reporte',
-            showConfirmButton: false,
-            timer: 2800
-        }).then(()=>{
-            window.location.reload();
-        });  
-    })
-}
-
-
-function completarEnBd(){
-    const nombreCat = new FormData();
-
-    nombreCat.append('reporte', reporteID)
-    fetch('../BackendReportes/completarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        
-    })
-}
-
-
-
 const contenidoChat = (user) => {
+
+    function iniciarEnBd(){
+        const nombreCat = new FormData();
+        nombreCat.append('reporte', reporteID)
+        fetch('../BackendReportes/iniciarReporte.php' , {
+            method:'POST', body:nombreCat
+        }).then(function(response){
+            if(response.ok){
+            return response.text();
+            } else {
+                throw "Error en la llamada Ajax"
+            }
+        }).then(function(texto){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Se ha iniciado el seguimiento del reporte',
+                showConfirmButton: false,
+                timer: 2800
+            }).then(()=>{
+                firebase.firestore().collection("status").add({
+                    mensaje: localStorage.Nombre + " ha iniciado el seguimiento",
+                    uid: user.uid,
+                    fecha: Date.now()
+                })
+                .catch(e => console.log(e)); 
+                window.location.reload();
+            });  
+        })
+    }
+
+    function completarEnBd(){
+        const nombreCat = new FormData();
+
+        nombreCat.append('reporte', reporteID)
+        fetch('../BackendReportes/completarReporte.php' , {
+            method:'POST', body:nombreCat
+        }).then(function(response){
+            if(response.ok){
+            return response.text();
+            } else {
+                throw "Error en la llamada Ajax"
+            }
+        }).then(function(texto){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'has completado el reporte',
+                showConfirmButton: false,
+                timer: 2800
+            }).then(()=>{
+                firebase.firestore().collection("status").add({
+                    mensaje: localStorage.Nombre + " ha completado el reporte",
+                    uid: user.uid,
+                    fecha: Date.now()
+                })
+                .catch(e => console.log(e)); 
+                window.location.reload();
+            });  
+        })
+    }
+
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
         console.log(mensajeChat.value);

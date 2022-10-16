@@ -22,6 +22,30 @@ h1{
     
 }
 
+.iniciar{
+    background: #427AA1;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.completado{
+    background: #679436;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+
 
 .contenedorMensajes::-webkit-scrollbar {
     -webkit-appearance: none;

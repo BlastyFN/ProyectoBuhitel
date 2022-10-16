@@ -8,5 +8,6 @@
     $bd = new database();
     $idCategoria = $bd->obtenerCategoriaID($hotel,$nombreCat);
     $bd->marcarComoSpam($idCategoria,$idReporte);
+    $bd->completarReporte($idReporte);
 
 ?>

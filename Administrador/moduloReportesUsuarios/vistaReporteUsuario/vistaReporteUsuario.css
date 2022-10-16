@@ -16,7 +16,7 @@ h1{
 
 
 .contenedorMensajes{
-    height: 70vh;
+    height: 50vh;
     overflow-y: scroll;
     
     
@@ -150,7 +150,7 @@ h1{
 
 .acciones{
     display: none;
-    width: 80%;
+    margin-top: 3rem;
     height: 100px;
 }
 
@@ -162,6 +162,8 @@ h1{
     margin-top: 40px;
     font-size: 20px;
     color: #fff;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 .activo{

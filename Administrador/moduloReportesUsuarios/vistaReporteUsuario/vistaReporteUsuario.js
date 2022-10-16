@@ -70,7 +70,16 @@ btnSpam.addEventListener('click', ()=> {
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se ha marcado como spam',
+            showConfirmButton: false,
+            timer: 2800
+        }).then(()=>{
         
+            window.location.reload();
+        });  
     })
 })
 
@@ -89,7 +98,16 @@ function completarEnBd(){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se ha completado el reporte',
+            showConfirmButton: false,
+            timer: 2800
+        }).then(()=>{
         
+            window.location.reload();
+        });  
     })
 }
 

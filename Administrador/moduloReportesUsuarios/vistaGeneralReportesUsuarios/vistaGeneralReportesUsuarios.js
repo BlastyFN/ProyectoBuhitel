@@ -100,5 +100,17 @@ firebase.firestore().collection("message").orderBy('fecha')
     })           
 });
 
+firebase.firestore().collection("status").orderBy('fecha')
+.onSnapshot(query => {
+    query.forEach(notif =>{
+        if(notif.data().uid === user.uid){
+
+        }
+        else {
+            alert(notif.data().mensaje);
+            notif.ref.delete();
+        }
+    })           
+});
 
 }
