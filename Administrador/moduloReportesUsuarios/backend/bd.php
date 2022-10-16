@@ -8,8 +8,9 @@ class database
 		$this->con = new PDO ('mysql:host = localhost;dbname=corpo206_buhitel','corpo206_gestorbuhi','ProyectoBuhitel2022');	
 	}
 
-	function obtenerListaPersonal($tipo){
-		$sql = $this->con->prepare("SELECT * FROM personal WHERE Personal_Tipo = '".$tipo."'");
+	function obtenerListaPersonal($hotel, $tipo){
+		$sql = $this->con->prepare("SELECT * FROM personal 
+		WHERE Personal_Tipo = '".$tipo."' AND Personal_Hotel = '".$hotel."'");
 		$sql->execute();
 		$res = $sql->fetchall();
 			
@@ -105,7 +106,8 @@ class database
 
 	function asignarSeguimiento($personal, $servicio, $reporteID){
 		$sql = $this->con->prepare("UPDATE reporte SET  Reporte_Usuario =  '".$personal."',
-		Reporte_Servicio =  '".$servicio."' where reporte_ID =  '".$reporteID."';");
+		Reporte_Servicio =  '".$servicio."', Reporte_Estatus = 2
+		where reporte_ID =  '".$reporteID."' ;");
 			$sql->execute();
 			return "0";
 	}

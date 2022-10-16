@@ -9,7 +9,9 @@ class database
 	}
 
 	function crearCategoria($hotel,$categoria){
-		$sqltest = $this->con->prepare("SELECT * FROM categoriaproductos  WHERE catprod_categoria = '".$categoria."'");
+		$sqltest = $this->con->prepare("SELECT * FROM categoriaproductos  
+		WHERE catprod_categoria = '".$categoria."'
+		AND catprod_hotel = '".$hotel."' ");
 		$sqltest->execute();
 		$res = $sqltest->fetchall();
 		if (count($res) < 1){
