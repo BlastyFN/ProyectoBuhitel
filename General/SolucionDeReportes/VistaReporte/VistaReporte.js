@@ -32,7 +32,7 @@ window.addEventListener('load', e => {
             reporteUsuario = element.Reporte_usuario;
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
-            
+            console.log(element.Reporte_Estatus);
             if(element.Reporte_Estatus == "2"){
                 marcarReporteVisto(reporteID);
             }
