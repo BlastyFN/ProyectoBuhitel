@@ -51,7 +51,7 @@ class database
 
 	function iniciarReporte($reporte_id){
 		$sql = $this->con->prepare("UPDATE reporte 
-		SET Reporte_Estatus = '3' 
+		SET Reporte_Estatus = '4' 
 		WHERE Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();

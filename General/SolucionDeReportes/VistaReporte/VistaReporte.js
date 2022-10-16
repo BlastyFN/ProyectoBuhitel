@@ -81,7 +81,6 @@ firebase.auth().onAuthStateChanged(user => {
 
 function iniciarEnBd(){
     const nombreCat = new FormData();
-
     nombreCat.append('reporte', reporteID)
     fetch('../BackendReportes/iniciarReporte.php' , {
         method:'POST', body:nombreCat
@@ -92,7 +91,15 @@ function iniciarEnBd(){
             throw "Error en la llamada Ajax"
         }
     }).then(function(texto){
-        
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se ha iniciado el seguimiento del reporte',
+            showConfirmButton: false,
+            timer: 2800
+        }).then(()=>{
+            window.location.reload();
+        });  
     })
 }
 
@@ -171,6 +178,7 @@ const contenidoChat = (user) => {
     })
 
     btnIniciar.addEventListener('click', ()=>{
+        console.log("click en iniciar");
         iniciarEnBd();
     })
 
