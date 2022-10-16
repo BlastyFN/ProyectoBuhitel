@@ -3,11 +3,11 @@
     session_start();
     if(isset($_POST['tipo'])){
 
-        //$hotel = $_SESSION['sesionPersonal']['Hotel'];
+        $hotel = $_SESSION['sesionPersonal']['Hotel'];
         
         $tipo = $_POST['tipo'];
         $bd = new database();
-        $res = $bd-> obtenerListaPersonal($tipo);
+        $res = $bd-> obtenerListaPersonal($hotel,$tipo);
         echo json_encode($res);
 
     }
