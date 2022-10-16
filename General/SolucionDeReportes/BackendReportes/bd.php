@@ -39,6 +39,16 @@ class database
 		return "0";
 	}
 
+	function marcarReporteVisto($reporte_id){
+		$sql = $this->con->prepare("UPDATE reporte 
+		SET Reporte_Estatus = '3' 
+		WHERE Reporte_ID = '".$reporte_id."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return "0";
+	}
+
 	function iniciarReporte($reporte_id){
 		$sql = $this->con->prepare("UPDATE reporte 
 		SET Reporte_Estatus = '3' 

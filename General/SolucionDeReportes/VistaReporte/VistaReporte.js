@@ -32,11 +32,28 @@ window.addEventListener('load', e => {
             reporteUsuario = element.Reporte_usuario;
             titulo.textContent = element.Reporte_Nombre;
             descripcionReporte.textContent = element.Reporte_Contenido;
-           
+            
+            if(element.Reporte_Estatus == 2){
+                marcarReporteVisto(reporteID);
+            }
         }
         
     })
 })
+
+function marcarReporteVisto(reporteID){
+    const datosReporte = new FormData();
+    datosReporte.append(reporteID);
+    fetch('../BackendReportes/marcarReporteVisto.php' , {
+        method:'POST', body: datosReporte
+    }).then(function(response){
+        if(response.ok){
+         return;
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+    });
+}
 
 firebase.auth().onAuthStateChanged(user => {
     if(user){
