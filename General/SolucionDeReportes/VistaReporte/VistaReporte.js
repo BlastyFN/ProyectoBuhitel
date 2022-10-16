@@ -46,7 +46,7 @@ window.addEventListener('load', e => {
 
 function marcarReporteVisto(reporteID){
     const datosReporte = new FormData();
-    datosReporte.append(reporteID);
+    datosReporte.append("reporteID",reporteID);
     fetch('../BackendReportes/marcarReporteVisto.php' , {
         method:'POST', body: datosReporte
     }).then(function(response){
