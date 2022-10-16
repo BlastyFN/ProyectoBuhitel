@@ -118,7 +118,7 @@ class database
 		WHERE BINARY Reporte_ID = '".$Reporte."'");
 		$sql->execute();
 		$res = $sql->fetchall();
-		$num;
+		$num = false;
 		if ($res[0]['HabReservada_NumWhatsapp'] != '0') {
 			$num = $res[0]['HabReservada_NumWhatsapp'];
 		}
