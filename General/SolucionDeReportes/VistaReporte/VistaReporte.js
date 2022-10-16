@@ -36,6 +36,9 @@ window.addEventListener('load', e => {
             if(element.Reporte_Estatus == "2"){
                 marcarReporteVisto(reporteID);
             }
+            else{
+                console.log(element.Reporte_Estatus);
+            }
         }
         
     })
