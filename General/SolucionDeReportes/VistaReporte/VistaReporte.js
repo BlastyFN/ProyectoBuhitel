@@ -35,14 +35,26 @@ window.addEventListener('load', e => {
             console.log(element.Reporte_Estatus);
             if(element.Reporte_Estatus == "2"){
                 marcarReporteVisto(reporteID);
+                element.Reporte_Estatus = "3";
             }
             else{
                 console.log(element.Reporte_Estatus);
             }
+            definirBotonesHabilitados(element.Reporte_Estatus);
         }
         
     })
 })
+
+function definirBotonesHabilitados(estatus) {
+    if(estatus != "4"){
+        btnCompletado.style.display = "none";
+    }
+    
+    if (estatus != "3"){
+        btnIniciar.style.display = "none";
+    }
+  }
 
 function marcarReporteVisto(reporteID){
     const datosReporte = new FormData();
@@ -156,6 +168,10 @@ const contenidoChat = (user) => {
         });
         contenedorMensajes.appendChild(fragment);
         contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+    })
+
+    btnIniciar.addEventListener('click', ()=>{
+        iniciarEnBd();
     })
 
     btnCompletado.addEventListener('click', ()=> {
