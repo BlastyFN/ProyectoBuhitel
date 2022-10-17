@@ -68,5 +68,6 @@ else {
     <script src= "PaginaPrincipalLimpieza.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
+    <? include('../../../Recursos/notificaciones.js') ?>
 </body>
 </html>

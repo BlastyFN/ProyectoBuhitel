@@ -49,6 +49,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <script src="../../../Recursos/menuTransition.js"></script>
     <script src="registrarTipoHab.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <? include('../../../Recursos/notificaciones.js') ?>
 
 </body>
 </html>

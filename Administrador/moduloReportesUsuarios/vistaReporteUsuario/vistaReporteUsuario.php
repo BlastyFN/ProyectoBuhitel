@@ -105,7 +105,7 @@ session_start();
     <script src="../../../Recursos/menuTransition.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="vistaReporteUsuario.js"></script>
-
+    <? include('../../../Recursos/notificaciones.js') ?>
 
 </body>
 </html>
