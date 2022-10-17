@@ -13,9 +13,10 @@ const btnCompletado = document.querySelector('.completado');
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
-var reporteID, reporteUsuario;
+var reporteID, reporteUsuario, hotel;
 
 window.addEventListener('load', e => {
+    hotel = localStorage.getItem('hotel');
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
     fetch('../BackendReportes/obtenerReporte.php' , {
         method:'POST', body:obtenerReporteEspecifico
@@ -131,7 +132,7 @@ const contenidoChat = (user) => {
                 showConfirmButton: false,
                 timer: 2800
             }).then(()=>{
-                firebase.firestore().collection("status").add({
+                firebase.firestore().collection(hotel.toString()+"status").add({
                     mensaje: localStorage.Nombre + " ha completado el reporte",
                     uid: user.uid,
                     fecha: Date.now()
@@ -150,7 +151,7 @@ const contenidoChat = (user) => {
             return
         }
 
-        firebase.firestore().collection("message").add({
+        firebase.firestore().collection(hotel.toString()+"message").add({
             mensaje: "Nuevo mensaje de " + localStorage.Nombre,
             uid: user.uid,
             fecha: Date.now()
@@ -212,7 +213,7 @@ const contenidoChat = (user) => {
 
 
 
-firebase.firestore().collection("notif").orderBy('fecha')
+firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){

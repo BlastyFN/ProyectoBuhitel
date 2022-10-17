@@ -1,9 +1,11 @@
 const tablaReportes = document.querySelector('.tablaReportes');
 const fragment = document.createDocumentFragment();
+var hotel;
 
 var enviarID = new FormData();
 
 window.addEventListener('load', e => {
+    hotel = localStorage.getItem('Hotel');
     fetch('../backend/obtenerReportes.php' , {
         method:'POST'
     }).then(function(response){
@@ -73,7 +75,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 const contenidoChat = (user) => {
    
-    firebase.firestore().collection("notif").orderBy('fecha')
+    firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
     .onSnapshot(query => {
         query.forEach(notif =>{
             if(notif.data().uid === user.uid){
@@ -87,7 +89,7 @@ const contenidoChat = (user) => {
     });
     
 
-firebase.firestore().collection("message").orderBy('fecha')
+firebase.firestore().collection(hotel.toString()+"message").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){
@@ -100,7 +102,7 @@ firebase.firestore().collection("message").orderBy('fecha')
     })           
 });
 
-firebase.firestore().collection("status").orderBy('fecha')
+firebase.firestore().collection(hotel.toString()+"status").orderBy('fecha')
 .onSnapshot(query => {
     query.forEach(notif =>{
         if(notif.data().uid === user.uid){

@@ -19,9 +19,12 @@ const btnCompletado = document.querySelector('.completado');
 const btnNotificar = document.querySelector('.notificar');
 const divAcciones = document.querySelector('.acciones');
 var reporteID;
+var personal;
+var hotel;
 
 
 window.addEventListener('load', e => {
+    hotel = localStorage.getItem('Hotel');
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
     fetch('../backend/obtenerReporteEspecifico.php' , {
         method:'POST', body:obtenerReporteEspecifico
@@ -37,6 +40,7 @@ window.addEventListener('load', e => {
         console.log(infoPersonal);
         for(element of infoPersonal){
             reporteID = element.Reporte_ID;
+            personal = element.Reporte_usuario;
             titulo.textContent = element.Reporte_Nombre;
             categoria.textContent = element.CatReporte_Nombre;
             estatus.textContent = element.EstatusReporte_Estatus;
@@ -203,10 +207,11 @@ const contenidoChat = (user) => {
             return
         }
 
-        firebase.firestore().collection("message").add({
+        firebase.firestore().collection(hotel.toString() + "message").add({
             mensaje: localStorage.Nombre + "Nuevo mensaje del administrador",
             uid: user.uid,
-            fecha: Date.now()
+            fecha: Date.now(),
+            personal: personal
         })
         .catch(e => console.log(e));   
         firebase.firestore().collection(reporteID.toString()).add({
@@ -251,17 +256,18 @@ const contenidoChat = (user) => {
         //                      --- Notificaciones ---
     btnAsignar.addEventListener('click', () => {
             cambiarStatusEnBd();
-            firebase.firestore().collection(reporteID.toString()+"notif").add({
+            firebase.firestore().collection("notif").add({
                 mensaje: "Has sido asignado a un reporte de seguimiento especial",
                 uid: user.uid,
-                fecha: Date.now()
+                fecha: Date.now(),
+                 
             })
             .catch(e => console.log(e));
         })
 
     btnCompletado.addEventListener('click', ()=> {
             completarEnBd();
-            firebase.firestore().collection(reporteID.toString()+"notif").add({
+            firebase.firestore().collection(hotel.toString()+"notif").add({
                 mensaje: "Se ha completado el reporte",
                 uid: user.uid,
                 fecha: Date.now()
@@ -271,14 +277,14 @@ const contenidoChat = (user) => {
 
         btnNotificar.addEventListener('click', ()=> {
         //completarEnBd();
-        firebase.firestore().collection(reporteID.toString()+"notif").add({
+        firebase.firestore().collection(hotel.toString()+"notif").add({
             mensaje: "El administrador pide que inicies el seguimiento",
             uid: user.uid,
             fecha: Date.now()
         })
         .catch(e => console.log(e));
     })
-    firebase.firestore().collection(reporteID.toString()+"notif").orderBy('fecha')
+    firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
     .onSnapshot(query => {
         query.forEach(notif =>{
             if(notif.data().uid === user.uid){
