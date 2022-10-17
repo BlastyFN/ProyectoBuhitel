@@ -43,7 +43,9 @@ else {
                 <br><br>
                 <textarea placeholder="Notas" name="Notas" cols="40" rows="7" class="CampoCompleto" id ="cmpNotas"></textarea> -->
                 <h1 class="TextoCompleto TextoAlineado Azul RedTop RedMid" id="txtHab">Habitación</h1>
+                <h1 class="TextoCompleto Verde RedMid" id="txtPiso">Piso: #</h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtServ">Pedido: #</h1>
+                <h1 class="TextoCompleto Verde RedMid" id="txtHues">Huesped: </h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtHora">Hora: </h1>
                 <h1 class="TextoCompleto Verde RedMid" id="txtEstatus">Estatus: </h1>
                 <section id="SeccionCarritos">

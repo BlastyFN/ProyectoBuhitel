@@ -3,6 +3,8 @@ const textoHabitacion = document.getElementById('txtHab');
 const textoServicio = document.getElementById('txtServ');
 const textoHora = document.getElementById('txtHora');
 const textoStatus = document.getElementById('txtEstatus');
+const textoPiso = document.getElementById('txtPiso');
+const textoHuesped = document.getElementById('txtHues')
 //ELEMENTOS EXTRA
 const LineasServicio = document.querySelectorAll('tbody > tr');
 const btnConfirmar = document.getElementById('btnConfirmar');

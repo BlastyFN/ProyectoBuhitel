@@ -8,14 +8,19 @@
         
 
         public function consultarServicios($Hotel, $Hoy){
-            $sql = $this->con->prepare("SELECT Servicio_ID, habitacion.Habitacion_Nombre, Servicio_Fecha, estatusservicio.EstatusServicio_Nombre FROM servicio
+            $sql = $this->con->prepare("SELECT Servicio_ID, habitacion.Habitacion_Nombre, Servicio_Fecha, estatusservicio.EstatusServicio_Nombre, piso.Piso_Numero, huesped.Huesped_Nombre, huesped.Huesped_Apellidos FROM servicio
             INNER JOIN estatusservicio ON estatusservicio.EstatusServicio_ID = Servicio_Estatus
             INNER JOIN habitacion ON habitacion.Habitacion_ID = Servicio_Habitacion
             INNER JOIN tipohabitacion ON tipohabitacion.TipoHab_ID = habitacion.Habitacion_Tipo
+            INNER JOIN piso ON piso.Piso_ID = habitacion.Habitacion_Piso
+            INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Habitacion = Servicio_Habitacion
+            INNER JOIN reservacion ON reservacion.Reservacion_ID = habitacionreservada.HabReservada_Reservacion
+            INNER JOIN huesped ON huesped.Huesped_ID = reservacion.Reservacion_Huesped
             WHERE BINARY tipohabitacion.TipoHab_Hotel = '".$Hotel."'
             AND BINARY Servicio_Fecha > '".$Hoy."'
             AND BINARY Servicio_Estatus != '4'
-            AND BINARY Servicio_Estatus != '3';");
+            AND BINARY Servicio_Estatus != '3'
+            AND BINARY Servicio_Fecha BETWEEN reservacion.Reservacion_CheckIn AND reservacion.Reservacion_CheckOut ");
             $sql->execute();
             $res = $sql->fetchall();
             return $res;
