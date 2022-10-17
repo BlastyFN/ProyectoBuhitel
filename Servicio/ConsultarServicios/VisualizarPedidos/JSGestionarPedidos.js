@@ -117,6 +117,8 @@ function obtenerServicio() {
     textoServicio.innerHTML = "Pedido: #" + ServicioActual.ID;
     textoHora.innerHTML = "Hora: " + ServicioActual.Hora;
     textoStatus.innerHTML = "Estatus: " + ServicioActual.Estatus;
+    textoPiso.innerHTML = "Piso : #"+ServicioActual.Piso;
+    textoHuesped.innerHTML = "Huesped: "+ServicioActual.HNombre + " " + ServicioActual.HApellido;
     determinarColor(ServicioActual.Estatus);
     obtenerProductos(ServicioActual.ID);
 }
@@ -189,8 +191,12 @@ function determinarColor(Estatus) {
     textoServicio.classList.remove(ColorViejo);
     textoHora.classList.remove(ColorViejo);
     textoStatus.classList.remove(ColorViejo);
+    textoPiso.classList.remove(ColorViejo);
+    textoHuesped.classList.remove(ColorViejo);
     btnConfirmar.classList.remove(ColorViejo);
     textoServicio.classList.add(ColorNuevo);
+    textoPiso.classList.add(ColorNuevo);
+    textoHuesped.classList.add(ColorNuevo);
     textoHora.classList.add(ColorNuevo);
     textoStatus.classList.add(ColorNuevo);
     btnConfirmar.classList.add(ColorNuevo);
