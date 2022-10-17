@@ -1,1 +1,1 @@
-<script src="Recursos/notificaciones.js"></script>
+<script src="../../../Recursos/notificaciones.js"></script>
