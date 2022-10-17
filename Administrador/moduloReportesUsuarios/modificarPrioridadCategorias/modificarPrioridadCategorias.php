@@ -42,6 +42,6 @@ session_start();
     <script src="modificarPrioridadCategorias.js"></script>
     <script src="../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
-    <? include('../../../Recursos/notificaciones.js') ?>
+    <? include('../../../Recursos/includeScripts.php') ?>
 </body>
 </html>
