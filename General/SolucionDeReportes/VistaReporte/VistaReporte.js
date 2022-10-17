@@ -158,7 +158,7 @@ const contenidoChat = (user) => {
         })
         .catch(e => console.log(e)); 
 
-        firebase.firestore().collection(reporteID.toString()).add({
+        firebase.firestore().collection(reporteID).add({
             mensaje: mensajeChat.value,
             uid: user.uid,
             fecha: Date.now()
@@ -169,7 +169,7 @@ const contenidoChat = (user) => {
                     
     })
 
-    firebase.firestore().collection(reporteID.toString()).orderBy('fecha')
+    firebase.firestore().collection(reporteID).orderBy('fecha')
     .onSnapshot(query => {
         contenedorMensajes.innerHTML = "";
         query.forEach(mensaje => {

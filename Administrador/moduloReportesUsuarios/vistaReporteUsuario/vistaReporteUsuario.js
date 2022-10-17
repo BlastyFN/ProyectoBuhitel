@@ -208,13 +208,13 @@ const contenidoChat = (user) => {
         }
 
         firebase.firestore().collection(hotel.toString() + "message").add({
-            mensaje: localStorage.Nombre + "Nuevo mensaje del administrador",
+            mensaje: localStorage.Nombre + ", Nuevo mensaje del administrador",
             uid: user.uid,
             fecha: Date.now(),
             personal: personal
         })
         .catch(e => console.log(e));   
-        firebase.firestore().collection(reporteID.toString()).add({
+        firebase.firestore().collection(reporteID).add({
             mensaje: mensajeChat.value,
             uid: user.uid,
             fecha: Date.now()
@@ -226,7 +226,7 @@ const contenidoChat = (user) => {
     })
 
 
-    firebase.firestore().collection(reporteID.toString()).orderBy('fecha')
+    firebase.firestore().collection(reporteID).orderBy('fecha')
     .onSnapshot(query => {
         contenedorMensajes.innerHTML = "";
         query.forEach(mensaje => {
