@@ -256,7 +256,7 @@ const contenidoChat = (user) => {
         //                      --- Notificaciones ---
     btnAsignar.addEventListener('click', () => {
             cambiarStatusEnBd();
-            firebase.firestore().collection("notif").add({
+            firebase.firestore().collection(hotel.toString()+"notif").add({
                 mensaje: "Has sido asignado a un reporte de seguimiento especial",
                 uid: user.uid,
                 fecha: Date.now(),
