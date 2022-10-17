@@ -20,7 +20,8 @@ class database
 	function obtenerReportes($hotel){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
         categoriareporte.CatReporte_Nombre FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
-        = categoriareporte.CatReporte_ID WHERE categoriareporte.CatReporte_Hotel = '".$hotel."'");
+        = categoriareporte.CatReporte_ID WHERE categoriareporte.CatReporte_Hotel = '".$hotel."' ORDER BY categoriareporte.CatReporte_Prioridad ASC
+");
 		$sql->execute();
 		$res = $sql->fetchall();
 		
