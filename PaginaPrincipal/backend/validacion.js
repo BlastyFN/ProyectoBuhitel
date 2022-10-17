@@ -206,8 +206,8 @@ function registrar() {
                 limpiar();
                 //Repliega el formulario de confirmación
                 replegarConfirmador();
-                var URL = "https://corporativotdo.com/PaginaPrincipal/InicioSesion.php";
-                window.location.replace(URL); 
+                //var URL = "https://corporativotdo.com/PaginaPrincipal/InicioSesion.php";
+                //window.location.replace(URL); 
                 break;
             default:
                 break;
