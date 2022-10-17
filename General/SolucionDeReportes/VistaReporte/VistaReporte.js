@@ -16,7 +16,7 @@ const obtenerListaPersonal = new FormData();
 var reporteID, reporteUsuario, hotel;
 
 window.addEventListener('load', e => {
-    hotel = localStorage.getItem('hotel');
+    hotel = localStorage.getItem('Hotel');
     obtenerReporteEspecifico.append("reporteID",localStorage.getItem("reporteID"));
     fetch('../BackendReportes/obtenerReporte.php' , {
         method:'POST', body:obtenerReporteEspecifico

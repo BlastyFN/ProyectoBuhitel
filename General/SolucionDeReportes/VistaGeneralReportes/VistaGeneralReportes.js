@@ -4,7 +4,7 @@ var hotel;
 
 
 window.addEventListener('load', e => {
-    hotel = localStorage.getItem('hotel');
+    hotel = localStorage.getItem('Hotel');
     fetch('../BackendReportes/obtenerReportes.php' , {
         method:'POST'
     }).then(function(response){
