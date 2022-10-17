@@ -16,11 +16,14 @@ var ServicioActual;
 var Servicios = [];
 //LA CLASE QUE SE USARÁ PARA LAS LINEAS
 class Servicio { 
-    constructor(ID, Habitacion, Fecha, Estatus){
+    constructor(ID, Habitacion, Fecha, Estatus, Piso, HNombre, HApellido){
         this.ID = ID;
         this.Habitacion = Habitacion;
         this.Fecha = Fecha;
         this.Estatus = Estatus;
+        this.Piso = Piso;
+        this.HNombre = HNombre;
+        this.HApellido = HApellido;
     }
     get HTML(){
         return this.obtenerHTML();
@@ -83,7 +86,10 @@ function cargarTabla() {
                     element.Servicio_ID,
                     element.Habitacion_Nombre,
                     element.Servicio_Fecha,
-                    element.EstatusServicio_Nombre
+                    element.EstatusServicio_Nombre,
+                    element.Piso_Numero,
+                    element.Huesped_Nombre,
+                    element.Huesped_Apellidos
                 );
                 //Añade el objeto al array de objetos
                 ServiciosNuevos.push(SER);
