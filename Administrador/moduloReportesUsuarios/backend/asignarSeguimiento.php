@@ -13,7 +13,7 @@
         $zonahoraria = date_default_timezone_get();
         $Hoy = date('Y-m-d H:i:s');
 
-        $res = $bd-> asignarSeguimiento($personal,$servicio,$reporte,$hoy);
+        $res = $bd-> asignarSeguimiento($personal,$servicio,$reporte,$Hoy);
         echo json_encode($res);
 
     }
