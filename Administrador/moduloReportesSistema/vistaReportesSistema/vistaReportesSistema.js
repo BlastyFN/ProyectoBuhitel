@@ -229,10 +229,12 @@ function generarGrafica() {
         obtenerProductosServicios();
         break;
       case '10':
+        divBotones.classList.add('oculto');
         infoReporte.append('habs', stringCondicionHabs);
         obtenerTiempoOcupaciones();
         break;
-        case '10':
+        case '12':
+          divBotones.classList.add('oculto');
           infoReporte.append('habs', stringCondicionHabs);
           obtenerTiempoReportes();
           break;
