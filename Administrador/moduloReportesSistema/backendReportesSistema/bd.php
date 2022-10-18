@@ -128,7 +128,21 @@ class database
         return $res;
     }
 
-    function obtenerTiempoOcupaciones($hotel,$diasInicio,$diasFin, $condicionalHabs){
+    function obtenerTiempoOcupaciones($hotel,$dias, $condicionalHabs){
+        $sql = $this->con->prepare("SELECT count(habitacionreservada.habreservada_id) FROM habitacionreservada 
+        INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
+        INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
+        INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
+        WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
+        AND TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut) < '".$dias."'
+        ".$condicionalHabs.";"
+    );
+        $sql->execute();
+        $res = $sql->fetchall();
+        return $res;
+    }
+
+    function tiempoRespuestaReportes($hotel,$diasInicio,$diasFin, $condicionalHabs){
         $sql = $this->con->prepare("SELECT count(TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut)) AS dias 
         FROM reservacion 
         INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID 
