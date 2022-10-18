@@ -105,9 +105,9 @@ class database
 		}
 	}
 
-	function asignarSeguimiento($personal, $servicio, $reporteID){
+	function asignarSeguimiento($personal, $servicio, $reporteID, $hoy){
 		$sql = $this->con->prepare("UPDATE reporte SET  Reporte_Usuario =  '".$personal."',
-		Reporte_Servicio =  '".$servicio."', Reporte_Estatus = 2
+		Reporte_Servicio =  '".$servicio."', Reporte_Estatus = 2, Reporte_Inicio = '".$hoy."'
 		where reporte_ID =  '".$reporteID."' ;");
 			$sql->execute();
 			return "0";
