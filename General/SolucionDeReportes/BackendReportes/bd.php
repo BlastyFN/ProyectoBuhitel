@@ -28,6 +28,21 @@ class database
 		return $res;
 	}
 
+	public function obtenerNumero($Reporte){
+		$sql = $this->con->prepare("SELECT habitacionreservada.HabReservada_NumWhatsapp FROM reporte
+		INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
+		WHERE BINARY Reporte_ID = '".$Reporte."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		$num = false;
+		if ($res[0]['HabReservada_NumWhatsapp'] != '0') {
+			$num = $res[0]['HabReservada_NumWhatsapp'];
+		}
+		else{
+			$num = false;
+		}
+		return $num;
+	}
     function obtenerReporteEspecifico($reporte_id){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
         categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
