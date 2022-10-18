@@ -232,6 +232,10 @@ function generarGrafica() {
         infoReporte.append('habs', stringCondicionHabs);
         obtenerTiempoOcupaciones();
         break;
+        case '10':
+          infoReporte.append('habs', stringCondicionHabs);
+          obtenerTiempoReportes();
+          break;
       case '13':
         apartadoPreguntas.classList.remove('oculto');
         infoReporte.append('fechaInicio', fecha.value);
@@ -469,6 +473,30 @@ function obtenerTiempoOcupaciones() {
     generarGraficaPolar(labels, info);
   })
 }
+
+function obtenerTiempoReportes() {
+  fetch('../backendReportesSistema/tiempoRespuestaReportes.php', {
+    method: 'POST', body: infoReporte
+  }).then(function (response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw "Error en la llamada Ajax"
+    }
+  }).then(function (info) {
+    console.log(info);
+    labels = [];
+    labels.push("0 a 5 minutos");
+    labels.push("5 a 10 minutos");
+    labels.push("10 a 15 minutos");
+    labels.push("15 a 20 minutos");
+    labels.push("20 a 25 minutos");
+    labels.push("25 a 30 minutos");
+    labels.push("+30 minutos");
+    generarGraficaPolar(labels, info);
+  })
+}
+
 
 function obtenerRespuestasEncuestaSalida() {
   fetch('../backendReportesSistema/obtenerEncuestaSalida.php', {

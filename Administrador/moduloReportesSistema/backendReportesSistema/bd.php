@@ -149,18 +149,22 @@ class database
         return $res;
     }
 
-    function tiempoRespuestaReportes($hotel,$diasInicio,$diasFin, $condicionalHabs){
-        $sql = $this->con->prepare("SELECT count(TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut)) AS dias 
-        FROM reservacion 
-        INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID 
-        INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
-        INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
+    function tiempoRespuestaReportes($hotel,$minutos, $condicionalHabs){
+        $minutosInicio = $minutos - 5;
+        $sql = $this->con->prepare("SELECT count(reservacion_id) 
+        as numero FROM reservacion 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
-        AND TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut) > '".$diasInicio."' 
-        AND TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut) <= '".$diasFin."'  
-        ".$condicionalHabs.";");
+        AND TIMESTAMPDIFF(MINUTE, reservacion_inicio, reservacion_final) < '".$minutos."'
+        AND TIMESTAMPDIFF(MINUTE, reservacion_inicio, reservacion_final) >=  '".$minutosInicio."'
+        ".$condicionalHabs.";"
+    );
         $sql->execute();
         $res = $sql->fetchall();
+		if (count($res) > 0)
+		{
+			foreach ($res as $dato)
+			return $dato['numero'];
+		}
         return $res;
     }
 
