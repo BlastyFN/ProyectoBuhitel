@@ -7,7 +7,10 @@
     $idReporte = $_POST["reporte"];
 
     $bd = new database();
-    $bd->completarReporte($idReporte);
+    date_default_timezone_set('America/Mexico_City');
+    $zonahoraria = date_default_timezone_get();
+    $Hoy = date('Y-m-d H:i:s');
+    $bd->completarReporte($idReporte,$Hoy);
     //INFORMAR
     $numero = $bd->obtenerNumero($idReporte);
     if ($numero != false) {

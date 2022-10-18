@@ -64,9 +64,9 @@ class database
 		return "0";
 	}
 
-	function completarReporte($reporte_id){
+	function completarReporte($reporte_id,$hoy){
 		$sql = $this->con->prepare("UPDATE reporte 
-		SET Reporte_Estatus = '5' 
+		SET Reporte_Estatus = '5', Reporte_Final = '".$hoy."' 
 		WHERE Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
