@@ -58,6 +58,17 @@ window.addEventListener('load', e => {
                 divAcciones.classList.add('activo');
             }
         }
+
+        firebase.auth().onAuthStateChanged(user => {
+            if(user){
+               
+                contenidoChat(user)
+            }else{
+               console.log("sin usuario con sesion activa")
+            }
+        })
+        
+        
     })
 })
 
@@ -184,15 +195,6 @@ function cambiarStatusEnBd(){
     })
 }
 
-
-firebase.auth().onAuthStateChanged(user => {
-    if(user){
-       
-        contenidoChat(user)
-    }else{
-       console.log("sin usuario con sesion activa")
-    }
-})
 
 
 

@@ -43,7 +43,14 @@ window.addEventListener('load', e => {
             }
             definirBotonesHabilitados(element.Reporte_Estatus);
         }
-        
+        firebase.auth().onAuthStateChanged(user => {
+            if(user){
+               
+                contenidoChat(user)
+            }else{
+               console.log("sin usuario con sesion activa")
+            }
+        })
     })
 })
 
@@ -71,14 +78,7 @@ function marcarReporteVisto(reporteID){
     });
 }
 
-firebase.auth().onAuthStateChanged(user => {
-    if(user){
-       
-        contenidoChat(user)
-    }else{
-       console.log("sin usuario con sesion activa")
-    }
-})
+
 
 const contenidoChat = (user) => {
 
@@ -101,7 +101,7 @@ const contenidoChat = (user) => {
                 showConfirmButton: false,
                 timer: 2800
             }).then(()=>{
-                firebase.firestore().collection("status").add({
+                firebase.firestore().collection("noti").add({
                     mensaje: localStorage.Nombre + " ha iniciado el seguimiento",
                     uid: user.uid,
                     fecha: Date.now()
