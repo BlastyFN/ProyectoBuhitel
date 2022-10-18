@@ -25,7 +25,6 @@ class database
 		AND BINARY Reporte_Estatus = '2'");
 		$sql->execute();
 		$res = $sql->fetchall();
-		
 		return $res;
 	}
 
