@@ -1,4 +1,5 @@
 var hotel;
+const Sonido = new Audio("Campana.mp3");
 firebase.auth().onAuthStateChanged(user => {
     if(user){
         hotel = localStorage.getItem('Hotel');
@@ -20,6 +21,7 @@ const contenidoChat = (user) => {
             }
             else {
                 alert(notif.data().mensaje);
+                Sonido.play();
                 notif.ref.delete();
             }
         })           
@@ -34,6 +36,7 @@ const contenidoChat = (user) => {
             }
             else {
                 alert(notif.data().mensaje);
+                Sonido.play();
                 notif.ref.delete();
             }
         })           
@@ -47,6 +50,7 @@ const contenidoChat = (user) => {
             }
             else {
                 alert(notif.data().mensaje);
+                Sonido.play();
                 notif.ref.delete();
             }
         })           
