@@ -10,7 +10,7 @@ class database
 
 	function obtenerReportes($personal){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
-        categoriareporte.CatReporte_Nombre, reporte.Reporte_Inicio FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
+        categoriareporte.CatReporte_Nombre FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
         = categoriareporte.CatReporte_ID WHERE reporte.Reporte_Usuario = '".$personal."'");
 		$sql->execute();
 		$res = $sql->fetchall();
@@ -18,7 +18,7 @@ class database
 	}
 
 	function obtenerReportesNoLeidos($personal){
-		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
+		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Inicio, reporte.Reporte_Nombre, 
         categoriareporte.CatReporte_Nombre FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
         = categoriareporte.CatReporte_ID 
 		WHERE BINARY reporte.Reporte_Usuario = '".$personal."'
