@@ -130,7 +130,7 @@ class database
 
     function obtenerTiempoOcupaciones($hotel,$dias, $condicionalHabs){
         $diasInicio = $dias - 2;
-        $sql = $this->con->prepare("SELECT count(habitacionreservada.habreservada_id) FROM habitacionreservada 
+        $sql = $this->con->prepare("SELECT count(habitacionreservada.habreservada_id) as numero FROM habitacionreservada 
         INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
@@ -141,6 +141,11 @@ class database
     );
         $sql->execute();
         $res = $sql->fetchall();
+		if (count($res) > 0)
+		{
+			foreach ($res as $dato)
+			return $dato['numero'];
+		}
         return $res;
     }
 
