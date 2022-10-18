@@ -6,7 +6,7 @@ var intervalo = window.setInterval(consultarReportes, 10000);
 
 function consultarReportes() {
     //CONSULTA
-    fetch('../General/SolucionDeReportes/BackendReportes/consultarAsignados.php', {
+    fetch('../../../General/SolucionDeReportes/BackendReportes/consultarAsignados.php', {
         method:'POST',
     })
     .then(function(response){

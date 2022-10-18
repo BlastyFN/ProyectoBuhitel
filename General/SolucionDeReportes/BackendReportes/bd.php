@@ -10,11 +10,10 @@ class database
 
 	function obtenerReportes($personal){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
-        categoriareporte.CatReporte_Nombre FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
+        categoriareporte.CatReporte_Nombre, reporte.Reporte_Inicio FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
         = categoriareporte.CatReporte_ID WHERE reporte.Reporte_Usuario = '".$personal."'");
 		$sql->execute();
 		$res = $sql->fetchall();
-		
 		return $res;
 	}
 
