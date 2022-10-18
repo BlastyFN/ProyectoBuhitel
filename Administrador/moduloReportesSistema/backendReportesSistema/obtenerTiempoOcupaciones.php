@@ -8,7 +8,7 @@ session_start();
     for($i = 2; $i <= 14; $i+=2){
         $resConsulta = 0;
         $resConsulta = $bd->obtenerTiempoOcupaciones($hotel, $i, $condicionalHabs);
-        array_push($arregloRes, $resConsulta);
+        array_push($arregloRes, $resConsulta[0]);
     }
     
     echo json_encode($arregloRes);
