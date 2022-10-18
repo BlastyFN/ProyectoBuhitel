@@ -62,6 +62,7 @@ session_start();
     <script src="../../../../../../Recursos/clase-menu.js"></script>
     <script src="../../../Recursos/menuTransition.js"></script>
     <script src="InicioR.js"></script>
+    <? include('../../../Recursos/includeScripts.php') ?>
 
     
 </body>

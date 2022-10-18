@@ -77,4 +77,5 @@ else {
 <script src= "JSEdServHab.js"></script>
 <script src="../../../Recursos/clase-menu.js"></script>
 <script src="../../../Recursos/menuTransition.js"></script>
+<? include('../../../Recursos/includeScripts.php') ?>
 </html>
