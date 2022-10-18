@@ -1,5 +1,31 @@
 var hotel;
-const Sonido = new Audio("Campana.mp3");
+const Sonido = new Audio("/Recursos/Campana.mp3");
+
+var intervalo = window.setInterval(consultarReportes, 10000);
+
+
+function consultarReportes() {
+    //CONSULTA
+    fetch('../General/SolucionDeReportes/BackendReportes/consultarAsignados.php', {
+        method:'POST',
+    })
+    .then(function(response){
+        if(response.ok) {
+            return response.text();
+        } else {
+            throw "Error en la llamada Ajax";
+        }
+    })
+    .then(function(texto) {
+        console.log(texto);
+        let info = JSON.parse(texto);
+        console.log(info);
+     })
+     .catch(function(err) {
+        console.log(err);
+     });
+}
+
 firebase.auth().onAuthStateChanged(user => {
     if(user){
         hotel = localStorage.getItem('Hotel');
@@ -20,8 +46,9 @@ const contenidoChat = (user) => {
     
             }
             else {
-                alert(notif.data().mensaje);
                 Sonido.play();
+                alert(notif.data().mensaje);
+                
                 notif.ref.delete();
             }
         })           
@@ -35,8 +62,9 @@ const contenidoChat = (user) => {
 
             }
             else {
-                alert(notif.data().mensaje);
                 Sonido.play();
+                alert(notif.data().mensaje);
+                
                 notif.ref.delete();
             }
         })           
@@ -49,8 +77,9 @@ const contenidoChat = (user) => {
 
             }
             else {
-                alert(notif.data().mensaje);
                 Sonido.play();
+                alert(notif.data().mensaje);
+                
                 notif.ref.delete();
             }
         })           

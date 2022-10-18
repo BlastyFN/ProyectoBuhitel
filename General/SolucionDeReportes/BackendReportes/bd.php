@@ -18,6 +18,18 @@ class database
 		return $res;
 	}
 
+	function obtenerReportesNoLeidos($personal){
+		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
+        categoriareporte.CatReporte_Nombre FROM reporte INNER JOIN categoriareporte ON reporte.Reporte_Categoria 
+        = categoriareporte.CatReporte_ID 
+		WHERE BINARY reporte.Reporte_Usuario = '".$personal."'
+		AND BINARY Reporte_Estatus = '2'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return $res;
+	}
+
     function obtenerReporteEspecifico($reporte_id){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
         categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
