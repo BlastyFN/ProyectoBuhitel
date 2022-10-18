@@ -101,7 +101,7 @@ const contenidoChat = (user) => {
                 showConfirmButton: false,
                 timer: 2800
             }).then(()=>{
-                firebase.firestore().collection("noti").add({
+                firebase.firestore().collection("notif").add({
                     mensaje: localStorage.Nombre + " ha iniciado el seguimiento",
                     uid: user.uid,
                     fecha: Date.now()

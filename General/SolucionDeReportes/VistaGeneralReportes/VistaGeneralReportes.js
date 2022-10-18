@@ -29,7 +29,7 @@ window.addEventListener('load', e => {
             divCard.textContent = "Tipo de reporte: " + reporte.CatReporte_Nombre;
 
             const labelMensajes = document.createElement('label');
-            labelMensajes.textContent = "0 mensajes sin ver";
+            labelMensajes.textContent = " ";
 
             divCard.appendChild(document.createElement('br'));
             divCard.appendChild(labelMensajes);
