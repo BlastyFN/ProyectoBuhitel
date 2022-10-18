@@ -1,7 +1,7 @@
 <?php
 session_start();
     include "bd.php";
- 
+    $arregloRes = array();
     $bd = new database();
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
     $condicionalHabs = $_POST['habs'];
