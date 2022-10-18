@@ -46,6 +46,8 @@ class database
         
     }
 
+
+
     function obtenerIngresosPorEstancia($fechaInicio,$fechaFin,$hotel, $condicionalHabs){
         $sql = $this->con->prepare("
         SELECT SUM(tipohabitacion.TipoHab_Precio) as suma FROM `habitacionreservada` 
@@ -126,7 +128,7 @@ class database
         return $res;
     }
 
-    function obtenerTiempoOcupaciones($hotel,$diasInicio,$diasFin,$numPregunta, $condicionalHabs){
+    function obtenerTiempoOcupaciones($hotel,$diasInicio,$diasFin, $condicionalHabs){
         $sql = $this->con->prepare("SELECT count(TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut)) AS dias 
         FROM reservacion 
         INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_Reservacion = Reservacion_ID 
