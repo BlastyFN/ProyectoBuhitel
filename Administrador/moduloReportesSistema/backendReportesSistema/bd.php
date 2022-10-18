@@ -129,12 +129,14 @@ class database
     }
 
     function obtenerTiempoOcupaciones($hotel,$dias, $condicionalHabs){
+        $diasInicio = $dias - 2;
         $sql = $this->con->prepare("SELECT count(habitacionreservada.habreservada_id) FROM habitacionreservada 
         INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
         AND TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut) < '".$dias."'
+        AND TIMESTAMPDIFF(DAY, Reservacion_CheckIn, Reservacion_CheckOut) >=  '".$diasInicio."'
         ".$condicionalHabs.";"
     );
         $sql->execute();
