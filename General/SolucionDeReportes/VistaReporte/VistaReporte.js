@@ -102,12 +102,12 @@ const contenidoChat = (user) => {
                 timer: 2800
             }).then(()=>{
                 firebase.firestore().collection(hotel.toString()+"status").add({
-                    mensaje: localStorage.Nombre + " ha iniciado el seguimiento",
+                    mensaje: localStorage.Nombre + " ha iniciado el seguimiento ",
                     uid: user.uid,
                     fecha: Date.now()
                 })
                 .catch(e => console.log(e)); 
-                window.location.reload();
+                //window.location.reload();
             });  
         })
     }
