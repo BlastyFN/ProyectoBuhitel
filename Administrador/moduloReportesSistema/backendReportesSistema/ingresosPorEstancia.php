@@ -43,8 +43,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+ 6 days');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = 0;
-                $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel,$condicionalHabs);
+                $resConsulta = $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel,$condicionalHabs);
                 array_push($arregloRes,$resConsulta);
             }
                 
