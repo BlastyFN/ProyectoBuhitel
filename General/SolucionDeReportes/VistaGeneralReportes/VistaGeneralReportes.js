@@ -3,7 +3,12 @@ const fragment = document.createDocumentFragment();
 var hotel;
 
 
-window.addEventListener('load', e => {
+window.addEventListener('load', cargarTabla);
+var intervalo = window.setInterval(cargarTabla, 5000);
+function cargarTabla() {
+    while (contenedorCartas.firstChild) {
+        contenedorCartas.removeChild(contenedorCartas.firstChild);
+    }
     hotel = localStorage.getItem('Hotel');
     fetch('../BackendReportes/obtenerReportes.php' , {
         method:'POST'
@@ -36,12 +41,10 @@ window.addEventListener('load', e => {
             divContIndividual.appendChild(divCardBoard);
             divContIndividual.appendChild(divCard);
             fragment.appendChild(divContIndividual);
-
-
         }
         contenedorCartas.appendChild(fragment);
     })
-})
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 

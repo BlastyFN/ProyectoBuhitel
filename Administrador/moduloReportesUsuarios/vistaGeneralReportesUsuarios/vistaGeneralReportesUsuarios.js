@@ -3,8 +3,13 @@ const fragment = document.createDocumentFragment();
 var hotel;
 
 var enviarID = new FormData();
+var intervalo = window.setInterval(cargarTabla, 5000);
+window.addEventListener('load', cargarTabla);
 
-window.addEventListener('load', e => {
+function cargarTabla() {
+    while (tablaReportes.firstChild) {
+        tablaReportes.removeChild(tablaReportes.firstChild);
+    }
     hotel = localStorage.getItem('Hotel');
     fetch('../backend/obtenerReportes.php' , {
         method:'POST'
@@ -41,12 +46,9 @@ window.addEventListener('load', e => {
             fragment.appendChild(tr);
             console.log(tr);
         }
-        
         tablaReportes.appendChild(fragment);
-
-        
     })
-})
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
