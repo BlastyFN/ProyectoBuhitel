@@ -19,7 +19,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d H:i:s'));
                 $periodo->modify('+ 4 hours');
                 $fechasqlFin = $periodo->format('Y-m-d H:i:s');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
+                $bd->obtenerInfoGeneralServicio($hotel, $fechasqlInicio, $fechasqlFin, $condicionalHabs);
                 $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 
                 array_push($arregloRes,$resConsulta);
@@ -30,7 +30,7 @@ session_start();
             for($i = $fechaInicio; $i <= $fechaFin; $i+=86400){
                 $fechasqlInicio = date("Y-m-d", $i);
                 $fechasqlFin = date("Y-m-d", $i+86400);
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
+                $resConsulta = $bd->obtenerInfoGeneralServicio($hotel, $fechasqlInicio, $fechasqlFin, $condicionalHabs);
                 $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
                
@@ -45,7 +45,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+ 6 days');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
+                $resConsulta = $bd->obtenerInfoGeneralServicio($hotel, $fechasqlInicio, $fechasqlFin, $condicionalHabs);
                 $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
             }
@@ -60,7 +60,7 @@ session_start();
                 $periodo = new DateTime($i->format('Y-m-d'));
                 $periodo->modify('+1 month - 1 day');
                 $fechasqlFin = $periodo->format('Y-m-d');
-                $resConsulta = $bd->obtenerInfoGeneralServicio($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
+                $resConsulta = $bd->obtenerInfoGeneralServicio($hotel, $fechasqlInicio, $fechasqlFin, $condicionalHabs);
                 $resConsulta += $bd->obtenerIngresosPorEstancia($fechasqlInicio, $fechasqlFin, $hotel, $condicionalHabs);
                 array_push($arregloRes,$resConsulta);
                 
