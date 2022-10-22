@@ -52,7 +52,7 @@ class database
         $sql = $this->con->prepare("
         SELECT SUM(
         tipohabitacion.TipoHab_Precio * 
-        DATEDIFF(day, 'reservacion.Reservacion_CheckIN', 'reservacion.Reservacion_CheckOut')
+        DATEDIFF(day, reservacion.Reservacion_CheckIN, reservacion.Reservacion_CheckOut)
         ) as suma FROM `habitacionreservada` 
         INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
          INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
