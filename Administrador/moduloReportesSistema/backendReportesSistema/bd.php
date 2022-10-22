@@ -52,13 +52,13 @@ class database
         $sql = $this->con->prepare("
         SELECT SUM(
         tipohabitacion.TipoHab_Precio * 
-        DATEDIFF(day, reservacion.Reservacion_CheckIN, reservacion.Reservacion_CheckOut)
+        DATEDIFF( reservacion.Reservacion_CheckIN, reservacion.Reservacion_CheckOut)
         ) as suma FROM `habitacionreservada` 
         INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
          INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
          INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
          WHERE  reservacion.Reservacion_CheckIN BETWEEN '".$fechaInicio."' AND '".$fechaFin."' 
-         AND reservacion.Reservacion_CheckOut AND tipohabitacion.TipoHab_Hotel = '".$hotel."' 
+        AND tipohabitacion.TipoHab_Hotel = '".$hotel."' 
         ".$condicionalHabs.";");
         $sql->execute();
         $res = $sql->fetchall();
