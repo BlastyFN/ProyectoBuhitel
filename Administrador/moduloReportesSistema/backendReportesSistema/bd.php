@@ -154,13 +154,17 @@ class database
 
     function tiempoRespuestaReportes($hotel,$minutos, $condicionalHabs){
         $minutosInicio = $minutos - 5;
+        $whereTiempoMayor = "";
+        if($minutos == 35){
+            $whereTiempoMayor = "AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'"
+        }
         $sql = $this->con->prepare("SELECT count(reporte_id) 
         as numero FROM reporte
         INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
-        AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'
+        . $whereTiempoMayor .
         AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) >=  '".$minutosInicio."'
         ".$condicionalHabs.";"
     );
