@@ -155,7 +155,7 @@ class database
     function tiempoRespuestaReportes($hotel,$minutos, $condicionalHabs){
         $minutosInicio = $minutos - 5;
         $whereTiempoMayor = "";
-        if($minutos == 35){
+        if($minutos < 35){
             $whereTiempoMayor = "AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'";
         }
         $sql = $this->con->prepare("SELECT count(reporte_id) 
