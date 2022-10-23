@@ -164,7 +164,7 @@ class database
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
-        . $whereTiempoMayor .
+        ". $whereTiempoMayor ."
         AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) >=  '".$minutosInicio."'
         ".$condicionalHabs.";"
     );
