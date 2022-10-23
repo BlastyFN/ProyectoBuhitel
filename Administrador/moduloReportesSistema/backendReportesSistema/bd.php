@@ -154,7 +154,7 @@ class database
 
     function tiempoRespuestaReportes($hotel,$minutos, $condicionalHabs){
         $minutosInicio = $minutos - 5;
-        $sql = $this->con->prepare("SELECT count(reservacion_id) 
+        $sql = $this->con->prepare("SELECT count(reporte_id) 
         as numero FROM reporte
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
