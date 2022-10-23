@@ -156,6 +156,7 @@ class database
         $minutosInicio = $minutos - 5;
         $sql = $this->con->prepare("SELECT count(reporte_id) 
         as numero FROM reporte
+        INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
         INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
         INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
