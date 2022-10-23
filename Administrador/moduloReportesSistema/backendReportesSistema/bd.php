@@ -156,7 +156,7 @@ class database
         $minutosInicio = $minutos - 5;
         $whereTiempoMayor = "";
         if($minutos == 35){
-            $whereTiempoMayor = "AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'"
+            $whereTiempoMayor = "AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'";
         }
         $sql = $this->con->prepare("SELECT count(reporte_id) 
         as numero FROM reporte
