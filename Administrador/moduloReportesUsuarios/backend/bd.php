@@ -36,7 +36,7 @@ class database
 		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus, reporte.Reporte_Inicio FROM reporte 
 		INNER JOIN categoriareporte ON reporte.Reporte_Categoria = categoriareporte.CatReporte_ID
 		INNER JOIN estatusreporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
-		INNER JOIN personal ON reporte.Reporte_Usuario = personal.Personal_ID
+		LEFT JOIN personal ON reporte.Reporte_Usuario = personal.Personal_ID
 		WHERE reporte.Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();
