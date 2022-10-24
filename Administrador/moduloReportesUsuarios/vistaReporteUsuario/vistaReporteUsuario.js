@@ -6,6 +6,7 @@ const fragment = document.createDocumentFragment();
 const titulo = document.querySelector('.titulo');
 const categoria = document.querySelector('.categoria');
 const estatus = document.querySelector('.estatus');
+const fecha = document.getElementById("fecha");
 const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 const eleccionPersonal = document.querySelector('.eleccionPersonal');
@@ -18,6 +19,7 @@ const btnSpam = document.querySelector('.spam');
 const btnCompletado = document.querySelector('.completado');
 const btnNotificar = document.querySelector('.notificar');
 const divAcciones = document.querySelector('.acciones');
+const personalAsignado = document.getElementById("PAsignado");
 var reporteID;
 var personal;
 var hotel;
@@ -41,10 +43,16 @@ window.addEventListener('load', e => {
         for(element of infoPersonal){
             reporteID = element.Reporte_ID;
             personal = element.Reporte_usuario;
-            titulo.textContent = element.Reporte_Nombre;
-            categoria.textContent = element.CatReporte_Nombre;
-            estatus.textContent = element.EstatusReporte_Estatus;
-            descripcionReporte.textContent = element.Reporte_Contenido;
+            titulo.textContent = "Nombre: " + element.Reporte_Nombre;
+            categoria.textContent = "Categoría: " + element.CatReporte_Nombre;
+            estatus.textContent = "Estatus: " +element.EstatusReporte_Estatus;
+            if (element.Reporte_Inicio != NULL) {
+                fecha.textContent = "Fecha de asignación: " + element.Reporte_Inicio;
+            }
+            if (element.Personal_Nombre != NULL) {
+                personalAsignado.textContent = "Asignado a: " + element.Personal_Nombre + " " + element.Personal_APaterno + " " + element.Personal_APaterno;
+            }
+            descripcionReporte.textContent = "Descripción: " +element.Reporte_Contenido;
 
             if (element.Reporte_usuario == null){
                 eleccionPersonal.classList.add('activo');   

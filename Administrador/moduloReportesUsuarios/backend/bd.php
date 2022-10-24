@@ -31,11 +31,12 @@ class database
 	}
 
     function obtenerReporteEspecifico($reporte_id){
-		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, 
+		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, personal.Personal_Nombre, personal.Personal_APaterno, personal.Personal_AMaterno
         categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
-		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus FROM reporte 
+		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus, reporte.Reporte_Inicio FROM reporte 
 		INNER JOIN categoriareporte ON reporte.Reporte_Categoria = categoriareporte.CatReporte_ID
 		INNER JOIN estatusreporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
+		INNER JOIN personal ON reporte.Reporte_Usuario = personal.Personal_ID
 		WHERE reporte.Reporte_ID = '".$reporte_id."'");
 		$sql->execute();
 		$res = $sql->fetchall();

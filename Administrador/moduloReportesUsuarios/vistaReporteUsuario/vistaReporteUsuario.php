@@ -42,6 +42,10 @@ session_start();
                 Status
             </p>
             <br>
+            <p id="fecha">
+
+            </p>
+            <br>
             <p class="descripcionReporte">
                 Mensaje
             </p>
@@ -70,7 +74,7 @@ session_start();
         <section class="chat" >
 
 
-            <p class="destinatario">Personal asignado: </p>
+            <p class="destinatario" id ="PAsignado">Personal asignado: </p>
             <div class="cuerpoChat">
                 <div class="contenedorMensajes">
 
