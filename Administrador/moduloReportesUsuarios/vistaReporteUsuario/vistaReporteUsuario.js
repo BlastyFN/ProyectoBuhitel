@@ -46,10 +46,10 @@ window.addEventListener('load', e => {
             titulo.textContent = "Nombre: " + element.Reporte_Nombre;
             categoria.textContent = "Categoría: " + element.CatReporte_Nombre;
             estatus.textContent = "Estatus: " +element.EstatusReporte_Estatus;
-            if (element.Reporte_Inicio != NULL) {
+            if (element.Reporte_Inicio != null) {
                 fecha.textContent = "Fecha de asignación: " + element.Reporte_Inicio;
             }
-            if (element.Personal_Nombre != NULL) {
+            if (element.Personal_Nombre != null) {
                 personalAsignado.textContent = "Asignado a: " + element.Personal_Nombre + " " + element.Personal_APaterno + " " + element.Personal_APaterno;
             }
             descripcionReporte.textContent = "Descripción: " +element.Reporte_Contenido;
