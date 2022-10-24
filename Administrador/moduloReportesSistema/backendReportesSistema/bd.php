@@ -50,12 +50,15 @@ class database
 
     function obtenerIngresosPorEstancia($fechaInicio,$fechaFin,$hotel, $condicionalHabs){
         $sql = $this->con->prepare("
-        SELECT SUM(tipohabitacion.TipoHab_Precio) as suma FROM `habitacionreservada` 
+        SELECT SUM(
+        tipohabitacion.TipoHab_Precio * 
+        DATEDIFF( reservacion.Reservacion_CheckOut, reservacion.Reservacion_CheckIn)
+        ) as suma FROM `habitacionreservada` 
         INNER JOIN reservacion ON habitacionreservada.HabReservada_Reservacion = reservacion.Reservacion_ID 
          INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
          INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
          WHERE  reservacion.Reservacion_CheckIN BETWEEN '".$fechaInicio."' AND '".$fechaFin."' 
-         AND reservacion.Reservacion_CheckOut AND tipohabitacion.TipoHab_Hotel = '".$hotel."' 
+        AND tipohabitacion.TipoHab_Hotel = '".$hotel."' 
         ".$condicionalHabs.";");
         $sql->execute();
         $res = $sql->fetchall();
@@ -151,11 +154,18 @@ class database
 
     function tiempoRespuestaReportes($hotel,$minutos, $condicionalHabs){
         $minutosInicio = $minutos - 5;
-        $sql = $this->con->prepare("SELECT count(reservacion_id) 
-        as numero FROM reservacion 
+        $whereTiempoMayor = "";
+        if($minutos < 35){
+            $whereTiempoMayor = "AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) < '".$minutos."'";
+        }
+        $sql = $this->con->prepare("SELECT count(reporte_id) 
+        as numero FROM reporte
+        INNER JOIN habitacionreservada ON habitacionreservada.HabReservada_ID = Reporte_HabReservadas
+        INNER JOIN habitacion ON habitacionreservada.HabReservada_Habitacion = habitacion.Habitacion_ID 
+        INNER JOIN tipohabitacion ON habitacion.Habitacion_Tipo = tipohabitacion.TipoHab_ID 
         WHERE tipohabitacion.TipoHab_Hotel = '".$hotel."' 
-        AND TIMESTAMPDIFF(MINUTE, reservacion_inicio, reservacion_final) < '".$minutos."'
-        AND TIMESTAMPDIFF(MINUTE, reservacion_inicio, reservacion_final) >=  '".$minutosInicio."'
+        ". $whereTiempoMayor ."
+        AND TIMESTAMPDIFF(MINUTE, reporte_inicio, reporte_final) >=  '".$minutosInicio."'
         ".$condicionalHabs.";"
     );
         $sql->execute();
