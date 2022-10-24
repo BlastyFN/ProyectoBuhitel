@@ -49,6 +49,8 @@ session_start();
                 Detalles 
             </h3>
             <br>
+            <p id ="catReporte"></p>
+            <p id ="estatReporte"></p>
             <p class="descripcionReporte">
                 Mensaje
             </p>

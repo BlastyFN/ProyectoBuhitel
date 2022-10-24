@@ -8,8 +8,8 @@ const descripcionReporte = document.querySelector('.descripcionReporte');
 const chat = document.querySelector('.chat');
 const btnIniciar = document.querySelector('.iniciar');
 const btnCompletado = document.querySelector('.completado');
-
-
+const txtCatReporte = document.getElementById("catReporte");
+const txtStatReporte = document.getElementById("estatReporte");
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
@@ -31,8 +31,10 @@ window.addEventListener('load', e => {
         for( element of infoPersonal){
             reporteID = element.Reporte_ID;
             reporteUsuario = element.Reporte_usuario;
-            titulo.textContent = element.Reporte_Nombre;
-            descripcionReporte.textContent = element.Reporte_Contenido;
+            titulo.textContent = "Nombre: " + element.Reporte_Nombre;
+            txtStatReporte.textContent = "Estatus: " + element.EstatusReporte_Estatus;
+            txtCatReporte.textContent = "Categoría: " + element.CatReporte_Nombre;
+            descripcionReporte.textContent = "Descripción: "+element.Reporte_Contenido;
             console.log(element.Reporte_Estatus);
             if(element.Reporte_Estatus == "2"){
                 marcarReporteVisto(reporteID);
