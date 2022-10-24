@@ -31,8 +31,8 @@ class database
 	}
 
     function obtenerReporteEspecifico($reporte_id){
-		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, personal.Personal_Nombre, personal.Personal_APaterno, personal.Personal_AMaterno
-        categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
+		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, personal.Personal_Nombre, personal.Personal_APaterno, personal.Personal_AMaterno, 
+		categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
 		reporte.Reporte_Servicio, reporte.Reporte_Estatus, estatusreporte.EstatusReporte_Estatus, reporte.Reporte_Inicio FROM reporte 
 		INNER JOIN categoriareporte ON reporte.Reporte_Categoria = categoriareporte.CatReporte_ID
 		INNER JOIN estatusreporte ON reporte.Reporte_Estatus = estatusreporte.EstatusReporte_ID
