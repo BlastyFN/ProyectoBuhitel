@@ -10,6 +10,7 @@ const btnIniciar = document.querySelector('.iniciar');
 const btnCompletado = document.querySelector('.completado');
 const txtCatReporte = document.getElementById("catReporte");
 const txtStatReporte = document.getElementById("estatReporte");
+const txtFechaReporte = document.getElementById("asignacion");
 const obtenerReporteEspecifico = new FormData();
 
 const obtenerListaPersonal = new FormData();
@@ -32,6 +33,7 @@ window.addEventListener('load', e => {
             reporteID = element.Reporte_ID;
             reporteUsuario = element.Reporte_usuario;
             titulo.textContent = "Nombre: " + element.Reporte_Nombre;
+            txtFechaReporte.textContent = "Fecha de asignación: " + element.Reporte_Inicio;
             txtStatReporte.textContent = "Estatus: " + element.EstatusReporte_Estatus;
             txtCatReporte.textContent = "Categoría: " + element.CatReporte_Nombre;
             descripcionReporte.textContent = "Descripción: "+element.Reporte_Contenido;

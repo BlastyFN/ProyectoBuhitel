@@ -51,6 +51,7 @@ session_start();
             <br>
             <p id ="catReporte"></p>
             <p id ="estatReporte"></p>
+            <p id ="asignacion"></p>
             <p class="descripcionReporte">
                 Mensaje
             </p>
