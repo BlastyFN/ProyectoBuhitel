@@ -213,9 +213,36 @@ const contenidoChat = (user) => {
                 }
             })           
         });
+
+        firebase.firestore().collection(reporteID).orderBy('fecha')
+        .onSnapshot(query => {
+            contenedorMensajes.innerHTML = "";
+            query.forEach(mensaje => {
+                console.log(mensaje.data());
+                if(mensaje.data().uid === user.uid){
+                    var divMensaje = document.createElement('div');
+                    divMensaje.classList.add('mensajeEnviado');
+                    const spanMensaje = document.createElement('span');
+                    spanMensaje.textContent = mensaje.data().mensaje;
+                    divMensaje.appendChild(spanMensaje);
+                    fragment.appendChild(divMensaje);
+                }
+                else{
+                    var divMensaje = document.createElement('div');
+                    divMensaje.classList.add('mensajeRecibido');
+                    const spanMensaje = document.createElement('span');
+                    spanMensaje.textContent =  mensaje.data().mensaje;
+                    divMensaje.appendChild(spanMensaje);
+                    fragment.appendChild(divMensaje);   
+                }
+                
+            });
+            contenedorMensajes.appendChild(fragment);
+            contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+        })
     
 
-}
+
 
 tipoPersonal.addEventListener('change',() =>{
     const fragment = document.createDocumentFragment();
@@ -317,32 +344,7 @@ function cambiarStatusEnBd(){
     })
 
 
-    firebase.firestore().collection(reporteID).orderBy('fecha')
-    .onSnapshot(query => {
-        contenedorMensajes.innerHTML = "";
-        query.forEach(mensaje => {
-            console.log(mensaje.data());
-            if(mensaje.data().uid === user.uid){
-                var divMensaje = document.createElement('div');
-                divMensaje.classList.add('mensajeEnviado');
-                const spanMensaje = document.createElement('span');
-                spanMensaje.textContent = mensaje.data().mensaje;
-                divMensaje.appendChild(spanMensaje);
-                fragment.appendChild(divMensaje);
-            }
-            else{
-                var divMensaje = document.createElement('div');
-                divMensaje.classList.add('mensajeRecibido');
-                const spanMensaje = document.createElement('span');
-                spanMensaje.textContent =  mensaje.data().mensaje;
-                divMensaje.appendChild(spanMensaje);
-                fragment.appendChild(divMensaje);   
-            }
-            
-        });
-        contenedorMensajes.appendChild(fragment);
-        contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-    })
+
 
         //                      --- Notificaciones ---
     btnAsignar.addEventListener('click', () => {
@@ -413,7 +415,7 @@ function cambiarStatusEnBd(){
 
 
 
-
+}
 
 
 
