@@ -67,7 +67,7 @@ window.addEventListener('load', e => {
             }
         }
 
-        definirBotonesHabilitados(element.Reporte_Estatus);
+        
 
         firebase.auth().onAuthStateChanged(user => {
             if(user){
@@ -78,13 +78,13 @@ window.addEventListener('load', e => {
             }
         })
         
-        
+        definirBotonesHabilitados(element.Reporte_Estatus);
     })
 })
 
 function definirBotonesHabilitados(estatus) {
 
-    if (estatus == "6"){
+    if (estatus == "5"){
         chat.classList.remove('activo');
         divAcciones.classList.remove('activo');
         chat.style.display = "none";
