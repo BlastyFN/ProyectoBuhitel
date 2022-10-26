@@ -106,7 +106,7 @@ function obtenerCategorias(catID) {
             opcion.textContent = categoria.CatReporte_Nombre;
             selectCategoria.appendChild(opcion);
         });
-        selectCategoria.selected = catID;
+        selectCategoria.selectedIndex = catID;
     })
 }
 
