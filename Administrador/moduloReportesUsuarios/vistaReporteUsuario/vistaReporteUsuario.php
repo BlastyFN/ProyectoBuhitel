@@ -38,7 +38,7 @@ session_start();
                 Cat
             </p>
             <br>
-            <select name="Categoria" id="selectCategoria">
+            <select name="Categoria" id="selectCategoria" class = "formText">
 
             </select>
             <br>
