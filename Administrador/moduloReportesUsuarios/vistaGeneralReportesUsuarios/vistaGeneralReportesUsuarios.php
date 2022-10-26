@@ -28,6 +28,18 @@ session_start();
 
     </section>
 
+    <div id="divMenu">
+            <span>⋮</span>
+                    <ul>
+
+                        <li><a href="../NuevoTipoHab/nuevoTipoHab.php">Añadir nuevo tipo de habitacion</a></li>
+
+                        <li><a href="../ModificacionTipoHab/modificacionTipoHab.php">Modificar tipo de habitación</a></li>
+
+                        <li><a href="../modificarPisosYHabs/modificarPisosYHabs.php">Modificar pisos y habitaciones</a></li>
+                    </ul>
+     </div>
+
     <section class="contenedorTablaReportes">
         <table class="tablaReportes">
 
