@@ -66,6 +66,10 @@ function definirBotonesHabilitados(estatus) {
     if (estatus != "3"){
         btnIniciar.style.display = "none";
     }
+
+    if (estatus != "6"){
+        
+    }
   }
 
 function marcarReporteVisto(reporteID){

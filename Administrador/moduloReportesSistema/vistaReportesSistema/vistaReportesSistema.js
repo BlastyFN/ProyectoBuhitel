@@ -233,7 +233,16 @@ function generarGrafica() {
         infoReporte.append('habs', stringCondicionHabs);
         obtenerTiempoOcupaciones();
         break;
-        case '12':
+      case '10':
+        divBotones.classList.add('oculto');
+        infoReporte.append('habs', stringCondicionHabs);
+        obtenerTiempoOcupaciones();
+        break;
+      case '11':
+          divBotones.classList.add('oculto');
+          obtenerCategoriasReportes();
+          break;
+      case '12':
           divBotones.classList.add('oculto');
           infoReporte.append('habs', stringCondicionHabs);
           obtenerTiempoReportes();
@@ -325,6 +334,36 @@ function generarGraficaPolar(labelsProductos, datos) {
     }
   })
 
+}
+
+function obtenerCategoriasReportes(){
+  fetch('../backendReportesSistema/obtenerCategoriasProductos.php', {
+    method: 'POST'
+  }).then(function (response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw "Error en la llamada Ajax"
+    }
+  }).then(function (info) {
+    console.log(info);
+    cat = [];
+    numProds = [];
+    categorias = [cat, numProds];
+    for (element of info) {
+      console.log(element.CatProd_Categoria)
+      if (cat.indexOf(element.CatProd_Categoria) == -1) {
+        cat.push(element.CatProd_Categoria);
+        posicion = cat.indexOf(element.CatProd_Categoria);
+        numProds[posicion] = 1;
+
+      } else {
+        posicion = cat.indexOf(element.CatProd_Categoria);
+        numProds[posicion] += 1;
+      }
+    }
+    generarGraficaPolar(cat, numProds);
+  })
 }
 
 function obtenerIngresosEstancia() {
