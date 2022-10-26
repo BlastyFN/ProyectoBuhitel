@@ -89,61 +89,132 @@ function definirBotonesHabilitados(estatus) {
         btnCompletado.style.display = "none";
         btnSpam.style.display = "none";
     }
-  }
+}
+
+const contenidoChat = (user) => {
+
+        btnSpam.addEventListener('click', ()=> {
+            const nombreCat = new FormData();
+            nombreCat.append('nombre',"Spam");
+            nombreCat.append('reporte', reporteID)
+            fetch('../backend/modificarCategoria.php' , {
+                method:'POST', body:nombreCat
+            }).then(function(response){
+                if(response.ok){
+                return response.text();
+                } else {
+                    throw "Error en la llamada Ajax"
+                }
+            }).then(function(texto){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Se ha marcado como spam',
+                    showConfirmButton: false,
+                    timer: 2800
+                }).then(()=>{
+                
+                    window.location.reload();
+                });  
+            })
+        })
 
 
-btnSpam.addEventListener('click', ()=> {
-    const nombreCat = new FormData();
-    nombreCat.append('nombre',"Spam");
-    nombreCat.append('reporte', reporteID)
-    fetch('../backend/modificarCategoria.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
+
+        function completarEnBd(){
+            const nombreCat = new FormData();
+
+            nombreCat.append('reporte', reporteID)
+            fetch('../backend/completarReporte.php' , {
+                method:'POST', body:nombreCat
+            }).then(function(response){
+                if(response.ok){
+                return response.text();
+                } else {
+                    throw "Error en la llamada Ajax"
+                }
+            }).then(function(texto){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Se ha completado el reporte',
+                    showConfirmButton: false,
+                    timer: 2800
+                }).then(()=>{
+                
+                    window.location.reload();
+                });  
+            })
         }
-    }).then(function(texto){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Se ha marcado como spam',
-            showConfirmButton: false,
-            timer: 2800
-        }).then(()=>{
+
+        firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
         
-            window.location.reload();
-        });  
-    })
-})
+                }
+                else {
+                    Sonido.play();
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
 
-
-
-function completarEnBd(){
-    const nombreCat = new FormData();
-
-    nombreCat.append('reporte', reporteID)
-    fetch('../backend/completarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Se ha completado el reporte',
-            showConfirmButton: false,
-            timer: 2800
-        }).then(()=>{
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
         
-            window.location.reload();
-        });  
-    })
+    
+        firebase.firestore().collection(hotel.toString()+"message").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
+    
+                }
+                else {
+                    Sonido.play();
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
+
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
+    
+        firebase.firestore().collection(hotel.toString()+"status").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
+    
+                }
+                else {
+                    Sonido.play();
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
+
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
+    
+
 }
 
 tipoPersonal.addEventListener('change',() =>{
@@ -219,7 +290,7 @@ function cambiarStatusEnBd(){
 
 
 
-const contenidoChat = (user) => {
+
     console.log(user);
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
@@ -345,7 +416,7 @@ const contenidoChat = (user) => {
 
 
 
-}
+
 
 
 

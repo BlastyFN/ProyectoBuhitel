@@ -231,18 +231,18 @@ const contenidoChat = (user) => {
 
 
 
-firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
-.onSnapshot(query => {
-    query.forEach(notif =>{
-        if(notif.data().uid === user.uid){
+    firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(notif.data().uid === user.uid){
 
-        }
-        else {
-            alert(notif.data().mensaje);
-            notif.ref.delete();
-        }
-    })           
-});
+            }
+            else {
+                alert(notif.data().mensaje);
+                notif.ref.delete();
+            }
+        })           
+    });
 }
 
 
