@@ -85,9 +85,11 @@ window.addEventListener('load', e => {
 function definirBotonesHabilitados(estatus) {
 
     if (estatus == "6"){
-        chat.style.display = "none";   
-        btnCompletado.style.display = "none";
-        btnSpam.style.display = "none";
+        chat.classList.remove('activo');
+        divAcciones.classList.remove('activo');
+        chat.style.display = "none";
+        divAcciones.style.display = "none";   
+
     }
 }
 
