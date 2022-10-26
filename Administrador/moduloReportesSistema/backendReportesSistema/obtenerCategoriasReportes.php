@@ -4,7 +4,7 @@ session_start();
  
     $bd = new database();
     $hotel = $_SESSION['sesionPersonal']['Hotel'];
-    $arregloRes = $bd->obtenerCategoriaReportes($hotel); 
+    $arregloRes = $bd->obtenerCategoriasReportes($hotel); 
     echo json_encode($arregloRes);
 
 ?>

@@ -130,6 +130,15 @@ class database
         $res = $sql->fetchall();
         return $res;
     }
+    
+    function obtenerCategoriasReportes($hotel){
+        $sql = $this->con->prepare("SELECT * FROM reporte 
+        INNER JOIN categoriareporte ON Reporte_Categoria = categoriareporte.Catreporte_ID 
+        WHERE catreporte_Hotel = '".$hotel."';");
+        $sql->execute();
+        $res = $sql->fetchall();
+        return $res;
+    }
 
     function obtenerTiempoOcupaciones($hotel,$dias, $condicionalHabs){
         $diasInicio = $dias - 2;
