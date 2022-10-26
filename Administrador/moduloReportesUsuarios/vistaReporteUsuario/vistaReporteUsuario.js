@@ -114,7 +114,7 @@ selectCategoria.addEventListener("change", function () {
     const cambioCategoria = new FormData();
     cambioCategoria.append("Reporte", localStorage.getItem("reporteID"));
     cambioCategoria.append("Categoria", this.value);
-    fetch('../backend/obtenerCategorias.php' , {
+    fetch('../backend/cambiarCategoria.php' , {
         method:'POST', body: cambioCategoria
         
     }).then(function(response){

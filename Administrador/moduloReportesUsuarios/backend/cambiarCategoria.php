@@ -6,6 +6,6 @@
     $Categoria = $_POST["Categoria"];
     $Reporte = $_POST["Reporte"];
     $bd = new database();
-    $bd->marcarComoSpam($Reporte, $Categoria);
+    $bd->marcarComoSpam($Categoria, $Reporte);
     
 ?>
