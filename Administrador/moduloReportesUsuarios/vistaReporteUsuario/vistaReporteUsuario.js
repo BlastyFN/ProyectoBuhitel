@@ -66,7 +66,7 @@ window.addEventListener('load', e => {
             if(element.CatReporte_Nombre != "Spam" || element.EstatusReporte_Estatus != "Completado"){
                 divAcciones.classList.add('activo');
             }
-            obtenerCategorias(element.CetReporte_ID);
+            obtenerCategorias(element.CatReporte_ID);
         }
 
         
