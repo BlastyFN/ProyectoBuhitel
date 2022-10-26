@@ -114,7 +114,20 @@ selectCategoria.addEventListener("change", function () {
     const cambioCategoria = new FormData();
     cambioCategoria.append("Reporte", localStorage.getItem("reporteID"));
     cambioCategoria.append("Categoria", this.value);
-   alert(this.value);
+    fetch('../backend/obtenerCategorias.php' , {
+        method:'POST', body: cambioCategoria
+        
+    }).then(function(response){
+        if(response.ok){
+         return response.text();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+
+    }).then(function(textop){
+        console.log("cambio" + " " + this.value);
+        console.log(textop);
+    })
 });
 
 function definirBotonesHabilitados(estatus) {
