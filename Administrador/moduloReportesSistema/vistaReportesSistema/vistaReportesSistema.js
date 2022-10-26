@@ -348,7 +348,7 @@ function obtenerCategoriasReportes(){
   }).then(function (info) {
     console.log(info);
     cat = [];
-    numProd = [];
+    numProds = [];
     categorias = [cat, numProd];
     for (element of info) {
       console.log(element.CatReporte_Nombre)
