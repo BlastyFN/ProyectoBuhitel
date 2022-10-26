@@ -349,7 +349,7 @@ function obtenerCategoriasReportes(){
     console.log(info);
     cat = [];
     numProds = [];
-    categorias = [cat, numProd];
+    categorias = [cat, numProds];
     for (element of info) {
       console.log(element.CatReporte_Nombre)
       if (cat.indexOf(element.CatReporte_Nombre) == -1) {
