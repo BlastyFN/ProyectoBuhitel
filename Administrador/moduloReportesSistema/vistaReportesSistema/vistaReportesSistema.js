@@ -351,14 +351,13 @@ function obtenerCategoriasReportes(){
     numProds = [];
     categorias = [cat, numProds];
     for (element of info) {
-      console.log(element.CatReporte_Nombre)
       if (cat.indexOf(element.CatReporte_Nombre) == -1) {
         cat.push(element.CatReporte_Nombre);
-        posicion = cat.indexOf(element.Reporte_Nombre);
+        posicion = cat.indexOf(element.CatReporte_Nombre);
         numProds[posicion] = 1;
 
       } else {
-        posicion = cat.indexOf(element.Reporte_nombre);
+        posicion = cat.indexOf(element.CatReporte_nombre);
         numProds[posicion] += 1;
       }
     }
