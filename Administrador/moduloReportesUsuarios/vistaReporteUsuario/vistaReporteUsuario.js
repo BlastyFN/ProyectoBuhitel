@@ -68,6 +68,8 @@ window.addEventListener('load', e => {
             }
         }
 
+        
+
         firebase.auth().onAuthStateChanged(user => {
             if(user){
                
@@ -77,7 +79,7 @@ window.addEventListener('load', e => {
             }
         })
         
-        
+        definirBotonesHabilitados(element.Reporte_Estatus);
     })
 
     //Llenar select
@@ -106,59 +108,169 @@ function obtenerCategorias() {
     })
 }
 
-btnSpam.addEventListener('click', ()=> {
-    const nombreCat = new FormData();
-    nombreCat.append('nombre',"Spam");
-    nombreCat.append('reporte', reporteID)
-    fetch('../backend/modificarCategoria.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Se ha marcado como spam',
-            showConfirmButton: false,
-            timer: 2800
-        }).then(()=>{
-        
-            window.location.reload();
-        });  
-    })
-})
+function definirBotonesHabilitados(estatus) {
 
+    if (estatus == "5"){
+        chat.classList.remove('activo');
+        divAcciones.classList.remove('activo');
+        chat.style.display = "none";
+        divAcciones.style.display = "none";   
 
-
-function completarEnBd(){
-    const nombreCat = new FormData();
-
-    nombreCat.append('reporte', reporteID)
-    fetch('../backend/completarReporte.php' , {
-        method:'POST', body:nombreCat
-    }).then(function(response){
-        if(response.ok){
-         return response.text();
-        } else {
-            throw "Error en la llamada Ajax"
-        }
-    }).then(function(texto){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Se ha completado el reporte',
-            showConfirmButton: false,
-            timer: 2800
-        }).then(()=>{
-        
-            window.location.reload();
-        });  
-    })
+    }
 }
+
+const contenidoChat = (user) => {
+
+        btnSpam.addEventListener('click', ()=> {
+            const nombreCat = new FormData();
+            nombreCat.append('nombre',"Spam");
+            nombreCat.append('reporte', reporteID)
+            fetch('../backend/modificarCategoria.php' , {
+                method:'POST', body:nombreCat
+            }).then(function(response){
+                if(response.ok){
+                return response.text();
+                } else {
+                    throw "Error en la llamada Ajax"
+                }
+            }).then(function(texto){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Se ha marcado como spam',
+                    showConfirmButton: false,
+                    timer: 2800
+                }).then(()=>{
+                
+                    window.location.reload();
+                });  
+            })
+        })
+
+
+
+        function completarEnBd(){
+            const nombreCat = new FormData();
+
+            nombreCat.append('reporte', reporteID)
+            fetch('../backend/completarReporte.php' , {
+                method:'POST', body:nombreCat
+            }).then(function(response){
+                if(response.ok){
+                return response.text();
+                } else {
+                    throw "Error en la llamada Ajax"
+                }
+            }).then(function(texto){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Se ha completado el reporte',
+                    showConfirmButton: false,
+                    timer: 2800
+                }).then(()=>{
+                
+                    window.location.reload();
+                });  
+            })
+        }
+
+        firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
+        
+                }
+                else {
+                    Sonido.play();
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
+
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
+        
+    
+        firebase.firestore().collection(hotel.toString()+"message").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
+    
+                }
+                else {
+                    Sonido.play();
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
+
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
+    
+        firebase.firestore().collection(hotel.toString()+"status").orderBy('fecha')
+        .onSnapshot(query => {
+            query.forEach(notif =>{
+                if(notif.data().uid === user.uid){
+    
+                }
+                else {
+                    
+                    alert(notif.data().mensaje);
+                    
+                    notif.ref.delete();
+
+                    setTimeout(() => {
+                        if(notif.data().reload === true){
+                            window.location.reload();
+                        } 
+                    }, 1000);
+    
+                }
+            })           
+        });
+
+        firebase.firestore().collection(reporteID).orderBy('fecha')
+        .onSnapshot(query => {
+            contenedorMensajes.innerHTML = "";
+            query.forEach(mensaje => {
+                console.log(mensaje.data());
+                if(mensaje.data().uid === user.uid){
+                    var divMensaje = document.createElement('div');
+                    divMensaje.classList.add('mensajeEnviado');
+                    const spanMensaje = document.createElement('span');
+                    spanMensaje.textContent = mensaje.data().mensaje;
+                    divMensaje.appendChild(spanMensaje);
+                    fragment.appendChild(divMensaje);
+                }
+                else{
+                    var divMensaje = document.createElement('div');
+                    divMensaje.classList.add('mensajeRecibido');
+                    const spanMensaje = document.createElement('span');
+                    spanMensaje.textContent =  mensaje.data().mensaje;
+                    divMensaje.appendChild(spanMensaje);
+                    fragment.appendChild(divMensaje);   
+                }
+                
+            });
+            contenedorMensajes.appendChild(fragment);
+            contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+        })
+    
+
+
 
 tipoPersonal.addEventListener('change',() =>{
     const fragment = document.createDocumentFragment();
@@ -215,7 +327,7 @@ function cambiarStatusEnBd(){
    
     seguimiento.append('personal',valorPersonal);
     seguimiento.append('servicio',valorServicio);
-    seguimiento.append('reporteID', reporteID)/8
+    seguimiento.append('reporteID', reporteID);
     fetch('../backend/asignarSeguimiento.php' , {
         method:'POST', body:seguimiento
     }).then(function(response){
@@ -233,8 +345,6 @@ function cambiarStatusEnBd(){
 
 
 
-const contenidoChat = (user) => {
-    console.log(user);
     formulario.addEventListener('submit',(e) =>{
         e.preventDefault()
         console.log(mensajeChat.value);
@@ -262,32 +372,7 @@ const contenidoChat = (user) => {
     })
 
 
-    firebase.firestore().collection(reporteID).orderBy('fecha')
-    .onSnapshot(query => {
-        contenedorMensajes.innerHTML = "";
-        query.forEach(mensaje => {
-            console.log(mensaje.data());
-            if(mensaje.data().uid === user.uid){
-                var divMensaje = document.createElement('div');
-                divMensaje.classList.add('mensajeEnviado');
-                const spanMensaje = document.createElement('span');
-                spanMensaje.textContent = mensaje.data().mensaje;
-                divMensaje.appendChild(spanMensaje);
-                fragment.appendChild(divMensaje);
-            }
-            else{
-                var divMensaje = document.createElement('div');
-                divMensaje.classList.add('mensajeRecibido');
-                const spanMensaje = document.createElement('span');
-                spanMensaje.textContent =  mensaje.data().mensaje;
-                divMensaje.appendChild(spanMensaje);
-                fragment.appendChild(divMensaje);   
-            }
-            
-        });
-        contenedorMensajes.appendChild(fragment);
-        contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-    })
+
 
         //                      --- Notificaciones ---
     btnAsignar.addEventListener('click', () => {
@@ -314,7 +399,7 @@ const contenidoChat = (user) => {
         btnNotificar.addEventListener('click', ()=> {
         //completarEnBd();
         firebase.firestore().collection(hotel.toString()+"notif").add({
-            mensaje: "El administrador pide que inicies el seguimiento",
+            mensaje: "El administrador pregunta por el estatus del reporte",
             uid: user.uid,
             fecha: Date.now()
         })
@@ -329,14 +414,37 @@ const contenidoChat = (user) => {
             else {
                 alert(notif.data().mensaje);
                 notif.ref.delete();
+                if(notif.data().reload === true){
+                    window.location.reload();
+                }
+            }
+        })           
+    });
+    firebase.firestore().collection(hotel.toString()+"status").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(notif.data().uid === user.uid){
+
+            }
+            else {
+                notif.ref.delete();
+                Sonido.play();
+                alert(notif.data().mensaje);
+                
+                setTimeout(() => {
+                    if(notif.data().reload === true){
+                        window.location.reload();
+                    } 
+                }, 1000);
+
             }
         })           
     });
 
 
 
-
 }
+
 
 
 

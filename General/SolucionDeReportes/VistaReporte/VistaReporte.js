@@ -66,6 +66,10 @@ function definirBotonesHabilitados(estatus) {
     if (estatus != "3"){
         btnIniciar.style.display = "none";
     }
+
+    if (estatus == "6"){
+        chat.style.display = "none";   
+    }
   }
 
 function marcarReporteVisto(reporteID){
@@ -108,10 +112,14 @@ const contenidoChat = (user) => {
                 firebase.firestore().collection(hotel.toString()+"status").add({
                     mensaje: localStorage.Nombre + " ha iniciado el seguimiento ",
                     uid: user.uid,
-                    fecha: Date.now()
+                    fecha: Date.now(),
+                    reload: true
                 })
                 .catch(e => console.log(e)); 
-                //window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
             });  
         })
     }
@@ -142,7 +150,10 @@ const contenidoChat = (user) => {
                     fecha: Date.now()
                 })
                 .catch(e => console.log(e)); 
-                window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
             });  
         })
     }
@@ -210,25 +221,28 @@ const contenidoChat = (user) => {
         firebase.firestore().collection("notif").add({
             mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
             uid: user.uid,
-            fecha: Date.now()
+            fecha: Date.now(),
+            reload: true
         })
         .catch(e => console.log(e));
+        window.location.href = "https://corporativotdo.com/General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php";
+
     })
 
 
 
-firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
-.onSnapshot(query => {
-    query.forEach(notif =>{
-        if(notif.data().uid === user.uid){
+    firebase.firestore().collection(hotel.toString()+"notif").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(notif.data().uid === user.uid){
 
-        }
-        else {
-            alert(notif.data().mensaje);
-            notif.ref.delete();
-        }
-    })           
-});
+            }
+            else {
+                alert(notif.data().mensaje);
+                notif.ref.delete();
+            }
+        })           
+    });
 }
 
 
