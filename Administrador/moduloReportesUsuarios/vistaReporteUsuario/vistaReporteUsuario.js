@@ -199,7 +199,7 @@ const contenidoChat = (user) => {
     
                 }
                 else {
-                    Sonido.play();
+                    
                     alert(notif.data().mensaje);
                     
                     notif.ref.delete();
@@ -272,7 +272,7 @@ function cambiarStatusEnBd(){
    
     seguimiento.append('personal',valorPersonal);
     seguimiento.append('servicio',valorServicio);
-    seguimiento.append('reporteID', reporteID)/8
+    seguimiento.append('reporteID', reporteID);
     fetch('../backend/asignarSeguimiento.php' , {
         method:'POST', body:seguimiento
     }).then(function(response){
