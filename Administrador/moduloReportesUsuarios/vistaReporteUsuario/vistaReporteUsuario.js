@@ -80,6 +80,7 @@ window.addEventListener('load', e => {
         })
         
         definirBotonesHabilitados(element.Reporte_Estatus);
+        obtenerCategorias();
     })
 
     //Llenar select
