@@ -19,24 +19,23 @@ session_start();
     <section id="header-menu" class="header-menu">
 
     </section>
-
+<!-- 
     <section class="search">
         <form action="GET">
             <input type="text" class="searchElement" placeholder="busca reportes, tipos de reportes..." id="">
             <button type="submit" class="searchButton">Buscar</button>
         </form>
 
-    </section>
+    </section> -->
 
     <div id="divMenu">
             <span>⋮</span>
                     <ul>
 
-                        <li><a href="../NuevoTipoHab/nuevoTipoHab.php">Añadir nuevo tipo de habitacion</a></li>
+                        <li><a href="../NuevoTipoHab/nuevoTipoHab.php">Añadir categoría</a></li>
 
-                        <li><a href="../ModificacionTipoHab/modificacionTipoHab.php">Modificar tipo de habitación</a></li>
+                        <li><a href="../ModificacionTipoHab/modificacionTipoHab.php">Modificar prioridad de categoría</a></li>
 
-                        <li><a href="../modificarPisosYHabs/modificarPisosYHabs.php">Modificar pisos y habitaciones</a></li>
                     </ul>
      </div>
 
