@@ -357,7 +357,7 @@ function obtenerCategoriasReportes(){
         numProds[posicion] = 1;
 
       } else {
-        posicion = cat.indexOf(element.CatReporte_nombre);
+        posicion = cat.indexOf(element.CatReporte_Nombre);
         numProds[posicion] += 1;
       }
     }
