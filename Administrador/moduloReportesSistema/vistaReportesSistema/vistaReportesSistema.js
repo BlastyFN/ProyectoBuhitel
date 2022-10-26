@@ -348,12 +348,12 @@ function obtenerCategoriasReportes(){
   }).then(function (info) {
     console.log(info);
     cat = [];
-    numProds = [];
-    categorias = [cat, numProds];
+    numReportes = [];
+    categorias = [cat, numProd];
     for (element of info) {
-      console.log(element.Catreporte_Nombre)
-      if (cat.indexOf(element.Catreporte_Nombre) == -1) {
-        cat.push(element.Catreporte_Nombre);
+      console.log(element.CatReporte_Nombre)
+      if (cat.indexOf(element.CatReporte_Nombre) == -1) {
+        cat.push(element.CatReporte_Nombre);
         posicion = cat.indexOf(element.Reporte_Nombre);
         numProds[posicion] = 1;
 
