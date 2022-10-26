@@ -110,6 +110,13 @@ function obtenerCategorias(catID) {
     })
 }
 
+selectCategoria.addEventListener("change", function () {
+    const cambioCategoria = new FormData();
+    cambioCategoria.append("Reporte", localStorage.getItem("reporteID"));
+    cambioCategoria.append("Categoria", this.value);
+   alert(this.value);
+});
+
 function definirBotonesHabilitados(estatus) {
 
     if (estatus == "5"){

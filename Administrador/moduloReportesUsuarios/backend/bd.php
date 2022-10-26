@@ -76,6 +76,7 @@ class database
 		return "0";
 	}
 
+
 	function completarReporte($reporte_id,$hoy){
 		$sql = $this->con->prepare("UPDATE reporte 
 		SET Reporte_Estatus = '5', Reporte_Final = '".$hoy."' 
