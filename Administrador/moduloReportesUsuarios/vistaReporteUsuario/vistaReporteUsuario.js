@@ -20,6 +20,7 @@ const btnCompletado = document.querySelector('.completado');
 const btnNotificar = document.querySelector('.notificar');
 const divAcciones = document.querySelector('.acciones');
 const personalAsignado = document.getElementById("PAsignado");
+const selectCategoria = document.getElementById("selectCategoria");
 var reporteID;
 var personal;
 var hotel;
@@ -78,7 +79,32 @@ window.addEventListener('load', e => {
         
         
     })
+
+    //Llenar select
 })
+
+function obtenerCategorias() {
+    fetch('../backend/obtenerCategorias.php' , {
+        method:'POST'
+        
+    }).then(function(response){
+        if(response.ok){
+         return response.json();
+        } else {
+            throw "Error en la llamada Ajax"
+        }
+
+    }).then(function(categorias){
+        console.log(categorias);
+        categorias.forEach(categoria => {
+            var opcion = document.createElement("option");
+            opcion.value = categoria.CatReporte_ID;
+            opcion.textContent = categoria.CatReporte_Nombre;
+            selectCategoria.appendChild(opcion);
+        });
+        
+    })
+}
 
 btnSpam.addEventListener('click', ()=> {
     const nombreCat = new FormData();

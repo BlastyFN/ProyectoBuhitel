@@ -38,6 +38,10 @@ session_start();
                 Cat
             </p>
             <br>
+            <select name="Categoria" id="selectCategoria">
+                
+            </select>
+            <br>
             <p class="estatus">
                 Status
             </p>

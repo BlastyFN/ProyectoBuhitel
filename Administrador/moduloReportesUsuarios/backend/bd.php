@@ -30,6 +30,15 @@ class database
 		return $res;
 	}
 
+	function obtenerCategorias($hotel){
+		$sql = $this->con->prepare("SELECT * FROM categoriareporte 
+		WHERE BINARY CatReporte_Hotel = '".$hotel."'");
+		$sql->execute();
+		$res = $sql->fetchall();
+		
+		return $res;
+	}
+
     function obtenerReporteEspecifico($reporte_id){
 		$sql = $this->con->prepare("SELECT reporte.Reporte_ID, reporte.Reporte_Nombre, personal.Personal_Nombre, personal.Personal_APaterno, personal.Personal_AMaterno, 
 		categoriareporte.CatReporte_Nombre, reporte.Reporte_Contenido, reporte.Reporte_usuario, 
