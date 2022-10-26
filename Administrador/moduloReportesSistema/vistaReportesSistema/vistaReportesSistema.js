@@ -337,7 +337,7 @@ function generarGraficaPolar(labelsProductos, datos) {
 }
 
 function obtenerCategoriasReportes(){
-  fetch('../backendReportesSistema/obtenerCategoriasProductos.php', {
+  fetch('../backendReportesSistema/obtenerCategoriasReportes.php', {
     method: 'POST'
   }).then(function (response) {
     if (response.ok) {
@@ -365,6 +365,8 @@ function obtenerCategoriasReportes(){
     generarGraficaPolar(cat, numProds);
   })
 }
+
+
 
 function obtenerIngresosEstancia() {
   fetch('../backendReportesSistema/ingresosPorEstancia.php', {

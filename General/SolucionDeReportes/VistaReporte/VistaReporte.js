@@ -67,8 +67,8 @@ function definirBotonesHabilitados(estatus) {
         btnIniciar.style.display = "none";
     }
 
-    if (estatus != "6"){
-        
+    if (estatus == "6"){
+        chat.style.display = "none";   
     }
   }
 
@@ -112,7 +112,8 @@ const contenidoChat = (user) => {
                 firebase.firestore().collection(hotel.toString()+"status").add({
                     mensaje: localStorage.Nombre + " ha iniciado el seguimiento ",
                     uid: user.uid,
-                    fecha: Date.now()
+                    fecha: Date.now(),
+                    reload: true
                 })
                 .catch(e => console.log(e)); 
                 //window.location.reload();
@@ -214,9 +215,12 @@ const contenidoChat = (user) => {
         firebase.firestore().collection("notif").add({
             mensaje: localStorage.Nombre + " ha completado el seguimiento de reporte",
             uid: user.uid,
-            fecha: Date.now()
+            fecha: Date.now(),
+            reload: true
         })
         .catch(e => console.log(e));
+        window.location.href = "https://corporativotdo.com/General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php";
+
     })
 
 

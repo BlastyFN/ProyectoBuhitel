@@ -67,6 +67,8 @@ window.addEventListener('load', e => {
             }
         }
 
+        definirBotonesHabilitados(element.Reporte_Estatus);
+
         firebase.auth().onAuthStateChanged(user => {
             if(user){
                
@@ -79,6 +81,16 @@ window.addEventListener('load', e => {
         
     })
 })
+
+function definirBotonesHabilitados(estatus) {
+
+    if (estatus == "6"){
+        chat.style.display = "none";   
+        btnCompletado.style.display = "none";
+        btnSpam.style.display = "none";
+    }
+  }
+
 
 btnSpam.addEventListener('click', ()=> {
     const nombreCat = new FormData();
@@ -288,7 +300,7 @@ const contenidoChat = (user) => {
         btnNotificar.addEventListener('click', ()=> {
         //completarEnBd();
         firebase.firestore().collection(hotel.toString()+"notif").add({
-            mensaje: "El administrador pide que inicies el seguimiento",
+            mensaje: "El administrador pregunta por el estatus del reporte",
             uid: user.uid,
             fecha: Date.now()
         })
@@ -303,6 +315,9 @@ const contenidoChat = (user) => {
             else {
                 alert(notif.data().mensaje);
                 notif.ref.delete();
+                if(notif.data().reload == true){
+                    window.location.reload();
+                }
             }
         })           
     });
