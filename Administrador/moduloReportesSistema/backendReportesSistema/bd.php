@@ -134,7 +134,7 @@ class database
     function obtenerCategoriasReportes($hotel){
         $sql = $this->con->prepare("SELECT * FROM reporte 
         INNER JOIN categoriareporte ON Reporte_Categoria = categoriareporte.Catreporte_ID 
-        WHERE Producto_Hotel = '".$hotel."';");
+        WHERE catreporte_Hotel = '".$hotel."';");
         $sql->execute();
         $res = $sql->fetchall();
         return $res;
