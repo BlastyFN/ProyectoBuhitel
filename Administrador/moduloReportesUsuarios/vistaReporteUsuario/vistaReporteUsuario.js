@@ -328,13 +328,16 @@ const contenidoChat = (user) => {
 
             }
             else {
+                notif.ref.delete();
                 Sonido.play();
                 alert(notif.data().mensaje);
                 
-                notif.ref.delete();
-                if(notif.data().reload === true){
-                    window.location.reload();
-                }
+                setTimeout(() => {
+                    if(notif.data().reload === true){
+                        window.location.reload();
+                    } 
+                }, 1000);
+
             }
         })           
     });

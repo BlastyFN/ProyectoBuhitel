@@ -116,7 +116,10 @@ const contenidoChat = (user) => {
                     reload: true
                 })
                 .catch(e => console.log(e)); 
-                //window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
             });  
         })
     }
@@ -147,7 +150,10 @@ const contenidoChat = (user) => {
                     fecha: Date.now()
                 })
                 .catch(e => console.log(e)); 
-                window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                
             });  
         })
     }
