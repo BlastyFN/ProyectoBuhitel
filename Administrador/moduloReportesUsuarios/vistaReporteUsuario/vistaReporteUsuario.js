@@ -315,7 +315,24 @@ const contenidoChat = (user) => {
             else {
                 alert(notif.data().mensaje);
                 notif.ref.delete();
-                if(notif.data().reload == true){
+                if(notif.data().reload === true){
+                    window.location.reload();
+                }
+            }
+        })           
+    });
+    firebase.firestore().collection(hotel.toString()+"status").orderBy('fecha')
+    .onSnapshot(query => {
+        query.forEach(notif =>{
+            if(notif.data().uid === user.uid){
+
+            }
+            else {
+                Sonido.play();
+                alert(notif.data().mensaje);
+                
+                notif.ref.delete();
+                if(notif.data().reload === true){
                     window.location.reload();
                 }
             }
