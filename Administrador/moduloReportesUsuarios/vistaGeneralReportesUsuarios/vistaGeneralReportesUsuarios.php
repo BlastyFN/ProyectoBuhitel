@@ -32,9 +32,9 @@ session_start();
             <span>⋮</span>
                     <ul>
 
-                        <li><a href="../NuevoTipoHab/nuevoTipoHab.php">Añadir categoría</a></li>
+                        <li><a href="https://corporativotdo.com/Administrador/moduloReportesUsuarios/agregarCategoriaReporte/agregarCategoriaReporte.php">Añadir categoría</a></li>
 
-                        <li><a href="../ModificacionTipoHab/modificacionTipoHab.php">Modificar prioridad de categoría</a></li>
+                        <li><a href="https://corporativotdo.com/Administrador/moduloReportesUsuarios/modificarPrioridadCategorias/modificarPrioridadCategorias.php">Modificar prioridad de categoría</a></li>
 
                     </ul>
      </div>
