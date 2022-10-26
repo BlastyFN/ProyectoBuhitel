@@ -66,6 +66,7 @@ window.addEventListener('load', e => {
             if(element.CatReporte_Nombre != "Spam" || element.EstatusReporte_Estatus != "Completado"){
                 divAcciones.classList.add('activo');
             }
+            obtenerCategorias(element.CetReporte_ID);
         }
 
         
@@ -80,13 +81,13 @@ window.addEventListener('load', e => {
         })
         
         definirBotonesHabilitados(element.Reporte_Estatus);
-        obtenerCategorias();
+        
     })
 
     //Llenar select
 })
 
-function obtenerCategorias() {
+function obtenerCategorias(catID) {
     fetch('../backend/obtenerCategorias.php' , {
         method:'POST'
         
@@ -105,7 +106,7 @@ function obtenerCategorias() {
             opcion.textContent = categoria.CatReporte_Nombre;
             selectCategoria.appendChild(opcion);
         });
-        
+        selectCategoria.setAttribute("value", catID);
     })
 }
 

@@ -39,8 +39,9 @@ session_start();
             </p>
             <br>
             <select name="Categoria" id="selectCategoria">
-                
+
             </select>
+            <br>
             <br>
             <p class="estatus">
                 Status
