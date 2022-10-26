@@ -80,7 +80,7 @@ window.addEventListener('load', e => {
             }
         })
         
-        definirBotonesHabilitados(element.Reporte_Estatus);
+        definirBotonesHabilitados(element.CatReporte_ID);
         
     })
 
