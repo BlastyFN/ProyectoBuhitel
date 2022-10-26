@@ -28,7 +28,7 @@ session_start();
 
     </section> -->
 
-    <div id="divMenu">
+    <div id="divMenu" style="z-index:100;">
             <span>⋮</span>
                     <ul>
 
@@ -39,7 +39,7 @@ session_start();
                     </ul>
      </div>
 
-    <section class="contenedorTablaReportes">
+    <section class="contenedorTablaReportes" style="margin-top:100px;">
         <table class="tablaReportes">
 
         </table>
