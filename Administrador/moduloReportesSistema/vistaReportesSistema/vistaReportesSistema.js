@@ -354,11 +354,11 @@ function obtenerCategoriasReportes(){
       console.log(element.Catreporte_Nombre)
       if (cat.indexOf(element.Catreporte_Nombre) == -1) {
         cat.push(element.Catreporte_Nombre);
-        posicion = cat.indexOf(element.CatProd_Nombre);
+        posicion = cat.indexOf(element.Reporte_Nombre);
         numProds[posicion] = 1;
 
       } else {
-        posicion = cat.indexOf(element.CatProd_nombre);
+        posicion = cat.indexOf(element.Reporte_nombre);
         numProds[posicion] += 1;
       }
     }
