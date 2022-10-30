@@ -209,7 +209,7 @@ tbody tr:nth-child(odd) {
 }
 
 @media (max-width: 750px){
-    .contenedor{
+    .Contenedor{
         flex-direction: column;   
     }
     .Formulario{
