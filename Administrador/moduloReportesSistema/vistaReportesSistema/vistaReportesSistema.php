@@ -71,6 +71,10 @@ session_start();
         <section class="apartadoTiposHabs">
             
         </section>
+        <div class="botonesGraficas oculto"
+            <button class="btnGrafica active" id="btnLinea">Gráfica Lineas</button>
+            <button class="btnGrafica" id="btnCircular">Gráfica Circular</button>
+        </div>
 
         <div class="chart-container" >
             <canvas id="grafica"></canvas>

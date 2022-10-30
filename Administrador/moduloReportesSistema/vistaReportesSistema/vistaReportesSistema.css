@@ -30,6 +30,17 @@ h1{
     cursor: pointer;
     transition: .1s ease;
 }
+.btnGrafica {
+    padding: 10px 30px;
+    border-radius: 50px;
+    border-style: none;
+    margin-top: 40px;
+    font-size: 20px;
+    background: #fff;
+    color:#59114D;
+    cursor: pointer;
+    transition: .1s ease;
+}
 
 .botonesTiempo{
     display: block;
@@ -37,7 +48,13 @@ h1{
     margin-right: auto;
 }
 
-.btnTiempo:hover {
+.botonesGraficas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnTiempo:hover, .btnGrafica:hover {
     opacity: .8;
 }
 
