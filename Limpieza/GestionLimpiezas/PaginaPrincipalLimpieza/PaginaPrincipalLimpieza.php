@@ -21,6 +21,20 @@ else {
 </head>
 
 <body>
+    <style>
+        @media (max-width: 750px){
+            .contenedor{
+                flex-direction: column;   
+            }
+            .Formulario{
+                width: 100%;
+            }
+            .Tabla{
+                width: 100%;
+            }
+
+        }
+    </style>
 <section id="header-menu" class="header-menu" >
 
 </section>
