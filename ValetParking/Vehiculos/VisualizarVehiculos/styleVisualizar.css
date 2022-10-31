@@ -176,3 +176,17 @@ tbody tr:nth-child(odd) {
       cursor: grab;
   }
 /* TABLA */
+
+
+@media (max-width: 750px){
+    .Contenedor{
+        flex-direction: column;   
+    }
+    .Formulario{
+        width: 100%;
+    }
+    .Tabla{
+        width: 100%;
+    }
+
+}
