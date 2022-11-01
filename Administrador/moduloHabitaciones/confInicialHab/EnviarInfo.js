@@ -23,6 +23,7 @@ function definirNumPisos(){
         inputPiso.placeholder = "Numero de habitaciones del piso " + piso;
         inputPiso.classList.add('formText','autogen');
         inputPiso.setAttribute("required","");
+        inputPiso.required = true;
         fragment.appendChild(inputPiso);
     }
     contInputs.appendChild(fragment);
