@@ -25,15 +25,15 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </h1>
     <section class="contFormulario">
         <form class="formNuevoServicio" action="" method="post">
-            <input type="text" class="formText" id="nombre" placeholder="Nombre del producto o servicio">
+            <input type="text" class="formText" id="nombre" placeholder="Nombre del producto o servicio" maxlength="50" required>
             <div class="infoTipoPrecio">
-                <input type="text" class="formText" id="tipo" placeholder="Tipo de producto">
-                <input type="number" class="formText" id="precio" placeholder="Precio unitario">
+                <input type="text" class="formText" id="tipo" placeholder="Tipo de producto" maxlength="50" required>
+                <input type="number" class="formText" id="precio" placeholder="Precio unitario" min="1" required>
             </div>
             
     
 
-            <textarea name="descripcion" class="formText" id="descripcion" rows= 10 placeholder="Descripción del producto"></textarea>
+            <textarea name="descripcion" class="formText" id="descripcion" rows= 10 placeholder="Descripción del producto" maxlength="80" required></textarea>
     
             <button type="submit" class="enviarInfo">Aceptar</button>
   
