@@ -35,6 +35,17 @@ formConfInicial.addEventListener('click', function(e){
     let inputs = Array.prototype.slice.call(document.getElementsByClassName("autogen"), 0);
     var values = new Array();
     for (element of inputs){
+        if (element.value == ""){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Ingresa el número de habitaciones de todos los pisos',
+                showConfirmButton: false,
+                timer: 2500
+            }).then(()=>{
+                return;
+            });
+        }
         values.push(element.value);
     }
     // for(var cont = 0; cont < inputs.length; cont++){
