@@ -28,13 +28,12 @@ session_start();
         <form class="formNuevoUsuario" action="" method="post">
             <input type="text" class="formText" id="nombreUsr" placeholder="Nombres" maxlength="20" required>
             <div class="apellidos">
-                <input type="text" class="formText" id="apellidoP" placeholder="Apellido paterno maxlength="20" required">
-                <input type="text" class="formText" id="apellidoM" placeholder="Apellido materno maxlength="20" required">
+                <input type="text" class="formText" id="apellidoP" placeholder="Apellido paterno" maxlength="20" required>
+                <input type="text" class="formText" id="apellidoM" placeholder="Apellido materno" maxlength="20" required>
             </div>
             
-            <select name="tipoPersonal" id="tipoPersonal" class="formText" required>
-                <option selected="true" disabled>Tipo de personal</option>
-                <option value="Recepcion">Recepcionista</option>
+            <select name="tipoPersonal" id="tipoPersonal" class="formText">
+                <option value="Recepcion" selected="true">Recepcionista</option>
                 <option value="Limpieza">Personal de limpieza</option>
                 <option value="Valet">Valet parking</option>
                 <option value="Servicio">Personal de servicio</option>
