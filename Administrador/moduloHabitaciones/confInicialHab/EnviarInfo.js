@@ -5,7 +5,7 @@ console.log(formConfInicial);
 const definirPisos = document.getElementById('input_NumPisos');
 
 
-definirPisos.addEventListener('change', definirNumPisos);
+definirPisos.addEventListener('keyup', definirNumPisos);
 
 function definirNumPisos(){
     let inputs = Array.prototype.slice.call(document.getElementsByClassName("autogen"), 0);
@@ -20,6 +20,7 @@ function definirNumPisos(){
         piso = cont + 1;
         const inputPiso = document.createElement('input');
         inputPiso.setAttribute("type","number");
+        inputPiso.setAttribute("required","true");
         inputPiso.placeholder = "Numero de habitaciones del piso " + piso;
         inputPiso.classList.add('formText','autogen');
         fragment.appendChild(inputPiso);

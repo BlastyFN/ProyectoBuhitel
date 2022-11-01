@@ -39,15 +39,15 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </h1>
     <section class="contFormulario">
         <form class="ingresarTipoForm" action="" method="post">
-            <input type="text" class="formText" id="nombreTipo" placeholder="Nombre del nuevo tipo de habitación" required>
+            <input type="text" class="formText" id="nombreTipo" placeholder="Nombre del nuevo tipo de habitación" maxlength="30" required>
             <br>
             <input type="number" class="formText" id="precioTipo" placeholder="Precio por noche" min="1" required>
             <br>
-            <input type="number" class="formText" id="numCamas" placeholder="Número de camas" max="8" required>
+            <input type="number" class="formText" id="numCamas" placeholder="Número de camas" min="1" max="7" required>
             <br>
-            <input type="time" class="formText without_ampm" id="tiempoLimpNormal" placeholder="Tiempo estimado de limpieza normal" required>
+            <input type="time" class="formText without_ampm" id="tiempoLimpNormal" placeholder="Tiempo estimado de limpieza normal" min="00:01" required>
             <br>    
-            <input type="time" class="formText without_ampm" id="tiempoLimpProf" placeholder="Tiempo estimado de limpieza profunda" required>
+            <input type="time" class="formText without_ampm" id="tiempoLimpProf" placeholder="Tiempo estimado de limpieza profunda" min="00:01" required>
             <br>
     
             <button type="submit" class="enviarInfo">Aceptar</button>
