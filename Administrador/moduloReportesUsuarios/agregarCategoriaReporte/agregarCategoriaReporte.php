@@ -23,7 +23,7 @@ session_start();
         </h1>
 
     
-        <input type="text" class="textForm" id="inputNombre" placeholder="Nueva categoría">
+        <input type="text" class="textForm" id="inputNombre" placeholder="Nueva categoría" maxlength="20" required>
         
 
         <div class="contenedorCats">

@@ -7,7 +7,7 @@ new Sortable (dragArea, {
     animation:350
 })
 
-inputNombre.addEventListener('change', ()=>{
+inputNombre.addEventListener('keyup', ()=>{
     if(inputNombre.value == ""){
         btnEnviar.disabled = true;    
     }else{
