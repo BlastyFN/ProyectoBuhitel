@@ -98,9 +98,11 @@ function verificarBoton() {
         }
         
     });
-    if (contador == 5) {
+    if (contador == 5 && CPlacas.value.length > 4 && CColor.value.length > 4) {
+
+        btnConfirmar.disabled = false;
         
-         btnConfirmar.disabled = false;
+         
     }
     else{
         btnConfirmar.disabled = true;

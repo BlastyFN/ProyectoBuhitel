@@ -34,9 +34,9 @@ else {
         <div class="CamposFijos">
             <h1 class="CentrarTexto">Titular</h1>
             <br>
-            <input type="text" placeholder="Nombre" class="EntradaTexto CampoCentrado" name="Nombre" id="CampoNombre">
+            <input type="text" placeholder="Nombre" class="EntradaTexto CampoCentrado" name="Nombre" id="CampoNombre" maxlength = "20">
             <br>
-            <input type="text" placeholder="Apellidos" class="EntradaTexto CampoCentrado" name="Apellidos" id = "CampoApellidos">
+            <input type="text" placeholder="Apellidos" class="EntradaTexto CampoCentrado" name="Apellidos" id = "CampoApellidos" maxlength = "20">
             <br>
             <input type="text" placeholder="Contacto" class="EntradaTexto CampoCentrado" name="Contacto" id = "CampoContacto">
         </div>

@@ -34,10 +34,10 @@ else {
             <form id="InfoVehiculo">
                 <input type="text" name="Habitacion"  placeholder="Habitacion" class="CampoCompleto" id ="cmpHabitacion">
                 <br><br>
-                <input type="text" name="Modelo"  placeholder="Modelo" class="CampoMitad" id ="cmpModelo">
-                <input type="text" name="Color"  placeholder="Color" class="CampoMitad" id ="cmpColor">
+                <input type="text" name="Modelo"  placeholder="Modelo" class="CampoMitad" id ="cmpModelo" maxlength="20">
+                <input type="text" name="Color"  placeholder="Color" class="CampoMitad" id ="cmpColor" maxlength="20">
                 <br><br>
-                <input type="text" name="Placas"  placeholder="Placas" class="CampoMitad" id ="cmpPlacas">
+                <input type="text" name="Placas"  placeholder="Placas" class="CampoMitad" id ="cmpPlacas" maxlength="8">
                 <input type="text" name="Lugar"  placeholder="Lugar" class="CampoMitad" id ="cmpLugar">
                 <br><br>
                 <textarea placeholder="Notas" name="Notas" cols="40" rows="7" class="CampoCompleto" id ="cmpNotas"></textarea>
