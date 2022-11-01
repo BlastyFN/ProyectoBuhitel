@@ -35,9 +35,15 @@ formConfInicial.addEventListener('click', function(e){
     let inputs = Array.prototype.slice.call(document.getElementsByClassName("autogen"), 0);
     var values = new Array();
     var estatus = true;
+    var msg;
+    if(definirPisos.value == "" || definirPisos.value == 0){
+        estatus = false;
+        msg = "Ingresa un número de pisos válido";
+    }
     for (element of inputs){
         if (element.value == ""){
             estatus = false;
+            msg = 'Ingresa el número de habitaciones de todos los pisos';
         }
         values.push(element.value);
     }
@@ -81,7 +87,7 @@ formConfInicial.addEventListener('click', function(e){
         Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'Ingresa el número de habitaciones de todos los pisos',
+            title: msg,
             showConfirmButton: false,
             timer: 2500
         }).then(()=>{
