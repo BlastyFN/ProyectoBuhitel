@@ -69,7 +69,7 @@ session_start();
 
                     </div>
                         <form class="envioMensaje" id="envioMensaje">
-                            <input type="text" class="nuevoMensaje" id="mensajeChat">
+                            <input type="text" class="nuevoMensaje" id="mensajeChat" maxlength="150">
                             <button class="enviarMensaje" type="submit" >></button>
 
                         </form>
