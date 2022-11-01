@@ -20,9 +20,9 @@ function definirNumPisos(){
         piso = cont + 1;
         const inputPiso = document.createElement('input');
         inputPiso.setAttribute("type","number");
-        inputPiso.required = true;
         inputPiso.placeholder = "Numero de habitaciones del piso " + piso;
         inputPiso.classList.add('formText','autogen');
+        inputPiso.setAttribute("required","");
         fragment.appendChild(inputPiso);
     }
     contInputs.appendChild(fragment);
