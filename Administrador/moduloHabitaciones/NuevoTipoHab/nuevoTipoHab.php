@@ -14,6 +14,19 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <link rel="stylesheet" href="nuevoTipoHab.css">
     <? include('../../../Recursos/includeHead.php') ?>
     <title>Nuevo tipo de habitacion</title>
+    <style>
+        .without_ampm::-webkit-datetime-edit-ampm-field {
+        display: none;
+        }
+        input[type=time]::-webkit-clear-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        -ms-appearance:none;
+        appearance: none;
+        margin: -10px; 
+        }
+    </style>
 </head>
 <body>
     
@@ -26,15 +39,15 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </h1>
     <section class="contFormulario">
         <form class="ingresarTipoForm" action="" method="post">
-            <input type="text" class="formText" id="nombreTipo" placeholder="Nombre del nuevo tipo de habitación">
+            <input type="text" class="formText" id="nombreTipo" placeholder="Nombre del nuevo tipo de habitación" required>
             <br>
-            <input type="number" class="formText" id="precioTipo" placeholder="Precio por noche">
+            <input type="number" class="formText" id="precioTipo" placeholder="Precio por noche" min="1" required>
             <br>
-            <input type="number" class="formText" id="numCamas" placeholder="Número de camas">
+            <input type="number" class="formText" id="numCamas" placeholder="Número de camas" max="8" required>
             <br>
-            <input type="time" class="formText" id="tiempoLimpNormal" placeholder="Tiempo estimado de limpieza normal">
+            <input type="time" class="formText without_ampm" id="tiempoLimpNormal" placeholder="Tiempo estimado de limpieza normal" required>
             <br>    
-            <input type="time" class="formText" id="tiempoLimpProf" placeholder="Tiempo estimado de limpieza profunda">
+            <input type="time" class="formText without_ampm" id="tiempoLimpProf" placeholder="Tiempo estimado de limpieza profunda" required>
             <br>
     
             <button type="submit" class="enviarInfo">Aceptar</button>
