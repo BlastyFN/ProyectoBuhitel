@@ -27,7 +27,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     <section class="contFormulario">
         <form class="confInicial" action="" method="post" id="formConfInicial">
             <p>
-            <input type="number" class="formText" placeholder="Número de pisos del hotel" id="input_NumPisos" min="0" max = "5">
+            <input type="number" class="formText" placeholder="Número de pisos del hotel" id="input_NumPisos" min="1" required>
             </p>
             <p>
             <div class="contInputPisos">
