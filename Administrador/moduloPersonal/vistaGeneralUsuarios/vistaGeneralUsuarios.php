@@ -21,10 +21,7 @@ if ($_SESSION['sesionPersonal']['Tipo']!='Administrador') {
     </section>
 
     <section class="search">
-        <form action="GET">
-            <input type="text" class="searchElement" placeholder="busca Personal, tipos de personal..." id="">
-            <button type="submit" class="searchButton">Buscar</button>
-        </form>
+    <br><br><br>
 
     </section>
 

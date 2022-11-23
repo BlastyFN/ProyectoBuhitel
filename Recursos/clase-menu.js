@@ -40,7 +40,7 @@ const linksRecepcion = ["Recepcion/Principal/PaginaPrincipal/Inicio.php",
 
 const opcionesValet = ["Solicitudes","Registrar", "Seguimiento de reportes", "Modificar mi información"];
 const linksValet = ["ValetParking/Vehiculos/GestionarVehículos/GestionVehiculos.php", 
-"\ValetParking\Vehiculos\VisualizarVehiculos\AgregarVehiculos.php",
+"ValetParking/Vehiculos/VisualizarVehiculos/AgregarVehiculos.php",
 "General/SolucionDeReportes/VistaGeneralReportes/VistaGeneralReportes.php", "General/ActualizarInfo/ActualizarDatos/actualizarDatos.php"]
 const opcionesServicio = ["Gestionar pedidos","Gestionar productos", "Seguimiento de reportes", "Modificar mi información"];
 const linksServicio = ["Servicio/ConsultarServicios/VisualizarPedidos/GestionarPedidos.php", 
